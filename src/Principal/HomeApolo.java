@@ -382,15 +382,21 @@ public class HomeApolo extends javax.swing.JFrame {
         Scp_Cuestionario5 = new javax.swing.JScrollPane();
         Pnl_Cuestionario5 = new javax.swing.JPanel();
         Btn_Anterior_LecturaeImpresion = new javax.swing.JButton();
-        Btn_Siguiente_OperadoresdeRelacion = new javax.swing.JButton();
+        Btn_Siguiente_Ejercicio1 = new javax.swing.JButton();
         Lbl_Header_Aprender10 = new javax.swing.JLabel();
         Lbl_Cuestionario5 = new javax.swing.JLabel();
+        Scp_Ejercicio1 = new javax.swing.JScrollPane();
+        Pnl_Ejercicio1_Aprender = new javax.swing.JPanel();
+        Btn_Anterior_Cuestionario5 = new javax.swing.JButton();
+        Btn_Siguiente_OperadoresdeRelacion = new javax.swing.JButton();
+        Lbl_Header_Aprender33 = new javax.swing.JLabel();
+        Lbl_Ejercicio1_Principiante = new javax.swing.JLabel();
         Scp_Tema6 = new javax.swing.JScrollPane();
         Pnl_Tema6 = new javax.swing.JPanel();
-        Btn_Anterior_Cuestionario5 = new javax.swing.JButton();
+        Btn_Anterior_Ejercicio1_Principiante = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario6 = new javax.swing.JButton();
         Lbl_Header_Aprender15 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion1 = new javax.swing.JLabel();
+        Lbl_OperadoresdeRelacion = new javax.swing.JLabel();
         Scp_Cuestionario6 = new javax.swing.JScrollPane();
         Pnl_Cuestionario6 = new javax.swing.JPanel();
         Btn_Anterior_OperadoresdeRelacion = new javax.swing.JButton();
@@ -402,7 +408,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario6 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario7 = new javax.swing.JButton();
         Lbl_Header_Aprender17 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion2 = new javax.swing.JLabel();
+        Lbl_OperadoresLogicos = new javax.swing.JLabel();
         Scp_Cuestionario7 = new javax.swing.JScrollPane();
         Pnl_Cuestionario7 = new javax.swing.JPanel();
         Btn_Anterior_OperadoresLogicos = new javax.swing.JButton();
@@ -414,7 +420,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario7 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario8 = new javax.swing.JButton();
         Lbl_Header_Aprender19 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion3 = new javax.swing.JLabel();
+        Lbl_Condicionales = new javax.swing.JLabel();
         Scp_Cuestionario8 = new javax.swing.JScrollPane();
         Pnl_Cuestionario8 = new javax.swing.JPanel();
         Btn_Anterior_Condicionales = new javax.swing.JButton();
@@ -426,19 +432,25 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario8 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario9 = new javax.swing.JButton();
         Lbl_Header_Aprender21 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion4 = new javax.swing.JLabel();
+        Lbl_Bucles = new javax.swing.JLabel();
         Scp_Cuestionario9 = new javax.swing.JScrollPane();
         Pnl_Cuestionario9 = new javax.swing.JPanel();
         Btn_Anterior_Bucles = new javax.swing.JButton();
-        Btn_Siguiente_FuncyProc = new javax.swing.JButton();
+        Btn_Siguiente_Ejercicio2_Intermedio = new javax.swing.JButton();
         Lbl_Header_Aprender22 = new javax.swing.JLabel();
         Lbl_Cuestionario9 = new javax.swing.JLabel();
+        Scp_Ejercicio2 = new javax.swing.JScrollPane();
+        Pnl_Ejercicio2_Aprender = new javax.swing.JPanel();
+        Btn_Anterior_Cuestionario9 = new javax.swing.JButton();
+        Btn_Siguiente_FuncionesyProc = new javax.swing.JButton();
+        Lbl_Header_Aprender34 = new javax.swing.JLabel();
+        Lbl_Ejercicio2_Intermedio = new javax.swing.JLabel();
         Scp_Tema10 = new javax.swing.JScrollPane();
         Pnl_Tema10 = new javax.swing.JPanel();
-        Btn_Anterior_Cuestionario9 = new javax.swing.JButton();
+        Btn_Anterior_Ejercicio2_Intermedio = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario10 = new javax.swing.JButton();
         Lbl_Header_Aprender23 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion5 = new javax.swing.JLabel();
+        Lbl_FuncionesyProcs = new javax.swing.JLabel();
         Scp_Cuestionario10 = new javax.swing.JScrollPane();
         Pnl_Cuestionario10 = new javax.swing.JPanel();
         Btn_Anterior_FuncyProc = new javax.swing.JButton();
@@ -450,7 +462,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario10 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario11 = new javax.swing.JButton();
         Lbl_Header_Aprender25 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion6 = new javax.swing.JLabel();
+        Lbl_Recursion = new javax.swing.JLabel();
         Scp_Cuestionario11 = new javax.swing.JScrollPane();
         Pnl_Cuestionario11 = new javax.swing.JPanel();
         Btn_Anterior_Recursion = new javax.swing.JButton();
@@ -462,7 +474,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario11 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario12 = new javax.swing.JButton();
         Lbl_Header_Aprender27 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion7 = new javax.swing.JLabel();
+        Lbl_EDDBasicas = new javax.swing.JLabel();
         Scp_Cuestionario12 = new javax.swing.JScrollPane();
         Pnl_Cuestionario12 = new javax.swing.JPanel();
         Btn_Anterior_EDDBasicas = new javax.swing.JButton();
@@ -474,7 +486,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario12 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario13 = new javax.swing.JButton();
         Lbl_Header_Aprender29 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion8 = new javax.swing.JLabel();
+        Lbl_EDDAvanzadas = new javax.swing.JLabel();
         Scp_Cuestionario13 = new javax.swing.JScrollPane();
         Pnl_Cuestionario13 = new javax.swing.JPanel();
         Btn_Anterior_EDDAvanzadas = new javax.swing.JButton();
@@ -486,13 +498,18 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario13 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario14 = new javax.swing.JButton();
         Lbl_Header_Aprender31 = new javax.swing.JLabel();
-        Lbl_LecturaeImpresion9 = new javax.swing.JLabel();
+        Lbl_PrimerosAlgoritmos = new javax.swing.JLabel();
         Scp_Cuestionario14 = new javax.swing.JScrollPane();
         Pnl_Cuestionario14 = new javax.swing.JPanel();
         Btn_Anterior_PrimerosAlgoritmos = new javax.swing.JButton();
         Btn_Siguiente_EjercicioFinal = new javax.swing.JButton();
         Lbl_Header_Aprender32 = new javax.swing.JLabel();
         Lbl_Cuestionario14 = new javax.swing.JLabel();
+        Scp_Ejercicio3 = new javax.swing.JScrollPane();
+        Pnl_Ejercicio3_Aprender = new javax.swing.JPanel();
+        Btn_Anterior_Cuestionario14 = new javax.swing.JButton();
+        Lbl_Header_Aprender35 = new javax.swing.JLabel();
+        Lbl_EjercicioFinal = new javax.swing.JLabel();
         Pnl_Programar = new javax.swing.JPanel();
         Lbl_Programar = new javax.swing.JLabel();
         Lbl_Header_Aprender9 = new javax.swing.JLabel();
@@ -1089,6 +1106,11 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Aprender_Ejercicio1.setMinimumSize(new java.awt.Dimension(71, 123));
         Btn_Aprender_Ejercicio1.setPreferredSize(new java.awt.Dimension(71, 123));
         Btn_Aprender_Ejercicio1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio1_On.png"))); // NOI18N
+        Btn_Aprender_Ejercicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Aprender_Ejercicio1ActionPerformed(evt);
+            }
+        });
         Pnl_Mapa.add(Btn_Aprender_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 150, 71, 123));
 
         Btn_Aprender_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio2_Off.png"))); // NOI18N
@@ -1098,6 +1120,11 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Aprender_Ejercicio2.setMinimumSize(new java.awt.Dimension(90, 140));
         Btn_Aprender_Ejercicio2.setPreferredSize(new java.awt.Dimension(90, 140));
         Btn_Aprender_Ejercicio2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio2_On.png"))); // NOI18N
+        Btn_Aprender_Ejercicio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Aprender_Ejercicio2ActionPerformed(evt);
+            }
+        });
         Pnl_Mapa.add(Btn_Aprender_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(598, 338, 90, 140));
 
         Btn_Aprender_EjercicioFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/EjercicioFinal_Off.png"))); // NOI18N
@@ -1107,6 +1134,11 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Aprender_EjercicioFinal.setMinimumSize(new java.awt.Dimension(121, 184));
         Btn_Aprender_EjercicioFinal.setPreferredSize(new java.awt.Dimension(121, 184));
         Btn_Aprender_EjercicioFinal.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/EjercicioFinal_On.png"))); // NOI18N
+        Btn_Aprender_EjercicioFinal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Aprender_EjercicioFinalActionPerformed(evt);
+            }
+        });
         Pnl_Mapa.add(Btn_Aprender_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, 121, 184));
 
         Lbl_Aprender_Mapa.setBackground(new java.awt.Color(255, 255, 0));
@@ -1631,21 +1663,22 @@ public class HomeApolo extends javax.swing.JFrame {
         });
         Pnl_Cuestionario5.add(Btn_Anterior_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
 
-        Btn_Siguiente_OperadoresdeRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_OperadoresdeRelacion_Off.png"))); // NOI18N
-        Btn_Siguiente_OperadoresdeRelacion.setBorderPainted(false);
-        Btn_Siguiente_OperadoresdeRelacion.setContentAreaFilled(false);
-        Btn_Siguiente_OperadoresdeRelacion.setFocusPainted(false);
-        Btn_Siguiente_OperadoresdeRelacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_Siguiente_OperadoresdeRelacion.setMaximumSize(new java.awt.Dimension(254, 64));
-        Btn_Siguiente_OperadoresdeRelacion.setMinimumSize(new java.awt.Dimension(254, 64));
-        Btn_Siguiente_OperadoresdeRelacion.setPreferredSize(new java.awt.Dimension(254, 64));
-        Btn_Siguiente_OperadoresdeRelacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_OperadoresdeRelacion_On.png"))); // NOI18N
-        Btn_Siguiente_OperadoresdeRelacion.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Siguiente_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Ejercicio1_Off.png"))); // NOI18N
+        Btn_Siguiente_Ejercicio1.setBorder(null);
+        Btn_Siguiente_Ejercicio1.setBorderPainted(false);
+        Btn_Siguiente_Ejercicio1.setContentAreaFilled(false);
+        Btn_Siguiente_Ejercicio1.setFocusPainted(false);
+        Btn_Siguiente_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Siguiente_Ejercicio1.setMaximumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_Ejercicio1.setMinimumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_Ejercicio1.setPreferredSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_Ejercicio1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Ejercicio1_On.png"))); // NOI18N
+        Btn_Siguiente_Ejercicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Siguiente_OperadoresdeRelacionActionPerformed(evt);
+                Btn_Siguiente_Ejercicio1ActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario5.add(Btn_Siguiente_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario5.add(Btn_Siguiente_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
 
         Lbl_Header_Aprender10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Cuestionario5.add(Lbl_Header_Aprender10, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
@@ -1658,19 +1691,20 @@ public class HomeApolo extends javax.swing.JFrame {
 
         Pnl_Aprender.add(Scp_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 706));
 
-        Scp_Tema6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        Scp_Tema6.setMaximumSize(new java.awt.Dimension(1176, 706));
-        Scp_Tema6.setMinimumSize(new java.awt.Dimension(1176, 706));
-        Scp_Tema6.setPreferredSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_Ejercicio1.setMaximumSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio1.setMinimumSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio1.setPreferredSize(new java.awt.Dimension(1176, 706));
 
-        Pnl_Tema6.setBackground(new java.awt.Color(237, 234, 243));
-        Pnl_Tema6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Pnl_Tema6.setMaximumSize(new java.awt.Dimension(1155, 1500));
-        Pnl_Tema6.setMinimumSize(new java.awt.Dimension(1155, 1500));
-        Pnl_Tema6.setPreferredSize(new java.awt.Dimension(1155, 1500));
-        Pnl_Tema6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Pnl_Ejercicio1_Aprender.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_Ejercicio1_Aprender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Pnl_Ejercicio1_Aprender.setMaximumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio1_Aprender.setMinimumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio1_Aprender.setPreferredSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio1_Aprender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Cuestionario5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario5_Off.png"))); // NOI18N
+        Btn_Anterior_Cuestionario5.setBorder(null);
         Btn_Anterior_Cuestionario5.setBorderPainted(false);
         Btn_Anterior_Cuestionario5.setContentAreaFilled(false);
         Btn_Anterior_Cuestionario5.setFocusPainted(false);
@@ -1684,7 +1718,64 @@ public class HomeApolo extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario5ActionPerformed(evt);
             }
         });
-        Pnl_Tema6.add(Btn_Anterior_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Ejercicio1_Aprender.add(Btn_Anterior_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+
+        Btn_Siguiente_OperadoresdeRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_OperadoresdeRelacion_Off.png"))); // NOI18N
+        Btn_Siguiente_OperadoresdeRelacion.setBorder(null);
+        Btn_Siguiente_OperadoresdeRelacion.setBorderPainted(false);
+        Btn_Siguiente_OperadoresdeRelacion.setContentAreaFilled(false);
+        Btn_Siguiente_OperadoresdeRelacion.setFocusPainted(false);
+        Btn_Siguiente_OperadoresdeRelacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Siguiente_OperadoresdeRelacion.setMaximumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_OperadoresdeRelacion.setMinimumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_OperadoresdeRelacion.setPreferredSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_OperadoresdeRelacion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_OperadoresdeRelacion_On.png"))); // NOI18N
+        Btn_Siguiente_OperadoresdeRelacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Siguiente_OperadoresdeRelacionActionPerformed(evt);
+            }
+        });
+        Pnl_Ejercicio1_Aprender.add(Btn_Siguiente_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+
+        Lbl_Header_Aprender33.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
+        Pnl_Ejercicio1_Aprender.add(Lbl_Header_Aprender33, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
+
+        Lbl_Ejercicio1_Principiante.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_Ejercicio1_Principiante.setText("Ejercicio 1 | Principiante");
+        Pnl_Ejercicio1_Aprender.add(Lbl_Ejercicio1_Principiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 610, 40));
+
+        Scp_Ejercicio1.setViewportView(Pnl_Ejercicio1_Aprender);
+
+        Pnl_Aprender.add(Scp_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 706));
+
+        Scp_Tema6.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_Tema6.setMaximumSize(new java.awt.Dimension(1176, 706));
+        Scp_Tema6.setMinimumSize(new java.awt.Dimension(1176, 706));
+        Scp_Tema6.setPreferredSize(new java.awt.Dimension(1176, 706));
+
+        Pnl_Tema6.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_Tema6.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Pnl_Tema6.setMaximumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Tema6.setMinimumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Tema6.setPreferredSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Tema6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Btn_Anterior_Ejercicio1_Principiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Ejercicio1_Off.png"))); // NOI18N
+        Btn_Anterior_Ejercicio1_Principiante.setBorder(null);
+        Btn_Anterior_Ejercicio1_Principiante.setBorderPainted(false);
+        Btn_Anterior_Ejercicio1_Principiante.setContentAreaFilled(false);
+        Btn_Anterior_Ejercicio1_Principiante.setFocusPainted(false);
+        Btn_Anterior_Ejercicio1_Principiante.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Anterior_Ejercicio1_Principiante.setMaximumSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Ejercicio1_Principiante.setMinimumSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Ejercicio1_Principiante.setPreferredSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Ejercicio1_Principiante.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Ejercicio1_On.png"))); // NOI18N
+        Btn_Anterior_Ejercicio1_Principiante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Anterior_Ejercicio1_PrincipianteActionPerformed(evt);
+            }
+        });
+        Pnl_Tema6.add(Btn_Anterior_Ejercicio1_Principiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
 
         Btn_Siguiente_Cuestionario6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Cuestionario6_Off.png"))); // NOI18N
         Btn_Siguiente_Cuestionario6.setBorderPainted(false);
@@ -1705,9 +1796,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema6.add(Lbl_Header_Aprender15, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion1.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion1.setText("Operadores de Relación");
-        Pnl_Tema6.add(Lbl_LecturaeImpresion1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 440, 40));
+        Lbl_OperadoresdeRelacion.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_OperadoresdeRelacion.setText("Operadores de Relación");
+        Pnl_Tema6.add(Lbl_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 440, 40));
 
         Scp_Tema6.setViewportView(Pnl_Tema6);
 
@@ -1815,9 +1906,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema7.add(Lbl_Header_Aprender17, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion2.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion2.setText("Operadores Lógicos");
-        Pnl_Tema7.add(Lbl_LecturaeImpresion2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
+        Lbl_OperadoresLogicos.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_OperadoresLogicos.setText("Operadores Lógicos");
+        Pnl_Tema7.add(Lbl_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
 
         Scp_Tema7.setViewportView(Pnl_Tema7);
 
@@ -1925,9 +2016,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema8.add(Lbl_Header_Aprender19, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion3.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion3.setText("Condicionales");
-        Pnl_Tema8.add(Lbl_LecturaeImpresion3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
+        Lbl_Condicionales.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_Condicionales.setText("Condicionales");
+        Pnl_Tema8.add(Lbl_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
 
         Scp_Tema8.setViewportView(Pnl_Tema8);
 
@@ -2035,9 +2126,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender21.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema9.add(Lbl_Header_Aprender21, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion4.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion4.setText("Bucles");
-        Pnl_Tema9.add(Lbl_LecturaeImpresion4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
+        Lbl_Bucles.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_Bucles.setText("Bucles");
+        Pnl_Tema9.add(Lbl_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
 
         Scp_Tema9.setViewportView(Pnl_Tema9);
 
@@ -2071,21 +2162,22 @@ public class HomeApolo extends javax.swing.JFrame {
         });
         Pnl_Cuestionario9.add(Btn_Anterior_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
 
-        Btn_Siguiente_FuncyProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_FuncyProc_Off.png"))); // NOI18N
-        Btn_Siguiente_FuncyProc.setBorderPainted(false);
-        Btn_Siguiente_FuncyProc.setContentAreaFilled(false);
-        Btn_Siguiente_FuncyProc.setFocusPainted(false);
-        Btn_Siguiente_FuncyProc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_Siguiente_FuncyProc.setMaximumSize(new java.awt.Dimension(254, 64));
-        Btn_Siguiente_FuncyProc.setMinimumSize(new java.awt.Dimension(254, 64));
-        Btn_Siguiente_FuncyProc.setPreferredSize(new java.awt.Dimension(254, 64));
-        Btn_Siguiente_FuncyProc.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_FuncyProc_On.png"))); // NOI18N
-        Btn_Siguiente_FuncyProc.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Siguiente_Ejercicio2_Intermedio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Ejercicio2_Off.png"))); // NOI18N
+        Btn_Siguiente_Ejercicio2_Intermedio.setBorder(null);
+        Btn_Siguiente_Ejercicio2_Intermedio.setBorderPainted(false);
+        Btn_Siguiente_Ejercicio2_Intermedio.setContentAreaFilled(false);
+        Btn_Siguiente_Ejercicio2_Intermedio.setFocusPainted(false);
+        Btn_Siguiente_Ejercicio2_Intermedio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Siguiente_Ejercicio2_Intermedio.setMaximumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_Ejercicio2_Intermedio.setMinimumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_Ejercicio2_Intermedio.setPreferredSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_Ejercicio2_Intermedio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Ejercicio2_On.png"))); // NOI18N
+        Btn_Siguiente_Ejercicio2_Intermedio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Siguiente_FuncyProcActionPerformed(evt);
+                Btn_Siguiente_Ejercicio2_IntermedioActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario9.add(Btn_Siguiente_FuncyProc, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario9.add(Btn_Siguiente_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
 
         Lbl_Header_Aprender22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Cuestionario9.add(Lbl_Header_Aprender22, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
@@ -2098,19 +2190,20 @@ public class HomeApolo extends javax.swing.JFrame {
 
         Pnl_Aprender.add(Scp_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 706));
 
-        Scp_Tema10.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        Scp_Tema10.setMaximumSize(new java.awt.Dimension(1176, 706));
-        Scp_Tema10.setMinimumSize(new java.awt.Dimension(1176, 706));
-        Scp_Tema10.setPreferredSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio2.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_Ejercicio2.setMaximumSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio2.setMinimumSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio2.setPreferredSize(new java.awt.Dimension(1176, 706));
 
-        Pnl_Tema10.setBackground(new java.awt.Color(237, 234, 243));
-        Pnl_Tema10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        Pnl_Tema10.setMaximumSize(new java.awt.Dimension(1155, 1500));
-        Pnl_Tema10.setMinimumSize(new java.awt.Dimension(1155, 1500));
-        Pnl_Tema10.setPreferredSize(new java.awt.Dimension(1155, 1500));
-        Pnl_Tema10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Pnl_Ejercicio2_Aprender.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_Ejercicio2_Aprender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Pnl_Ejercicio2_Aprender.setMaximumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio2_Aprender.setMinimumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio2_Aprender.setPreferredSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio2_Aprender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Cuestionario9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario9_Off.png"))); // NOI18N
+        Btn_Anterior_Cuestionario9.setBorder(null);
         Btn_Anterior_Cuestionario9.setBorderPainted(false);
         Btn_Anterior_Cuestionario9.setContentAreaFilled(false);
         Btn_Anterior_Cuestionario9.setFocusPainted(false);
@@ -2124,7 +2217,64 @@ public class HomeApolo extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario9ActionPerformed(evt);
             }
         });
-        Pnl_Tema10.add(Btn_Anterior_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Ejercicio2_Aprender.add(Btn_Anterior_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+
+        Btn_Siguiente_FuncionesyProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_FuncyProc_Off.png"))); // NOI18N
+        Btn_Siguiente_FuncionesyProc.setBorder(null);
+        Btn_Siguiente_FuncionesyProc.setBorderPainted(false);
+        Btn_Siguiente_FuncionesyProc.setContentAreaFilled(false);
+        Btn_Siguiente_FuncionesyProc.setFocusPainted(false);
+        Btn_Siguiente_FuncionesyProc.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Siguiente_FuncionesyProc.setMaximumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_FuncionesyProc.setMinimumSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_FuncionesyProc.setPreferredSize(new java.awt.Dimension(254, 64));
+        Btn_Siguiente_FuncionesyProc.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_FuncyProc_On.png"))); // NOI18N
+        Btn_Siguiente_FuncionesyProc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Siguiente_FuncionesyProcActionPerformed(evt);
+            }
+        });
+        Pnl_Ejercicio2_Aprender.add(Btn_Siguiente_FuncionesyProc, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+
+        Lbl_Header_Aprender34.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
+        Pnl_Ejercicio2_Aprender.add(Lbl_Header_Aprender34, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
+
+        Lbl_Ejercicio2_Intermedio.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_Ejercicio2_Intermedio.setText("Ejercicio 2 | Intermedio");
+        Pnl_Ejercicio2_Aprender.add(Lbl_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 610, 40));
+
+        Scp_Ejercicio2.setViewportView(Pnl_Ejercicio2_Aprender);
+
+        Pnl_Aprender.add(Scp_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 706));
+
+        Scp_Tema10.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_Tema10.setMaximumSize(new java.awt.Dimension(1176, 706));
+        Scp_Tema10.setMinimumSize(new java.awt.Dimension(1176, 706));
+        Scp_Tema10.setPreferredSize(new java.awt.Dimension(1176, 706));
+
+        Pnl_Tema10.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_Tema10.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Pnl_Tema10.setMaximumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Tema10.setMinimumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Tema10.setPreferredSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Tema10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Btn_Anterior_Ejercicio2_Intermedio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Ejercicio2_Off.png"))); // NOI18N
+        Btn_Anterior_Ejercicio2_Intermedio.setBorder(null);
+        Btn_Anterior_Ejercicio2_Intermedio.setBorderPainted(false);
+        Btn_Anterior_Ejercicio2_Intermedio.setContentAreaFilled(false);
+        Btn_Anterior_Ejercicio2_Intermedio.setFocusPainted(false);
+        Btn_Anterior_Ejercicio2_Intermedio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Anterior_Ejercicio2_Intermedio.setMaximumSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Ejercicio2_Intermedio.setMinimumSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Ejercicio2_Intermedio.setPreferredSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Ejercicio2_Intermedio.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Ejercicio2_On.png"))); // NOI18N
+        Btn_Anterior_Ejercicio2_Intermedio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Anterior_Ejercicio2_IntermedioActionPerformed(evt);
+            }
+        });
+        Pnl_Tema10.add(Btn_Anterior_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
 
         Btn_Siguiente_Cuestionario10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Cuestionario10_Off.png"))); // NOI18N
         Btn_Siguiente_Cuestionario10.setBorderPainted(false);
@@ -2145,9 +2295,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender23.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema10.add(Lbl_Header_Aprender23, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion5.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion5.setText("Funciones y Procedimientos");
-        Pnl_Tema10.add(Lbl_LecturaeImpresion5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 460, 40));
+        Lbl_FuncionesyProcs.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_FuncionesyProcs.setText("Funciones y Procedimientos");
+        Pnl_Tema10.add(Lbl_FuncionesyProcs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 460, 40));
 
         Scp_Tema10.setViewportView(Pnl_Tema10);
 
@@ -2255,9 +2405,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender25.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema11.add(Lbl_Header_Aprender25, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion6.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion6.setText("Recursión");
-        Pnl_Tema11.add(Lbl_LecturaeImpresion6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
+        Lbl_Recursion.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_Recursion.setText("Recursión");
+        Pnl_Tema11.add(Lbl_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
 
         Scp_Tema11.setViewportView(Pnl_Tema11);
 
@@ -2365,9 +2515,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender27.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema12.add(Lbl_Header_Aprender27, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion7.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion7.setText("Estructuras de Datos Básicas");
-        Pnl_Tema12.add(Lbl_LecturaeImpresion7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, 40));
+        Lbl_EDDBasicas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_EDDBasicas.setText("Estructuras de Datos Básicas");
+        Pnl_Tema12.add(Lbl_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 450, 40));
 
         Scp_Tema12.setViewportView(Pnl_Tema12);
 
@@ -2475,9 +2625,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender29.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema13.add(Lbl_Header_Aprender29, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion8.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion8.setText("Estructuras de Datos Avanzadas");
-        Pnl_Tema13.add(Lbl_LecturaeImpresion8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 510, 40));
+        Lbl_EDDAvanzadas.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_EDDAvanzadas.setText("Estructuras de Datos Avanzadas");
+        Pnl_Tema13.add(Lbl_EDDAvanzadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 510, 40));
 
         Scp_Tema13.setViewportView(Pnl_Tema13);
 
@@ -2585,9 +2735,9 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Header_Aprender31.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
         Pnl_Tema14.add(Lbl_Header_Aprender31, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_LecturaeImpresion9.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
-        Lbl_LecturaeImpresion9.setText("Primeros Algoritmos");
-        Pnl_Tema14.add(Lbl_LecturaeImpresion9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
+        Lbl_PrimerosAlgoritmos.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_PrimerosAlgoritmos.setText("Primeros Algoritmos");
+        Pnl_Tema14.add(Lbl_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 340, 40));
 
         Scp_Tema14.setViewportView(Pnl_Tema14);
 
@@ -2622,6 +2772,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Cuestionario14.add(Btn_Anterior_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
 
         Btn_Siguiente_EjercicioFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EjercicioFinal_Off.png"))); // NOI18N
+        Btn_Siguiente_EjercicioFinal.setBorder(null);
         Btn_Siguiente_EjercicioFinal.setBorderPainted(false);
         Btn_Siguiente_EjercicioFinal.setContentAreaFilled(false);
         Btn_Siguiente_EjercicioFinal.setFocusPainted(false);
@@ -2647,6 +2798,46 @@ public class HomeApolo extends javax.swing.JFrame {
         Scp_Cuestionario14.setViewportView(Pnl_Cuestionario14);
 
         Pnl_Aprender.add(Scp_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 706));
+
+        Scp_Ejercicio3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_Ejercicio3.setMaximumSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio3.setMinimumSize(new java.awt.Dimension(1176, 706));
+        Scp_Ejercicio3.setPreferredSize(new java.awt.Dimension(1176, 706));
+
+        Pnl_Ejercicio3_Aprender.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_Ejercicio3_Aprender.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        Pnl_Ejercicio3_Aprender.setMaximumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio3_Aprender.setMinimumSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio3_Aprender.setPreferredSize(new java.awt.Dimension(1155, 1500));
+        Pnl_Ejercicio3_Aprender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Btn_Anterior_Cuestionario14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario14_Off.png"))); // NOI18N
+        Btn_Anterior_Cuestionario14.setBorder(null);
+        Btn_Anterior_Cuestionario14.setBorderPainted(false);
+        Btn_Anterior_Cuestionario14.setContentAreaFilled(false);
+        Btn_Anterior_Cuestionario14.setFocusPainted(false);
+        Btn_Anterior_Cuestionario14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Anterior_Cuestionario14.setMaximumSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Cuestionario14.setMinimumSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Cuestionario14.setPreferredSize(new java.awt.Dimension(254, 64));
+        Btn_Anterior_Cuestionario14.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario14_On.png"))); // NOI18N
+        Btn_Anterior_Cuestionario14.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Anterior_Cuestionario14ActionPerformed(evt);
+            }
+        });
+        Pnl_Ejercicio3_Aprender.add(Btn_Anterior_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+
+        Lbl_Header_Aprender35.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_Header_Aprender.png"))); // NOI18N
+        Pnl_Ejercicio3_Aprender.add(Lbl_Header_Aprender35, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
+
+        Lbl_EjercicioFinal.setFont(new java.awt.Font("Trebuchet MS", 1, 18)); // NOI18N
+        Lbl_EjercicioFinal.setText("Ejercicio Final");
+        Pnl_Ejercicio3_Aprender.add(Lbl_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, 610, 40));
+
+        Scp_Ejercicio3.setViewportView(Pnl_Ejercicio3_Aprender);
+
+        Pnl_Aprender.add(Scp_Ejercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 706));
 
         Pnl_Principal.add(Pnl_Aprender, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1176, 705));
 
@@ -5086,15 +5277,15 @@ public class HomeApolo extends javax.swing.JFrame {
         Scp_Cuestionario5.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_LecturaeImpresionActionPerformed
 
-    private void Btn_Siguiente_OperadoresdeRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
-        Scp_Tema6.setVisible(true);
+    private void Btn_Siguiente_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio1ActionPerformed
+        Scp_Ejercicio1.setVisible(true);
         Scp_Cuestionario5.setVisible(false);
-    }//GEN-LAST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
+    }//GEN-LAST:event_Btn_Siguiente_Ejercicio1ActionPerformed
 
-    private void Btn_Anterior_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario5ActionPerformed
-        Scp_Cuestionario5.setVisible(true);
+    private void Btn_Anterior_Ejercicio1_PrincipianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
+        Scp_Ejercicio1.setVisible(true);
         Scp_Tema6.setVisible(false);
-    }//GEN-LAST:event_Btn_Anterior_Cuestionario5ActionPerformed
+    }//GEN-LAST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
 
     private void Btn_Siguiente_Cuestionario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario6ActionPerformed
         Scp_Cuestionario6.setVisible(true);
@@ -5166,15 +5357,15 @@ public class HomeApolo extends javax.swing.JFrame {
         Scp_Cuestionario9.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_BuclesActionPerformed
 
-    private void Btn_Siguiente_FuncyProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_FuncyProcActionPerformed
-        Scp_Tema10.setVisible(true);
+    private void Btn_Siguiente_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
+        Scp_Ejercicio2.setVisible(true);
         Scp_Cuestionario9.setVisible(false);
-    }//GEN-LAST:event_Btn_Siguiente_FuncyProcActionPerformed
+    }//GEN-LAST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
 
-    private void Btn_Anterior_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario9ActionPerformed
-        Scp_Cuestionario9.setVisible(true);
+    private void Btn_Anterior_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
+        Scp_Ejercicio2.setVisible(true);
         Scp_Tema10.setVisible(false);
-    }//GEN-LAST:event_Btn_Anterior_Cuestionario9ActionPerformed
+    }//GEN-LAST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
 
     private void Btn_Siguiente_Cuestionario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario10ActionPerformed
         Scp_Cuestionario10.setVisible(true);
@@ -5267,9 +5458,48 @@ public class HomeApolo extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_PrimerosAlgoritmosActionPerformed
 
     private void Btn_Siguiente_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EjercicioFinalActionPerformed
-//        Scp_EjercicioFinal.setVisible(true);
         Scp_Cuestionario14.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_EjercicioFinalActionPerformed
+
+    private void Btn_Anterior_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario5ActionPerformed
+        Scp_Cuestionario5.setVisible(true);
+        Scp_Ejercicio1.setVisible(false);
+    }//GEN-LAST:event_Btn_Anterior_Cuestionario5ActionPerformed
+
+    private void Btn_Siguiente_OperadoresdeRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
+        Scp_Tema6.setVisible(true);
+        Scp_Ejercicio1.setVisible(false);
+    }//GEN-LAST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
+
+    private void Btn_Anterior_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario9ActionPerformed
+        Scp_Cuestionario9.setVisible(true);
+        Scp_Ejercicio2.setVisible(false);
+    }//GEN-LAST:event_Btn_Anterior_Cuestionario9ActionPerformed
+
+    private void Btn_Siguiente_FuncionesyProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_FuncionesyProcActionPerformed
+        Scp_Tema10.setVisible(true);
+        Scp_Ejercicio2.setVisible(false);
+    }//GEN-LAST:event_Btn_Siguiente_FuncionesyProcActionPerformed
+
+    private void Btn_Anterior_Cuestionario14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario14ActionPerformed
+        Scp_Cuestionario14.setVisible(true);
+        Scp_Ejercicio3.setVisible(false);
+    }//GEN-LAST:event_Btn_Anterior_Cuestionario14ActionPerformed
+
+    private void Btn_Aprender_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio1ActionPerformed
+        Scp_Ejercicio1.setVisible(true);
+        Pnl_Mapa.setVisible(false);
+    }//GEN-LAST:event_Btn_Aprender_Ejercicio1ActionPerformed
+
+    private void Btn_Aprender_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio2ActionPerformed
+        Scp_Ejercicio2.setVisible(true);
+        Pnl_Mapa.setVisible(false);
+    }//GEN-LAST:event_Btn_Aprender_Ejercicio2ActionPerformed
+
+    private void Btn_Aprender_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_EjercicioFinalActionPerformed
+        Scp_Ejercicio3.setVisible(true);
+        Pnl_Mapa.setVisible(false);
+    }//GEN-LAST:event_Btn_Aprender_EjercicioFinalActionPerformed
 
     public static void main(String args[]) {
         try {
@@ -5299,6 +5529,7 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Anterior_Cuestionario11;
     private javax.swing.JButton Btn_Anterior_Cuestionario12;
     private javax.swing.JButton Btn_Anterior_Cuestionario13;
+    private javax.swing.JButton Btn_Anterior_Cuestionario14;
     private javax.swing.JButton Btn_Anterior_Cuestionario2;
     private javax.swing.JButton Btn_Anterior_Cuestionario3;
     private javax.swing.JButton Btn_Anterior_Cuestionario4;
@@ -5309,6 +5540,8 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Anterior_Cuestionario9;
     private javax.swing.JButton Btn_Anterior_EDDAvanzadas;
     private javax.swing.JButton Btn_Anterior_EDDBasicas;
+    private javax.swing.JButton Btn_Anterior_Ejercicio1_Principiante;
+    private javax.swing.JButton Btn_Anterior_Ejercicio2_Intermedio;
     private javax.swing.JButton Btn_Anterior_FuncyProc;
     private javax.swing.JButton Btn_Anterior_HelloWord;
     private javax.swing.JButton Btn_Anterior_LecturaeImpresion;
@@ -5384,8 +5617,10 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Siguiente_Cuestionario9;
     private javax.swing.JButton Btn_Siguiente_EDDAvanzadas;
     private javax.swing.JButton Btn_Siguiente_EDDBasicas;
+    private javax.swing.JButton Btn_Siguiente_Ejercicio1;
+    private javax.swing.JButton Btn_Siguiente_Ejercicio2_Intermedio;
     private javax.swing.JButton Btn_Siguiente_EjercicioFinal;
-    private javax.swing.JButton Btn_Siguiente_FuncyProc;
+    private javax.swing.JButton Btn_Siguiente_FuncionesyProc;
     private javax.swing.JButton Btn_Siguiente_LecturaeImpresion;
     private javax.swing.JButton Btn_Siguiente_OperadoresAritmeticos;
     private javax.swing.JButton Btn_Siguiente_OperadoresLogicos;
@@ -5420,9 +5655,11 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_2;
     private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_3;
     private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_4;
+    private javax.swing.JLabel Lbl_Bucles;
     private javax.swing.JLabel Lbl_CodeStorm_Fondo;
     private javax.swing.JLabel Lbl_Comentarios;
     private javax.swing.JLabel Lbl_Competencias;
+    private javax.swing.JLabel Lbl_Condicionales;
     private javax.swing.JLabel Lbl_Cuestionario1;
     private javax.swing.JLabel Lbl_Cuestionario10;
     private javax.swing.JLabel Lbl_Cuestionario11;
@@ -5437,6 +5674,8 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Cuestionario7;
     private javax.swing.JLabel Lbl_Cuestionario8;
     private javax.swing.JLabel Lbl_Cuestionario9;
+    private javax.swing.JLabel Lbl_EDDAvanzadas;
+    private javax.swing.JLabel Lbl_EDDBasicas;
     private javax.swing.JLabel Lbl_Ejercicio1;
     private javax.swing.JLabel Lbl_Ejercicio10;
     private javax.swing.JLabel Lbl_Ejercicio11;
@@ -5448,8 +5687,10 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Ejercicio17;
     private javax.swing.JLabel Lbl_Ejercicio18;
     private javax.swing.JLabel Lbl_Ejercicio19;
+    private javax.swing.JLabel Lbl_Ejercicio1_Principiante;
     private javax.swing.JLabel Lbl_Ejercicio2;
     private javax.swing.JLabel Lbl_Ejercicio20;
+    private javax.swing.JLabel Lbl_Ejercicio2_Intermedio;
     private javax.swing.JLabel Lbl_Ejercicio3;
     private javax.swing.JLabel Lbl_Ejercicio4;
     private javax.swing.JLabel Lbl_Ejercicio5;
@@ -5457,6 +5698,8 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Ejercicio7;
     private javax.swing.JLabel Lbl_Ejercicio8;
     private javax.swing.JLabel Lbl_Ejercicio9;
+    private javax.swing.JLabel Lbl_EjercicioFinal;
+    private javax.swing.JLabel Lbl_FuncionesyProcs;
     private javax.swing.JLabel Lbl_Header_Aprender;
     private javax.swing.JLabel Lbl_Header_Aprender1;
     private javax.swing.JLabel Lbl_Header_Aprender10;
@@ -5484,6 +5727,9 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Header_Aprender30;
     private javax.swing.JLabel Lbl_Header_Aprender31;
     private javax.swing.JLabel Lbl_Header_Aprender32;
+    private javax.swing.JLabel Lbl_Header_Aprender33;
+    private javax.swing.JLabel Lbl_Header_Aprender34;
+    private javax.swing.JLabel Lbl_Header_Aprender35;
     private javax.swing.JLabel Lbl_Header_Aprender4;
     private javax.swing.JLabel Lbl_Header_Aprender5;
     private javax.swing.JLabel Lbl_Header_Aprender6;
@@ -5497,23 +5743,18 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_HomeButttons;
     private javax.swing.JLabel Lbl_Home_Fondo;
     private javax.swing.JLabel Lbl_LecturaeImpresion;
-    private javax.swing.JLabel Lbl_LecturaeImpresion1;
-    private javax.swing.JLabel Lbl_LecturaeImpresion2;
-    private javax.swing.JLabel Lbl_LecturaeImpresion3;
-    private javax.swing.JLabel Lbl_LecturaeImpresion4;
-    private javax.swing.JLabel Lbl_LecturaeImpresion5;
-    private javax.swing.JLabel Lbl_LecturaeImpresion6;
-    private javax.swing.JLabel Lbl_LecturaeImpresion7;
-    private javax.swing.JLabel Lbl_LecturaeImpresion8;
-    private javax.swing.JLabel Lbl_LecturaeImpresion9;
     private javax.swing.JLabel Lbl_Nivel1;
     private javax.swing.JLabel Lbl_Nivel2;
     private javax.swing.JLabel Lbl_Nivel3;
     private javax.swing.JLabel Lbl_Nivel4;
     private javax.swing.JLabel Lbl_Nivel5;
     private javax.swing.JLabel Lbl_OperadoresAritmeticos;
+    private javax.swing.JLabel Lbl_OperadoresLogicos;
+    private javax.swing.JLabel Lbl_OperadoresdeRelacion;
+    private javax.swing.JLabel Lbl_PrimerosAlgoritmos;
     private javax.swing.JLabel Lbl_Programar;
     private javax.swing.JLabel Lbl_QueEs;
+    private javax.swing.JLabel Lbl_Recursion;
     private javax.swing.JLabel Lbl_TiposdeDatos;
     private javax.swing.JPanel Pnl_Aprender;
     private javax.swing.JPanel Pnl_Bar_Buttons;
@@ -5584,9 +5825,12 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Ejercicio17;
     private javax.swing.JPanel Pnl_Ejercicio18;
     private javax.swing.JPanel Pnl_Ejercicio19;
+    private javax.swing.JPanel Pnl_Ejercicio1_Aprender;
     private javax.swing.JPanel Pnl_Ejercicio2;
     private javax.swing.JPanel Pnl_Ejercicio20;
+    private javax.swing.JPanel Pnl_Ejercicio2_Aprender;
     private javax.swing.JPanel Pnl_Ejercicio3;
+    private javax.swing.JPanel Pnl_Ejercicio3_Aprender;
     private javax.swing.JPanel Pnl_Ejercicio4;
     private javax.swing.JPanel Pnl_Ejercicio5;
     private javax.swing.JPanel Pnl_Ejercicio6;
@@ -5697,6 +5941,9 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Ej7;
     private javax.swing.JScrollPane Scp_Ej8;
     private javax.swing.JScrollPane Scp_Ej9;
+    private javax.swing.JScrollPane Scp_Ejercicio1;
+    private javax.swing.JScrollPane Scp_Ejercicio2;
+    private javax.swing.JScrollPane Scp_Ejercicio3;
     private javax.swing.JScrollPane Scp_Introduccion;
     private javax.swing.JScrollPane Scp_QueEs;
     private javax.swing.JScrollPane Scp_Solucion1;
