@@ -41,6 +41,7 @@ public class HomeApolo extends javax.swing.JFrame {
     // Constructor
     public HomeApolo() {
         initComponents();
+        //Hello
         cargarFuente();
         configurarVentana();
         configurarPlaceHolder();
