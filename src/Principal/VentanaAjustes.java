@@ -27,7 +27,6 @@ public class VentanaAjustes extends javax.swing.JFrame {
     // Cargar la tipografia personalizada
     private void cargarFuente() {
         Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
-
         Label_Ajustes.setFont(Regular14p);
         Label_Ajustes.setForeground(Color.BLACK);
     }
