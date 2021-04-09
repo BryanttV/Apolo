@@ -18,21 +18,71 @@ import static Judge.CompileAndRun.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.Ostermiller.Syntax.HighlightedDocument;
+import java.awt.BorderLayout;
+import java.awt.Color;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JPanel;
+import org.fife.ui.autocomplete.AutoCompletion;
+import org.fife.ui.autocomplete.BasicCompletion;
+import org.fife.ui.autocomplete.CompletionProvider;
+import org.fife.ui.autocomplete.DefaultCompletionProvider;
+import org.fife.ui.autocomplete.ShorthandCompletion;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
     JFileChooser seleccion = new JFileChooser();
+    RSyntaxTextArea textArea = new RSyntaxTextArea();
     File archivo_abrir, codigo_modificado;
     FileInputStream entrada, in;
     FileOutputStream salida, out;
 
     public EditorDeCodigo() {
         initComponents();
+        editor();
         plantilla();
     }
 
+    private void editor() {
+        RTextScrollPane sp = new RTextScrollPane(textArea);
+        sp.getViewport();
+        textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        textArea.setBackground(new Color(237, 234, 243));
+        textArea.setAntiAliasingEnabled(true);
+        textArea.setCodeFoldingEnabled(true);
+        Pnl_Codigo.add(sp);
+        CompletionProvider provider = createCompletionProvider();
+        AutoCompletion ac = new AutoCompletion(provider);
+        ac.install(textArea);
+        setTitle("Editor de Código");
+    }
+
+    private CompletionProvider createCompletionProvider() {
+
+        DefaultCompletionProvider provider = new DefaultCompletionProvider();
+
+        provider.addCompletion(new BasicCompletion(provider, "abstract"));
+        provider.addCompletion(new BasicCompletion(provider, "assert"));
+        provider.addCompletion(new BasicCompletion(provider, "break"));
+        provider.addCompletion(new BasicCompletion(provider, "case"));
+        provider.addCompletion(new BasicCompletion(provider, "transient"));
+        provider.addCompletion(new BasicCompletion(provider, "try"));
+        provider.addCompletion(new BasicCompletion(provider, "void"));
+        provider.addCompletion(new BasicCompletion(provider, "volatile"));
+        provider.addCompletion(new BasicCompletion(provider, "while"));
+
+        provider.addCompletion(new ShorthandCompletion(provider, "sout",
+                "System.out.println(", "System.out.println("));
+        provider.addCompletion(new ShorthandCompletion(provider, "serr",
+                "System.err.println(", "System.err.println("));
+
+        return provider;
+    }
+
     private void plantilla() {
-        Txp_Codigo.setText("public class Main {\n"
+        textArea.setText("public class Main {\n"
                 + "    public static void main(String[] args) {\n"
                 + "	System.out.println(\"Hello World\");\n"
                 + "    } \n"
@@ -77,7 +127,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         if (seleccion.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
             archivo_abrir = seleccion.getSelectedFile();
             if (archivo_abrir.getName().endsWith(".java")) {
-                String documento = Txp_Codigo.getText();
+                String documento = textArea.getText();
                 String mensaje = saveFile(archivo_abrir, documento);
                 if (mensaje != null) {
                     JOptionPane.showMessageDialog(null, mensaje);
@@ -168,11 +218,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Btn_Guardar = new javax.swing.JButton();
         Btn_Plantilla = new javax.swing.JButton();
         Btn_Ejecutar = new javax.swing.JButton();
-        Cmb_Atajos = new javax.swing.JComboBox<>();
         Pnl_Codigo = new javax.swing.JPanel();
-        Scp_Codigo = new javax.swing.JScrollPane();
-        Txp_Codigo = new javax.swing.JTextPane();
-        Lbl_Codigo = new javax.swing.JLabel();
         Pnl_EntradaSalida = new javax.swing.JPanel();
         Scp_Salida = new javax.swing.JScrollPane();
         Txa_Salida = new javax.swing.JTextArea();
@@ -200,6 +246,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Pnl_Botones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Limpiar_Off.png"))); // NOI18N
+        Btn_Limpiar.setMnemonic('d');
         Btn_Limpiar.setBorder(null);
         Btn_Limpiar.setBorderPainted(false);
         Btn_Limpiar.setContentAreaFilled(false);
@@ -217,6 +264,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Pnl_Botones.add(Btn_Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 132, 40));
 
         Btn_Copiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Copiar_Off.png"))); // NOI18N
+        Btn_Copiar.setMnemonic('c');
         Btn_Copiar.setBorderPainted(false);
         Btn_Copiar.setContentAreaFilled(false);
         Btn_Copiar.setFocusPainted(false);
@@ -233,6 +281,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Pnl_Botones.add(Btn_Copiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 132, 40));
 
         Btn_Abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Abrir_Off.png"))); // NOI18N
+        Btn_Abrir.setMnemonic('o');
         Btn_Abrir.setBorderPainted(false);
         Btn_Abrir.setContentAreaFilled(false);
         Btn_Abrir.setFocusPainted(false);
@@ -249,6 +298,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Pnl_Botones.add(Btn_Abrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 132, 40));
 
         Btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Guardar_Off.png"))); // NOI18N
+        Btn_Guardar.setMnemonic('s');
         Btn_Guardar.setBorderPainted(false);
         Btn_Guardar.setContentAreaFilled(false);
         Btn_Guardar.setFocusPainted(false);
@@ -265,6 +315,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Pnl_Botones.add(Btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 132, 40));
 
         Btn_Plantilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Plantilla_Off.png"))); // NOI18N
+        Btn_Plantilla.setMnemonic('p');
         Btn_Plantilla.setBorder(null);
         Btn_Plantilla.setBorderPainted(false);
         Btn_Plantilla.setContentAreaFilled(false);
@@ -282,6 +333,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Pnl_Botones.add(Btn_Plantilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 132, 40));
 
         Btn_Ejecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Ejecutar_Off.png"))); // NOI18N
+        Btn_Ejecutar.setMnemonic('n');
         Btn_Ejecutar.setBorderPainted(false);
         Btn_Ejecutar.setContentAreaFilled(false);
         Btn_Ejecutar.setFocusPainted(false);
@@ -297,40 +349,13 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         });
         Pnl_Botones.add(Btn_Ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 132, 40));
 
-        Cmb_Atajos.setFont(new java.awt.Font("Trebuchet MS", 1, 10)); // NOI18N
-        Cmb_Atajos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "import Scanner", "Scanner", "Impresión", "Ciclo For", "Ciclo For each", "Ciclo do While", "Ciclo While", "Condicional If", "Switch" }));
-        Cmb_Atajos.setBorder(null);
-        Cmb_Atajos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Cmb_AtajosActionPerformed(evt);
-            }
-        });
-        Pnl_Botones.add(Cmb_Atajos, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 10, 110, 40));
-
         Pnl_Principal.add(Pnl_Botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
 
         Pnl_Codigo.setBackground(new java.awt.Color(237, 234, 243));
         Pnl_Codigo.setMaximumSize(new java.awt.Dimension(850, 430));
         Pnl_Codigo.setMinimumSize(new java.awt.Dimension(850, 430));
-        Pnl_Codigo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Scp_Codigo.getVerticalScrollBar().setUI(new CustomScrollBarUI());
-
-        Txp_Codigo.setBorder(null);
-        Txp_Codigo.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
-        Txp_Codigo.setStyledDocument(new HighlightedDocument());
-        Scp_Codigo.setViewportView(Txp_Codigo);
-
-        Pnl_Codigo.add(Scp_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 930, 330));
-
-        Lbl_Codigo.setBackground(new java.awt.Color(237, 234, 243));
-        Lbl_Codigo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lbl_Codigo.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
-        Lbl_Codigo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Lbl_Codigo.setOpaque(true);
-        Pnl_Codigo.add(Lbl_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 950, 350));
-
-        Pnl_Principal.add(Pnl_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 60, 970, 370));
+        Pnl_Codigo.setLayout(new java.awt.CardLayout());
+        Pnl_Principal.add(Pnl_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 930, 370));
 
         Pnl_EntradaSalida.setBackground(new java.awt.Color(237, 234, 243));
         Pnl_EntradaSalida.setMaximumSize(new java.awt.Dimension(850, 215));
@@ -405,7 +430,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
             if (archivo_abrir.canRead()) {
                 if (archivo_abrir.getName().endsWith("java")) {
                     String documento = openFile(archivo_abrir);
-                    Txp_Codigo.setText(documento);
+                    textArea.setText(documento);
                 } else {
                     JOptionPane.showMessageDialog(null, "Archivo no compatible.");
                 }
@@ -418,7 +443,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         entrada();
         try {
 
-            String code = Txp_Codigo.getText(); // Codigo Modificado
+            String code = textArea.getText(); // Codigo Modificado
             String codeModificado = ReemplazarCodigo.reemplazar(code, 1);
 
             try {
@@ -451,70 +476,16 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     }//GEN-LAST:event_Btn_EjecutarActionPerformed
 
     private void Btn_CopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CopiarActionPerformed
-        clipBoard(Txp_Codigo.getText());
+        clipBoard(textArea.getText());
     }//GEN-LAST:event_Btn_CopiarActionPerformed
 
     private void Btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LimpiarActionPerformed
-        Txp_Codigo.setText("");
+        textArea.setText("");
     }//GEN-LAST:event_Btn_LimpiarActionPerformed
 
     private void Btn_PlantillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PlantillaActionPerformed
         plantilla();
     }//GEN-LAST:event_Btn_PlantillaActionPerformed
-
-    private void Cmb_AtajosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Cmb_AtajosActionPerformed
-        String metodo = Cmb_Atajos.getSelectedItem().toString();
-
-        switch (metodo) {
-            case "import Scanner":
-                clipBoard("import java.util.Scanner;");
-                break;
-            case "Scanner":
-                clipBoard("Scanner sc = new Scanner(System.in);");
-                break;
-            case "Impresión":
-                clipBoard("System.out.println(\"\");");
-                break;
-            case "Ciclo For":
-                clipBoard("for (int i = 0; i < 10; i++) {\n"
-                        + "            //Codigo\n"
-                        + "          }");
-                break;
-            case "Ciclo For each":
-                clipBoard("for (Integer i : arr) {\n"
-                        + "            //Codigo\n"
-                        + "          }");
-                break;
-            case "Ciclo do While":
-                clipBoard("do{\n"
-                        + "            //Codigo\n"
-                        + "          }while(true);");
-                break;
-            case "Ciclo While":
-                clipBoard("while (true) {            \n"
-                        + "            //Codigo\n"
-                        + "          }");
-                break;
-            case "Condicional If":
-                clipBoard("if (true) {\n"
-                        + "            \n"
-                        + "        } else {\n"
-                        + "          }");
-                break;
-            case "Switch":
-                clipBoard("switch (n) {\n"
-                        + "            case 1:\n"
-                        + "                //Codigo\n"
-                        + "                break;\n"
-                        + "            default:\n"
-                        + "                break;\n"
-                        + "          }");
-                break;
-            default:
-                clipBoard("");
-                break;
-        }
-    }//GEN-LAST:event_Cmb_AtajosActionPerformed
 
     public static void main(String args[]) {
 
@@ -530,8 +501,6 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     private javax.swing.JButton Btn_Guardar;
     private javax.swing.JButton Btn_Limpiar;
     private javax.swing.JButton Btn_Plantilla;
-    private javax.swing.JComboBox<String> Cmb_Atajos;
-    private javax.swing.JLabel Lbl_Codigo;
     private javax.swing.JLabel Lbl_Entrada;
     private javax.swing.JLabel Lbl_Salida;
     private javax.swing.JLabel Lbl_TituloEntrada;
@@ -540,12 +509,10 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     private javax.swing.JPanel Pnl_Codigo;
     private javax.swing.JPanel Pnl_EntradaSalida;
     private javax.swing.JPanel Pnl_Principal;
-    private javax.swing.JScrollPane Scp_Codigo;
     private javax.swing.JScrollPane Scp_Entrada;
     private javax.swing.JScrollPane Scp_Salida;
     private javax.swing.JTextArea Txa_Entrada;
     private javax.swing.JTextArea Txa_Salida;
-    private javax.swing.JTextPane Txp_Codigo;
     // End of variables declaration//GEN-END:variables
 
     @Override

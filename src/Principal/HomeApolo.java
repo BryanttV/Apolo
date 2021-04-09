@@ -31,17 +31,20 @@ public class HomeApolo extends javax.swing.JFrame {
     CustomScrollBarUI Barra = new CustomScrollBarUI(); // Barra de Desplazamiento Personalizada
     Color verde = new Color(0, 37, 26); // Color principal de la Seccion de Aprender
     Color azul = new Color(0, 47, 108); // Color principal de la Seccion de Historia
+
     // Crear Tipo de Fuente
     Fuentes Euclid = new Fuentes();
     Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
     Font Regular20p = Euclid.fuente(Euclid.EUCR, 0, 20);
     Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 30);
+    Font Luzra = Euclid.fuente(Euclid.LUZR, 0, 20);
+    Font SegoeRegular = new Font("Segoe UI Emoji", Font.PLAIN, 20);
+    Font SegoeBold = new Font("Segoe UI SemiBold", Font.BOLD, 26);
     int contador = 0;
 
     // Constructor
     public HomeApolo() {
         initComponents();
-        //Hello
         cargarFuente();
         configurarVentana();
         configurarPlaceHolder();
@@ -67,11 +70,11 @@ public class HomeApolo extends javax.swing.JFrame {
         List<Component> historiaList = getAllComponents(Pnl_Historia);
         for (Component componente : historiaList) {
             if (componente instanceof JLabel) {
-                componente.setFont(Bold30p);
+                componente.setFont(SegoeBold);
                 componente.setForeground(azul);
             }
             if (componente instanceof JTextArea) {
-                componente.setFont(Regular20p);
+                componente.setFont(SegoeRegular);
                 componente.setForeground(Color.BLACK);
             }
         }
