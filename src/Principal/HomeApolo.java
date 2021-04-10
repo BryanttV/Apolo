@@ -15,6 +15,8 @@ import java.awt.Font;
 import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 import javax.swing.JToggleButton;
@@ -23,6 +25,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class HomeApolo extends javax.swing.JFrame {
 
@@ -37,7 +41,7 @@ public class HomeApolo extends javax.swing.JFrame {
     Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
     Font Regular20p = Euclid.fuente(Euclid.EUCR, 0, 20);
     Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 30);
-    Font Luzra = Euclid.fuente(Euclid.LUZR, 0, 20);
+//    Font Luzra = Euclid.fuente(Euclid.LUZR, 0, 20);
     Font SegoeRegular = new Font("Segoe UI Emoji", Font.PLAIN, 20);
     Font SegoeBold = new Font("Segoe UI SemiBold", Font.BOLD, 26);
     int contador = 0;
@@ -819,8 +823,13 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Bar_Buttons.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Aprender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Apolo_Aprender_Button_Off.png"))); // NOI18N
+        Btn_Aprender.setToolTipText("");
+        Btn_Aprender.setBorder(null);
         Btn_Aprender.setBorderPainted(false);
         Btn_Aprender.setContentAreaFilled(false);
+        Btn_Aprender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Aprender.setDisabledSelectedIcon(null);
+        Btn_Aprender.setFocusPainted(false);
         Btn_Aprender.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Apolo_Aprender_Button_On.png"))); // NOI18N
         Btn_Aprender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Apolo_Aprender_Button_On.png"))); // NOI18N
         Btn_Aprender.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Apolo_Aprender_Button_Enabled.png"))); // NOI18N
@@ -832,8 +841,11 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Bar_Buttons.add(Btn_Aprender, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 200, 170, 55));
 
         Btn_CodeStorm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Apolo_CodeStormButton_Off.png"))); // NOI18N
+        Btn_CodeStorm.setBorder(null);
         Btn_CodeStorm.setBorderPainted(false);
         Btn_CodeStorm.setContentAreaFilled(false);
+        Btn_CodeStorm.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_CodeStorm.setFocusPainted(false);
         Btn_CodeStorm.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Apolo_CodeStormButton_On.png"))); // NOI18N
         Btn_CodeStorm.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Apolo_CodeStormButton_On.png"))); // NOI18N
         Btn_CodeStorm.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Apolo_CodeStormButton_Enabled.png"))); // NOI18N
@@ -845,8 +857,11 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Bar_Buttons.add(Btn_CodeStorm, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 320, 170, 55));
 
         Btn_Programar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_ProgramaButton_Off.png"))); // NOI18N
+        Btn_Programar.setBorder(null);
         Btn_Programar.setBorderPainted(false);
         Btn_Programar.setContentAreaFilled(false);
+        Btn_Programar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Programar.setFocusPainted(false);
         Btn_Programar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_ProgramaButton_On.png"))); // NOI18N
         Btn_Programar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_ProgramaButton_On.png"))); // NOI18N
         Btn_Programar.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_ProgramaButton_Enabled.png"))); // NOI18N
@@ -871,8 +886,11 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Bar_Buttons.add(Btn_Ajustes, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 640, 170, 55));
 
         Btn_Historia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_HistoriaButton_Off.png"))); // NOI18N
+        Btn_Historia.setBorder(null);
         Btn_Historia.setBorderPainted(false);
         Btn_Historia.setContentAreaFilled(false);
+        Btn_Historia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Historia.setFocusPainted(false);
         Btn_Historia.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_HistoriaButton_On.png"))); // NOI18N
         Btn_Historia.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_HistoriaButton_On.png"))); // NOI18N
         Btn_Historia.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_HistoriaButton_Enabled.png"))); // NOI18N
@@ -5538,17 +5556,28 @@ public class HomeApolo extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Atras_CodeStormActionPerformed
 
     public static void main(String args[]) {
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(HomeApolo.class
+//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(HomeApolo.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
         java.awt.EventQueue.invokeLater(() -> {
             new HomeApolo().setVisible(true);
         });

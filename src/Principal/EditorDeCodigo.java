@@ -22,6 +22,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import javax.swing.JPanel;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 import org.fife.ui.autocomplete.AutoCompletion;
 import org.fife.ui.autocomplete.BasicCompletion;
 import org.fife.ui.autocomplete.CompletionProvider;
@@ -77,6 +79,43 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 "System.out.println(", "System.out.println("));
         provider.addCompletion(new ShorthandCompletion(provider, "serr",
                 "System.err.println(", "System.err.println("));
+        
+        provider.addCompletion(new ShorthandCompletion(provider, "for",
+                "for (int i = 0; i < 10; i++) {\n" +
+"            \n" +
+"        }", "for (int i = 0; i < 10; i++) {\n" +
+"            \n" +
+"        }"));
+        
+        provider.addCompletion(new ShorthandCompletion(provider, "while",
+                "while (true) {            \n" +
+"            \n" +
+"        }", "while (true) {            \n" +
+"            \n" +
+"        }"));
+        
+        provider.addCompletion(new ShorthandCompletion(provider, "if",
+                "if (true) {\n" +
+"            \n" +
+"        }", "if (true) {\n" +
+"            \n" +
+"        }"));
+        
+        provider.addCompletion(new ShorthandCompletion(provider, "try",
+                "try {\n" +
+"            \n" +
+"        } catch (Exception e) {\n" +
+"        }", "try {\n" +
+"            \n" +
+"        } catch (Exception e) {\n" +
+"        }"));
+        
+        provider.addCompletion(new ShorthandCompletion(provider, "foreach",
+                "for (Integer i : arr) {\n" +
+"            \n" +
+"        }", "for (Integer i : arr) {\n" +
+"            \n" +
+"        }"));
 
         return provider;
     }
@@ -490,6 +529,17 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> {
+            try {
+                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (InstantiationException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (UnsupportedLookAndFeelException ex) {
+                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+            }
             new EditorDeCodigo().setVisible(true);
         });
     }

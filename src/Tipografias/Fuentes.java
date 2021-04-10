@@ -11,7 +11,7 @@ public class Fuentes {
     public String EUCM = "EuclidCircularA-Medium.ttf";
     public String EUCR = "EuclidCircularA-Regular.ttf";
     public String EUCB = "EuclidCircularA-Bold.ttf";
-    public String LUZR = "LUZRO.ttf";
+//    public String LUZR = "LUZRO.ttf";
 
     public Font fuente(String fontName, int estilo, float len) {
         try {
