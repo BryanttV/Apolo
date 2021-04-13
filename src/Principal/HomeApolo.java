@@ -158,9 +158,9 @@ public class HomeApolo extends javax.swing.JFrame {
                 Btn_Aprender.setSelected(false);
                 Btn_CodeStorm.setSelected(false);
                 Btn_Historia.setSelected(false);
-                for (Component cmp : Pnl_Principal.getComponents()) {
-                    cmp.setVisible(false);
-                }
+//                for (Component cmp : Pnl_Principal.getComponents()) {
+//                    cmp.setVisible(false);
+//                }
                 break;
             case 3:
                 Btn_Aprender.setSelected(false);
@@ -4900,11 +4900,11 @@ public class HomeApolo extends javax.swing.JFrame {
             apagarSecciones(2);
             EditorDeCodigo edc = new EditorDeCodigo();
             edc.setVisible(true);
-            Toolkit t = Toolkit.getDefaultToolkit();
-            Dimension screenSize = t.getScreenSize();
-            // Mostrar la Resolucion de Pantalla del Equipo
-            Lbl_Programar.setText("Su Resolución de Pantalla es " + screenSize.width + " x " + screenSize.height + " pixeles");
-            Pnl_Programar.setVisible(true);
+//            Toolkit t = Toolkit.getDefaultToolkit();
+//            Dimension screenSize = t.getScreenSize();
+//            // Mostrar la Resolucion de Pantalla del Equipo
+//            Lbl_Programar.setText("Su Resolución de Pantalla es " + screenSize.width + " x " + screenSize.height + " pixeles");
+//            Pnl_Programar.setVisible(true);
         } else {
             Pnl_Programar.setVisible(false);
             Pnl_Home.setVisible(true);
