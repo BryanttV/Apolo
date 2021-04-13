@@ -1,6 +1,5 @@
 package Principal;
 
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
@@ -13,6 +12,16 @@ import javax.swing.JScrollBar;
 import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class CustomScrollBarUI extends BasicScrollBarUI {
+
+    Color drag;
+    Color thumb_off;
+    Color thumb_on;
+
+    public CustomScrollBarUI(Color drag, Color thumb_off, Color thumb_on) {
+        this.drag = drag;
+        this.thumb_off = thumb_off;
+        this.thumb_on = thumb_on;
+    }
 
     private final Dimension d = new Dimension();
 
@@ -55,12 +64,13 @@ public class CustomScrollBarUI extends BasicScrollBarUI {
         if (!sb.isEnabled() || r.width > r.height) {
             return;
         } else if (isDragging) {
-            color = new Color(32, 30, 33); // Color
+            color = drag; // Color del Drag
         } else if (isThumbRollover()) {
-            color = new Color(50, 50, 50); // Color
+            color = thumb_on; // Color del Thumb On
         } else {
-            color = new Color(32, 30, 33); // Color
+            color = thumb_off; // Color del Thumb Off
         }
+
         g2.setPaint(color);
         g2.fillRoundRect(r.x, r.y, r.width, r.height, 15, 15);
 //      g2.setPaint(Color.WHITE); // Poner borde

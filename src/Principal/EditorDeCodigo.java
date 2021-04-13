@@ -1,10 +1,13 @@
 package Principal;
 
+import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;
+import java.awt.Cursor;
+import java.awt.Font;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -12,26 +15,29 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
-import static Judge.CompileAndRun.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.Ostermiller.Syntax.HighlightedDocument;
-import java.awt.BorderLayout;
-import java.awt.Color;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
-import javax.swing.JPanel;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
 import javax.swing.UIManager;
+import javax.swing.JScrollPane;
 import javax.swing.UnsupportedLookAndFeelException;
 import org.fife.ui.autocomplete.AutoCompletion;
 import org.fife.ui.autocomplete.BasicCompletion;
 import org.fife.ui.autocomplete.CompletionProvider;
 import org.fife.ui.autocomplete.DefaultCompletionProvider;
 import org.fife.ui.autocomplete.ShorthandCompletion;
+import org.fife.ui.rsyntaxtextarea.CodeTemplateManager;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rsyntaxtextarea.templates.CodeTemplate;
+import org.fife.ui.rsyntaxtextarea.templates.StaticCodeTemplate;
 import org.fife.ui.rtextarea.RTextScrollPane;
+import static Judge.CompileAndRun.*;
+import Tipografias.Fuentes;
 
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
@@ -40,91 +46,147 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     File archivo_abrir, codigo_modificado;
     FileInputStream entrada, in;
     FileOutputStream salida, out;
+    Color drag = new Color(96, 96, 96);
+    Color thumb_on = new Color(144, 144, 144);
+    Color thumb_off = new Color(96, 96, 96);
+
+    Fuentes Euclid = new Fuentes();
+    Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 22);
 
     public EditorDeCodigo() {
         initComponents();
+        configurarVentana();
         editor();
-        plantilla();
+        Lbl_TituloEntrada.setFont(Bold30p);
+        Lbl_TituloSalida.setFont(Bold30p);
+    }
+
+    private void configurarVentana() {
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar a pantalla completa
+        this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
+        setIconImage(new ImageIcon(getClass().getResource("/Resources/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
     }
 
     private void editor() {
+
+        RSyntaxTextArea.setTemplatesEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
+
+        sp.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));
+        sp.getVerticalScrollBar().setBackground(new Color(34, 34, 34));
+        sp.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+        sp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+
+        int horizontalPolicy = JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED;
+        int verticalPolicy = JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED;
+        sp.setHorizontalScrollBarPolicy(horizontalPolicy);
+        sp.setVerticalScrollBarPolicy(verticalPolicy);
         sp.getViewport();
+
+        plantilla();
+        Completition();
+        changeStyleViaThemeXml();
+        
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-        textArea.setBackground(new Color(237, 234, 243));
-        textArea.setAntiAliasingEnabled(true);
-        textArea.setCodeFoldingEnabled(true);
+        textArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        textArea.setBackground(new Color(34, 34, 34));
+        textArea.setFont(new Font("Consolas", Font.PLAIN, 14));
+        textArea.revalidate();
+
+        setTitle("Editor de Código");
         Pnl_Codigo.add(sp);
+    }
+
+    private void Completition() {
         CompletionProvider provider = createCompletionProvider();
         AutoCompletion ac = new AutoCompletion(provider);
+        CodeTemplateManager ctm = RSyntaxTextArea.getCodeTemplateManager();
+        CodeTemplate ct = new StaticCodeTemplate("for", "for (int i=0; i<", "; i++) {\n\t\n}\n");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("fore", "for(tipo", " variable: array){\n\t\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("if", "if(", "){\n\t\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("ifel", "if(", "){\n\t\n}else{\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("switch", "switch(", "variable) {\n"
+                + "  case x:\n"
+                + "    // codigo\n"
+                + "    break;\n"
+                + "  default:\n"
+                + "    // codigo\n"
+                + "}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("while", "while(", "){\n\t\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("do", "do {\n\t", "\n} while (true);");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("try", "try {\n\t", "\n} catch (Exception e){\n}");
+        ctm.addTemplate(ct);
+        pack();
         ac.install(textArea);
-        setTitle("Editor de Código");
+    }
+
+    private void changeStyleViaThemeXml() {
+        try {
+            Theme theme = Theme.load(getClass().getResourceAsStream(
+                    "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
+            theme.apply(textArea);
+        } catch (IOException ioe) {
+            System.out.println(ioe);
+        }
     }
 
     private CompletionProvider createCompletionProvider() {
 
         DefaultCompletionProvider provider = new DefaultCompletionProvider();
 
-        provider.addCompletion(new BasicCompletion(provider, "abstract"));
-        provider.addCompletion(new BasicCompletion(provider, "assert"));
+        provider.addCompletion(new BasicCompletion(provider, "boolean"));
         provider.addCompletion(new BasicCompletion(provider, "break"));
+        provider.addCompletion(new BasicCompletion(provider, "byte"));
         provider.addCompletion(new BasicCompletion(provider, "case"));
-        provider.addCompletion(new BasicCompletion(provider, "transient"));
+        provider.addCompletion(new BasicCompletion(provider, "catch"));
+        provider.addCompletion(new BasicCompletion(provider, "char"));
+        provider.addCompletion(new BasicCompletion(provider, "continue"));
+        provider.addCompletion(new BasicCompletion(provider, "default"));
+        provider.addCompletion(new BasicCompletion(provider, "double"));
+        provider.addCompletion(new BasicCompletion(provider, "do"));
+        provider.addCompletion(new BasicCompletion(provider, "else"));
+        provider.addCompletion(new BasicCompletion(provider, "false"));
+        provider.addCompletion(new BasicCompletion(provider, "final"));
+        provider.addCompletion(new BasicCompletion(provider, "finally"));
+        provider.addCompletion(new BasicCompletion(provider, "float"));
+        provider.addCompletion(new BasicCompletion(provider, "for"));
+        provider.addCompletion(new BasicCompletion(provider, "if"));
+        provider.addCompletion(new BasicCompletion(provider, "import"));
+        provider.addCompletion(new BasicCompletion(provider, "int"));
+        provider.addCompletion(new BasicCompletion(provider, "long"));
+        provider.addCompletion(new BasicCompletion(provider, "new"));
+        provider.addCompletion(new BasicCompletion(provider, "null"));
+        provider.addCompletion(new BasicCompletion(provider, "package"));
+        provider.addCompletion(new BasicCompletion(provider, "private"));
+        provider.addCompletion(new BasicCompletion(provider, "public"));
+        provider.addCompletion(new BasicCompletion(provider, "return"));
+        provider.addCompletion(new BasicCompletion(provider, "static"));
+        provider.addCompletion(new BasicCompletion(provider, "switch"));
+        provider.addCompletion(new BasicCompletion(provider, "true"));
         provider.addCompletion(new BasicCompletion(provider, "try"));
         provider.addCompletion(new BasicCompletion(provider, "void"));
-        provider.addCompletion(new BasicCompletion(provider, "volatile"));
         provider.addCompletion(new BasicCompletion(provider, "while"));
 
         provider.addCompletion(new ShorthandCompletion(provider, "sout",
                 "System.out.println(", "System.out.println("));
         provider.addCompletion(new ShorthandCompletion(provider, "serr",
                 "System.err.println(", "System.err.println("));
-        
-        provider.addCompletion(new ShorthandCompletion(provider, "for",
-                "for (int i = 0; i < 10; i++) {\n" +
-"            \n" +
-"        }", "for (int i = 0; i < 10; i++) {\n" +
-"            \n" +
-"        }"));
-        
-        provider.addCompletion(new ShorthandCompletion(provider, "while",
-                "while (true) {            \n" +
-"            \n" +
-"        }", "while (true) {            \n" +
-"            \n" +
-"        }"));
-        
-        provider.addCompletion(new ShorthandCompletion(provider, "if",
-                "if (true) {\n" +
-"            \n" +
-"        }", "if (true) {\n" +
-"            \n" +
-"        }"));
-        
-        provider.addCompletion(new ShorthandCompletion(provider, "try",
-                "try {\n" +
-"            \n" +
-"        } catch (Exception e) {\n" +
-"        }", "try {\n" +
-"            \n" +
-"        } catch (Exception e) {\n" +
-"        }"));
-        
-        provider.addCompletion(new ShorthandCompletion(provider, "foreach",
-                "for (Integer i : arr) {\n" +
-"            \n" +
-"        }", "for (Integer i : arr) {\n" +
-"            \n" +
-"        }"));
 
         return provider;
     }
 
     private void plantilla() {
         textArea.setText("public class Main {\n"
-                + "    public static void main(String[] args) {\n"
-                + "	System.out.println(\"Hello World\");\n"
-                + "    } \n"
+                + "	public static void main(String[] args){\n"
+                + "		System.out.println(\"Hello World\");\n"
+                + "	}\n"
                 + "}");
     }
 
@@ -225,8 +287,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         String writteable = consumer.getOutput().toString();
 
-        Txa_Salida.setText(writteable);
-
+//        Txa_Salida.setText(writteable);
         try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\Editor\\output.txt")) {
             fw.write(writteable);
         }
@@ -235,11 +296,11 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     }
 
     private void entrada() {
-        String documento = Txa_Entrada.getText();
+//        String documento = Txa_Entrada.getText();
         try {
             out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\Editor\\input.txt");
-            byte[] bytxt = documento.getBytes();
-            out.write(bytxt);
+//            byte[] bytxt = documento.getBytes();
+//            out.write(bytxt);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al guardar" + e);
         }
@@ -255,30 +316,32 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Btn_Copiar = new javax.swing.JButton();
         Btn_Abrir = new javax.swing.JButton();
         Btn_Guardar = new javax.swing.JButton();
-        Btn_Plantilla = new javax.swing.JButton();
         Btn_Ejecutar = new javax.swing.JButton();
+        Btn_Plantilla = new javax.swing.JButton();
+        Lbl_Entrada2 = new javax.swing.JLabel();
         Pnl_Codigo = new javax.swing.JPanel();
         Pnl_EntradaSalida = new javax.swing.JPanel();
         Scp_Salida = new javax.swing.JScrollPane();
         Txa_Salida = new javax.swing.JTextArea();
         Lbl_Salida = new javax.swing.JLabel();
+        Lbl_TituloSalida = new javax.swing.JLabel();
         Scp_Entrada = new javax.swing.JScrollPane();
         Txa_Entrada = new javax.swing.JTextArea();
         Lbl_Entrada = new javax.swing.JLabel();
         Lbl_TituloEntrada = new javax.swing.JLabel();
-        Lbl_TituloSalida = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(856, 700));
-        setResizable(false);
+        setBackground(new java.awt.Color(53, 54, 58));
+        setMinimumSize(new java.awt.Dimension(1366, 705));
+        setSize(new java.awt.Dimension(1366, 705));
 
-        Pnl_Principal.setBackground(new java.awt.Color(237, 234, 243));
-        Pnl_Principal.setMaximumSize(new java.awt.Dimension(850, 705));
-        Pnl_Principal.setMinimumSize(new java.awt.Dimension(850, 705));
-        Pnl_Principal.setPreferredSize(new java.awt.Dimension(850, 705));
+        Pnl_Principal.setBackground(new java.awt.Color(34, 34, 34));
+        Pnl_Principal.setMaximumSize(new java.awt.Dimension(1366, 705));
+        Pnl_Principal.setMinimumSize(new java.awt.Dimension(1366, 705));
+        Pnl_Principal.setPreferredSize(new java.awt.Dimension(1366, 705));
         Pnl_Principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Pnl_Botones.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_Botones.setBackground(new java.awt.Color(34, 34, 34));
         Pnl_Botones.setMaximumSize(new java.awt.Dimension(850, 60));
         Pnl_Botones.setMinimumSize(new java.awt.Dimension(850, 60));
         Pnl_Botones.setPreferredSize(new java.awt.Dimension(850, 60));
@@ -289,6 +352,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Btn_Limpiar.setBorder(null);
         Btn_Limpiar.setBorderPainted(false);
         Btn_Limpiar.setContentAreaFilled(false);
+        Btn_Limpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Limpiar.setFocusPainted(false);
         Btn_Limpiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Limpiar.setMaximumSize(new java.awt.Dimension(132, 40));
@@ -300,12 +364,13 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 Btn_LimpiarActionPerformed(evt);
             }
         });
-        Pnl_Botones.add(Btn_Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 10, 132, 40));
+        Pnl_Botones.add(Btn_Limpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 10, 132, 40));
 
         Btn_Copiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Copiar_Off.png"))); // NOI18N
         Btn_Copiar.setMnemonic('c');
         Btn_Copiar.setBorderPainted(false);
         Btn_Copiar.setContentAreaFilled(false);
+        Btn_Copiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Copiar.setFocusPainted(false);
         Btn_Copiar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Copiar.setMaximumSize(new java.awt.Dimension(132, 40));
@@ -317,12 +382,13 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 Btn_CopiarActionPerformed(evt);
             }
         });
-        Pnl_Botones.add(Btn_Copiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 10, 132, 40));
+        Pnl_Botones.add(Btn_Copiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, 132, 40));
 
         Btn_Abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Abrir_Off.png"))); // NOI18N
         Btn_Abrir.setMnemonic('o');
         Btn_Abrir.setBorderPainted(false);
         Btn_Abrir.setContentAreaFilled(false);
+        Btn_Abrir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Abrir.setFocusPainted(false);
         Btn_Abrir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Abrir.setMaximumSize(new java.awt.Dimension(132, 40));
@@ -334,12 +400,14 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 Btn_AbrirActionPerformed(evt);
             }
         });
-        Pnl_Botones.add(Btn_Abrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 132, 40));
+        Pnl_Botones.add(Btn_Abrir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 132, 40));
 
         Btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Guardar_Off.png"))); // NOI18N
         Btn_Guardar.setMnemonic('s');
+        Btn_Guardar.setBorder(null);
         Btn_Guardar.setBorderPainted(false);
         Btn_Guardar.setContentAreaFilled(false);
+        Btn_Guardar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Guardar.setFocusPainted(false);
         Btn_Guardar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Guardar.setMaximumSize(new java.awt.Dimension(132, 40));
@@ -351,30 +419,14 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 Btn_GuardarActionPerformed(evt);
             }
         });
-        Pnl_Botones.add(Btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 132, 40));
-
-        Btn_Plantilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Plantilla_Off.png"))); // NOI18N
-        Btn_Plantilla.setMnemonic('p');
-        Btn_Plantilla.setBorder(null);
-        Btn_Plantilla.setBorderPainted(false);
-        Btn_Plantilla.setContentAreaFilled(false);
-        Btn_Plantilla.setFocusPainted(false);
-        Btn_Plantilla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_Plantilla.setMaximumSize(new java.awt.Dimension(132, 40));
-        Btn_Plantilla.setMinimumSize(new java.awt.Dimension(132, 40));
-        Btn_Plantilla.setPreferredSize(new java.awt.Dimension(132, 40));
-        Btn_Plantilla.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Plantilla_On.png"))); // NOI18N
-        Btn_Plantilla.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_PlantillaActionPerformed(evt);
-            }
-        });
-        Pnl_Botones.add(Btn_Plantilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 10, 132, 40));
+        Pnl_Botones.add(Btn_Guardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 10, 132, 40));
 
         Btn_Ejecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Ejecutar_Off.png"))); // NOI18N
         Btn_Ejecutar.setMnemonic('n');
+        Btn_Ejecutar.setBorder(null);
         Btn_Ejecutar.setBorderPainted(false);
         Btn_Ejecutar.setContentAreaFilled(false);
+        Btn_Ejecutar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Ejecutar.setFocusPainted(false);
         Btn_Ejecutar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Ejecutar.setMaximumSize(new java.awt.Dimension(132, 40));
@@ -386,26 +438,52 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 Btn_EjecutarActionPerformed(evt);
             }
         });
-        Pnl_Botones.add(Btn_Ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 132, 40));
+        Pnl_Botones.add(Btn_Ejecutar, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 132, 40));
 
-        Pnl_Principal.add(Pnl_Botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 60));
+        Btn_Plantilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Plantilla_Off.png"))); // NOI18N
+        Btn_Plantilla.setMnemonic('p');
+        Btn_Plantilla.setBorder(null);
+        Btn_Plantilla.setBorderPainted(false);
+        Btn_Plantilla.setContentAreaFilled(false);
+        Btn_Plantilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Btn_Plantilla.setFocusPainted(false);
+        Btn_Plantilla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Plantilla.setMaximumSize(new java.awt.Dimension(132, 40));
+        Btn_Plantilla.setMinimumSize(new java.awt.Dimension(132, 40));
+        Btn_Plantilla.setPreferredSize(new java.awt.Dimension(132, 40));
+        Btn_Plantilla.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Plantilla_On.png"))); // NOI18N
+        Btn_Plantilla.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_PlantillaActionPerformed(evt);
+            }
+        });
+        Pnl_Botones.add(Btn_Plantilla, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 132, 40));
 
-        Pnl_Codigo.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_Principal.add(Pnl_Botones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 60));
+
+        Lbl_Entrada2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(211, 85, 22), 1, true));
+        Lbl_Entrada2.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Pnl_Principal.add(Lbl_Entrada2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 850, 620));
+
+        Pnl_Codigo.setBackground(new java.awt.Color(34, 34, 34));
         Pnl_Codigo.setMaximumSize(new java.awt.Dimension(850, 430));
         Pnl_Codigo.setMinimumSize(new java.awt.Dimension(850, 430));
         Pnl_Codigo.setLayout(new java.awt.CardLayout());
-        Pnl_Principal.add(Pnl_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 930, 370));
+        Pnl_Principal.add(Pnl_Codigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 850, 620));
 
-        Pnl_EntradaSalida.setBackground(new java.awt.Color(237, 234, 243));
+        Pnl_EntradaSalida.setBackground(new java.awt.Color(34, 34, 34));
         Pnl_EntradaSalida.setMaximumSize(new java.awt.Dimension(850, 215));
         Pnl_EntradaSalida.setMinimumSize(new java.awt.Dimension(850, 215));
         Pnl_EntradaSalida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Scp_Salida.setBorder(null);
-        Scp_Salida.getVerticalScrollBar().setUI(new CustomScrollBarUI());
+        Scp_Salida.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+        Scp_Salida.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+        Scp_Salida.getVerticalScrollBar().setBackground(new Color(34, 34, 34));
+        Scp_Salida.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));
 
         Txa_Salida.setEditable(false);
-        Txa_Salida.setBackground(new java.awt.Color(237, 234, 243));
+        Txa_Salida.setBackground(new java.awt.Color(34, 34, 34));
         Txa_Salida.setColumns(20);
         Txa_Salida.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
         Txa_Salida.setLineWrap(true);
@@ -413,69 +491,65 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Txa_Salida.setWrapStyleWord(true);
         Scp_Salida.setViewportView(Txa_Salida);
 
-        Pnl_EntradaSalida.add(Scp_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 50, 430, 195));
+        Pnl_EntradaSalida.add(Scp_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 440, 255));
 
-        Lbl_Salida.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
-        Pnl_EntradaSalida.add(Lbl_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 40, 450, 215));
+        Lbl_Salida.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(211, 85, 22), 1, true));
+        Pnl_EntradaSalida.add(Lbl_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 460, 275));
+
+        Lbl_TituloSalida.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        Lbl_TituloSalida.setForeground(new java.awt.Color(255, 255, 255));
+        Lbl_TituloSalida.setText("Salida");
+        Pnl_EntradaSalida.add(Lbl_TituloSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         Scp_Entrada.setBorder(null);
-        Scp_Entrada.getVerticalScrollBar().setUI(new CustomScrollBarUI());
+        Scp_Entrada.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+        Scp_Entrada.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+        Scp_Entrada.getVerticalScrollBar().setBackground(new Color(34, 34, 34));
+        Scp_Entrada.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));
 
-        Txa_Entrada.setBackground(new java.awt.Color(237, 234, 243));
+        Txa_Entrada.setBackground(new java.awt.Color(34, 34, 34));
         Txa_Entrada.setColumns(20);
-        Txa_Entrada.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        Txa_Entrada.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
+        Txa_Entrada.setForeground(new java.awt.Color(255, 255, 255));
         Txa_Entrada.setLineWrap(true);
         Txa_Entrada.setRows(5);
         Txa_Entrada.setWrapStyleWord(true);
+        Txa_Entrada.setBorder(null);
+        Txa_Entrada.setCaretColor(new java.awt.Color(255, 255, 255));
+        Txa_Entrada.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        Txa_Entrada.setSelectionColor(new java.awt.Color(56, 58, 56));
         Scp_Entrada.setViewportView(Txa_Entrada);
 
-        Pnl_EntradaSalida.add(Scp_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 470, 195));
+        Pnl_EntradaSalida.add(Scp_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 440, 255));
 
-        Lbl_Entrada.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 153, 0), 1, true));
-        Pnl_EntradaSalida.add(Lbl_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 490, 215));
+        Lbl_Entrada.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(211, 85, 22), 1, true));
+        Pnl_EntradaSalida.add(Lbl_Entrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 460, 275));
 
         Lbl_TituloEntrada.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
+        Lbl_TituloEntrada.setForeground(new java.awt.Color(255, 255, 255));
         Lbl_TituloEntrada.setText("Entrada");
-        Pnl_EntradaSalida.add(Lbl_TituloEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        Pnl_EntradaSalida.add(Lbl_TituloEntrada, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, -1, -1));
 
-        Lbl_TituloSalida.setFont(new java.awt.Font("Consolas", 1, 18)); // NOI18N
-        Lbl_TituloSalida.setText("Salida");
-        Pnl_EntradaSalida.add(Lbl_TituloSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 10, -1, -1));
-
-        Pnl_Principal.add(Pnl_EntradaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 435, 970, 280));
+        Pnl_Principal.add(Pnl_EntradaSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 65, 500, 640));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pnl_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 970, Short.MAX_VALUE)
+            .addComponent(Pnl_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pnl_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+            .addComponent(Pnl_Principal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_GuardarActionPerformed
-        guardar();
-    }//GEN-LAST:event_Btn_GuardarActionPerformed
-
-    private void Btn_AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AbrirActionPerformed
-        if (seleccion.showDialog(null, "Abrir") == JFileChooser.APPROVE_OPTION) {
-            archivo_abrir = seleccion.getSelectedFile();
-            if (archivo_abrir.canRead()) {
-                if (archivo_abrir.getName().endsWith("java")) {
-                    String documento = openFile(archivo_abrir);
-                    textArea.setText(documento);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Archivo no compatible.");
-                }
-            }
-        }
-    }//GEN-LAST:event_Btn_AbrirActionPerformed
+    private void Btn_PlantillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PlantillaActionPerformed
+        plantilla();
+    }//GEN-LAST:event_Btn_PlantillaActionPerformed
 
     private void Btn_EjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EjecutarActionPerformed
         guardar();
@@ -514,6 +588,24 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         }
     }//GEN-LAST:event_Btn_EjecutarActionPerformed
 
+    private void Btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_GuardarActionPerformed
+        guardar();
+    }//GEN-LAST:event_Btn_GuardarActionPerformed
+
+    private void Btn_AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AbrirActionPerformed
+        if (seleccion.showDialog(null, "Abrir") == JFileChooser.APPROVE_OPTION) {
+            archivo_abrir = seleccion.getSelectedFile();
+            if (archivo_abrir.canRead()) {
+                if (archivo_abrir.getName().endsWith("java")) {
+                    String documento = openFile(archivo_abrir);
+                    textArea.setText(documento);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Archivo no compatible.");
+                }
+            }
+        }
+    }//GEN-LAST:event_Btn_AbrirActionPerformed
+
     private void Btn_CopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CopiarActionPerformed
         clipBoard(textArea.getText());
     }//GEN-LAST:event_Btn_CopiarActionPerformed
@@ -522,22 +614,12 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         textArea.setText("");
     }//GEN-LAST:event_Btn_LimpiarActionPerformed
 
-    private void Btn_PlantillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PlantillaActionPerformed
-        plantilla();
-    }//GEN-LAST:event_Btn_PlantillaActionPerformed
-
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedLookAndFeelException ex) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
             }
             new EditorDeCodigo().setVisible(true);
@@ -552,6 +634,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     private javax.swing.JButton Btn_Limpiar;
     private javax.swing.JButton Btn_Plantilla;
     private javax.swing.JLabel Lbl_Entrada;
+    private javax.swing.JLabel Lbl_Entrada2;
     private javax.swing.JLabel Lbl_Salida;
     private javax.swing.JLabel Lbl_TituloEntrada;
     private javax.swing.JLabel Lbl_TituloSalida;

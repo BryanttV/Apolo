@@ -32,7 +32,6 @@ public class HomeApolo extends javax.swing.JFrame {
 
     static public VentanaAjustes Ajustes = new VentanaAjustes();
     static public ConfirmarSalida Confirmar = new ConfirmarSalida();
-    CustomScrollBarUI Barra = new CustomScrollBarUI(); // Barra de Desplazamiento Personalizada
     Color verde = new Color(0, 37, 26); // Color principal de la Seccion de Aprender
     Color azul = new Color(0, 47, 108); // Color principal de la Seccion de Historia
 
@@ -41,7 +40,6 @@ public class HomeApolo extends javax.swing.JFrame {
     Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
     Font Regular20p = Euclid.fuente(Euclid.EUCR, 0, 20);
     Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 30);
-//    Font Luzra = Euclid.fuente(Euclid.LUZR, 0, 20);
     Font SegoeRegular = new Font("Segoe UI Emoji", Font.PLAIN, 20);
     Font SegoeBold = new Font("Segoe UI SemiBold", Font.BOLD, 26);
     int contador = 0;
@@ -103,7 +101,7 @@ public class HomeApolo extends javax.swing.JFrame {
             if (componente instanceof JScrollPane) {
                 JScrollPane scp = (JScrollPane) componente;
                 // Agregar Barra de Desplazamiento Personalizada a los ScrollPane
-                scp.getVerticalScrollBar().setUI(new CustomScrollBarUI());
+                scp.getVerticalScrollBar().setUI(new CustomScrollBarUI(new Color(32, 30, 33), new Color(32, 30, 33), new Color(50, 50, 50)));
                 // Quitar borde por defecto
                 scp.setBorder(null);
             }
@@ -125,7 +123,7 @@ public class HomeApolo extends javax.swing.JFrame {
 
     // Configurar las Caracteristicas de la Ventana Principal
     private void configurarVentana() {
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar a pantalla completa
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar Ventana
         this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
         setIconImage(new ImageIcon(getClass().getResource("/Resources/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
     }
@@ -814,7 +812,6 @@ public class HomeApolo extends javax.swing.JFrame {
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
-        setMaximumSize(new java.awt.Dimension(1366, 705));
         setMinimumSize(new java.awt.Dimension(1366, 705));
         setPreferredSize(new java.awt.Dimension(1366, 705));
         setSize(new java.awt.Dimension(1366, 705));
@@ -828,7 +825,6 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Aprender.setBorderPainted(false);
         Btn_Aprender.setContentAreaFilled(false);
         Btn_Aprender.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        Btn_Aprender.setDisabledSelectedIcon(null);
         Btn_Aprender.setFocusPainted(false);
         Btn_Aprender.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Apolo_Aprender_Button_On.png"))); // NOI18N
         Btn_Aprender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Apolo_Aprender_Button_On.png"))); // NOI18N
@@ -908,6 +904,8 @@ public class HomeApolo extends javax.swing.JFrame {
 
         getContentPane().add(Pnl_Bar_Buttons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 710));
 
+        Pnl_Principal.setMinimumSize(new java.awt.Dimension(1366, 705));
+        Pnl_Principal.setPreferredSize(new java.awt.Dimension(1366, 705));
         Pnl_Principal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Pnl_Home.setMaximumSize(new java.awt.Dimension(1176, 705));
