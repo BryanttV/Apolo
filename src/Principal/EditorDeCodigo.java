@@ -1,4 +1,4 @@
- package Principal;
+package Principal;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -42,7 +42,8 @@ import Tipografias.Fuentes;
 import static Judge.CompileAndRun.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
- 
+import java.nio.file.Paths;
+
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
     static public ConfirmarSalidaEditor ExitEditor = new ConfirmarSalidaEditor();
@@ -51,10 +52,11 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     File archivo_abrir, codigo_modificado;
     FileInputStream entrada, in;
     FileOutputStream salida, out;
+    boolean eje = false;
     Color drag = new Color(96, 96, 96);
     Color thumb_on = new Color(144, 144, 144);
     Color thumb_off = new Color(96, 96, 96);
-    static  ConfirmarEditor cec = new ConfirmarEditor();
+    static ConfirmarEditor cec = new ConfirmarEditor();
 
     Fuentes Euclid = new Fuentes();
     Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 22);
@@ -268,8 +270,14 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
     protected void guardar() {
         if (seleccion.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
-            archivo_abrir = seleccion.getSelectedFile();
-            if (archivo_abrir.getName().endsWith(".java")) {
+            String nombre_code;
+            if (seleccion.getSelectedFile().toString().endsWith(".java")) {
+                nombre_code = seleccion.getSelectedFile().toString();
+            } else {
+                nombre_code = seleccion.getSelectedFile().toString() + ".java";
+            }
+            archivo_abrir = new File(nombre_code);
+            if (nombre_code.endsWith(".java")) {
                 String documento = textArea.getText();
                 String mensaje = saveFile(archivo_abrir, documento);
                 if (mensaje != null) {
@@ -281,6 +289,11 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 JOptionPane.showMessageDialog(null, "Guardar Codigo Java");
             }
         }
+    }
+
+    protected void guardareje() {
+        String documento = textArea.getText();
+        saveFile(archivo_abrir, documento);
     }
 
     public int compilar(String ruta) throws IOException, InterruptedException {
@@ -331,7 +344,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         //
         Txa_Salida.setText(writteable);
-        
+
         try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\Editor\\output.txt")) {
             fw.write(writteable);
         }
@@ -600,7 +613,12 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     }//GEN-LAST:event_Btn_PlantillaActionPerformed
 
     private void Btn_EjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EjecutarActionPerformed
-        guardar();
+        if (!eje) {
+            guardar();
+            eje = true;
+        } else {
+            guardareje();
+        }
         entrada();
         try {
 
