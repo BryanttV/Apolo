@@ -4,17 +4,37 @@ package Principal;
 import java.awt.Font;
 import Tipografias.Fuentes;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
 
-public class ConfirmarSalida extends javax.swing.JFrame {
+public class ConfirmarEditor extends javax.swing.JFrame {
+    
 
     Fuentes Euclid = new Fuentes();
     Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
 
 
-    public ConfirmarSalida() {
+    public ConfirmarEditor() {
         initComponents();
+        EditorDeCodigo ed = new EditorDeCodigo();
         Lbl_Mensaje.setFont(Regular14p);
         Lbl_Mensaje.setForeground(Color.BLACK);
+        
+        
+        Btn_Si.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e){
+            ed.guardar();
+            dispose();
+        } 
+        });
+        
+        Btn_No.addActionListener(new ActionListener(){
+           public void actionPerformed(ActionEvent e){
+            ed.dispose();
+            dispose();
+        } 
+        });
     }
 
     @SuppressWarnings("unchecked")
@@ -44,7 +64,7 @@ public class ConfirmarSalida extends javax.swing.JFrame {
 
         Lbl_Mensaje.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lbl_Mensaje.setText("¿Seguro de que desea salir de la aplicación?");
+        Lbl_Mensaje.setText("¿Guardar Código?");
         Pnl_Salida.add(Lbl_Mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 300, -1));
 
         Btn_No.setBackground(new java.awt.Color(255, 255, 255));
@@ -86,16 +106,16 @@ public class ConfirmarSalida extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_SiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SiActionPerformed
-        System.exit(0);
+
     }//GEN-LAST:event_Btn_SiActionPerformed
 
     private void Btn_NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NoActionPerformed
-        dispose();
+
     }//GEN-LAST:event_Btn_NoActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            new ConfirmarSalida().setVisible(true);
+            new ConfirmarEditor().setVisible(true);
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -1,4 +1,4 @@
-package Principal;
+ package Principal;
 
 import java.awt.Color;
 import java.awt.Toolkit;
@@ -38,6 +38,8 @@ import org.fife.ui.rsyntaxtextarea.templates.StaticCodeTemplate;
 import org.fife.ui.rtextarea.RTextScrollPane;
 import static Judge.CompileAndRun.*;
 import Tipografias.Fuentes;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
@@ -49,6 +51,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     Color drag = new Color(96, 96, 96);
     Color thumb_on = new Color(144, 144, 144);
     Color thumb_off = new Color(96, 96, 96);
+    static  ConfirmarEditor cec = new ConfirmarEditor();
 
     Fuentes Euclid = new Fuentes();
     Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 22);
@@ -56,9 +59,25 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     public EditorDeCodigo() {
         initComponents();
         configurarVentana();
+        confirmarCierre();
         editor();
         Lbl_TituloEntrada.setFont(Bold30p);
         Lbl_TituloSalida.setFont(Bold30p);
+    }
+    
+    private void confirmarCierre() {
+        try {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    cec.setVisible(true);               
+                }
+                
+            });
+        } catch (Exception e) {
+            System.out.println("Error al salir " + e);
+        }
     }
 
     private void configurarVentana() {
@@ -224,7 +243,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(txt, this);
     }
 
-    private void guardar() {
+    public void guardar() {
         if (seleccion.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
             archivo_abrir = seleccion.getSelectedFile();
             if (archivo_abrir.getName().endsWith(".java")) {
