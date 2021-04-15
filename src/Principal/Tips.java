@@ -4,24 +4,26 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Random;
 import javax.swing.Timer;
 
 public class Tips extends javax.swing.JFrame {
-    
+
     private Timer t;
     private final ActionListener ac;
     private int x = 0;
-    
-    Random r = new Random();
-    
-//    private ArrayList<String> arr = new ArrayList<>();
 
+    Random r = new Random();
+
+//    private ArrayList<String> arr = new ArrayList<>();
     public Tips() {
         initComponents();
-        ArrayList<String> arr = new ArrayList<String>(Arrays.asList("Cuando definas una variable de tipo long con un valor dado, deberás colocar una L mayúscula o minúscula al final. Eso le permitirá saber al programa que no es un numero entero.","Cuando definas una variable de tipo float con un valor dado, deberás colocar una F mayúscula o minúscula al final. Eso le permitirá saber al programa que no es un numero decimal de tipo Double.","De acuerdo a las tasks de cada problema de programación, defines las variables que necesitas y los tipos que debes usar. Este es un consejito muy bueno, ya que nos ha pasado en algunas competencias XD.","Para la lectura de números decimales, es necesario hacer uso de la coma. Aunque esto puede variar de acuerdo a la regionalidad.","Los booleanos solo pueden ser leídos como true o false, ya que no admite un dato numérico como 1 para verdadero y 0 para falso."));
+        ArrayList<String> arr = new ArrayList<String>(Arrays.asList(
+                "Cuando definas una variable de tipo long con un valor dado, deberás colocar una L mayúscula o minúscula al final. Eso le permitirá saber al programa que no es un numero entero.",
+                "Cuando definas una variable de tipo float con un valor dado, deberás colocar una F mayúscula o minúscula al final. Eso le permitirá saber al programa que no es un numero decimal de tipo Double.",
+                "De acuerdo a las tasks de cada problema de programación, defines las variables que necesitas y los tipos que debes usar. Este es un consejito muy bueno, ya que nos ha pasado en algunas competencias XD.",
+                "Para la lectura de números decimales, es necesario hacer uso de la coma. Aunque esto puede variar de acuerdo a la regionalidad.",
+                "Los booleanos solo pueden ser leídos como true o false, ya que no admite un dato numérico como 1 para verdadero y 0 para falso."));
         this.setLocationRelativeTo(null);
         ac = new ActionListener() {
             @Override
@@ -36,9 +38,9 @@ public class Tips extends javax.swing.JFrame {
         };
         t = new Timer(50, ac);
         t.start();
-        
+
         int rand = r.nextInt(5);
-        
+
         jTextArea1.setText(arr.get(rand));
     }
 
