@@ -36,13 +36,16 @@ import org.fife.ui.rsyntaxtextarea.Theme;
 import org.fife.ui.rsyntaxtextarea.templates.CodeTemplate;
 import org.fife.ui.rsyntaxtextarea.templates.StaticCodeTemplate;
 import org.fife.ui.rtextarea.RTextScrollPane;
-import static Judge.CompileAndRun.*;
-import Tipografias.Fuentes;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import Tipografias.Fuentes;
+import static Judge.CompileAndRun.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
+    static public ConfirmarSalidaEditor ExitEditor = new ConfirmarSalidaEditor();
     JFileChooser seleccion = new JFileChooser();
     RSyntaxTextArea textArea = new RSyntaxTextArea();
     File archivo_abrir, codigo_modificado;
@@ -61,29 +64,51 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         configurarVentana();
         confirmarCierre();
         editor();
-        Lbl_TituloEntrada.setFont(Bold30p);
-        Lbl_TituloSalida.setFont(Bold30p);
-    }
-    
-    private void confirmarCierre() {
-        try {
-            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
-            addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosing(WindowEvent e) {
-                    cec.setVisible(true);               
-                }
-                
-            });
-        } catch (Exception e) {
-            System.out.println("Error al salir " + e);
-        }
+        Lbl_TituloEntrada.setFont(Bold30p); // Cambiar ubicacion
+        Lbl_TituloSalida.setFont(Bold30p); // Cambiar ubicacion
+        confirmarCierre();
     }
 
     private void configurarVentana() {
         this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar a pantalla completa
         this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
         setIconImage(new ImageIcon(getClass().getResource("/Resources/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
+    }
+
+    // Confirmar el cierre de la Aplicacion
+    private void confirmarCierre() {
+        try {
+            this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+            addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosing(WindowEvent e) {
+                    cerrar();
+                }
+            });
+        } catch (Exception e) {
+            System.out.println("Error al salir " + e);
+        }
+    }
+
+    private class BotonPulsadoListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == ExitEditor.Btn_Si) {
+                guardar();
+                ExitEditor.dispose();
+                dispose();
+            } else if (e.getSource() == ExitEditor.Btn_No) {
+                ExitEditor.dispose();
+                dispose();
+            }
+        }
+    }
+
+    private void cerrar() {
+        ExitEditor.setVisible(true);
+        ExitEditor.Btn_Si.addActionListener(new BotonPulsadoListener());
+        ExitEditor.Btn_No.addActionListener(new BotonPulsadoListener());
     }
 
     private void editor() {
@@ -105,7 +130,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         plantilla();
         Completition();
         changeStyleViaThemeXml();
-        
+
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         textArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
         textArea.setBackground(new Color(34, 34, 34));
@@ -148,8 +173,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
     private void changeStyleViaThemeXml() {
         try {
-            Theme theme = Theme.load(getClass().getResourceAsStream(
-                    "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
+            Theme theme = Theme.load(getClass().getResourceAsStream("/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
             theme.apply(textArea);
         } catch (IOException ioe) {
             System.out.println(ioe);
@@ -243,7 +267,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(txt, this);
     }
 
-    public void guardar() {
+    protected void guardar() {
         if (seleccion.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
             archivo_abrir = seleccion.getSelectedFile();
             if (archivo_abrir.getName().endsWith(".java")) {
@@ -306,7 +330,9 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         String writteable = consumer.getOutput().toString();
 
-//        Txa_Salida.setText(writteable);
+        //
+        Txa_Salida.setText(writteable);
+        
         try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\Editor\\output.txt")) {
             fw.write(writteable);
         }
@@ -315,11 +341,11 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     }
 
     private void entrada() {
-//        String documento = Txa_Entrada.getText();
+//      String documento = Txa_Entrada.getText();
         try {
             out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\Editor\\input.txt");
-//            byte[] bytxt = documento.getBytes();
-//            out.write(bytxt);
+//          byte[] bytxt = documento.getBytes();
+//          out.write(bytxt);
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al guardar" + e);
         }
@@ -504,10 +530,14 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         Txa_Salida.setEditable(false);
         Txa_Salida.setBackground(new java.awt.Color(34, 34, 34));
         Txa_Salida.setColumns(20);
-        Txa_Salida.setFont(new java.awt.Font("Consolas", 0, 14)); // NOI18N
+        Txa_Salida.setFont(new java.awt.Font("Consolas", 0, 16)); // NOI18N
+        Txa_Salida.setForeground(new java.awt.Color(255, 255, 255));
         Txa_Salida.setLineWrap(true);
         Txa_Salida.setRows(5);
         Txa_Salida.setWrapStyleWord(true);
+        Txa_Salida.setBorder(null);
+        Txa_Salida.setCaretColor(new java.awt.Color(255, 255, 255));
+        Txa_Salida.setSelectionColor(new java.awt.Color(56, 58, 56));
         Scp_Salida.setViewportView(Txa_Salida);
 
         Pnl_EntradaSalida.add(Scp_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 440, 255));
@@ -634,7 +664,6 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     }//GEN-LAST:event_Btn_LimpiarActionPerformed
 
     public static void main(String args[]) {
-
         java.awt.EventQueue.invokeLater(() -> {
             try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

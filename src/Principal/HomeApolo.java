@@ -6,8 +6,6 @@ import com.placeholder.PlaceHolder;
 
 // Librerias por Default
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Toolkit;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.Component;
@@ -23,7 +21,6 @@ import javax.swing.JToggleButton;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
@@ -815,7 +812,6 @@ public class HomeApolo extends javax.swing.JFrame {
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(1366, 705));
-        setPreferredSize(new java.awt.Dimension(1366, 705));
         setSize(new java.awt.Dimension(1366, 705));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -873,6 +869,8 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Ajustes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_AjustesButton_Off.png"))); // NOI18N
         Btn_Ajustes.setBorderPainted(false);
         Btn_Ajustes.setContentAreaFilled(false);
+        Btn_Ajustes.setFocusPainted(false);
+        Btn_Ajustes.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Ajustes.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_AjustesButton_On.png"))); // NOI18N
         Btn_Ajustes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_AjustesButton_On.png"))); // NOI18N
         Btn_Ajustes.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_AjustesButton_Enabled.png"))); // NOI18N
@@ -889,6 +887,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Historia.setContentAreaFilled(false);
         Btn_Historia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         Btn_Historia.setFocusPainted(false);
+        Btn_Historia.setFocusable(false);
         Btn_Historia.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_HistoriaButton_On.png"))); // NOI18N
         Btn_Historia.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_HistoriaButton_On.png"))); // NOI18N
         Btn_Historia.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Apolo_HistoriaButton_Enabled.png"))); // NOI18N
@@ -2903,6 +2902,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Introduccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Introduccion_Off.png"))); // NOI18N
         Btn_Introduccion.setBorderPainted(false);
         Btn_Introduccion.setContentAreaFilled(false);
+        Btn_Introduccion.setFocusPainted(false);
         Btn_Introduccion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Introduccion.setMaximumSize(new java.awt.Dimension(202, 62));
         Btn_Introduccion.setMinimumSize(new java.awt.Dimension(202, 62));
@@ -2918,6 +2918,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel1_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio1_Off.png"))); // NOI18N
         Btn_Nivel1_Ejercicio1.setBorderPainted(false);
         Btn_Nivel1_Ejercicio1.setContentAreaFilled(false);
+        Btn_Nivel1_Ejercicio1.setFocusPainted(false);
         Btn_Nivel1_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel1_Ejercicio1.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel1_Ejercicio1.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -2933,6 +2934,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel1_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio2_Off.png"))); // NOI18N
         Btn_Nivel1_Ejercicio2.setBorderPainted(false);
         Btn_Nivel1_Ejercicio2.setContentAreaFilled(false);
+        Btn_Nivel1_Ejercicio2.setFocusPainted(false);
         Btn_Nivel1_Ejercicio2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel1_Ejercicio2.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel1_Ejercicio2.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -2948,6 +2950,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel1_Ejercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio3_Off.png"))); // NOI18N
         Btn_Nivel1_Ejercicio3.setBorderPainted(false);
         Btn_Nivel1_Ejercicio3.setContentAreaFilled(false);
+        Btn_Nivel1_Ejercicio3.setFocusPainted(false);
         Btn_Nivel1_Ejercicio3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel1_Ejercicio3.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel1_Ejercicio3.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -2963,6 +2966,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel1_Ejercicio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio4_Off.png"))); // NOI18N
         Btn_Nivel1_Ejercicio4.setBorderPainted(false);
         Btn_Nivel1_Ejercicio4.setContentAreaFilled(false);
+        Btn_Nivel1_Ejercicio4.setFocusPainted(false);
         Btn_Nivel1_Ejercicio4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel1_Ejercicio4.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel1_Ejercicio4.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -2978,6 +2982,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel2_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio1_Off.png"))); // NOI18N
         Btn_Nivel2_Ejercicio1.setBorderPainted(false);
         Btn_Nivel2_Ejercicio1.setContentAreaFilled(false);
+        Btn_Nivel2_Ejercicio1.setFocusPainted(false);
         Btn_Nivel2_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel2_Ejercicio1.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel2_Ejercicio1.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -2993,6 +2998,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel2_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio2_Off.png"))); // NOI18N
         Btn_Nivel2_Ejercicio2.setBorderPainted(false);
         Btn_Nivel2_Ejercicio2.setContentAreaFilled(false);
+        Btn_Nivel2_Ejercicio2.setFocusPainted(false);
         Btn_Nivel2_Ejercicio2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel2_Ejercicio2.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel2_Ejercicio2.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3008,6 +3014,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel2_Ejercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio3_Off.png"))); // NOI18N
         Btn_Nivel2_Ejercicio3.setBorderPainted(false);
         Btn_Nivel2_Ejercicio3.setContentAreaFilled(false);
+        Btn_Nivel2_Ejercicio3.setFocusPainted(false);
         Btn_Nivel2_Ejercicio3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel2_Ejercicio3.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel2_Ejercicio3.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3023,6 +3030,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel2_Ejercicio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio4_Off.png"))); // NOI18N
         Btn_Nivel2_Ejercicio4.setBorderPainted(false);
         Btn_Nivel2_Ejercicio4.setContentAreaFilled(false);
+        Btn_Nivel2_Ejercicio4.setFocusPainted(false);
         Btn_Nivel2_Ejercicio4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel2_Ejercicio4.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel2_Ejercicio4.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3038,6 +3046,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel3_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio1_Off.png"))); // NOI18N
         Btn_Nivel3_Ejercicio1.setBorderPainted(false);
         Btn_Nivel3_Ejercicio1.setContentAreaFilled(false);
+        Btn_Nivel3_Ejercicio1.setFocusPainted(false);
         Btn_Nivel3_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel3_Ejercicio1.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel3_Ejercicio1.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3053,6 +3062,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel3_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio2_Off.png"))); // NOI18N
         Btn_Nivel3_Ejercicio2.setBorderPainted(false);
         Btn_Nivel3_Ejercicio2.setContentAreaFilled(false);
+        Btn_Nivel3_Ejercicio2.setFocusPainted(false);
         Btn_Nivel3_Ejercicio2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel3_Ejercicio2.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel3_Ejercicio2.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3068,6 +3078,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel3_Ejercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio3_Off.png"))); // NOI18N
         Btn_Nivel3_Ejercicio3.setBorderPainted(false);
         Btn_Nivel3_Ejercicio3.setContentAreaFilled(false);
+        Btn_Nivel3_Ejercicio3.setFocusPainted(false);
         Btn_Nivel3_Ejercicio3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel3_Ejercicio3.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel3_Ejercicio3.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3083,6 +3094,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel3_Ejercicio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio4_Off.png"))); // NOI18N
         Btn_Nivel3_Ejercicio4.setBorderPainted(false);
         Btn_Nivel3_Ejercicio4.setContentAreaFilled(false);
+        Btn_Nivel3_Ejercicio4.setFocusPainted(false);
         Btn_Nivel3_Ejercicio4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel3_Ejercicio4.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel3_Ejercicio4.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3098,6 +3110,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel4_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio1_Off.png"))); // NOI18N
         Btn_Nivel4_Ejercicio1.setBorderPainted(false);
         Btn_Nivel4_Ejercicio1.setContentAreaFilled(false);
+        Btn_Nivel4_Ejercicio1.setFocusPainted(false);
         Btn_Nivel4_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel4_Ejercicio1.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel4_Ejercicio1.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3113,6 +3126,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel4_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio2_Off.png"))); // NOI18N
         Btn_Nivel4_Ejercicio2.setBorderPainted(false);
         Btn_Nivel4_Ejercicio2.setContentAreaFilled(false);
+        Btn_Nivel4_Ejercicio2.setFocusPainted(false);
         Btn_Nivel4_Ejercicio2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel4_Ejercicio2.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel4_Ejercicio2.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3128,6 +3142,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel4_Ejercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio3_Off.png"))); // NOI18N
         Btn_Nivel4_Ejercicio3.setBorderPainted(false);
         Btn_Nivel4_Ejercicio3.setContentAreaFilled(false);
+        Btn_Nivel4_Ejercicio3.setFocusPainted(false);
         Btn_Nivel4_Ejercicio3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel4_Ejercicio3.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel4_Ejercicio3.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3143,6 +3158,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel4_Ejercicio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio4_Off.png"))); // NOI18N
         Btn_Nivel4_Ejercicio4.setBorderPainted(false);
         Btn_Nivel4_Ejercicio4.setContentAreaFilled(false);
+        Btn_Nivel4_Ejercicio4.setFocusPainted(false);
         Btn_Nivel4_Ejercicio4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel4_Ejercicio4.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel4_Ejercicio4.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3158,6 +3174,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel5_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio1_Off.png"))); // NOI18N
         Btn_Nivel5_Ejercicio1.setBorderPainted(false);
         Btn_Nivel5_Ejercicio1.setContentAreaFilled(false);
+        Btn_Nivel5_Ejercicio1.setFocusPainted(false);
         Btn_Nivel5_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel5_Ejercicio1.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel5_Ejercicio1.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3173,6 +3190,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel5_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio2_Off.png"))); // NOI18N
         Btn_Nivel5_Ejercicio2.setBorderPainted(false);
         Btn_Nivel5_Ejercicio2.setContentAreaFilled(false);
+        Btn_Nivel5_Ejercicio2.setFocusPainted(false);
         Btn_Nivel5_Ejercicio2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel5_Ejercicio2.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel5_Ejercicio2.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3188,6 +3206,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel5_Ejercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio3_Off.png"))); // NOI18N
         Btn_Nivel5_Ejercicio3.setBorderPainted(false);
         Btn_Nivel5_Ejercicio3.setContentAreaFilled(false);
+        Btn_Nivel5_Ejercicio3.setFocusPainted(false);
         Btn_Nivel5_Ejercicio3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel5_Ejercicio3.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel5_Ejercicio3.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3203,6 +3222,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Nivel5_Ejercicio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio4_Off.png"))); // NOI18N
         Btn_Nivel5_Ejercicio4.setBorderPainted(false);
         Btn_Nivel5_Ejercicio4.setContentAreaFilled(false);
+        Btn_Nivel5_Ejercicio4.setFocusPainted(false);
         Btn_Nivel5_Ejercicio4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Nivel5_Ejercicio4.setMaximumSize(new java.awt.Dimension(142, 52));
         Btn_Nivel5_Ejercicio4.setMinimumSize(new java.awt.Dimension(142, 52));
@@ -3377,6 +3397,8 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Ejercicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Ejercicio_Off.png"))); // NOI18N
         Btn_Ejercicio.setBorderPainted(false);
         Btn_Ejercicio.setContentAreaFilled(false);
+        Btn_Ejercicio.setFocusPainted(false);
+        Btn_Ejercicio.setFocusable(false);
         Btn_Ejercicio.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Ejercicio.setMaximumSize(new java.awt.Dimension(172, 47));
         Btn_Ejercicio.setMinimumSize(new java.awt.Dimension(172, 47));
@@ -3394,6 +3416,8 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Codigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Codigo_Off.png"))); // NOI18N
         Btn_Codigo.setBorderPainted(false);
         Btn_Codigo.setContentAreaFilled(false);
+        Btn_Codigo.setFocusPainted(false);
+        Btn_Codigo.setFocusable(false);
         Btn_Codigo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Codigo.setMaximumSize(new java.awt.Dimension(172, 47));
         Btn_Codigo.setMinimumSize(new java.awt.Dimension(172, 47));
@@ -3411,6 +3435,8 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Enviar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Enviar_Off.png"))); // NOI18N
         Btn_Enviar.setBorderPainted(false);
         Btn_Enviar.setContentAreaFilled(false);
+        Btn_Enviar.setFocusPainted(false);
+        Btn_Enviar.setFocusable(false);
         Btn_Enviar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Enviar.setMaximumSize(new java.awt.Dimension(172, 47));
         Btn_Enviar.setMinimumSize(new java.awt.Dimension(172, 47));
@@ -3428,6 +3454,8 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Solucion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Solucion_Off.png"))); // NOI18N
         Btn_Solucion.setBorderPainted(false);
         Btn_Solucion.setContentAreaFilled(false);
+        Btn_Solucion.setFocusPainted(false);
+        Btn_Solucion.setFocusable(false);
         Btn_Solucion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Solucion.setMaximumSize(new java.awt.Dimension(172, 47));
         Btn_Solucion.setMinimumSize(new java.awt.Dimension(172, 47));
@@ -3446,6 +3474,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Atras_CodeStorm.setBorder(null);
         Btn_Atras_CodeStorm.setBorderPainted(false);
         Btn_Atras_CodeStorm.setContentAreaFilled(false);
+        Btn_Atras_CodeStorm.setFocusPainted(false);
         Btn_Atras_CodeStorm.setFocusable(false);
         Btn_Atras_CodeStorm.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Atras_CodeStorm.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Atras_On_CodeStorm.png"))); // NOI18N
@@ -3464,6 +3493,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Siguiente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Siguiente_Off.png"))); // NOI18N
         Btn_Siguiente.setBorderPainted(false);
         Btn_Siguiente.setContentAreaFilled(false);
+        Btn_Siguiente.setFocusPainted(false);
         Btn_Siguiente.setFocusable(false);
         Btn_Siguiente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Siguiente.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Siguiente_On.png"))); // NOI18N
@@ -3477,6 +3507,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Anterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Anterior_Off.png"))); // NOI18N
         Btn_Anterior.setBorderPainted(false);
         Btn_Anterior.setContentAreaFilled(false);
+        Btn_Anterior.setFocusPainted(false);
         Btn_Anterior.setFocusable(false);
         Btn_Anterior.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Anterior.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Anterior_On.png"))); // NOI18N
@@ -4902,11 +4933,6 @@ public class HomeApolo extends javax.swing.JFrame {
             apagarSecciones(2);
             EditorDeCodigo edc = new EditorDeCodigo();
             edc.setVisible(true);
-//            Toolkit t = Toolkit.getDefaultToolkit();
-//            Dimension screenSize = t.getScreenSize();
-//            // Mostrar la Resolucion de Pantalla del Equipo
-//            Lbl_Programar.setText("Su Resolución de Pantalla es " + screenSize.width + " x " + screenSize.height + " pixeles");
-//            Pnl_Programar.setVisible(true);
         } else {
             Pnl_Programar.setVisible(false);
             Pnl_Home.setVisible(true);
@@ -5560,26 +5586,9 @@ public class HomeApolo extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Atras_CodeStormActionPerformed
 
     public static void main(String args[]) {
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(HomeApolo.class
-//                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
         try {
                 UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (InstantiationException ex) {
-                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (UnsupportedLookAndFeelException ex) {
+            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
                 Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
             }
         java.awt.EventQueue.invokeLater(() -> {
