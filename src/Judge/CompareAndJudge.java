@@ -24,7 +24,7 @@ public class CompareAndJudge {
         File file2 = new File(System.getProperty("user.dir") + "\\src\\IOfiles\\output.txt");
         System.out.println(file1.length());
         System.out.println(file2.length());
-        if (file1.length() >= file2.length() - 4L && file1.length() < file2.length() + 4L) {
+        if (file1.length() >= file2.length() - 2L && file1.length() < file2.length() + 2L) {
             return true;
         }
         return false;

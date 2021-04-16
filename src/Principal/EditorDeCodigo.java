@@ -42,10 +42,8 @@ import Tipografias.Fuentes;
 import static Judge.CompileAndRun.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD
-=======
 import java.nio.file.Paths;
->>>>>>> feature/UPDATE
+
 
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
