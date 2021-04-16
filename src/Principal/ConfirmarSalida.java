@@ -1,6 +1,5 @@
 package Principal;
 
-
 import java.awt.Font;
 import Tipografias.Fuentes;
 import java.awt.Color;

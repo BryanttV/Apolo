@@ -11,6 +11,7 @@ import java.awt.event.WindowEvent;
 import java.awt.Component;
 import java.awt.Font;
 import java.awt.Container;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -25,14 +26,22 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 public class HomeApolo extends javax.swing.JFrame {
 
     static public VentanaAjustes Ajustes = new VentanaAjustes();
     static public ConfirmarSalida Confirmar = new ConfirmarSalida();
     static public Tips tp;
-    Color verde = new Color(0, 37, 26); // Color principal de la Seccion de Aprender
-    Color azul = new Color(0, 47, 108); // Color principal de la Seccion de Historia
+    private final RSyntaxTextArea syntaxCode = new RSyntaxTextArea();
+    private final Color verde = new Color(0, 37, 26); // Color principal de la Seccion de Aprender
+    private final Color azul = new Color(0, 47, 108); // Color principal de la Seccion de Historia
+    private final Color drag = new Color(32, 30, 33); // Color Drag del ScrollBar
+    private final Color thumb_on = new Color(32, 30, 33); // Color del Thumb_on del ScrollBar
+    private final Color thumb_off = new Color(50, 50, 50); // Color del Thumb_off del ScrollBar
 
     // Crear Tipo de Fuente
     Fuentes Euclid = new Fuentes();
@@ -48,10 +57,42 @@ public class HomeApolo extends javax.swing.JFrame {
         initComponents();
         cargarFuente();
         configurarVentana();
-        configurarPlaceHolder();
         configurarBarraDesplazamiento();
         ocultarComponentes();
         confirmarCierre();
+        resaltarCodigo();
+    }
+
+    private void resaltarCodigo() {
+        syntaxCode.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        RTextScrollPane sp = new RTextScrollPane(syntaxCode);
+
+        changeStyleViaThemeXml();
+
+        int horizontalPolicy = JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED;
+        int verticalPolicy = JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED;
+        sp.setHorizontalScrollBarPolicy(horizontalPolicy);
+        sp.setVerticalScrollBarPolicy(verticalPolicy);
+        sp.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+        sp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+        sp.setBorder(null);
+
+        syntaxCode.setText("// Pega aquí tu código...");
+        syntaxCode.setBackground(new Color(237, 234, 243));
+        syntaxCode.setAntiAliasingEnabled(true);
+        syntaxCode.setFont(new Font("Consolas", Font.PLAIN, 14));
+        syntaxCode.revalidate();
+
+        Pnl_Code1.add(sp);
+    }
+
+    private void changeStyleViaThemeXml() {
+        try {
+            Theme theme = Theme.load(getClass().getResourceAsStream("/org/fife/ui/rsyntaxtextarea/themes/eclipse.xml"));
+            theme.apply(syntaxCode);
+        } catch (IOException ioe) {
+            System.out.println(ioe);
+        }
     }
 
     // Cargar fuente personalizada del paquete Tipografia
@@ -81,18 +122,6 @@ public class HomeApolo extends javax.swing.JFrame {
         }
     }
 
-    // Personalizar los PlaceHolder de la Seccion de CodeStorm
-    private void configurarPlaceHolder() {
-        List<Component> compList = getAllComponents(Pnl_CodeStorm);
-        for (Component componente : compList) {
-            if (componente instanceof JTextArea) {
-                JTextArea txa = (JTextArea) componente;
-                // Agregar PlaceHolder a las Areas de Texto
-                PlaceHolder pj = new PlaceHolder(txa, new Color(130, 130, 130), Color.BLACK, "Pega aquí tu código...", false, "Consolas", 18);
-            }
-        }
-    }
-
     // Personalizar la Barra de Desplazamiento de todos los ScrollPane
     private void configurarBarraDesplazamiento() {
         List<Component> compList = getAllComponents(this);
@@ -100,7 +129,7 @@ public class HomeApolo extends javax.swing.JFrame {
             if (componente instanceof JScrollPane) {
                 JScrollPane scp = (JScrollPane) componente;
                 // Agregar Barra de Desplazamiento Personalizada a los ScrollPane
-                scp.getVerticalScrollBar().setUI(new CustomScrollBarUI(new Color(32, 30, 33), new Color(32, 30, 33), new Color(50, 50, 50)));
+                scp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
                 // Quitar borde por defecto
                 scp.setBorder(null);
             }
@@ -595,8 +624,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Scp_Ej1 = new javax.swing.JScrollPane();
         Lbl_Ejercicio1 = new javax.swing.JLabel();
         Pnl_Codigo1 = new javax.swing.JPanel();
-        Scp_Codigo1 = new javax.swing.JScrollPane();
-        Txa_Codigo1 = new javax.swing.JTextArea();
+        Pnl_Code1 = new javax.swing.JPanel();
         Pnl_Solucion1 = new javax.swing.JPanel();
         Scp_Solucion1 = new javax.swing.JScrollPane();
         Txa_Solucion1 = new javax.swing.JTextArea();
@@ -3551,19 +3579,8 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Codigo1.setBorder(javax.swing.BorderFactory.createTitledBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 0, 0), 2, true), " Nivel 1 | Ejercicio 1 ", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 30), new java.awt.Color(204, 0, 0))); // NOI18N
         Pnl_Codigo1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Scp_Codigo1.setBackground(new java.awt.Color(237, 234, 243));
-        Scp_Codigo1.setBorder(null);
-
-        Txa_Codigo1.setBackground(new java.awt.Color(237, 234, 243));
-        Txa_Codigo1.setColumns(20);
-        Txa_Codigo1.setFont(new java.awt.Font("Consolas", 0, 18)); // NOI18N
-        Txa_Codigo1.setLineWrap(true);
-        Txa_Codigo1.setRows(5);
-        Txa_Codigo1.setTabSize(4);
-        Txa_Codigo1.setWrapStyleWord(true);
-        Scp_Codigo1.setViewportView(Txa_Codigo1);
-
-        Pnl_Codigo1.add(Scp_Codigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1080, 440));
+        Pnl_Code1.setLayout(new java.awt.BorderLayout());
+        Pnl_Codigo1.add(Pnl_Code1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1080, 430));
 
         Pnl_Ejercicio1.add(Pnl_Codigo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1110, 510));
 
@@ -5587,10 +5604,10 @@ public class HomeApolo extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
-                Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
-            }
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(EditorDeCodigo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         java.awt.EventQueue.invokeLater(() -> {
             new HomeApolo().setVisible(true);
         });
@@ -5839,6 +5856,7 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Aprender;
     private javax.swing.JPanel Pnl_Bar_Buttons;
     private javax.swing.JPanel Pnl_BotonesPrincipales;
+    private javax.swing.JPanel Pnl_Code1;
     private javax.swing.JPanel Pnl_CodeStorm;
     private javax.swing.JPanel Pnl_Codigo1;
     private javax.swing.JPanel Pnl_Codigo10;
@@ -5966,7 +5984,6 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Tema7;
     private javax.swing.JPanel Pnl_Tema8;
     private javax.swing.JPanel Pnl_Tema9;
-    private javax.swing.JScrollPane Scp_Codigo1;
     private javax.swing.JScrollPane Scp_Codigo10;
     private javax.swing.JScrollPane Scp_Codigo11;
     private javax.swing.JScrollPane Scp_Codigo12;
@@ -6060,7 +6077,6 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Tema7;
     private javax.swing.JScrollPane Scp_Tema8;
     private javax.swing.JScrollPane Scp_Tema9;
-    private javax.swing.JTextArea Txa_Codigo1;
     private javax.swing.JTextArea Txa_Codigo10;
     private javax.swing.JTextArea Txa_Codigo11;
     private javax.swing.JTextArea Txa_Codigo12;

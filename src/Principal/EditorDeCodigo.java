@@ -330,7 +330,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         //
         Txa_Salida.setText(writteable);
-        
+
         try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\Editor\\output.txt")) {
             fw.write(writteable);
         }

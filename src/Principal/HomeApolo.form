@@ -6643,42 +6643,14 @@
                             <Property name="useNullLayout" type="boolean" value="false"/>
                           </Layout>
                           <SubComponents>
-                            <Container class="javax.swing.JScrollPane" name="Scp_Codigo1">
-                              <Properties>
-                                <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                                  <Connection code="new java.awt.Color(237, 234, 243)" type="code"/>
-                                </Property>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
-                                </Property>
-                              </Properties>
-                              <AuxValues>
-                                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-                              </AuxValues>
+                            <Container class="javax.swing.JPanel" name="Pnl_Code1">
                               <Constraints>
                                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                                  <AbsoluteConstraints x="20" y="60" width="1080" height="440"/>
+                                  <AbsoluteConstraints x="20" y="60" width="1080" height="430"/>
                                 </Constraint>
                               </Constraints>
 
-                              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-                              <SubComponents>
-                                <Component class="javax.swing.JTextArea" name="Txa_Codigo1">
-                                  <Properties>
-                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                                      <Color blue="f3" green="ea" red="ed" type="rgb"/>
-                                    </Property>
-                                    <Property name="columns" type="int" value="20"/>
-                                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                                      <Font name="Consolas" size="18" style="0"/>
-                                    </Property>
-                                    <Property name="lineWrap" type="boolean" value="true"/>
-                                    <Property name="rows" type="int" value="5"/>
-                                    <Property name="tabSize" type="int" value="4"/>
-                                    <Property name="wrapStyleWord" type="boolean" value="true"/>
-                                  </Properties>
-                                </Component>
-                              </SubComponents>
+                              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                             </Container>
                           </SubComponents>
                         </Container>
