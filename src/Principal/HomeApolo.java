@@ -1,7 +1,13 @@
 package Principal;
 
-// Librerias externas y paquetes
+// Librerias creadas
 import Tipografias.Fuentes;
+
+// Librerias externas
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rtextarea.RTextScrollPane;
 
 // Librerias por Default
 import java.awt.Color;
@@ -27,13 +33,9 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import org.fife.ui.rsyntaxtextarea.Theme;
-import org.fife.ui.rtextarea.RTextScrollPane;
 
 public class HomeApolo extends javax.swing.JFrame {
-
+    
     static public VentanaAjustes Ajustes = new VentanaAjustes();
     static public ConfirmarSalida Confirmar = new ConfirmarSalida();
     static public Tips tp;
@@ -46,12 +48,12 @@ public class HomeApolo extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxSolution = new RSyntaxTextArea();
 
     // Crear Tipo de Fuente
-    Fuentes Euclid = new Fuentes();
-    Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
-    Font Regular20p = Euclid.fuente(Euclid.EUCR, 0, 20);
-    Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 30);
-    Font SegoeRegular = new Font("Segoe UI Emoji", Font.PLAIN, 20);
-    Font SegoeBold = new Font("Segoe UI SemiBold", Font.BOLD, 26);
+    private final Fuentes Euclid = new Fuentes();
+//    private final Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
+//    private final Font Regular20p = Euclid.fuente(Euclid.EUCR, 0, 20);
+    private final Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 30);
+    private final Font SegoeRegular = new Font("Segoe UI Emoji", Font.PLAIN, 20);
+    private final Font SegoeBold = new Font("Segoe UI SemiBold", Font.BOLD, 26);
     private int contador = 0;
     private int aux = 1;
 
@@ -66,7 +68,75 @@ public class HomeApolo extends javax.swing.JFrame {
         resaltarCodigo();
     }
 
-    // Agregar RSyntaxTextArea a Codigo y Solucion
+    // Ocultar Componentes de todas las Secciones
+    private void ocultarComponentes() {
+        for (Component component : Pnl_Aprender.getComponents()) {
+            component.setVisible(false);
+        }
+        for (Component component : Pnl_CodeStorm.getComponents()) {
+            component.setVisible(false);
+        }
+        
+        for (Component component : Pnl_Historia.getComponents()) {
+            component.setVisible(false);
+        }
+    }
+
+    // Obtener todos los componentes del JFrame ¨**IMPORTANTE**
+    private List<Component> getAllComponents(final Container c) {
+        Component[] comps = c.getComponents();
+        List<Component> compList = new ArrayList<>();
+        for (Component comp : comps) {
+            compList.add(comp);
+            if (comp instanceof Container) {
+                compList.addAll(getAllComponents((Container) comp));
+            }
+        }
+        return compList;
+    }
+
+    // Personalizar la Barra de Desplazamiento de todos los ScrollPane
+    private void configurarBarraDesplazamiento() {
+        List<Component> compList = getAllComponents(this);
+        for (Component componente : compList) {
+            if (componente instanceof JScrollPane) {
+                JScrollPane scp = (JScrollPane) componente;
+                // Agregar Barra de Desplazamiento Personalizada a los ScrollPane
+                scp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+                // Quitar borde por defecto
+                scp.setBorder(null);
+            }
+        }
+    }
+
+    // Cargar fuente personalizada del paquete Tipografias en todas las Secciones
+    private void cargarFuente() {
+
+        // Lista de Componentes de la Seccion de Aprender
+        List<Component> aprenderList = getAllComponents(Pnl_Aprender);
+        for (Component componente : aprenderList) {
+            if (componente instanceof JLabel) {
+                JLabel lbl = (JLabel) componente;
+                lbl.setFont(Bold30p);
+                lbl.setForeground(verde);
+            }
+        }
+
+        // Lista de Componentes de la Seccion de Historia 
+        List<Component> historiaList = getAllComponents(Pnl_Historia);
+        for (Component componente : historiaList) {
+            if (componente instanceof JLabel) {
+                componente.setFont(SegoeBold);
+                componente.setForeground(azul);
+            }
+            if (componente instanceof JTextArea) {
+                componente.setFont(SegoeRegular);
+                componente.setForeground(Color.BLACK);
+            }
+        }
+    }
+
+    // Personalizar RSyntaxTextArea en paneles de CodeStorm
     private void agregarRSyntax(JPanel p, RSyntaxTextArea rta, RTextScrollPane tsp) {
         rta.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         tsp = new RTextScrollPane(rta);
@@ -94,6 +164,7 @@ public class HomeApolo extends javax.swing.JFrame {
         p.add(tsp);
     }
 
+    // Agregar RSyntaxText a panel de Codigo y Solucion en CodeStorm
     private void resaltarCodigo() {
         // Creacion de Resaltado de Sintaxis para Codigo y Solucion en CodeStorm
         RTextScrollPane tspCode = new RTextScrollPane();
@@ -103,7 +174,7 @@ public class HomeApolo extends javax.swing.JFrame {
         syntaxSolution.setEditable(false);
     }
 
-    // Cargar tema preestablecido
+    // Cargar tema preestablecido en RSyntaxTextArea
     private void changeStyleViaThemeXml(RSyntaxTextArea rta) {
         try {
             String tema_xml = "/org/fife/ui/rsyntaxtextarea/themes/eclipse.xml";
@@ -112,60 +183,6 @@ public class HomeApolo extends javax.swing.JFrame {
         } catch (IOException ioe) {
             System.out.println(ioe);
         }
-    }
-
-    // Cargar fuente personalizada del paquete Tipografias
-    private void cargarFuente() {
-
-        // Lista de Componentes de la Seccion de Aprender
-        List<Component> aprenderList = getAllComponents(Pnl_Aprender);
-        for (Component componente : aprenderList) {
-            if (componente instanceof JLabel) {
-                JLabel lbl = (JLabel) componente;
-                lbl.setFont(Bold30p);
-                lbl.setForeground(verde);
-            }
-        }
-
-        // Lista de Componentes de la Seccion de Historia 
-        List<Component> historiaList = getAllComponents(Pnl_Historia);
-        for (Component componente : historiaList) {
-            if (componente instanceof JLabel) {
-                componente.setFont(SegoeBold);
-                componente.setForeground(azul);
-            }
-            if (componente instanceof JTextArea) {
-                componente.setFont(SegoeRegular);
-                componente.setForeground(Color.BLACK);
-            }
-        }
-    }
-
-    // Personalizar la Barra de Desplazamiento de todos los ScrollPane
-    private void configurarBarraDesplazamiento() {
-        List<Component> compList = getAllComponents(this);
-        for (Component componente : compList) {
-            if (componente instanceof JScrollPane) {
-                JScrollPane scp = (JScrollPane) componente;
-                // Agregar Barra de Desplazamiento Personalizada a los ScrollPane
-                scp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-                // Quitar borde por defecto
-                scp.setBorder(null);
-            }
-        }
-    }
-
-    // Obtener todos los componentes del JFrame ¨**IMPORTANTE**
-    private List<Component> getAllComponents(final Container c) {
-        Component[] comps = c.getComponents();
-        List<Component> compList = new ArrayList<>();
-        for (Component comp : comps) {
-            compList.add(comp);
-            if (comp instanceof Container) {
-                compList.addAll(getAllComponents((Container) comp));
-            }
-        }
-        return compList;
     }
 
     // Configurar las Caracteristicas de la Ventana Principal
@@ -206,9 +223,6 @@ public class HomeApolo extends javax.swing.JFrame {
                 Btn_Aprender.setSelected(false);
                 Btn_CodeStorm.setSelected(false);
                 Btn_Historia.setSelected(false);
-//                for (Component cmp : Pnl_Principal.getComponents()) {
-//                    cmp.setVisible(false);
-//                }
                 break;
             case 3:
                 Btn_Aprender.setSelected(false);
@@ -225,8 +239,8 @@ public class HomeApolo extends javax.swing.JFrame {
         }
     }
 
-    // Deshabilitar botones de los Ejercicios según Eleccion
-    private void DeshabilitarBotonesCodeStorm(int opcion) {
+    // Deshabilitar botones de los Ejercicios según Eleccion en CodeStorm
+    private void validarSeleccionBotones(int opcion) {
         switch (opcion) {
             case 0:
                 Btn_Codigo.setSelected(false);
@@ -245,14 +259,14 @@ public class HomeApolo extends javax.swing.JFrame {
         }
     }
 
-    // Habilitar botones de la Seccion de Aprender
+    // Habilitar botones de la Seccion Aprender
     private void habilitarBotonesAprender() {
         for (Component component : Pnl_Aprender.getComponents()) {
             component.setVisible(true);
         }
     }
 
-    // Habilitar botones de la Seccion de CodeStorm
+    // Habilitar botones de la Seccion CodeStorm
     private void habilitarBotonesCodeStorm() {
         for (Component component : Pnl_CodeStorm.getComponents()) {
             if (component instanceof JButton || component instanceof JToggleButton) {
@@ -261,28 +275,14 @@ public class HomeApolo extends javax.swing.JFrame {
         }
     }
 
-    // Habilitar botones de la Seccion de Historia
+    // Habilitar botones de la Seccion Historia
     private void habilitarBotonesHistoria() {
         for (Component component : Pnl_Historia.getComponents()) {
             component.setVisible(true);
         }
     }
 
-    // Ocultar Componentes de todas las Secciones
-    private void ocultarComponentes() {
-        for (Component component : Pnl_Aprender.getComponents()) {
-            component.setVisible(false);
-        }
-        for (Component component : Pnl_CodeStorm.getComponents()) {
-            component.setVisible(false);
-        }
-
-        for (Component component : Pnl_Historia.getComponents()) {
-            component.setVisible(false);
-        }
-    }
-
-    // Inicializar botones según navegacion en seccion de CodeStorm
+    // Inicializar botones según navegacion en seccion CodeStorm
     private void inicializarBotonesCodeStorm() {
         Btn_Ejercicio.doClick();
         Btn_Ejercicio.setSelected(true);
@@ -290,7 +290,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Btn_Solucion.setSelected(false);
     }
 
-    // Habilitar o Deshabilitar botones de Siguiente y Anterior en CodeStorm
+    // Habilitar o Deshabilitar botones de Siguiente y Anterior en seccion CodeStorm
     private void contador() {
         if (contador == 0) {
             Btn_Anterior.setEnabled(false);
@@ -304,7 +304,7 @@ public class HomeApolo extends javax.swing.JFrame {
         }
     }
 
-    // Deshabilitar paneles comunes de la seccion de CodeStorm
+    // Deshabilitar paneles comunes de la seccion CodeStorm
     private void paneles_ON_OFF() {
         Pnl_General.setVisible(true);
         Pnl_Main.setVisible(true);
@@ -313,7 +313,7 @@ public class HomeApolo extends javax.swing.JFrame {
         contador();
     }
 
-    // Asignar titulo a los paneles en CodeStorm
+    // Asignar titulo a los paneles en seccion CodeStorm
     private void asignarTitulo(JPanel p) {
         p.setBorder(new TitledBorder(
                 new LineBorder(new Color(204, 0, 0), 2, true),
@@ -324,7 +324,7 @@ public class HomeApolo extends javax.swing.JFrame {
                 new Color(204, 0, 0)));
     }
 
-    // Validar que ejercicio se encuentra activo en el momento
+    // Validar ejercicio que se encuentra activo en Seccion CodeStorm
     private void validarEjercicioActivo() {
         if (aux > 4) {
             aux = 1;
@@ -335,7 +335,7 @@ public class HomeApolo extends javax.swing.JFrame {
         asignarTitulo(Pnl_CodigoFull);
         asignarTitulo(Pnl_SolucionFull);
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -3489,7 +3489,6 @@ public class HomeApolo extends javax.swing.JFrame {
         if (Btn_CodeStorm.isSelected()) {
             apagarSecciones(3);
             habilitarBotonesCodeStorm();
-//            ocultarPanelesEjercicios();
 
             // Paneles Internos
             Pnl_CodeStorm.setVisible(true);
@@ -3497,9 +3496,8 @@ public class HomeApolo extends javax.swing.JFrame {
             Scp_Introduccion.setVisible(false);
             Pnl_General.setVisible(false);
 
-            // Paneles Principales
+//          Paneles Principales
             Pnl_Aprender.setVisible(false);
-//            Pnl_Programar.setVisible(false);
             Pnl_Historia.setVisible(false);
             Pnl_Home.setVisible(false);
         } else {
@@ -3512,7 +3510,7 @@ public class HomeApolo extends javax.swing.JFrame {
         if (Btn_Aprender.isSelected()) {
             apagarSecciones(1);
             habilitarBotonesAprender();
-
+            
             Pnl_Aprender.setVisible(true);
             Pnl_Mapa.setVisible(true);
 
@@ -3529,13 +3527,11 @@ public class HomeApolo extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_AprenderActionPerformed
 
     private void Btn_ProgramarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ProgramarActionPerformed
-        if (Btn_Programar.isSelected()) {
-            apagarSecciones(2);
+        if (evt.getSource() == Btn_Programar) {
+            Btn_Programar.setSelected(false);
+//            apagarSecciones(2);
             EditorDeCodigo edc = new EditorDeCodigo();
             edc.setVisible(true);
-        } else {
-//          Pnl_Programar.setVisible(false);
-            Pnl_Home.setVisible(true);
         }
     }//GEN-LAST:event_Btn_ProgramarActionPerformed
 
@@ -3548,14 +3544,13 @@ public class HomeApolo extends javax.swing.JFrame {
             // Paneles Principales
             Pnl_Home.setVisible(false);
             Pnl_Aprender.setVisible(false);
-//            Pnl_Programar.setVisible(false);
             Pnl_CodeStorm.setVisible(false);
         } else {
             Pnl_Historia.setVisible(false);
             Pnl_Home.setVisible(true);
         }
     }//GEN-LAST:event_Btn_HistoriaActionPerformed
-
+    
 
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
         Scp_Tema1.setVisible(true);
@@ -3881,81 +3876,35 @@ public class HomeApolo extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Nivel5_Ejercicio4ActionPerformed
 
     private void Btn_EjercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EjercicioActionPerformed
-
         Pnl_CodigoFull.setVisible(false);
         Pnl_EjercicioFull.setVisible(true);
         Pnl_SolucionFull.setVisible(false);
-        // Obtener paneles hijos del Panel visible
-//        Component[] paneles = obtenerPanelesEjercicios(1);
-
-//        paneles[0].setVisible(true);
-//        paneles[1].setVisible(false);
-//        paneles[2].setVisible(false);
-        DeshabilitarBotonesCodeStorm(0);
+        validarSeleccionBotones(0);
     }//GEN-LAST:event_Btn_EjercicioActionPerformed
 
     private void Btn_EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarActionPerformed
-
-        // Obtener Componentes del Panel de Ejercicios
-//        Component[] componentes = Pnl_Ejercicios.getComponents();
-//        List<JPanel> paneles = new ArrayList<>();
-//        for (Component cmp : componentes) {
-//            if (cmp instanceof JPanel) {
-//                JPanel pnl = (JPanel) cmp;
-//                paneles.add(pnl);
-//            }
-//        }
-//        for (int i = 0; i < paneles.size(); i++) {
-//            if (paneles.get(i).isVisible()) {
-//                Component[] pnl = paneles.get(i).getComponents();
-//                List<Component> comp = getAllComponents((JPanel) pnl[1]);
-//                for (Component componente : comp) {
-//                    if (componente instanceof JTextArea) {
-//                        JTextArea txa = (JTextArea) componente;
         String code = syntaxCode.getText();
         String id = "ejercicio" + (contador + 1);
         Main.init.juzgador(id, code);
         Btn_Enviar.setSelected(false);
-//                    }
-//                }
-//            }
-//        }
     }//GEN-LAST:event_Btn_EnviarActionPerformed
 
     private void Btn_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CodigoActionPerformed
         Pnl_CodigoFull.setVisible(true);
         Pnl_EjercicioFull.setVisible(false);
         Pnl_SolucionFull.setVisible(false);
-        // Obtener paneles hijos del Panel visible
-//        Component[] paneles = obtenerPanelesEjercicios(1);
-//
-//        paneles[0].setVisible(false);
-//        paneles[1].setVisible(true);
-//        paneles[2].setVisible(false);
-
-        DeshabilitarBotonesCodeStorm(1);
+        validarSeleccionBotones(1);
     }//GEN-LAST:event_Btn_CodigoActionPerformed
 
     private void Btn_SolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionActionPerformed
-
+        
         Pnl_CodigoFull.setVisible(false);
         Pnl_EjercicioFull.setVisible(false);
         Pnl_SolucionFull.setVisible(true);
-        // Obtener paneles hijos del Panel visible
-//        Component[] paneles = obtenerPanelesEjercicios(1);
-//
-//        paneles[0].setVisible(false);
-//        paneles[1].setVisible(false);
-//        paneles[2].setVisible(true);
-
-        DeshabilitarBotonesCodeStorm(2);
+        validarSeleccionBotones(2);
     }//GEN-LAST:event_Btn_SolucionActionPerformed
 
     private void Btn_AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AnteriorActionPerformed
-//        Component[] paneles = Pnl_Ejercicios.getComponents();
-
-//        paneles[contador - 1].setVisible(true);
-//        paneles[contador].setVisible(false);
         inicializarBotonesCodeStorm();
         contador--;
         aux--;
@@ -3969,10 +3918,6 @@ public class HomeApolo extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_AnteriorActionPerformed
 
     private void Btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SiguienteActionPerformed
-
-//        Component[] paneles = Pnl_Ejercicios.getComponents();
-//        paneles[contador].setVisible(false);
-//        paneles[contador + 1].setVisible(true);
         inicializarBotonesCodeStorm();
         contador++;
         aux++;
@@ -3983,8 +3928,6 @@ public class HomeApolo extends javax.swing.JFrame {
         } else {
             Btn_Anterior.setEnabled(true);
         }
-
-//        System.out.println(contador);
     }//GEN-LAST:event_Btn_SiguienteActionPerformed
 
     private void Btn_Introduccion_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Introduccion_SiguienteActionPerformed
@@ -4233,13 +4176,12 @@ public class HomeApolo extends javax.swing.JFrame {
     private void Btn_Atras_CodeStormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Atras_CodeStormActionPerformed
         Pnl_ListadoEjercicios.setVisible(true);
         Pnl_General.setVisible(false);
-//        ocultarPanelesEjercicios();
     }//GEN-LAST:event_Btn_Atras_CodeStormActionPerformed
-
+    
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
+            
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             Logger.getLogger(EditorDeCodigo.class
                     .getName()).log(Level.SEVERE, null, ex);
@@ -4329,7 +4271,7 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Nivel5_Ejercicio2;
     private javax.swing.JButton Btn_Nivel5_Ejercicio3;
     private javax.swing.JButton Btn_Nivel5_Ejercicio4;
-    private javax.swing.JToggleButton Btn_Programar;
+    protected javax.swing.JToggleButton Btn_Programar;
     private javax.swing.JButton Btn_Siguiente;
     private javax.swing.JButton Btn_Siguiente_Bucles;
     private javax.swing.JButton Btn_Siguiente_Comentarios;

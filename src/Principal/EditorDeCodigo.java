@@ -42,8 +42,6 @@ import Tipografias.Fuentes;
 import static Judge.CompileAndRun.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.nio.file.Paths;
-
 
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
@@ -57,7 +55,6 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     Color drag = new Color(96, 96, 96);
     Color thumb_on = new Color(144, 144, 144);
     Color thumb_off = new Color(96, 96, 96);
-    static ConfirmarEditor cec = new ConfirmarEditor();
 
     Fuentes Euclid = new Fuentes();
     Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 22);
@@ -65,16 +62,24 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     public EditorDeCodigo() {
         initComponents();
         configurarVentana();
-        editor();
-        Lbl_TituloEntrada.setFont(Bold30p); // Cambiar ubicacion
-        Lbl_TituloSalida.setFont(Bold30p); // Cambiar ubicacion
+        configuracionEditor();
         confirmarCierre();
     }
 
-    private void configurarVentana() {
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar a pantalla completa
-        this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
-        setIconImage(new ImageIcon(getClass().getResource("/Resources/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
+    // Verificar la pulsacion de boton
+    private class BotonPulsadoListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            if (e.getSource() == ExitEditor.Btn_Si) {
+                guardar();
+                ExitEditor.dispose();
+                dispose();
+            } else if (e.getSource() == ExitEditor.Btn_No) {
+                ExitEditor.dispose();
+                dispose();
+            }
+        }
     }
 
     // Confirmar el cierre de la Aplicacion
@@ -92,37 +97,32 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         }
     }
 
-    private class BotonPulsadoListener implements ActionListener {
-
-        @Override
-        public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == ExitEditor.Btn_Si) {
-                guardar();
-                ExitEditor.dispose();
-                dispose();
-            } else if (e.getSource() == ExitEditor.Btn_No) {
-                ExitEditor.dispose();
-                dispose();
-            }
-        }
-    }
-
+    // Llamado a JFrame de ConfirmarSalidaEditor
     private void cerrar() {
         ExitEditor.setVisible(true);
         ExitEditor.Btn_Si.addActionListener(new BotonPulsadoListener());
         ExitEditor.Btn_No.addActionListener(new BotonPulsadoListener());
     }
 
-    private void editor() {
+    // Configuracion general de la ventana
+    private void configurarVentana() {
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar a pantalla completa
+        this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
+        setIconImage(new ImageIcon(getClass().getResource(
+                "/Resources/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
+    }
+
+    // Configuracion del Area de codigo con RSyntax
+    private void configuracionEditor() {
 
         RSyntaxTextArea.setTemplatesEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
 
+        // Configuracion del ScrollBar
         sp.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));
         sp.getVerticalScrollBar().setBackground(new Color(34, 34, 34));
         sp.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
         sp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-
         int horizontalPolicy = JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED;
         int verticalPolicy = JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED;
         sp.setHorizontalScrollBarPolicy(horizontalPolicy);
@@ -130,24 +130,30 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         sp.getViewport();
 
         plantilla();
-        Completition();
-        changeStyleViaThemeXml();
+        snippets();
+        cargarTema();
 
+        // Edicion del tema preestablecido
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         textArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
         textArea.setBackground(new Color(34, 34, 34));
         textArea.setFont(new Font("Consolas", Font.PLAIN, 14));
         textArea.revalidate();
 
+        Lbl_TituloEntrada.setFont(Bold30p);
+        Lbl_TituloSalida.setFont(Bold30p);
+
         setTitle("Editor de Código");
         Pnl_Codigo.add(sp);
     }
 
-    private void Completition() {
+    // Snippets en el editor de codigo
+    // Ctrl + Shift + Espacio
+    private void snippets() {
         CompletionProvider provider = createCompletionProvider();
         AutoCompletion ac = new AutoCompletion(provider);
         CodeTemplateManager ctm = RSyntaxTextArea.getCodeTemplateManager();
-        CodeTemplate ct = new StaticCodeTemplate("for", "for (int i=0; i<", "; i++) {\n\t\n}\n");
+        CodeTemplate ct = new StaticCodeTemplate("for", "for (int i = 0; i < ", "; i++) {\n\t\n}\n");
         ctm.addTemplate(ct);
         ct = new StaticCodeTemplate("fore", "for(tipo", " variable: array){\n\t\n}");
         ctm.addTemplate(ct);
@@ -173,15 +179,20 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         ac.install(textArea);
     }
 
-    private void changeStyleViaThemeXml() {
+    // Cargar tema preestablecido en RSyntaxTextArea
+    private void cargarTema() {
         try {
-            Theme theme = Theme.load(getClass().getResourceAsStream("/org/fife/ui/rsyntaxtextarea/themes/monokai.xml"));
+            String t = "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml";
+            Theme theme = Theme.load(getClass().getResourceAsStream(t));
             theme.apply(textArea);
         } catch (IOException ioe) {
             System.out.println(ioe);
         }
     }
 
+    // Creacion de cuadro de autocompletado con 
+    // palabras reservadas y métodos útiles
+    // Ctrl + Espacio
     private CompletionProvider createCompletionProvider() {
 
         DefaultCompletionProvider provider = new DefaultCompletionProvider();
@@ -205,8 +216,12 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         provider.addCompletion(new BasicCompletion(provider, "if"));
         provider.addCompletion(new BasicCompletion(provider, "import"));
         provider.addCompletion(new BasicCompletion(provider, "int"));
+        provider.addCompletion(new BasicCompletion(provider, "java.util.Scanner"));
         provider.addCompletion(new BasicCompletion(provider, "long"));
         provider.addCompletion(new BasicCompletion(provider, "new"));
+        provider.addCompletion(new BasicCompletion(provider, "nextInt()"));
+        provider.addCompletion(new BasicCompletion(provider, "nextLong()"));
+        provider.addCompletion(new BasicCompletion(provider, "next()"));
         provider.addCompletion(new BasicCompletion(provider, "null"));
         provider.addCompletion(new BasicCompletion(provider, "package"));
         provider.addCompletion(new BasicCompletion(provider, "private"));
@@ -214,6 +229,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         provider.addCompletion(new BasicCompletion(provider, "return"));
         provider.addCompletion(new BasicCompletion(provider, "static"));
         provider.addCompletion(new BasicCompletion(provider, "switch"));
+        provider.addCompletion(new BasicCompletion(provider, "Scanner"));
         provider.addCompletion(new BasicCompletion(provider, "true"));
         provider.addCompletion(new BasicCompletion(provider, "try"));
         provider.addCompletion(new BasicCompletion(provider, "void"));
@@ -227,6 +243,13 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         return provider;
     }
 
+    // Copiar texto en portapapeles
+    private void portapapeles(String texto) {
+        StringSelection txt = new StringSelection(texto);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(txt, this);
+    }
+
+    // Cargar plantilla HelloWorld en el Area de Texto
     private void plantilla() {
         textArea.setText("public class Main {\n"
                 + "	public static void main(String[] args){\n"
@@ -235,7 +258,8 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 + "}");
     }
 
-    public String openFile(File archivo) {
+    // Abrir archivo java
+    private String abrirArchivo(File archivo) {
 
         String documento = "";
         try {
@@ -251,24 +275,27 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         return documento;
     }
 
-    public String saveFile(File archivo, String documento) {
+    // Guardar archivo java
+    private String guardarArchivo(File archivo, String documento) {
         String mensaje = null;
         try {
             salida = new FileOutputStream(archivo);
             byte[] bytxt = documento.getBytes();
             salida.write(bytxt);
-            mensaje = "Codigo Guardado exitosamente";
+            mensaje = "Codigo Guardado Exitosamente";
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al guardar" + e);
         }
         return mensaje;
     }
 
-    public void clipBoard(String texto) {
-        StringSelection txt = new StringSelection(texto);
-        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(txt, this);
+    // Guardar archivo ejecutado anteriormente
+    protected void guardareje() {
+        String documento = textArea.getText();
+        guardarArchivo(archivo_abrir, documento);
     }
 
+    // Guardar archivo usando Buscador JFileChooser
     protected void guardar() {
         if (seleccion.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
             String nombre_code;
@@ -280,11 +307,11 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
             archivo_abrir = new File(nombre_code);
             if (nombre_code.endsWith(".java")) {
                 String documento = textArea.getText();
-                String mensaje = saveFile(archivo_abrir, documento);
+                String mensaje = guardarArchivo(archivo_abrir, documento);
                 if (mensaje != null) {
                     JOptionPane.showMessageDialog(null, mensaje);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Archivo no compatible.");
+                    JOptionPane.showMessageDialog(null, "Archivo NO compatible.");
                 }
             } else {
                 JOptionPane.showMessageDialog(null, "Guardar Codigo Java");
@@ -292,12 +319,20 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         }
     }
 
-    protected void guardareje() {
-        String documento = textArea.getText();
-        saveFile(archivo_abrir, documento);
+    // Obtener el texto de Entrada en el editor
+    private void entrada() {
+        String documento = Txa_Entrada.getText();
+        try {
+            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\Editor\\input.txt");
+            byte[] bytxt = documento.getBytes();
+            out.write(bytxt);
+        } catch (IOException e) {
+            JOptionPane.showMessageDialog(null, "Error al guardar" + e);
+        }
     }
 
-    public int compilar(String ruta) throws IOException, InterruptedException {
+    // Compilar archivo 
+    private int compilar(String ruta) throws IOException, InterruptedException {
         ProcessBuilder pb = new ProcessBuilder("javac", ruta);
         pb.redirectError();
 
@@ -323,7 +358,8 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         return result;
     }
 
-    public int ejecutar(String clase, String ruta) throws IOException, InterruptedException {
+    // Ejecutar archivo
+    private int ejecutar(String clase, String ruta) throws IOException, InterruptedException {
 
         List<String> cmds = new ArrayList<>();
         cmds.add("java");
@@ -343,7 +379,6 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         String writteable = consumer.getOutput().toString();
 
-        //
         Txa_Salida.setText(writteable);
 
         try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\Editor\\output.txt")) {
@@ -351,17 +386,6 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         }
 
         return result;
-    }
-
-    private void entrada() {
-//      String documento = Txa_Entrada.getText();
-        try {
-            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\Editor\\input.txt");
-//          byte[] bytxt = documento.getBytes();
-//          out.write(bytxt);
-        } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar" + e);
-        }
     }
 
     @SuppressWarnings("unchecked")
@@ -407,6 +431,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         Btn_Limpiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Limpiar_Off.png"))); // NOI18N
         Btn_Limpiar.setMnemonic('d');
+        Btn_Limpiar.setToolTipText("Alt + d");
         Btn_Limpiar.setBorder(null);
         Btn_Limpiar.setBorderPainted(false);
         Btn_Limpiar.setContentAreaFilled(false);
@@ -426,6 +451,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         Btn_Copiar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Copiar_Off.png"))); // NOI18N
         Btn_Copiar.setMnemonic('c');
+        Btn_Copiar.setToolTipText("Alt + c");
         Btn_Copiar.setBorderPainted(false);
         Btn_Copiar.setContentAreaFilled(false);
         Btn_Copiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -444,6 +470,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         Btn_Abrir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Abrir_Off.png"))); // NOI18N
         Btn_Abrir.setMnemonic('o');
+        Btn_Abrir.setToolTipText("Alt + o");
         Btn_Abrir.setBorderPainted(false);
         Btn_Abrir.setContentAreaFilled(false);
         Btn_Abrir.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
@@ -462,6 +489,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         Btn_Guardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Guardar_Off.png"))); // NOI18N
         Btn_Guardar.setMnemonic('s');
+        Btn_Guardar.setToolTipText("Alt + s");
         Btn_Guardar.setBorder(null);
         Btn_Guardar.setBorderPainted(false);
         Btn_Guardar.setContentAreaFilled(false);
@@ -481,6 +509,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         Btn_Ejecutar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Ejecutar_Off.png"))); // NOI18N
         Btn_Ejecutar.setMnemonic('n');
+        Btn_Ejecutar.setToolTipText("Alt + n");
         Btn_Ejecutar.setBorder(null);
         Btn_Ejecutar.setBorderPainted(false);
         Btn_Ejecutar.setContentAreaFilled(false);
@@ -500,6 +529,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         Btn_Plantilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Programar/Plantilla_Off.png"))); // NOI18N
         Btn_Plantilla.setMnemonic('p');
+        Btn_Plantilla.setToolTipText("Alt + p");
         Btn_Plantilla.setBorder(null);
         Btn_Plantilla.setBorderPainted(false);
         Btn_Plantilla.setContentAreaFilled(false);
@@ -634,19 +664,20 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
                 JOptionPane.showMessageDialog(null, "Error al guardar" + e);
             }
 
-            String ruta = System.getProperty("user.dir") + "\\src\\Editor\\Main.java";  // Ruta donde se guarda el archivo
+            // Ruta donde se guarda el archivo
+            String ruta = System.getProperty("user.dir") + "\\src\\Editor\\Main.java";
 
             int result = compilar(ruta);  // Compila el archivo
             // Confirmar compilacion exitosa
             if (result != 0) {
                 JOptionPane.showMessageDialog(null, "Compilation Error");
-                System.out.println("Numero: " + result);
+//                System.out.println("Numero: " + result + "No Compila");
             }
 
             result = ejecutar("editor.Main", ruta); // Ejecuta el archivo
             // Confirmar ejecucion exitosa
             if (result != 0) {
-                System.out.println("Numero: " + result);
+//                System.out.println("Numero: " + result + "Runtime");
                 JOptionPane.showMessageDialog(null, "Runtime Error");
             }
 
@@ -664,7 +695,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
             archivo_abrir = seleccion.getSelectedFile();
             if (archivo_abrir.canRead()) {
                 if (archivo_abrir.getName().endsWith("java")) {
-                    String documento = openFile(archivo_abrir);
+                    String documento = abrirArchivo(archivo_abrir);
                     textArea.setText(documento);
                 } else {
                     JOptionPane.showMessageDialog(null, "Archivo no compatible.");
@@ -674,7 +705,7 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
     }//GEN-LAST:event_Btn_AbrirActionPerformed
 
     private void Btn_CopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CopiarActionPerformed
-        clipBoard(textArea.getText());
+        portapapeles(textArea.getText());
     }//GEN-LAST:event_Btn_CopiarActionPerformed
 
     private void Btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LimpiarActionPerformed
