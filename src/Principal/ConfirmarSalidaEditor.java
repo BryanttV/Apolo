@@ -33,7 +33,6 @@ public class ConfirmarSalidaEditor extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(300, 100));
         setMinimumSize(new java.awt.Dimension(300, 100));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(300, 100));
 
         Pnl_Salida.setBackground(new java.awt.Color(255, 255, 255));
         Pnl_Salida.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));

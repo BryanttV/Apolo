@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-Hello mundo
-=======
-Hello monda
->>>>>>> feature/UPDATE
+Hello World

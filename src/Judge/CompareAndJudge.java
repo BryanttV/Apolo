@@ -13,7 +13,7 @@ public class CompareAndJudge {
     public static int compareUtil(String idejercicio) {
         if (compareLength(idejercicio) && compareLines(idejercicio)) {
             return 0;
-        } else if (compareLength(idejercicio) && !compareLines(idejercicio)) {
+        } else if (!compareLength(idejercicio) && compareLines(idejercicio)) {
             return 1;
         }
         return 2;
@@ -43,7 +43,7 @@ public class CompareAndJudge {
                 if (line1 == null || line2 == null) {
                     areEqual = false;
                     break;
-                } else if (!line1.equalsIgnoreCase(line2)) {
+                } else if (!line1.equals(line2.trim())) {
                     areEqual = false;
                     break;
                 }
