@@ -49,8 +49,6 @@ public class HomeApolo extends javax.swing.JFrame {
 
     // Crear Tipo de Fuente
     private final Fuentes Euclid = new Fuentes();
-//    private final Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
-//    private final Font Regular20p = Euclid.fuente(Euclid.EUCR, 0, 20);
     private final Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 30);
     private final Font SegoeRegular = new Font("Segoe UI Emoji", Font.PLAIN, 20);
     private final Font SegoeBold = new Font("Segoe UI SemiBold", Font.BOLD, 26);
@@ -1009,15 +1007,20 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Encabezado.add(Lbl_Header_Aprender9, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 980, 55));
 
         Btn_Atras_Aprender.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        Btn_Atras_Aprender.setText("Atras");
+        Btn_Atras_Aprender.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Atras_Aprender_Off.png"))); // NOI18N
+        Btn_Atras_Aprender.setMnemonic('b');
+        Btn_Atras_Aprender.setToolTipText("Atras");
         Btn_Atras_Aprender.setBorder(null);
-        Btn_Atras_Aprender.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Atras_Aprender.setBorderPainted(false);
+        Btn_Atras_Aprender.setContentAreaFilled(false);
+        Btn_Atras_Aprender.setFocusPainted(false);
+        Btn_Atras_Aprender.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Atras_Aprender_On.png"))); // NOI18N
         Btn_Atras_Aprender.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_Atras_AprenderActionPerformed(evt);
             }
         });
-        Pnl_Encabezado.add(Btn_Atras_Aprender, new org.netbeans.lib.awtextra.AbsoluteConstraints(1030, 30, 110, 40));
+        Pnl_Encabezado.add(Btn_Atras_Aprender, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 20, 102, 60));
 
         Pnl_Temas.add(Pnl_Encabezado, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 100));
 
