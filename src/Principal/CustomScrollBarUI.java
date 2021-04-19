@@ -13,14 +13,14 @@ import javax.swing.plaf.basic.BasicScrollBarUI;
 
 public class CustomScrollBarUI extends BasicScrollBarUI {
 
-    Color drag;
-    Color thumb_off;
-    Color thumb_on;
+    private final Color cDrag;
+    private final Color cThumb_Off;
+    private final Color cThumb_On;
 
-    public CustomScrollBarUI(Color drag, Color thumb_off, Color thumb_on) {
-        this.drag = drag;
-        this.thumb_off = thumb_off;
-        this.thumb_on = thumb_on;
+    public CustomScrollBarUI(Color cDrag, Color cThumb_On, Color cThumb_Off) {
+        this.cDrag = cDrag;
+        this.cThumb_Off = cThumb_Off;
+        this.cThumb_On = cThumb_On;
     }
 
     private final Dimension d = new Dimension();
@@ -59,21 +59,21 @@ public class CustomScrollBarUI extends BasicScrollBarUI {
     protected void paintThumb(Graphics g, JComponent c, Rectangle r) {
         Graphics2D g2 = (Graphics2D) g.create();
         g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        Color color = null;
+        Color color;
         JScrollBar sb = (JScrollBar) c;
         if (!sb.isEnabled() || r.width > r.height) {
             return;
         } else if (isDragging) {
-            color = drag; // Color del Drag
+            color = cDrag; // Color del Drag
         } else if (isThumbRollover()) {
-            color = thumb_on; // Color del Thumb On
+            color = cThumb_On; // Color del Thumb On
         } else {
-            color = thumb_off; // Color del Thumb Off
+            color = cThumb_Off; // Color del Thumb Off
         }
 
         g2.setPaint(color);
         g2.fillRoundRect(r.x, r.y, r.width, r.height, 15, 15);
-//      g2.setPaint(Color.WHITE); // Poner borde
+        // g2.setPaint(Color.WHITE); // Poner borde
         g2.drawRoundRect(r.x, r.y, r.width, r.height, 15, 15);
         g2.dispose();
     }

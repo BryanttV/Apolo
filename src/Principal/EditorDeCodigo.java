@@ -671,13 +671,13 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
             // Confirmar compilacion exitosa
             if (result != 0) {
                 JOptionPane.showMessageDialog(null, "Compilation Error");
-//                System.out.println("Numero: " + result + "No Compila");
+//              System.out.println("Numero: " + result + "No Compila");
             }
 
             result = ejecutar("editor.Main", ruta); // Ejecuta el archivo
             // Confirmar ejecucion exitosa
             if (result != 0) {
-//                System.out.println("Numero: " + result + "Runtime");
+//              System.out.println("Numero: " + result + "Runtime");
                 JOptionPane.showMessageDialog(null, "Runtime Error");
             }
 
