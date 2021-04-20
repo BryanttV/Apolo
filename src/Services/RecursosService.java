@@ -10,6 +10,8 @@ import org.netbeans.lib.awtextra.AbsoluteLayout;
 public class RecursosService {
 
     private Font fLabel_Aprender;
+    private Font fLabel_HistoriaB;
+    private Font fLabel_HistoriaR;
     private Cursor cMano;
     private Cursor cDefault;
     private Color cPrincipal;
@@ -55,6 +57,8 @@ public class RecursosService {
 
     public void crearFuentes() {
         fLabel_Aprender = new Font("Trebuchet MS", 1, 18);
+        fLabel_HistoriaR = new Font("Segoe UI Emoji", Font.PLAIN, 20);
+        fLabel_HistoriaB = new Font("Segoe UI SemiBold", Font.BOLD, 26);
     }
 
     public void crearLayout() {
@@ -64,6 +68,14 @@ public class RecursosService {
     // Setters -----------------------------------------------------------------
     public Font getFLabels() {
         return fLabel_Aprender;
+    }
+
+    public Font getFHistoriaR() {
+        return fLabel_HistoriaR;
+    }
+
+    public Font getFHistoriaB() {
+        return fLabel_HistoriaB;
     }
 
     public Cursor getCMano() {

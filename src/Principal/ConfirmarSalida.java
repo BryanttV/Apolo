@@ -1,18 +1,20 @@
 package Principal;
 
-import java.awt.Font;
-import Tipografias.Fuentes;
+// Librerias Default
 import java.awt.Color;
+import Tipografias.Fuentes;
+
+// Librerias Propias
+import java.awt.Font;
 
 public class ConfirmarSalida extends javax.swing.JFrame {
 
-    Fuentes Euclid = new Fuentes();
-    Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
-
+    private final Fuentes f = new Fuentes();
+    private final Font euclid = f.fuente(f.EUCR, 0, 14);
 
     public ConfirmarSalida() {
         initComponents();
-        Lbl_Mensaje.setFont(Regular14p);
+        Lbl_Mensaje.setFont(euclid);
         Lbl_Mensaje.setForeground(Color.BLACK);
     }
 
@@ -38,7 +40,7 @@ public class ConfirmarSalida extends javax.swing.JFrame {
         Pnl_Salida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Salida.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        Lbl_Salida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Salida/Advertencia.png"))); // NOI18N
+        Lbl_Salida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Advertencia.png"))); // NOI18N
         Pnl_Salida.add(Lbl_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 50, 42));
 
         Lbl_Mensaje.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
@@ -48,13 +50,13 @@ public class ConfirmarSalida extends javax.swing.JFrame {
 
         Btn_No.setBackground(new java.awt.Color(255, 255, 255));
         Btn_No.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        Btn_No.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Salida/No_Off.png"))); // NOI18N
+        Btn_No.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/No_Off.png"))); // NOI18N
         Btn_No.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         Btn_No.setBorderPainted(false);
         Btn_No.setContentAreaFilled(false);
         Btn_No.setFocusPainted(false);
         Btn_No.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_No.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Salida/No_On.png"))); // NOI18N
+        Btn_No.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/No_On.png"))); // NOI18N
         Btn_No.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_NoActionPerformed(evt);
@@ -64,13 +66,13 @@ public class ConfirmarSalida extends javax.swing.JFrame {
 
         Btn_Si.setBackground(new java.awt.Color(255, 255, 255));
         Btn_Si.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        Btn_Si.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Salida/Si_Off.png"))); // NOI18N
+        Btn_Si.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Si_Off.png"))); // NOI18N
         Btn_Si.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         Btn_Si.setBorderPainted(false);
         Btn_Si.setContentAreaFilled(false);
         Btn_Si.setFocusPainted(false);
         Btn_Si.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_Si.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Salida/Si_On.png"))); // NOI18N
+        Btn_Si.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Si_On.png"))); // NOI18N
         Btn_Si.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_SiActionPerformed(evt);

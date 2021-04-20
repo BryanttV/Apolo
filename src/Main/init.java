@@ -7,10 +7,11 @@ import static Judge.CompileAndRun.*;
 
 public class init {
     
-    static Accepted_window ac = new Accepted_window();
-    static Wrong_answer_window wa = new Wrong_answer_window();
-    static Compilation_window ce = new Compilation_window();
+    static Accepted_Window ac = new Accepted_Window();
+    static Wrong_Window wa = new Wrong_Window();
+    static Compilation_Window ce = new Compilation_Window();
     static Presentation_window pe = new Presentation_window();
+    static Runtime_Window rt = new Runtime_Window();
 
     public static void juzgador(String id, String code) {
         if (compileRunCompareJudge(id, code)) {
@@ -39,7 +40,8 @@ public class init {
             // Ejecutar archivo
             result = run("judge.Main");
             if (result != 0) {
-                JOptionPane.showMessageDialog(null, "Runtime Error");
+//                JOptionPane.showMessageDialog(null, "Runtime Error");
+                rt.setVisible(true);
                 return true;
             }
 

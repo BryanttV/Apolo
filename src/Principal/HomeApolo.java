@@ -1,8 +1,8 @@
 package Principal;
 
 // Librerias creadas
-import Tipografias.Fuentes;
 import Services.RecursosService;
+import Tipografias.Fuentes;
 
 // Librerias externas
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
@@ -38,6 +38,7 @@ import javax.swing.border.TitledBorder;
 
 public class HomeApolo extends javax.swing.JFrame {
 
+    private final RecursosService sRecursos;
     static public VentanaAjustes Ajustes = new VentanaAjustes();
     static public ConfirmarSalida Confirmar = new ConfirmarSalida();
     static public Tips tp;
@@ -48,15 +49,10 @@ public class HomeApolo extends javax.swing.JFrame {
     private final Color thumb_off = new Color(50, 50, 50); // Color del Thumb_off del ScrollBar
     private final RSyntaxTextArea syntaxCode = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxSolution = new RSyntaxTextArea();
-
-    // Crear Tipo de Fuente
-    private final Fuentes Euclid = new Fuentes();
-    private final Font Bold30p = Euclid.fuente(Euclid.EUCB, 0, 30);
-    private final Font SegoeRegular = new Font("Segoe UI Emoji", Font.PLAIN, 20);
-    private final Font SegoeBold = new Font("Segoe UI SemiBold", Font.BOLD, 26);
+    private final Fuentes f = new Fuentes();
+    private final Font euclidB = f.fuente(f.EUCB, 0, 30);
     private int contador = 0;
     private int aux = 1;
-    private final RecursosService sRecursos;
 
     // Constructor
     public HomeApolo() {
@@ -78,7 +74,6 @@ public class HomeApolo extends javax.swing.JFrame {
         for (Component component : Pnl_CodeStorm.getComponents()) {
             component.setVisible(false);
         }
-
         for (Component component : Pnl_Historia.getComponents()) {
             component.setVisible(false);
         }
@@ -104,7 +99,8 @@ public class HomeApolo extends javax.swing.JFrame {
             if (componente instanceof JScrollPane) {
                 JScrollPane scp = (JScrollPane) componente;
                 // Agregar Barra de Desplazamiento Personalizada cada ScrollPane
-                scp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
+                scp.getVerticalScrollBar().setUI(
+                        new CustomScrollBarUI(drag, thumb_on, thumb_off));
                 // Quitar borde por defecto
                 scp.setBorder(null);
             }
@@ -124,7 +120,7 @@ public class HomeApolo extends javax.swing.JFrame {
         for (Component componente : aprenderList) {
             if (componente instanceof JLabel) {
                 JLabel lbl = (JLabel) componente;
-                lbl.setFont(Bold30p);
+                lbl.setFont(euclidB);
                 lbl.setForeground(verde);
             }
         }
@@ -133,11 +129,11 @@ public class HomeApolo extends javax.swing.JFrame {
         List<Component> historiaList = getAllComponents(Pnl_Historia);
         for (Component componente : historiaList) {
             if (componente instanceof JLabel) {
-                componente.setFont(SegoeBold);
+                componente.setFont(sRecursos.getFHistoriaB());
                 componente.setForeground(azul);
             }
             if (componente instanceof JTextArea) {
-                componente.setFont(SegoeRegular);
+                componente.setFont(sRecursos.getFHistoriaR());
                 componente.setForeground(Color.BLACK);
             }
         }
@@ -162,9 +158,9 @@ public class HomeApolo extends javax.swing.JFrame {
 
         // Personalizar Area de Texto
         rta.setText("// Pega aquí tu código...");
+        rta.setFont(new Font("Consolas", Font.PLAIN, 14));
         rta.setBackground(sRecursos.getCPrincipal());
         rta.setAntiAliasingEnabled(true);
-        rta.setFont(new Font("Consolas", Font.PLAIN, 14));
         rta.revalidate();
 
         // Agregar Area de Texto al Panel
