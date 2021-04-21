@@ -1,5 +1,7 @@
 package Principal;
 
+import CustomComponents.CustomScrollBarUI;
+import Salida.ExitEditor;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
@@ -39,13 +41,13 @@ import org.fife.ui.rtextarea.RTextScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import Tipografias.Fuentes;
-import static Judge.CompileAndRun.*;
+import static UtilityJudge.CompileAndRun.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner {
 
-    static public ConfirmarSalidaEditor ExitEditor = new ConfirmarSalidaEditor();
+    ExitEditor Exit = new ExitEditor();
     JFileChooser seleccion = new JFileChooser();
     RSyntaxTextArea textArea = new RSyntaxTextArea();
     File archivo_abrir, codigo_modificado;
@@ -71,12 +73,12 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            if (e.getSource() == ExitEditor.Btn_Si) {
+            if (e.getSource() == Exit.Btn_Si) {
                 guardar();
-                ExitEditor.dispose();
+                Exit.dispose();
                 dispose();
-            } else if (e.getSource() == ExitEditor.Btn_No) {
-                ExitEditor.dispose();
+            } else if (e.getSource() == Exit.Btn_No) {
+                Exit.dispose();
                 dispose();
             }
         }
@@ -97,11 +99,12 @@ public class EditorDeCodigo extends javax.swing.JFrame implements ClipboardOwner
         }
     }
 
-    // Llamado a JFrame de ConfirmarSalidaEditor
+    // Llamado a JFrame de ExitEditor
     private void cerrar() {
-        ExitEditor.setVisible(true);
-        ExitEditor.Btn_Si.addActionListener(new BotonPulsadoListener());
-        ExitEditor.Btn_No.addActionListener(new BotonPulsadoListener());
+        this.setEnabled(false);
+        Exit.setVisible(true);
+        Exit.Btn_Si.addActionListener(new BotonPulsadoListener());
+        Exit.Btn_No.addActionListener(new BotonPulsadoListener());
     }
 
     // Configuracion general de la ventana

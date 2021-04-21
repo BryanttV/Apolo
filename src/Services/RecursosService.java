@@ -14,7 +14,10 @@ public class RecursosService {
     private Font fLabel_HistoriaR;
     private Cursor cMano;
     private Cursor cDefault;
-    private Color cPrincipal;
+    private Color colorPrincipal;
+    private Color colorRojo;
+    private Color colorAzul;
+    private Color colorVerde;
     private Dimension dTamanioPaneles;
     private Dimension dTamanioBotones;
     private Dimension dBtns_Aprender;
@@ -44,7 +47,10 @@ public class RecursosService {
     }
 
     private void crearColores() {
-        cPrincipal = new Color(237, 234, 243);
+        colorPrincipal = new Color(237, 234, 243);
+        colorRojo = new Color(204, 0, 0);
+        colorAzul = new Color(0, 47, 108);
+        colorVerde = new Color(0, 37, 26);
     }
 
     private void crearTamanio() {
@@ -87,7 +93,19 @@ public class RecursosService {
     }
 
     public Color getCPrincipal() {
-        return cPrincipal;
+        return colorPrincipal;
+    }
+
+    public Color getColorVerde() {
+        return colorVerde;
+    }
+
+    public Color getColorAzul() {
+        return colorAzul;
+    }
+
+    public Color getColorRojo() {
+        return colorRojo;
     }
 
     public Dimension getDTamanio() {
