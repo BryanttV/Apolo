@@ -1,29 +1,14 @@
 package CustomComponents;
 
 import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
-import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
-import javafx.geometry.Orientation;
 import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
-public class CustomProgressBarUI extends BasicProgressBarUI {
-
-    @Override
-    protected Dimension getPreferredInnerVertical() {
-        return new Dimension(20, 146);
-    }
-
-    @Override
-    protected Dimension getPreferredInnerHorizontal() {
-        return new Dimension(146, 20);
-    }
+public class CustomProgressBarUIVertical extends BasicProgressBarUI {
 
     @Override
     protected void paintDeterminate(Graphics g, JComponent c) {
@@ -42,7 +27,7 @@ public class CustomProgressBarUI extends BasicProgressBarUI {
 
         RoundRectangle2D outline = new RoundRectangle2D.Double((iStrokWidth / 2), (iStrokWidth / 2),
                 width - iStrokWidth, height - iStrokWidth,
-                height, height);
+                width, width);
 
         g2d.draw(outline);
 
@@ -56,25 +41,12 @@ public class CustomProgressBarUI extends BasicProgressBarUI {
             dProgress = 1;
         }
 
-        iInnerWidth = (int) Math.round(iInnerWidth * dProgress);
+        iInnerHeight = (int) Math.round(iInnerHeight * dProgress);
 
-        int x = iStrokWidth * 2;
-        int y = iStrokWidth * 2;
-
-        Point2D start = new Point2D.Double(x, y);
-        Point2D end = new Point2D.Double(x, y + iInnerHeight);
-
-        float[] dist = {0.0f, 0.25f, 1.0f};
-        Color[] colors = {progressBar.getForeground(), progressBar.getForeground(), progressBar.getForeground()};
-        LinearGradientPaint p = new LinearGradientPaint(start, end, dist, colors);
-
-        g2d.setPaint(p);
-
-        RoundRectangle2D fill = new RoundRectangle2D.Double(iStrokWidth * 2, iStrokWidth * 2,
-                iInnerWidth, iInnerHeight, iInnerHeight, iInnerHeight);
+        RoundRectangle2D fill = new RoundRectangle2D.Double((iStrokWidth * 2), (iStrokWidth * 2),
+                iInnerWidth, iInnerHeight, iInnerWidth, iInnerWidth);
 
         g2d.fill(fill);
-
         g2d.dispose();
     }
 
@@ -82,5 +54,4 @@ public class CustomProgressBarUI extends BasicProgressBarUI {
     protected void paintIndeterminate(Graphics g, JComponent c) {
         super.paintIndeterminate(g, c); //To change body of generated methods, choose Tools | Templates.
     }
-
 }

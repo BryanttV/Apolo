@@ -1,7 +1,7 @@
 package Principal;
 
 // Librerias creadas
-import CustomComponents.CustomProgressBarUI;
+import CustomComponents.CustomProgressBarUIHorizontal;
 import Tipografias.Fuentes;
 import java.awt.Color;
 
@@ -42,7 +42,7 @@ public class Tips extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         temporizador();
 
-        Pb_Tips.setUI(new CustomProgressBarUI());
+        Pb_Tips.setUI(new CustomProgressBarUIHorizontal());
 
         // Interfaz
         Txa_Tips.setFont(euclidR);

@@ -1,7 +1,8 @@
 package Principal;
 
 // Librerias creadas
-import CustomComponents.CustomProgressBarUI;
+import CustomComponents.CustomProgressBarUIHorizontal;
+import CustomComponents.CustomProgressBarUIVertical;
 import CustomComponents.CustomScrollBarUI;
 //import Salida.ConfirmarSalida;
 import Services.RecursosService;
@@ -99,9 +100,12 @@ public class HomeApolo extends javax.swing.JFrame {
 
     // Personalizar la Barra de Desplazamiento de todos los ScrollPane
     private void configurarBarraDesplazamiento() {
-        Pb_Nivel2.setUI(new CustomProgressBarUI());
-        Pb_Mapa.setUI(new CustomProgressBarUI());
-        Pb_Nivel1.setUI(new CustomProgressBarUI());
+        Pb_Mapa.setUI(new CustomProgressBarUIHorizontal());
+        Pb_Nivel1.setUI(new CustomProgressBarUIVertical());
+        Pb_Nivel2.setUI(new CustomProgressBarUIVertical());
+        Pb_Nivel3.setUI(new CustomProgressBarUIVertical());
+        Pb_Nivel4.setUI(new CustomProgressBarUIVertical());
+        Pb_Nivel5.setUI(new CustomProgressBarUIVertical());
         List<Component> compList = getAllComponents(this);
         for (Component componente : compList) {
             if (componente instanceof JScrollPane) {
@@ -556,6 +560,7 @@ public class HomeApolo extends javax.swing.JFrame {
         Pb_Nivel2 = new javax.swing.JProgressBar();
         Pb_Nivel3 = new javax.swing.JProgressBar();
         Pb_Nivel4 = new javax.swing.JProgressBar();
+        Pb_Nivel5 = new javax.swing.JProgressBar();
         Lbl_Header_CodeStorm = new javax.swing.JLabel();
         Btn_Introduccion = new javax.swing.JButton();
         Btn_Nivel1_Ejercicio1 = new javax.swing.JButton();
@@ -583,8 +588,6 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Nivel3 = new javax.swing.JLabel();
         Lbl_Nivel4 = new javax.swing.JLabel();
         Lbl_Nivel5 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel5_3 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel5_4 = new javax.swing.JLabel();
         Lbl_CodeStorm_Fondo = new javax.swing.JLabel();
         Scp_Introduccion = new javax.swing.JScrollPane();
         Pnl_Introduccion = new javax.swing.JPanel();
@@ -2827,22 +2830,42 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_ListadoEjercicios.setPreferredSize(sRecursos.getDTamanio());
         Pnl_ListadoEjercicios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Pb_Nivel1.setBackground(sRecursos.getCPrincipal());
         Pb_Nivel1.setForeground(sRecursos.getColorRojo());
         Pb_Nivel1.setOrientation(1);
+        Pb_Nivel1.setValue(75);
         Pb_Nivel1.setBorderPainted(false);
         Pnl_ListadoEjercicios.add(Pb_Nivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 20, 290));
 
-        Pb_Nivel2.setBackground(new java.awt.Color(255, 255, 255));
+        Pb_Nivel2.setBackground(sRecursos.getCPrincipal());
         Pb_Nivel2.setForeground(sRecursos.getColorRojo());
         Pb_Nivel2.setOrientation(1);
         Pb_Nivel2.setValue(50);
-        Pb_Nivel2.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorRojo(), 2, true));
+        Pb_Nivel2.setBorderPainted(false);
         Pb_Nivel2.setOpaque(true);
         Pb_Nivel2.setString("");
-        Pb_Nivel2.setStringPainted(true);
         Pnl_ListadoEjercicios.add(Pb_Nivel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 20, 290));
+
+        Pb_Nivel3.setBackground(sRecursos.getCPrincipal());
+        Pb_Nivel3.setForeground(sRecursos.getColorRojo());
+        Pb_Nivel3.setOrientation(1);
+        Pb_Nivel3.setToolTipText("");
+        Pb_Nivel3.setValue(100);
+        Pb_Nivel3.setBorderPainted(false);
+        Pb_Nivel3.setOpaque(true);
         Pnl_ListadoEjercicios.add(Pb_Nivel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 20, 290));
+
+        Pb_Nivel4.setBackground(sRecursos.getCPrincipal());
+        Pb_Nivel4.setForeground(sRecursos.getColorRojo());
+        Pb_Nivel4.setOrientation(1);
+        Pb_Nivel4.setValue(50);
+        Pb_Nivel4.setBorderPainted(false);
         Pnl_ListadoEjercicios.add(Pb_Nivel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 20, 290));
+
+        Pb_Nivel5.setBackground(sRecursos.getCPrincipal());
+        Pb_Nivel5.setForeground(sRecursos.getColorRojo());
+        Pb_Nivel5.setBorderPainted(false);
+        Pnl_ListadoEjercicios.add(Pb_Nivel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 20, 290));
 
         Lbl_Header_CodeStorm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_CodeStorm.png"))); // NOI18N
         Pnl_ListadoEjercicios.add(Lbl_Header_CodeStorm, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
@@ -3207,12 +3230,6 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Nivel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Nivel5.png"))); // NOI18N
         Lbl_Nivel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Pnl_ListadoEjercicios.add(Lbl_Nivel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 270, 180, 50));
-
-        Lbl_BarraProgreso_Nivel5_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_3.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel5_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel5_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_4.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel5_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 17, 290));
 
         Lbl_CodeStorm_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Apolo_CodeStorm_Fondo.png"))); // NOI18N
         Pnl_ListadoEjercicios.add(Lbl_CodeStorm_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 705));
@@ -4366,8 +4383,6 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Siguiente_TiposdeDatos;
     private javax.swing.JToggleButton Btn_Solucion;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_3;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_4;
     private javax.swing.JLabel Lbl_Bucles;
     private javax.swing.JLabel Lbl_CodeStorm_Fondo;
     private javax.swing.JLabel Lbl_Comentarios;
@@ -4423,6 +4438,7 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JProgressBar Pb_Nivel2;
     private javax.swing.JProgressBar Pb_Nivel3;
     private javax.swing.JProgressBar Pb_Nivel4;
+    private javax.swing.JProgressBar Pb_Nivel5;
     private javax.swing.JPanel Pnl_Aprender;
     private javax.swing.JPanel Pnl_Bar_Buttons;
     private javax.swing.JPanel Pnl_BotonesPrincipales;
