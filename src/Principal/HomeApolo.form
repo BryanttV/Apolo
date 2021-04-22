@@ -129,7 +129,7 @@
         <Component class="javax.swing.JToggleButton" name="Btn_Programar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_ProgramaButton_Off.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_ProgramaButton_Off.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -141,13 +141,13 @@
             </Property>
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_ProgramaButton_On.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_ProgramaButton_On.png"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_ProgramaButton_On.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_ProgramaButton_On.png"/>
             </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_ProgramaButton_Enabled.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_ProgramaButton_Enabled.png"/>
             </Property>
           </Properties>
           <Events>
@@ -165,7 +165,7 @@
         <Component class="javax.swing.JToggleButton" name="Btn_Ajustes">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_AjustesButton_Off.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_AjustesButton_Off.png"/>
             </Property>
             <Property name="borderPainted" type="boolean" value="false"/>
             <Property name="contentAreaFilled" type="boolean" value="false"/>
@@ -175,13 +175,13 @@
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="horizontalTextPosition" type="int" value="0"/>
             <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_AjustesButton_On.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_AjustesButton_On.png"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_AjustesButton_On.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_AjustesButton_On.png"/>
             </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_AjustesButton_Enabled.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_AjustesButton_Enabled.png"/>
             </Property>
           </Properties>
           <Events>
@@ -196,7 +196,7 @@
         <Component class="javax.swing.JToggleButton" name="Btn_Historia">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_HistoriaButton_Off.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_HistoriaButton_Off.png"/>
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="null"/>
@@ -209,13 +209,13 @@
             <Property name="focusPainted" type="boolean" value="false"/>
             <Property name="focusable" type="boolean" value="false"/>
             <Property name="pressedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_HistoriaButton_On.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_HistoriaButton_On.png"/>
             </Property>
             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_HistoriaButton_On.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_HistoriaButton_On.png"/>
             </Property>
             <Property name="selectedIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_HistoriaButton_Enabled.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_HistoriaButton_Enabled.png"/>
             </Property>
           </Properties>
           <Events>
@@ -233,7 +233,7 @@
               <Connection code="sRecursos.getCPrincipal()" type="code"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Resources/Apolo_FondoButtons.png"/>
+              <Image iconType="3" name="/Resources/General/Apolo_FondoButtons.png"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -302,7 +302,7 @@
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/Resources/Apolo_Home_Fondo.png"/>
+                  <Image iconType="3" name="/Resources/General/Apolo_Home_Fondo.png"/>
                 </Property>
                 <Property name="horizontalTextPosition" type="int" value="0"/>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -914,7 +914,7 @@
                     <Component class="javax.swing.JLabel" name="Lbl_Header_Aprender">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Resources/Apolo_Header_Aprender.png"/>
+                          <Image iconType="3" name="/Resources/General/Apolo_Header_Aprender.png"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -5232,7 +5232,7 @@
                 <Component class="javax.swing.JLabel" name="Lbl_Header_CodeStorm">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Resources/Apolo_Header_CodeStorm.png"/>
+                      <Image iconType="3" name="/Resources/General/Apolo_Header_CodeStorm.png"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -6327,7 +6327,7 @@
                     <Component class="javax.swing.JLabel" name="Lbl_Header_CodeStorm1">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Resources/Apolo_Header_CodeStorm.png"/>
+                          <Image iconType="3" name="/Resources/General/Apolo_Header_CodeStorm.png"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -6415,7 +6415,7 @@
                     <Component class="javax.swing.JLabel" name="Lbl_Header_CodeStorm2">
                       <Properties>
                         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                          <Image iconType="3" name="/Resources/Apolo_Header_CodeStorm.png"/>
+                          <Image iconType="3" name="/Resources/General/Apolo_Header_CodeStorm.png"/>
                         </Property>
                       </Properties>
                       <Constraints>
@@ -6907,10 +6907,10 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="Lbl_Header_Aprender11">
+                <Component class="javax.swing.JLabel" name="Lbl_Header_Historia">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Resources/Apolo_Header_Historia.png"/>
+                      <Image iconType="3" name="/Resources/General/Apolo_Header_Historia.png"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -7024,10 +7024,10 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="Lbl_Header_Aprender12">
+                <Component class="javax.swing.JLabel" name="Lbl_Header_Historia2">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Resources/Apolo_Header_Historia.png"/>
+                      <Image iconType="3" name="/Resources/General/Apolo_Header_Historia.png"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -7054,10 +7054,10 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="Lbl_Header_Aprender13">
+                <Component class="javax.swing.JLabel" name="Lbl_Header_Historia3">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Resources/Apolo_Header_Historia.png"/>
+                      <Image iconType="3" name="/Resources/General/Apolo_Header_Historia.png"/>
                     </Property>
                   </Properties>
                   <Constraints>
@@ -7084,10 +7084,10 @@
                 <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="Lbl_Header_Aprender14">
+                <Component class="javax.swing.JLabel" name="Lbl_Header_Historia4">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/Resources/Apolo_Header_Historia.png"/>
+                      <Image iconType="3" name="/Resources/General/Apolo_Header_Historia.png"/>
                     </Property>
                   </Properties>
                   <Constraints>

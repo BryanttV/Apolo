@@ -21,7 +21,7 @@ public class VentanaAjustes extends javax.swing.JFrame {
     // Configurar las caracteristicas de la Ventana de Ajustes
     private void configurarVentana() {
         this.setLocationRelativeTo(null);
-        setIconImage(new ImageIcon(getClass().getResource("/Resources/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
+        setIconImage(new ImageIcon(getClass().getResource("/Resources/General/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
     }
 
     // Cargar la tipografia personalizada

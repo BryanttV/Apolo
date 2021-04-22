@@ -1,5 +1,6 @@
 package Principal;
 
+import Judge.ReemplazarCodigo;
 import CustomComponents.CustomScrollBarUI;
 import Salida.ExitEditor;
 import java.awt.Color;
@@ -41,7 +42,7 @@ import org.fife.ui.rtextarea.RTextScrollPane;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import Tipografias.Fuentes;
-import static UtilityJudge.CompileAndRun.*;
+import static Judge.CompileAndRun.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
