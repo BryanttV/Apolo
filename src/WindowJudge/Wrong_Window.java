@@ -22,7 +22,7 @@ public class Wrong_Window extends javax.swing.JFrame {
     private void initComponents() {
 
         Pnl_WrongAnswer = new javax.swing.JPanel();
-        Lbl_Accepted = new javax.swing.JLabel();
+        Lbl_WrongAnswer = new javax.swing.JLabel();
         Lbl_Mensaje = new javax.swing.JLabel();
         Btn_Ok = new javax.swing.JButton();
 
@@ -33,10 +33,10 @@ public class Wrong_Window extends javax.swing.JFrame {
         Pnl_WrongAnswer.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 51, 42), 2, true));
         Pnl_WrongAnswer.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Lbl_Accepted.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/WrongAnswer.png"))); // NOI18N
-        Pnl_WrongAnswer.add(Lbl_Accepted, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        Lbl_WrongAnswer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/WrongAnswer.png"))); // NOI18N
+        Pnl_WrongAnswer.add(Lbl_WrongAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        Lbl_Mensaje.setForeground(new java.awt.Color(220, 220, 220));
+        Lbl_Mensaje.setForeground(sRecursos.getColorTextGray());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("¡Tú código es incorrecto!");
         Lbl_Mensaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -88,8 +88,8 @@ public class Wrong_Window extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Ok;
-    private javax.swing.JLabel Lbl_Accepted;
     private javax.swing.JLabel Lbl_Mensaje;
+    private javax.swing.JLabel Lbl_WrongAnswer;
     private javax.swing.JPanel Pnl_WrongAnswer;
     // End of variables declaration//GEN-END:variables
 }

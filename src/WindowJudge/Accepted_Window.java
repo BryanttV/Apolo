@@ -34,7 +34,8 @@ public class Accepted_Window extends javax.swing.JFrame {
         Pnl_Accepted.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(58, 170, 53), 2, true));
         Pnl_Accepted.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Lbl_Mensaje.setForeground(new java.awt.Color(220, 220, 220));
+        Lbl_Mensaje.setBackground(sRecursos.getColorDark());
+        Lbl_Mensaje.setForeground(sRecursos.getColorTextGray());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("¡Tú código es correcto!");
         Lbl_Mensaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);

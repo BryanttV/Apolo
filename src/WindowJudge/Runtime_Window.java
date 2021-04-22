@@ -1,14 +1,17 @@
 package WindowJudge;
 
 import Tipografias.Fuentes;
+import Services.RecursosService;
 import java.awt.Font;
 
 public class Runtime_Window extends javax.swing.JFrame {
 
+    private final RecursosService sRecursos;
     private final Fuentes f = new Fuentes();
     private final Font euclid = f.fuente(f.EUCR, 0, 16);
 
     public Runtime_Window() {
+        sRecursos = RecursosService.getService();
         initComponents();
         this.setLocationRelativeTo(null);
         Lbl_Mensaje.setFont(euclid);
@@ -19,22 +22,22 @@ public class Runtime_Window extends javax.swing.JFrame {
     private void initComponents() {
 
         Pnl_RuntimeError = new javax.swing.JPanel();
-        Lbl_CompileError = new javax.swing.JLabel();
+        Lbl_RuntimeError = new javax.swing.JLabel();
         Lbl_Mensaje = new javax.swing.JLabel();
         Btn_Ok = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        Pnl_RuntimeError.setBackground(new java.awt.Color(56, 56, 56));
+        Pnl_RuntimeError.setBackground(sRecursos.getColorDark());
         Pnl_RuntimeError.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(230, 32, 68), 2, true));
         Pnl_RuntimeError.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Lbl_CompileError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/RuntimeError.png"))); // NOI18N
-        Pnl_RuntimeError.add(Lbl_CompileError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        Lbl_RuntimeError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/RuntimeError.png"))); // NOI18N
+        Pnl_RuntimeError.add(Lbl_RuntimeError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         Lbl_Mensaje.setFont(euclid);
-        Lbl_Mensaje.setForeground(new java.awt.Color(240, 240, 240));
+        Lbl_Mensaje.setForeground(sRecursos.getColorTextGray());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("<html><div style='text-align: center'>¡Tu código no se pudo<br>ejecutar correctamente!</div><html>"); // NOI18N
         Lbl_Mensaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -83,8 +86,8 @@ public class Runtime_Window extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Ok;
-    private javax.swing.JLabel Lbl_CompileError;
     private javax.swing.JLabel Lbl_Mensaje;
+    private javax.swing.JLabel Lbl_RuntimeError;
     private javax.swing.JPanel Pnl_RuntimeError;
     // End of variables declaration//GEN-END:variables
 }

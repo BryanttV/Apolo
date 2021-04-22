@@ -42,7 +42,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 
 public class HomeApolo extends javax.swing.JFrame {
-    
+
     static public Tips tp;
     private final RecursosService sRecursos;
     static public VentanaAjustes Ajustes = new VentanaAjustes();
@@ -99,7 +99,9 @@ public class HomeApolo extends javax.swing.JFrame {
 
     // Personalizar la Barra de Desplazamiento de todos los ScrollPane
     private void configurarBarraDesplazamiento() {
+        Pb_Nivel2.setUI(new CustomProgressBarUI());
         Pb_Mapa.setUI(new CustomProgressBarUI());
+        Pb_Nivel1.setUI(new CustomProgressBarUI());
         List<Component> compList = getAllComponents(this);
         for (Component componente : compList) {
             if (componente instanceof JScrollPane) {
@@ -350,12 +352,12 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_Mapa.setVisible(false);
         Pnl_Encabezado.setVisible(true);
     }
-    
+
     private void crearTip() {
         tp = new Tips();
         tp.setVisible(true);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -550,6 +552,10 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_EjercicioFinal = new javax.swing.JLabel();
         Pnl_CodeStorm = new javax.swing.JPanel();
         Pnl_ListadoEjercicios = new javax.swing.JPanel();
+        Pb_Nivel1 = new javax.swing.JProgressBar();
+        Pb_Nivel2 = new javax.swing.JProgressBar();
+        Pb_Nivel3 = new javax.swing.JProgressBar();
+        Pb_Nivel4 = new javax.swing.JProgressBar();
         Lbl_Header_CodeStorm = new javax.swing.JLabel();
         Btn_Introduccion = new javax.swing.JButton();
         Btn_Nivel1_Ejercicio1 = new javax.swing.JButton();
@@ -577,29 +583,6 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Nivel3 = new javax.swing.JLabel();
         Lbl_Nivel4 = new javax.swing.JLabel();
         Lbl_Nivel5 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel1_0 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel1_1 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel1_2 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel1_3 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel1_4 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel2_0 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel2_1 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel2_2 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel2_3 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel2_4 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel3_0 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel3_1 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel3_2 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel3_3 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel3_4 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel4_0 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel4_1 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel4_2 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel4_3 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel4_4 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel5_0 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel5_1 = new javax.swing.JLabel();
-        Lbl_BarraProgreso_Nivel5_2 = new javax.swing.JLabel();
         Lbl_BarraProgreso_Nivel5_3 = new javax.swing.JLabel();
         Lbl_BarraProgreso_Nivel5_4 = new javax.swing.JLabel();
         Lbl_CodeStorm_Fondo = new javax.swing.JLabel();
@@ -2844,6 +2827,23 @@ public class HomeApolo extends javax.swing.JFrame {
         Pnl_ListadoEjercicios.setPreferredSize(sRecursos.getDTamanio());
         Pnl_ListadoEjercicios.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        Pb_Nivel1.setForeground(sRecursos.getColorRojo());
+        Pb_Nivel1.setOrientation(1);
+        Pb_Nivel1.setBorderPainted(false);
+        Pnl_ListadoEjercicios.add(Pb_Nivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 20, 290));
+
+        Pb_Nivel2.setBackground(new java.awt.Color(255, 255, 255));
+        Pb_Nivel2.setForeground(sRecursos.getColorRojo());
+        Pb_Nivel2.setOrientation(1);
+        Pb_Nivel2.setValue(50);
+        Pb_Nivel2.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorRojo(), 2, true));
+        Pb_Nivel2.setOpaque(true);
+        Pb_Nivel2.setString("");
+        Pb_Nivel2.setStringPainted(true);
+        Pnl_ListadoEjercicios.add(Pb_Nivel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 20, 290));
+        Pnl_ListadoEjercicios.add(Pb_Nivel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 20, 290));
+        Pnl_ListadoEjercicios.add(Pb_Nivel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 20, 290));
+
         Lbl_Header_CodeStorm.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_CodeStorm.png"))); // NOI18N
         Pnl_ListadoEjercicios.add(Lbl_Header_CodeStorm, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
@@ -3207,75 +3207,6 @@ public class HomeApolo extends javax.swing.JFrame {
         Lbl_Nivel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/Nivel5.png"))); // NOI18N
         Lbl_Nivel5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Pnl_ListadoEjercicios.add(Lbl_Nivel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 270, 180, 50));
-
-        Lbl_BarraProgreso_Nivel1_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_0.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel1_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel1_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_1.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel1_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_2.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel1_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel1_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_3.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel1_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel1_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_4.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel1_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel2_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_0.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel2_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel2_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_1.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel2_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_2.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel2_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_3.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel2_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel2_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_4.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel2_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel3_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_0.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel3_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel3_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_1.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel3_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_2.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel3_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_3.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel3_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_4.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel3_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel4_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_0.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel4_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel4_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_1.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel4_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel4_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_2.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel4_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel4_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_3.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel4_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel4_4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_4.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel4_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel5_0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_0.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel5_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel5_1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_1.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 17, 290));
-
-        Lbl_BarraProgreso_Nivel5_2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_2.png"))); // NOI18N
-        Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel5_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 17, 290));
 
         Lbl_BarraProgreso_Nivel5_3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/CodeStorm/BarraProgreso_3.png"))); // NOI18N
         Pnl_ListadoEjercicios.add(Lbl_BarraProgreso_Nivel5_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 350, 17, 290));
@@ -3681,7 +3612,7 @@ public class HomeApolo extends javax.swing.JFrame {
             Pnl_Home.setVisible(true);
         }
     }//GEN-LAST:event_Btn_HistoriaActionPerformed
-    
+
 
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
         Scp_Tema1.setVisible(true);
@@ -4309,7 +4240,7 @@ public class HomeApolo extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_Btn_Atras_AprenderActionPerformed
-    
+
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -4435,29 +4366,6 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Siguiente_TiposdeDatos;
     private javax.swing.JToggleButton Btn_Solucion;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel1_0;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel1_1;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel1_2;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel1_3;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel1_4;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel2_0;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel2_1;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel2_2;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel2_3;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel2_4;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel3_0;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel3_1;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel3_2;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel3_3;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel3_4;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel4_0;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel4_1;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel4_2;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel4_3;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel4_4;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_0;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_1;
-    private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_2;
     private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_3;
     private javax.swing.JLabel Lbl_BarraProgreso_Nivel5_4;
     private javax.swing.JLabel Lbl_Bucles;
@@ -4511,6 +4419,10 @@ public class HomeApolo extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Recursion;
     private javax.swing.JLabel Lbl_TiposdeDatos;
     private javax.swing.JProgressBar Pb_Mapa;
+    private javax.swing.JProgressBar Pb_Nivel1;
+    private javax.swing.JProgressBar Pb_Nivel2;
+    private javax.swing.JProgressBar Pb_Nivel3;
+    private javax.swing.JProgressBar Pb_Nivel4;
     private javax.swing.JPanel Pnl_Aprender;
     private javax.swing.JPanel Pnl_Bar_Buttons;
     private javax.swing.JPanel Pnl_BotonesPrincipales;

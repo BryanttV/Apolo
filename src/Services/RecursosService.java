@@ -16,6 +16,7 @@ public class RecursosService {
     private Cursor cDefault;
     private Color colorPrincipal;
     private Color colorDark;
+    private Color colorTextGray;
     private Color colorRojo;
     private Color colorAzul;
     private Color colorVerde;
@@ -49,10 +50,11 @@ public class RecursosService {
 
     private void crearColores() {
         colorPrincipal = new Color(237, 234, 243);
-        colorRojo = new Color(204, 0, 0);
+        colorRojo = new Color(183, 30, 29);
         colorAzul = new Color(0, 47, 108);
         colorVerde = new Color(0, 37, 26);
         colorDark = new Color(56, 56, 56);
+        colorTextGray = new Color(220, 220, 220);
     }
 
     private void crearTamanio() {
@@ -112,6 +114,10 @@ public class RecursosService {
 
     public Color getColorDark() {
         return colorDark;
+    }
+
+    public Color getColorTextGray() {
+        return colorTextGray;
     }
 
     public Dimension getDTamanio() {

@@ -9,46 +9,10 @@ import java.awt.LinearGradientPaint;
 import java.awt.RenderingHints;
 import java.awt.geom.Point2D;
 import java.awt.geom.RoundRectangle2D;
+import javafx.geometry.Orientation;
 import javax.swing.JComponent;
 import javax.swing.plaf.basic.BasicProgressBarUI;
 
-//package Principal;
-//
-//import java.awt.Graphics;
-//import java.awt.Graphics2D;
-//import java.awt.RenderingHints;
-//import java.awt.geom.RoundRectangle2D;
-//import javax.swing.JComponent;
-//import javax.swing.plaf.basic.BasicProgressBarUI;
-//
-//public class CustomProgressBarUI extends BasicProgressBarUI {
-//    
-//    protected void painDeterminate(Graphics g, JComponent c) {
-//        
-//        Graphics2D g2d = (Graphics2D) g.create();
-//        
-//        g2d.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-//
-//        // g2d.setColor(new Color(220, 220, 220));
-//        g2d.setColor(progressBar.getBackground());
-//        g2d.setBackground(progressBar.getBackground());
-//        
-//        int ancho = progressBar.getWidth();
-//        int alto = progressBar.getHeight();
-//        double porcentajeProgreso = progressBar.getPercentComplete();
-//        
-//        RoundRectangle2D redondeado = new RoundRectangle2D.Double(0, 0,
-//                ancho * porcentajeProgreso, alto, alto, alto);
-//        
-//        g2d.fill(redondeado);
-//        g2d.dispose();
-//    }
-//    
-//    @Override
-//    protected void paintIndeterminate(Graphics g, JComponent c) {
-//        super.paintIndeterminate(g, c);
-//    }
-//}
 public class CustomProgressBarUI extends BasicProgressBarUI {
 
     @Override

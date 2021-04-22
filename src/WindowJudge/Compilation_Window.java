@@ -36,7 +36,8 @@ public class Compilation_Window extends javax.swing.JFrame {
         Lbl_CompileError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/CompileError.png"))); // NOI18N
         Pnl_CompileError.add(Lbl_CompileError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        Lbl_Mensaje.setForeground(new java.awt.Color(240, 240, 240));
+        Lbl_Mensaje.setBackground(sRecursos.getColorDark());
+        Lbl_Mensaje.setForeground(sRecursos.getColorTextGray());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("¡Tú código no compila!");
         Lbl_Mensaje.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
