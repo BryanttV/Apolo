@@ -1,20 +1,15 @@
 package WindowJudge;
 
-import Tipografias.Fuentes;
-import java.awt.Font;
 import Services.RecursosService;
 
 public class Accepted_Window extends javax.swing.JFrame {
 
     private final RecursosService sRecursos;
-    private final Fuentes f = new Fuentes();
-    private final Font euclid = f.fuente(f.EUCR, 0, 16);
 
     public Accepted_Window() {
         sRecursos = RecursosService.getService();
         initComponents();
         this.setLocationRelativeTo(null);
-        Lbl_Mensaje.setFont(euclid);
     }
 
     @SuppressWarnings("unchecked")
@@ -35,6 +30,7 @@ public class Accepted_Window extends javax.swing.JFrame {
         Pnl_Accepted.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Mensaje.setBackground(sRecursos.getColorDark());
+        Lbl_Mensaje.setFont(sRecursos.getFWindow());
         Lbl_Mensaje.setForeground(sRecursos.getColorTextGray());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("¡Tú código es correcto!");
@@ -63,7 +59,7 @@ public class Accepted_Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OkActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_Btn_OkActionPerformed
 
     public static void main(String args[]) {

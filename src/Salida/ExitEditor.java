@@ -1,23 +1,22 @@
 package Salida;
 
-import Principal.EditorDeCodigo;
-import java.awt.Font;
-import Tipografias.Fuentes;
-import java.awt.Color;
+// Librerias Creadas
+import Main.EditorDeCodigo;
+import Services.RecursosService;
+
+// Librerias Default
+import javax.swing.UIManager;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class ExitEditor extends javax.swing.JFrame {
 
-    Fuentes Euclid = new Fuentes();
-    Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
+    private final RecursosService sRecursos;
 
     public ExitEditor() {
+        sRecursos = RecursosService.getService();
         initComponents();
-        Lbl_Mensaje.setFont(Regular14p);
-        Lbl_Mensaje.setForeground(Color.BLACK);
     }
 
     @SuppressWarnings("unchecked")
@@ -45,7 +44,7 @@ public class ExitEditor extends javax.swing.JFrame {
         Lbl_Salida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Advertencia.png"))); // NOI18N
         Pnl_Salida.add(Lbl_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 50, 42));
 
-        Lbl_Mensaje.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        Lbl_Mensaje.setFont(sRecursos.getFContentTip());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("¿Desea guardar el código?");
         Pnl_Salida.add(Lbl_Mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 190, -1));
@@ -89,11 +88,11 @@ public class ExitEditor extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_SiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SiActionPerformed
-        
+
     }//GEN-LAST:event_Btn_SiActionPerformed
 
     private void Btn_NoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_NoActionPerformed
-       
+
     }//GEN-LAST:event_Btn_NoActionPerformed
 
     public static void main(String args[]) {

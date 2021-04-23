@@ -47,13 +47,11 @@ public class CustomProgressBarUIHorizontal extends BasicProgressBarUI {
                 iInnerWidth, iInnerHeight, iInnerHeight, iInnerHeight);
 
         g2d.fill(fill);
-
         g2d.dispose();
     }
 
     @Override
     protected void paintIndeterminate(Graphics g, JComponent c) {
-        super.paintIndeterminate(g, c); //To change body of generated methods, choose Tools | Templates.
+        super.paintIndeterminate(g, c);
     }
-
 }

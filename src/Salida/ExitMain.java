@@ -1,21 +1,16 @@
 package Salida;
 
-import Tipografias.Fuentes;
-import java.awt.Color;
-import java.awt.Font;
+import Services.RecursosService;
 
 public class ExitMain extends javax.swing.JDialog {
 
-    Fuentes Euclid = new Fuentes();
-    Font Regular14p = Euclid.fuente(Euclid.EUCR, 0, 14);
+    private final RecursosService sRecursos;
 
     public ExitMain(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
+        sRecursos = RecursosService.getService();
         initComponents();
-        Lbl_Mensaje.setFont(Regular14p);
-        Lbl_Mensaje.setForeground(Color.BLACK);
         setLocationRelativeTo(parent);
-
     }
 
     @SuppressWarnings("unchecked")
@@ -42,7 +37,7 @@ public class ExitMain extends javax.swing.JDialog {
         Lbl_Salida.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Advertencia.png"))); // NOI18N
         Pnl_Salida.add(Lbl_Salida, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 50, 42));
 
-        Lbl_Mensaje.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
+        Lbl_Mensaje.setFont(sRecursos.getFContentTip());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("¿Seguro de que desea salir de la aplicación?");
         Pnl_Salida.add(Lbl_Mensaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 20, 300, -1));

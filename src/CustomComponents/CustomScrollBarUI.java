@@ -73,7 +73,6 @@ public class CustomScrollBarUI extends BasicScrollBarUI {
 
         g2.setPaint(color);
         g2.fillRoundRect(r.x, r.y, r.width, r.height, 15, 15);
-        // g2.setPaint(Color.WHITE); // Poner borde
         g2.drawRoundRect(r.x, r.y, r.width, r.height, 15, 15);
         g2.dispose();
     }

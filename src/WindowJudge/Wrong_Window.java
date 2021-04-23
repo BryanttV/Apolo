@@ -1,20 +1,15 @@
 package WindowJudge;
 
-import Tipografias.Fuentes;
 import Services.RecursosService;
-import java.awt.Font;
 
 public class Wrong_Window extends javax.swing.JFrame {
 
     RecursosService sRecursos;
-    private final Fuentes f = new Fuentes();
-    private final Font euclid = f.fuente(f.EUCR, 0, 16);
 
     public Wrong_Window() {
         sRecursos = RecursosService.getService();
         initComponents();
         this.setLocationRelativeTo(null);
-        Lbl_Mensaje.setFont(euclid);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,6 +31,7 @@ public class Wrong_Window extends javax.swing.JFrame {
         Lbl_WrongAnswer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/WrongAnswer.png"))); // NOI18N
         Pnl_WrongAnswer.add(Lbl_WrongAnswer, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
+        Lbl_Mensaje.setFont(sRecursos.getFWindow());
         Lbl_Mensaje.setForeground(sRecursos.getColorTextGray());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("¡Tú código es incorrecto!");
@@ -74,15 +70,12 @@ public class Wrong_Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OkActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_Btn_OkActionPerformed
 
     public static void main(String args[]) {
-
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Wrong_Window().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Wrong_Window().setVisible(true);
         });
     }
 

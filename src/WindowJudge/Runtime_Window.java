@@ -1,20 +1,15 @@
 package WindowJudge;
 
-import Tipografias.Fuentes;
 import Services.RecursosService;
-import java.awt.Font;
 
 public class Runtime_Window extends javax.swing.JFrame {
 
     private final RecursosService sRecursos;
-    private final Fuentes f = new Fuentes();
-    private final Font euclid = f.fuente(f.EUCR, 0, 16);
 
     public Runtime_Window() {
         sRecursos = RecursosService.getService();
         initComponents();
         this.setLocationRelativeTo(null);
-        Lbl_Mensaje.setFont(euclid);
     }
 
     @SuppressWarnings("unchecked")
@@ -36,7 +31,7 @@ public class Runtime_Window extends javax.swing.JFrame {
         Lbl_RuntimeError.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/RuntimeError.png"))); // NOI18N
         Pnl_RuntimeError.add(Lbl_RuntimeError, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
-        Lbl_Mensaje.setFont(euclid);
+        Lbl_Mensaje.setFont(sRecursos.getFWindow());
         Lbl_Mensaje.setForeground(sRecursos.getColorTextGray());
         Lbl_Mensaje.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Mensaje.setText("<html><div style='text-align: center'>¡Tu código no se pudo<br>ejecutar correctamente!</div><html>"); // NOI18N
@@ -75,7 +70,7 @@ public class Runtime_Window extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_OkActionPerformed
-        dispose();
+        this.dispose();
     }//GEN-LAST:event_Btn_OkActionPerformed
 
     public static void main(String args[]) {

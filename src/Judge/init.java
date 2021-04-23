@@ -1,12 +1,11 @@
 package Judge;
 
 import java.io.IOException;
-import Judge.CompareAndJudge;
+import WindowJudge.Wrong_Window;
+import WindowJudge.Runtime_Window;
 import WindowJudge.Accepted_Window;
 import WindowJudge.Compilation_Window;
 import WindowJudge.Presentation_Window;
-import WindowJudge.Runtime_Window;
-import WindowJudge.Wrong_Window;
 import static Judge.CompileAndRun.*;
 
 public class init {
@@ -34,7 +33,6 @@ public class init {
             // Compilar Archivo
             int result = compile(findURL);
             if (result != 0) {
-//                JOptionPane.showMessageDialog(null, "Compilation Error");
                 ce.setVisible(true);
                 return true;
             }
@@ -44,7 +42,6 @@ public class init {
             // Ejecutar archivo
             result = run("judge.Main");
             if (result != 0) {
-//                JOptionPane.showMessageDialog(null, "Runtime Error");
                 rt.setVisible(true);
                 return true;
             }
@@ -57,15 +54,12 @@ public class init {
 
         switch (CompareAndJudge.compareUtil(problem)) {
             case 0:
-//                JOptionPane.showMessageDialog(null, "Accepted");
                 ac.setVisible(true);
                 return true;
             case 1:
-//                JOptionPane.showMessageDialog(null, "Presentation Error");
                 pe.setVisible(true);
                 return true;
             default:
-//                JOptionPane.showMessageDialog(null, "Wrong Answer");
                 wa.setVisible(true);
                 return true;
         }

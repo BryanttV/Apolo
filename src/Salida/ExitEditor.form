@@ -73,8 +73,8 @@
         </Component>
         <Component class="javax.swing.JLabel" name="Lbl_Mensaje">
           <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="12" style="1"/>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="sRecursos.getFContentTip()" type="code"/>
             </Property>
             <Property name="horizontalAlignment" type="int" value="0"/>
             <Property name="text" type="java.lang.String" value="&#xbf;Desea guardar el c&#xf3;digo?"/>

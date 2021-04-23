@@ -52,6 +52,6 @@ public class CustomProgressBarUIVertical extends BasicProgressBarUI {
 
     @Override
     protected void paintIndeterminate(Graphics g, JComponent c) {
-        super.paintIndeterminate(g, c); //To change body of generated methods, choose Tools | Templates.
+        super.paintIndeterminate(g, c);
     }
 }
