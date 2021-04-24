@@ -43,7 +43,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class Home extends javax.swing.JFrame {
-
+    
     private final RecursosService sRecursos;
 
     // Ventanas JDialog
@@ -56,7 +56,7 @@ public class Home extends javax.swing.JFrame {
     private final Color thumb_off = new Color(50, 50, 50);
     private final Color thumb_on = new Color(32, 30, 33);
     private final Color drag = new Color(32, 30, 33);
-
+    
     private int aux = 1;
     private int contador = 0;
     private boolean active = true;
@@ -77,7 +77,11 @@ public class Home extends javax.swing.JFrame {
 
     // Configurar las Caracteristicas de la Ventana Principal
     private void configurarVentana() {
+        this.setLocationRelativeTo(null);
+        this.setExtendedState(((int) DimMax.getWidth() == 1366) ? 6 : 0);
+        this.setResizable((int) DimMax.getWidth() == 1366);
         this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
+        // Agregar icono de Apolo
         setIconImage(new ImageIcon(getClass().getResource(
                 "/Resources/General/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
     }
@@ -362,7 +366,7 @@ public class Home extends javax.swing.JFrame {
             component.setVisible(true);
         }
     }
-
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -456,6 +460,9 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario5 = new javax.swing.JButton();
         Btn_Siguiente_OperadoresdeRelacion = new javax.swing.JButton();
         Lbl_Ejercicio1_Principiante = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        Txa_EjercicioAprender = new javax.swing.JTextArea();
+        Btn_EnviarAprender = new javax.swing.JButton();
         Scp_Tema6 = new javax.swing.JScrollPane();
         Pnl_Tema6 = new javax.swing.JPanel();
         Btn_Anterior_Ejercicio1_Principiante = new javax.swing.JButton();
@@ -634,12 +641,9 @@ public class Home extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         setBounds(new java.awt.Rectangle(0, 0, 0, 0));
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        setExtendedState(((int) DimMax.getWidth() == 1366) ? 6 : 0 );
         setLocation(new java.awt.Point(0, 0));
         setMaximumSize(new java.awt.Dimension(1366, 705));
         setMinimumSize(new java.awt.Dimension(1366, 705));
-        setPreferredSize(new java.awt.Dimension(1366, 705));
-        setResizable((int) DimMax.getWidth() == 1366);
         setSize(new java.awt.Dimension(1366, 705));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -1025,7 +1029,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_Mapa.add(Lbl_Aprender_Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 35, 1176, 670));
 
         Pb_Mapa.setBackground(new java.awt.Color(7, 89, 157));
-        Pb_Mapa.setForeground(new java.awt.Color(237, 237, 237));
+        Pb_Mapa.setForeground(new java.awt.Color(0, 0, 60));
         Pb_Mapa.setValue(50);
         Pb_Mapa.setBorderPainted(false);
         Pnl_Mapa.add(Pb_Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 25));
@@ -1673,6 +1677,20 @@ public class Home extends javax.swing.JFrame {
         Lbl_Ejercicio1_Principiante.setText("Ejercicio 1 | Principiante");
         Lbl_Ejercicio1_Principiante.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Ejercicio1_Aprender.add(Lbl_Ejercicio1_Principiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Txa_EjercicioAprender.setColumns(20);
+        Txa_EjercicioAprender.setRows(5);
+        jScrollPane1.setViewportView(Txa_EjercicioAprender);
+
+        Pnl_Ejercicio1_Aprender.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 40, 520, 230));
+
+        Btn_EnviarAprender.setText("Enviar");
+        Btn_EnviarAprender.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_EnviarAprenderActionPerformed(evt);
+            }
+        });
+        Pnl_Ejercicio1_Aprender.add(Btn_EnviarAprender, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 40, 120, 40));
 
         Scp_Ejercicio1.setViewportView(Pnl_Ejercicio1_Aprender);
 
@@ -3639,7 +3657,7 @@ public class Home extends javax.swing.JFrame {
             Pnl_Home.setVisible(true);
         }
     }//GEN-LAST:event_Btn_HistoriaActionPerformed
-
+    
 
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
         Scp_Tema1.setVisible(true);
@@ -3969,8 +3987,9 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarActionPerformed
         String code = syntaxCode.getText();
-        String id = "ejercicio" + (contador + 1);
-        juzgador(id, code);
+//      String id = "ejercicio" + (contador + 1);
+        String id = "input" + (contador + 1);
+        juzgador(id, code, "judge", "iofiles", Integer.toString(contador + 1));
         Btn_Enviar.setSelected(false);
     }//GEN-LAST:event_Btn_EnviarActionPerformed
 
@@ -4266,6 +4285,11 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Btn_Atras_AprenderActionPerformed
 
+    private void Btn_EnviarAprenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarAprenderActionPerformed
+        String code = Txa_EjercicioAprender.getText();
+        juzgador("input1", code, "ioaprender", "ioaprender", "1");
+    }//GEN-LAST:event_Btn_EnviarAprenderActionPerformed
+    
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -4334,6 +4358,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JToggleButton Btn_Codigo;
     private javax.swing.JToggleButton Btn_Ejercicio;
     private javax.swing.JToggleButton Btn_Enviar;
+    private javax.swing.JButton Btn_EnviarAprender;
     private javax.swing.JToggleButton Btn_Historia;
     private javax.swing.JButton Btn_Introduccion;
     private javax.swing.JButton Btn_Introduccion_Siguiente;
@@ -4539,6 +4564,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Tema8;
     private javax.swing.JScrollPane Scp_Tema9;
     private javax.swing.JTextArea Txa_Competencias;
+    private javax.swing.JTextArea Txa_EjercicioAprender;
     private javax.swing.JTextArea Txa_QueEs;
+    private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 }

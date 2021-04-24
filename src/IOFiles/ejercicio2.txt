@@ -1,2 +1,0 @@
-Este archivo esta mal a proposito
-Debe lanzar un wrong answer

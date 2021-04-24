@@ -1,4 +1,3 @@
-
 package Judge;
 
 import java.io.BufferedReader;
@@ -11,18 +10,19 @@ import java.util.logging.Logger;
 
 public class CompareAndJudge {
 
-    public static int compareUtil(String idejercicio) {
-        if (compareLength(idejercicio) && compareLines(idejercicio)) {
+    public static int compareUtil(String idejercicio, String rute, String num) {
+        if (compareLength(idejercicio, rute, num) && compareLines(idejercicio, rute, num)) {
             return 0;
-        } else if (!compareLength(idejercicio) && compareLines(idejercicio)) {
+        } else if (!compareLength(idejercicio, rute, num) && compareLines(idejercicio, rute, num)) {
             return 1;
         }
         return 2;
     }
 
-    static boolean compareLength(String idejercicio) {
-        File file1 = new File(System.getProperty("user.dir") + "\\src\\IOfiles\\" + idejercicio + ".txt");
-        File file2 = new File(System.getProperty("user.dir") + "\\src\\IOfiles\\output.txt");
+    static boolean compareLength(String idejercicio, String rute, String num) {
+//        File file1 = new File(System.getProperty("user.dir") + "\\src\\" + rute + "\\" + idejercicio + ".txt");
+        File file1 = new File(System.getProperty("user.dir") + "\\src\\" + rute + "\\output" + num + ".txt");
+        File file2 = new File(System.getProperty("user.dir") + "\\src\\" + rute + "\\compare.txt");
         System.out.println(file1.length());
         System.out.println(file2.length());
         if (file1.length() >= file2.length() - 2L && file1.length() < file2.length() + 2L) {
@@ -31,11 +31,11 @@ public class CompareAndJudge {
         return false;
     }
 
-    static boolean compareLines(String idejercicio) {
+    static boolean compareLines(String idejercicio, String rute, String num) {
         boolean areEqual = false;
         try (BufferedReader reader1 = new BufferedReader(new FileReader(System.getProperty("user.dir")
-                + "\\src\\IOfiles\\" + idejercicio + ".txt"));
-                BufferedReader reader2 = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\IOfiles\\output.txt"))) {
+                + "\\src\\" + rute + "\\output" + num + ".txt"));
+                BufferedReader reader2 = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\" + rute + "\\compare.txt"))) {
             String line1 = reader1.readLine();
             String line2 = reader2.readLine();
             areEqual = true;

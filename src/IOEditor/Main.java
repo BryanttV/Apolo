@@ -1,10 +1,10 @@
-package editor;
+package IOEditor;
 import java.io.*;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) throws Exception{
-		Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\Editor\\input.txt"));
+		Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\IOEditor\\input.txt"));
 
 		int casos = sc.nextInt();
 		for (int i = 0; i < casos; i++) {
