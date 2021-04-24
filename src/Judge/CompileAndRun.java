@@ -13,11 +13,11 @@ public class CompileAndRun {
 
     static FileOutputStream out;
 
-    static public void replaceCode(String code) {
-        String codeModificado = ReemplazarCodigo.reemplazar(code, 2);
+    static public void replaceCode(String code, String section, String num) {
+        String codeModificado = ReemplazarCodigo.reemplazar(code, "judge", "iofiles", num);
 
         try {
-            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\Judge\\Main.java");
+            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\" + section + "\\Main.java");
             byte[] bytxt = codeModificado.getBytes();
             out.write(bytxt);
         } catch (IOException e) {
@@ -25,7 +25,7 @@ public class CompileAndRun {
         }
     }
 
-    static public int run(String clazz) throws IOException, InterruptedException {
+    static public int run(String clazz, String rute) throws IOException, InterruptedException {
 
         List<String> cmds = new ArrayList<>();
         cmds.add("java");
@@ -33,7 +33,7 @@ public class CompileAndRun {
 
         ProcessBuilder pb = new ProcessBuilder(cmds);
         pb.redirectError();
-        pb.redirectInput(new File(System.getProperty("user.dir") + "\\src\\IOfiles", "output.txt"));
+        pb.redirectInput(new File(System.getProperty("user.dir") + "\\src\\" + rute, "compare.txt"));
         pb.directory(new File("src"));
 
         Process p = pb.start();
@@ -44,7 +44,7 @@ public class CompileAndRun {
 
         System.out.println(consumer.getOutput());
         String writteable = consumer.getOutput().toString();
-        try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\IOfiles\\output.txt")) {
+        try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\" + rute + "\\compare.txt")) {
             fw.write(writteable);
             System.out.println("Archivo de salida correctamente creado");
         }

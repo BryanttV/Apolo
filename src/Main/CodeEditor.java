@@ -54,7 +54,7 @@ import javax.swing.JFileChooser;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
-    
+
     private final RecursosService sRecursos;
     private final ExitEditor Exit = new ExitEditor();
     private final JFileChooser seleccion = new JFileChooser();
@@ -68,7 +68,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     private File archivo_abrir;
     private FileInputStream entrada;
     private FileOutputStream salida, out;
-    
+
     public CodeEditor() {
         sRecursos = RecursosService.getService();
         initComponents();
@@ -79,7 +79,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     // Verificar la pulsacion de boton
     private class BotonPulsadoListener implements ActionListener {
-        
+
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == Exit.Btn_Si) {
@@ -130,7 +130,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     // Configuracion del Area de codigo con RSyntax
     private void configuracionEditor() {
-        
+
         RSyntaxTextArea.setTemplatesEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
 
@@ -144,7 +144,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         sp.setHorizontalScrollBarPolicy(horizontalPolicy);
         sp.setVerticalScrollBarPolicy(verticalPolicy);
         sp.getViewport();
-        
+
         plantilla();
         snippets();
         cargarTema();
@@ -155,10 +155,10 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         textArea.setBackground(new Color(34, 34, 34));
         textArea.setFont(new Font("Consolas", Font.PLAIN, 14));
         textArea.revalidate();
-        
+
         Lbl_TituloEntrada.setFont(sRecursos.getFTitleEditor());
         Lbl_TituloSalida.setFont(sRecursos.getFTitleEditor());
-        
+
         setTitle("Editor de Código");
         Pnl_Codigo.add(sp);
     }
@@ -210,9 +210,9 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     // palabras reservadas y métodos útiles
     // Ctrl + Espacio
     private CompletionProvider createCompletionProvider() {
-        
+
         DefaultCompletionProvider provider = new DefaultCompletionProvider();
-        
+
         provider.addCompletion(new BasicCompletion(provider, "boolean"));
         provider.addCompletion(new BasicCompletion(provider, "break"));
         provider.addCompletion(new BasicCompletion(provider, "byte"));
@@ -250,12 +250,12 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         provider.addCompletion(new BasicCompletion(provider, "try"));
         provider.addCompletion(new BasicCompletion(provider, "void"));
         provider.addCompletion(new BasicCompletion(provider, "while"));
-        
+
         provider.addCompletion(new ShorthandCompletion(provider, "sout",
                 "System.out.println(", "System.out.println("));
         provider.addCompletion(new ShorthandCompletion(provider, "serr",
                 "System.err.println(", "System.err.println("));
-        
+
         return provider;
     }
 
@@ -276,7 +276,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     // Abrir archivo java
     private String abrirArchivo(File archivo) {
-        
+
         String documento = "";
         try {
             entrada = new FileInputStream(archivo);
@@ -351,11 +351,11 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     private int compilar(String ruta) throws IOException, InterruptedException {
         ProcessBuilder pb = new ProcessBuilder("javac", ruta);
         pb.redirectError();
-        
+
         String[] partesRuta = ruta.split("\\\\");
-        
+
         String rutaNueva = "";
-        
+
         for (int i = 0; i < partesRuta.length - 1; i++) {
             if (i < partesRuta.length - 2) {
                 rutaNueva += partesRuta[i] + "\\\\";
@@ -363,7 +363,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
                 rutaNueva += partesRuta[i];
             }
         }
-        
+
         pb.directory(new File(rutaNueva));
         Process p = pb.start();
         InputStreamConsumer consumer = new InputStreamConsumer(p.getInputStream());
@@ -376,34 +376,34 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     // Ejecutar archivo
     private int ejecutar(String clase, String ruta) throws IOException, InterruptedException {
-        
+
         List<String> cmds = new ArrayList<>();
         cmds.add("java");
         cmds.add(clase);
-        
+
         ProcessBuilder pb = new ProcessBuilder(cmds);
         pb.redirectError();
         pb.redirectInput(new File(System.getProperty("user.dir") + "\\src\\Editor", "output.txt"));
-        
+
         pb.directory(new File("src"));
-        
+
         Process p = pb.start();
         InputStreamConsumer consumer = new InputStreamConsumer(p.getInputStream());
         consumer.start();
         int result = p.waitFor();
         consumer.join();
-        
+
         String writteable = consumer.getOutput().toString();
-        
+
         Txa_Salida.setText(writteable);
-        
+
         try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\Editor\\output.txt")) {
             fw.write(writteable);
         }
-        
+
         return result;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -672,12 +672,11 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         }
         entrada();
         try {
-            
             String code = textArea.getText(); // Codigo Modificado
-            String codeModificado = ReemplazarCodigo.reemplazar(code, 1);
-            
+            String codeModificado = ReemplazarCodigo.reemplazar(code, "ioeditor", "ioeditor", "");
+
             try {
-                out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\Editor\\Main.java");
+                out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\IOEditor\\Main.java");
                 byte[] bytxt = codeModificado.getBytes();
                 out.write(bytxt);
             } catch (IOException e) {
@@ -685,20 +684,20 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
             }
 
             // Ruta donde se guarda el archivo
-            String ruta = System.getProperty("user.dir") + "\\src\\Editor\\Main.java";
-            
+            String ruta = System.getProperty("user.dir") + "\\src\\IOEditor\\Main.java";
+
             int result = compilar(ruta);  // Compila el archivo
             // Confirmar compilacion exitosa
             if (result != 0) {
                 ce.setVisible(true);
             }
-            
-            result = ejecutar("editor.Main", ruta); // Ejecuta el archivo
+
+            result = ejecutar("ioeditor.Main", ruta); // Ejecuta el archivo
             // Confirmar ejecucion exitosa
             if (result != 0) {
                 rt.setVisible(true);
             }
-            
+
         } catch (IOException | InterruptedException ex) {
             Logger.getLogger(CodeEditor.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -729,7 +728,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     private void Btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LimpiarActionPerformed
         textArea.setText("");
     }//GEN-LAST:event_Btn_LimpiarActionPerformed
-    
+
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
             try {
@@ -766,6 +765,6 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     @Override
     public void lostOwnership(Clipboard clpbrd, Transferable t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
