@@ -16,18 +16,18 @@ public class init {
     static Presentation_Window pe = new Presentation_Window();
     static Runtime_Window rt = new Runtime_Window();
 
-    public static void juzgador(String id, String code) {
-        if (compileRunCompareJudge(id, code)) {
+    public static void juzgador(String id, String code, String section, String rute, String num) {
+        if (compileRunCompareJudge(id, code, section, rute, num)) {
             System.out.println("habilitar de nuevo botones");
         }
     }
 
-    public static boolean compileRunCompareJudge(String problem, String code) {
+    public static boolean compileRunCompareJudge(String problem, String code, String section, String rute, String num) {
 
-        replaceCode(code);
+        replaceCode(code, section, num);
         try {
             // Obtener URL
-            String findURL = System.getProperty("user.dir") + "\\src\\Judge\\Main.java";
+            String findURL = System.getProperty("user.dir") + "\\src\\" + section + "\\Main.java";
             System.out.println("findUrl " + findURL);
 
             // Compilar Archivo
@@ -40,19 +40,19 @@ public class init {
             System.out.println("Compilador de java (javac) retorna un " + result);
 
             // Ejecutar archivo
-            result = run("judge.Main");
+            result = run(section + ".Main", rute);
             if (result != 0) {
                 rt.setVisible(true);
                 return true;
             }
 
-            System.out.println("Ejecutable java (java judge.Main) retorna un " + result);
+            System.out.println("Ejecutable java (java " + section + ".Main) retorna un " + result);
 
         } catch (IOException | InterruptedException ex) {
             System.out.println("Error " + ex);
         }
 
-        switch (CompareAndJudge.compareUtil(problem)) {
+        switch (CompareAndJudge.compareUtil(problem, rute, num)) {
             case 0:
                 ac.setVisible(true);
                 return true;
