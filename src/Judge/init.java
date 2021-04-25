@@ -24,7 +24,7 @@ public class init {
 
     public static boolean compileRunCompareJudge(String problem, String code, String section, String rute, String num) {
 
-        replaceCode(code, section, num);
+        replaceCode(code, section, rute, num);
         try {
             // Obtener URL
             String findURL = System.getProperty("user.dir") + "\\src\\" + section + "\\Main.java";
