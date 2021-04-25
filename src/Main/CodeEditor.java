@@ -59,8 +59,6 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     private final ExitEditor Exit = new ExitEditor();
     private final JFileChooser seleccion = new JFileChooser();
     private final RSyntaxTextArea textArea = new RSyntaxTextArea();
-    static Compilation_Window ce = new Compilation_Window();
-    static Runtime_Window rt = new Runtime_Window();
     private boolean eje = false;
     private final Color drag = new Color(96, 96, 96);
     private final Color thumb_on = new Color(144, 144, 144);
@@ -68,6 +66,9 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     private File archivo_abrir;
     private FileInputStream entrada;
     private FileOutputStream salida, out;
+
+    static Compilation_Window ce = new Compilation_Window();
+    static Runtime_Window rt = new Runtime_Window();
 
     public CodeEditor() {
         sRecursos = RecursosService.getService();
@@ -232,18 +233,19 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         provider.addCompletion(new BasicCompletion(provider, "if"));
         provider.addCompletion(new BasicCompletion(provider, "import"));
         provider.addCompletion(new BasicCompletion(provider, "int"));
-        provider.addCompletion(new BasicCompletion(provider, "java.util.Scanner"));
+        provider.addCompletion(new BasicCompletion(provider, "java.util.Scanner;"));
         provider.addCompletion(new BasicCompletion(provider, "long"));
         provider.addCompletion(new BasicCompletion(provider, "new"));
-        provider.addCompletion(new BasicCompletion(provider, "nextInt()"));
-        provider.addCompletion(new BasicCompletion(provider, "nextLong()"));
-        provider.addCompletion(new BasicCompletion(provider, "next()"));
+        provider.addCompletion(new BasicCompletion(provider, "nextInt();"));
+        provider.addCompletion(new BasicCompletion(provider, "nextLong();"));
+        provider.addCompletion(new BasicCompletion(provider, "next();"));
         provider.addCompletion(new BasicCompletion(provider, "null"));
         provider.addCompletion(new BasicCompletion(provider, "package"));
         provider.addCompletion(new BasicCompletion(provider, "private"));
         provider.addCompletion(new BasicCompletion(provider, "public"));
         provider.addCompletion(new BasicCompletion(provider, "return"));
         provider.addCompletion(new BasicCompletion(provider, "static"));
+        provider.addCompletion(new BasicCompletion(provider, "System.in"));
         provider.addCompletion(new BasicCompletion(provider, "switch"));
         provider.addCompletion(new BasicCompletion(provider, "Scanner"));
         provider.addCompletion(new BasicCompletion(provider, "true"));
@@ -339,7 +341,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     private void entrada() {
         String documento = Txa_Entrada.getText();
         try {
-            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\Editor\\input.txt");
+            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\ioeditor\\input.txt");
             byte[] bytxt = documento.getBytes();
             out.write(bytxt);
         } catch (IOException e) {
@@ -383,7 +385,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
         ProcessBuilder pb = new ProcessBuilder(cmds);
         pb.redirectError();
-        pb.redirectInput(new File(System.getProperty("user.dir") + "\\src\\Editor", "output.txt"));
+        pb.redirectInput(new File(System.getProperty("user.dir") + "\\src\\ioeditor", "output.txt"));
 
         pb.directory(new File("src"));
 
@@ -397,7 +399,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
         Txa_Salida.setText(writteable);
 
-        try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\Editor\\output.txt")) {
+        try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\ioeditor\\output.txt")) {
             fw.write(writteable);
         }
 
