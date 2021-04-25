@@ -13,8 +13,8 @@ public class CompileAndRun {
 
     static FileOutputStream out;
 
-    static public void replaceCode(String code, String section, String num) {
-        String codeModificado = ReemplazarCodigo.reemplazar(code, "judge", "iofiles", num);
+    static public void replaceCode(String code, String section, String rute, String num) {
+        String codeModificado = ReemplazarCodigo.reemplazar(code, section, rute, num);
 
         try {
             out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\" + section + "\\Main.java");
