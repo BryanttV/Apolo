@@ -2,6 +2,7 @@ package Main;
 
 // Librerias Creadas
 import Services.RecursosService;
+import CustomComponents.CustomProgressBarUIHorizontal;
 
 // Librerias Default
 import javax.swing.Timer;
@@ -10,7 +11,6 @@ import java.util.Random;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import CustomComponents.CustomProgressBarUIHorizontal;
 
 public class Tips extends javax.swing.JDialog {
 
@@ -33,9 +33,9 @@ public class Tips extends javax.swing.JDialog {
         this.setLocationRelativeTo(parent);
         temporizador();
 
-        Pb_Tips.setUI(new CustomProgressBarUIHorizontal());
 
         // Interfaz
+        Pb_Tips.setUI(new CustomProgressBarUIHorizontal());
         Txa_Tips.setFont(sRecursos.getFContentTip());
         Lbl_Tip.setFont(sRecursos.getFTitleTips());
         Txa_Tips.setText(arr.get(getNumero()));
