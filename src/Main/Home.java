@@ -49,6 +49,8 @@ public class Home extends javax.swing.JFrame {
     // Ventanas JDialog
     private final About st = new About(this, true);
     private final ExitMain Confirmar = new ExitMain(this, true);
+
+    // Resaltador de Sintaxis
     private final RSyntaxTextArea syntaxCode = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxSolution = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio1 = new RSyntaxTextArea();
@@ -60,6 +62,7 @@ public class Home extends javax.swing.JFrame {
     private final Color thumb_on = new Color(32, 30, 33);
     private final Color drag = new Color(32, 30, 33);
 
+    // Variables Auxiliares
     private int aux = 1;
     private int contador = 0;
     private boolean active = true;
