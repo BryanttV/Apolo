@@ -27,6 +27,7 @@ import org.fife.ui.rsyntaxtextarea.templates.StaticCodeTemplate;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
@@ -59,13 +60,14 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     private final ExitEditor Exit = new ExitEditor();
     private final JFileChooser seleccion = new JFileChooser();
     private final RSyntaxTextArea textArea = new RSyntaxTextArea();
-    private boolean eje = false;
     private final Color drag = new Color(96, 96, 96);
     private final Color thumb_on = new Color(144, 144, 144);
     private final Color thumb_off = new Color(96, 96, 96);
+    private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
     private File archivo_abrir;
     private FileInputStream entrada;
     private FileOutputStream salida, out;
+    private boolean eje = false;
 
     static Compilation_Window ce = new Compilation_Window();
     static Runtime_Window rt = new Runtime_Window();
@@ -123,8 +125,11 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     // Configuracion general de la ventana
     private void configurarVentana() {
-        this.setExtendedState(JFrame.MAXIMIZED_BOTH); // Maximizar a pantalla completa
+        this.setLocationRelativeTo(null);
+        this.setExtendedState(((int) DimMax.getHeight() == 768) ? 6 : 0);
+        this.setResizable((int) DimMax.getHeight() == 768);
         this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
+        // Agregar icono de Apolo
         setIconImage(new ImageIcon(getClass().getResource(
                 "/Resources/General/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
     }
