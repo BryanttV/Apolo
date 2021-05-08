@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="ApoloPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>Entities.Progress</class>
+    <class>Entities.HistorySubtopics</class>
+    <class>Entities.HistoryPrograms</class>
+    <class>Entities.LearningImages</class>
+    <class>Entities.Codes</class>
+    <class>Entities.AlternativeSolutions</class>
+    <class>Entities.HistoryImages</class>
+    <class>Entities.Exercises</class>
+    <class>Entities.ProgrammingLanguages</class>
+    <class>Entities.Questionnaires</class>
+    <class>Entities.Questions</class>
+    <class>Entities.StudyPrograms</class>
+    <class>Entities.Sequence</class>
+    <class>Entities.ExercisesContent</class>
+    <class>Entities.Curiosities</class>
+    <class>Entities.TestCases</class>
+    <class>Entities.HistoryTopics</class>
+    <class>Entities.LearningSubtopics</class>
+    <class>Entities.LearningTopics</class>
+    <class>Entities.ExercisesImages</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:sqlite:C:\Users\david\Documents\NetBeansProjects\Apolo\src\Database\apolo.db"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="org.sqlite.JDBC"/>
+      <property name="javax.persistence.jdbc.password" value=""/>
+    </properties>
+  </persistence-unit>
+</persistence>
