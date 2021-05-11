@@ -137,6 +137,7 @@ public class Home extends javax.swing.JFrame {
                 // Agregar Barra de Desplazamiento Personalizada cada ScrollPane
                 scp.getVerticalScrollBar().setUI(
                         new CustomScrollBarUI(drag, thumb_on, thumb_off));
+                scp.getVerticalScrollBar().setUnitIncrement(16);
                 // Quitar borde por defecto
                 scp.setBorder(null);
             }
