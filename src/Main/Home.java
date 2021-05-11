@@ -3756,7 +3756,7 @@ public class Home extends javax.swing.JFrame {
         Txa_SubContent1.setText(parrafos[0]);
         syntaxTemas.setText(coList.get(0).getSampleCode());
         Txa_OutputScreen1.setText(coList.get(0).getOutputScreen() + "\n\n");
-        Txa_OutputScreen1.append(parrafos[1] + "\n\n" + parrafos[3]);
+        Txa_OutputScreen1.append(parrafos[1] + "\n\n" + parrafos[2]);
     }
 
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
