@@ -6,10 +6,37 @@ import Services.RecursosService;
 import CustomComponents.CustomScrollBarUI;
 import CustomComponents.CustomProgressBarUIVertical;
 import CustomComponents.CustomProgressBarUIHorizontal;
-import Entities.Codes;
 import Entities.LearningSubtopics;
+import Entities.Codes;
+import Entities.AlternativeSolutions;
+import Entities.Curiosities;
+import Entities.Exercises;
+import Entities.ExercisesContent;
+import Entities.HistoryImages;
+import Entities.HistorySubtopics;
+import Entities.HistoryTopics;
+import Entities.LearningImages;
+import Entities.LearningTopics;
+import Entities.Progress;
+import Entities.Questionnaires;
+import Entities.Questions;
+import Entities.TestCases;
+
+import JPA_Controllers.AlternativeSolutionsJpaController;
 import JPA_Controllers.CodesJpaController;
+import JPA_Controllers.CuriositiesJpaController;
+import JPA_Controllers.ExercisesContentJpaController;
+import JPA_Controllers.ExercisesJpaController;
+import JPA_Controllers.HistoryImagesJpaController;
+import JPA_Controllers.HistorySubtopicsJpaController;
+import JPA_Controllers.HistoryTopicsJpaController;
+import JPA_Controllers.LearningImagesJpaController;
 import JPA_Controllers.LearningSubtopicsJpaController;
+import JPA_Controllers.LearningTopicsJpaController;
+import JPA_Controllers.ProgressJpaController;
+import JPA_Controllers.QuestionnairesJpaController;
+import JPA_Controllers.QuestionsJpaController;
+import JPA_Controllers.TestCasesJpaController;
 import static Judge.init.juzgador;
 
 // Librerias externas
@@ -62,6 +89,7 @@ public class Home extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxEjercicio1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio3 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas = new RSyntaxTextArea();
 
     // Colores ScrollBar
     private final Color thumb_off = new Color(50, 50, 50);
@@ -73,6 +101,44 @@ public class Home extends javax.swing.JFrame {
     private int contador = 0;
     private boolean active = true;
     private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
+
+    // Llamada informacion DDBB -------------------------------------------------
+    // Creación de Fabrica de Entidades
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
+
+    // Creacion de Controladores
+    AlternativeSolutionsJpaController asjpa = new AlternativeSolutionsJpaController(emf);
+    CodesJpaController cojpa = new CodesJpaController(emf);
+    CuriositiesJpaController cujpa = new CuriositiesJpaController(emf);
+    ExercisesContentJpaController ecjpa = new ExercisesContentJpaController(emf);
+    ExercisesJpaController ejpa = new ExercisesJpaController(emf);
+    HistoryImagesJpaController hijpa = new HistoryImagesJpaController(emf);
+    HistorySubtopicsJpaController hsjpa = new HistorySubtopicsJpaController(emf);
+    HistoryTopicsJpaController htjpa = new HistoryTopicsJpaController(emf);
+    LearningImagesJpaController lijpa = new LearningImagesJpaController(emf);
+    LearningSubtopicsJpaController lstjpa = new LearningSubtopicsJpaController(emf);
+    LearningTopicsJpaController ltjpa = new LearningTopicsJpaController(emf);
+    ProgressJpaController projpa = new ProgressJpaController(emf);
+    QuestionnairesJpaController qresjpa = new QuestionnairesJpaController(emf);
+    QuestionsJpaController qjpa = new QuestionsJpaController(emf);
+    TestCasesJpaController tcjpa = new TestCasesJpaController(emf);
+
+    // Creacion de Listas 
+    List<AlternativeSolutions> asList = asjpa.findAlternativeSolutionsEntities();
+    List<Codes> coList = cojpa.findCodesEntities();
+    List<Curiosities> cuList = cujpa.findCuriositiesEntities();
+    List<ExercisesContent> ecList = ecjpa.findExercisesContentEntities();
+    List<Exercises> eList = ejpa.findExercisesEntities();
+    List<HistoryImages> hiList = hijpa.findHistoryImagesEntities();
+    List<HistorySubtopics> hsList = hsjpa.findHistorySubtopicsEntities();
+    List<HistoryTopics> htList = htjpa.findHistoryTopicsEntities();
+    List<LearningImages> liList = lijpa.findLearningImagesEntities();
+    List<LearningSubtopics> lstList = lstjpa.findLearningSubtopicsEntities();
+    List<LearningTopics> ltList = ltjpa.findLearningTopicsEntities();
+    List<Progress> proList = projpa.findProgressEntities();
+    List<Questionnaires> qresList = qresjpa.findQuestionnairesEntities();
+    List<Questions> qList = qjpa.findQuestionsEntities();
+    List<TestCases> tcList = tcjpa.findTestCasesEntities();
 
     // Constructor
     public Home() {
@@ -210,6 +276,17 @@ public class Home extends javax.swing.JFrame {
         p.add(tsp);
     }
 
+    private void agregarRSyntax(JPanel p, RSyntaxTextArea rta) {
+        rta.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
+        changeStyleViaThemeXml(rta);
+        rta.setFont(new Font("Consolas", Font.PLAIN, 14));
+        rta.setBackground(sRecursos.getCPrincipal());
+        rta.setAntiAliasingEnabled(true);
+        rta.revalidate();
+        rta.setEditable(false);
+        p.add(rta);
+    }
+
     // Agregar RSyntaxText a panel de Codigo y Solucion en CodeStorm
     private void resaltarCodigo() {
         // Creacion de Resaltado de Sintaxis para Codigo y Solucion en CodeStorm
@@ -223,6 +300,7 @@ public class Home extends javax.swing.JFrame {
         agregarRSyntax(Pnl_SyntaxEjercicio1, syntaxEjercicio1, tspEjercicio1);
         agregarRSyntax(Pnl_SyntaxEjercicio2, syntaxEjercicio2, tspEjercicio2);
         agregarRSyntax(Pnl_SyntaxEjercicio3, syntaxEjercicio3, tspEjercicio3);
+        agregarRSyntax(Pnl_CodesThemes, syntaxTemas);
         syntaxSolution.setEditable(false);
     }
 
@@ -429,6 +507,10 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema1 = new javax.swing.JPanel();
         Btn_Siguiente_Cuestionario1 = new javax.swing.JButton();
         Lbl_HelloWorld = new javax.swing.JLabel();
+        Txa_Analogy1 = new javax.swing.JTextArea();
+        Txa_OutputScreen1 = new javax.swing.JTextArea();
+        Txa_SubContent1 = new javax.swing.JTextArea();
+        Pnl_CodesThemes = new javax.swing.JPanel();
         Scp_Cuestionario1 = new javax.swing.JScrollPane();
         Pnl_Cuestionario1 = new javax.swing.JPanel();
         Btn_Anterior_HelloWord = new javax.swing.JButton();
@@ -1087,9 +1169,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Tema1.setBackground(sRecursos.getCPrincipal());
         Pnl_Tema1.setCursor(sRecursos.getCDefault());
-        Pnl_Tema1.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema1.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema1.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Tema1.setMaximumSize(new java.awt.Dimension(1176, 710));
+        Pnl_Tema1.setMinimumSize(new java.awt.Dimension(1176, 710));
+        Pnl_Tema1.setPreferredSize(new java.awt.Dimension(1176, 710));
         Pnl_Tema1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Siguiente_Cuestionario1.setBackground(null);
@@ -1109,12 +1191,48 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Cuestionario1ActionPerformed(evt);
             }
         });
-        Pnl_Tema1.add(Btn_Siguiente_Cuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Tema1.add(Btn_Siguiente_Cuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 610, 254, 64));
 
         Lbl_HelloWorld.setFont(sRecursos.getFLabels());
         Lbl_HelloWorld.setText("Hello World");
         Lbl_HelloWorld.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Tema1.add(Lbl_HelloWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 190, 45));
+
+        Txa_Analogy1.setEditable(false);
+        Txa_Analogy1.setColumns(20);
+        Txa_Analogy1.setFont(sRecursos.getFLabelSettings());
+        Txa_Analogy1.setRows(5);
+        Txa_Analogy1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy1.setFocusable(false);
+        Txa_Analogy1.setOpaque(false);
+        Pnl_Tema1.add(Txa_Analogy1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1120, 110));
+
+        Txa_OutputScreen1.setEditable(false);
+        Txa_OutputScreen1.setColumns(20);
+        Txa_OutputScreen1.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen1.setLineWrap(true);
+        Txa_OutputScreen1.setRows(5);
+        Txa_OutputScreen1.setWrapStyleWord(true);
+        Txa_OutputScreen1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen1.setFocusable(false);
+        Txa_OutputScreen1.setOpaque(false);
+        Txa_OutputScreen1.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema1.add(Txa_OutputScreen1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, 1120, 200));
+
+        Txa_SubContent1.setEditable(false);
+        Txa_SubContent1.setColumns(20);
+        Txa_SubContent1.setFont(sRecursos.getFWindow());
+        Txa_SubContent1.setLineWrap(true);
+        Txa_SubContent1.setRows(5);
+        Txa_SubContent1.setWrapStyleWord(true);
+        Txa_SubContent1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent1.setFocusable(false);
+        Txa_SubContent1.setOpaque(false);
+        Pnl_Tema1.add(Txa_SubContent1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 1120, 80));
+
+        Pnl_CodesThemes.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes.setLayout(new java.awt.CardLayout());
+        Pnl_Tema1.add(Pnl_CodesThemes, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 1120, 90));
 
         Scp_Tema1.setViewportView(Pnl_Tema1);
 
@@ -3631,21 +3749,19 @@ public class Home extends javax.swing.JFrame {
             Pnl_Home.setVisible(true);
         }
     }//GEN-LAST:event_Btn_HistoriaActionPerformed
-
-    EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
-    LearningSubtopicsJpaController ljpa = new LearningSubtopicsJpaController(emf);
-    CodesJpaController cjpa = new CodesJpaController(emf);
-    List <LearningSubtopics> learnList = ljpa.findLearningSubtopicsEntities();
-    List <Codes> codesList = cjpa.findCodesEntities();
-
+    
     private void helloWorldContent() {
-        String [] parrafos = learnList.get(0).getLearningSubContent().split("\n");
-//        Txa_Analogy1.setText(learnList.get(0).getTitleAnalogy());
-//        Txa_SubContent1.setText(parrafos[0]);
-//        syntaxCodeT1.setText(codesList.get(0).getSampleCode());
+        String[] parrafos = lstList.get(0).getLearningSubContent().split("\n");
+        Txa_Analogy1.setText(lstList.get(0).getTitleAnalogy());
+        Txa_SubContent1.setText(parrafos[0]);
+        syntaxTemas.setText(coList.get(0).getSampleCode());
+        Txa_OutputScreen1.setText(coList.get(0).getOutputScreen() + "\n\n");
+        Txa_OutputScreen1.append(parrafos[1] + "\n\n" + parrafos[2]);
     }
     
+    
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
+        helloWorldContent();
         Scp_Tema1.setVisible(true);
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema1ActionPerformed
@@ -4473,6 +4589,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Bar_Buttons;
     private javax.swing.JPanel Pnl_BotonesPrincipales;
     private javax.swing.JPanel Pnl_CodeStorm;
+    private javax.swing.JPanel Pnl_CodesThemes;
     private javax.swing.JPanel Pnl_CodigoFull;
     private javax.swing.JPanel Pnl_Cuestionario1;
     private javax.swing.JPanel Pnl_Cuestionario10;
@@ -4563,7 +4680,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Tema7;
     private javax.swing.JScrollPane Scp_Tema8;
     private javax.swing.JScrollPane Scp_Tema9;
+    private javax.swing.JTextArea Txa_Analogy1;
     private javax.swing.JTextArea Txa_Competencias;
+    private javax.swing.JTextArea Txa_OutputScreen1;
     private javax.swing.JTextArea Txa_QueEs;
+    private javax.swing.JTextArea Txa_SubContent1;
     // End of variables declaration//GEN-END:variables
 }

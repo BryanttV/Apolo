@@ -18,6 +18,7 @@ public final class RecursosService {
     private Font fLabel_Aprender;
     private Font fLabel_HistoriaB;
     private Font fLabel_HistoriaR;
+    private Font fAnalogy;
     private Cursor cMano;
     private Cursor cDefault;
     private Color colorPrincipal;
