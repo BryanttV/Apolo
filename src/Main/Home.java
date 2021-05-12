@@ -6,6 +6,10 @@ import Services.RecursosService;
 import CustomComponents.CustomScrollBarUI;
 import CustomComponents.CustomProgressBarUIVertical;
 import CustomComponents.CustomProgressBarUIHorizontal;
+import Entities.Codes;
+import Entities.LearningSubtopics;
+import JPA_Controllers.CodesJpaController;
+import JPA_Controllers.LearningSubtopicsJpaController;
 import static Judge.init.juzgador;
 
 // Librerias externas
@@ -29,6 +33,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -3626,7 +3632,19 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Btn_HistoriaActionPerformed
 
+    EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
+    LearningSubtopicsJpaController ljpa = new LearningSubtopicsJpaController(emf);
+    CodesJpaController cjpa = new CodesJpaController(emf);
+    List <LearningSubtopics> learnList = ljpa.findLearningSubtopicsEntities();
+    List <Codes> codesList = cjpa.findCodesEntities();
 
+    private void helloWorldContent() {
+        String [] parrafos = learnList.get(0).getLearningSubContent().split("\n");
+//        Txa_Analogy1.setText(learnList.get(0).getTitleAnalogy());
+//        Txa_SubContent1.setText(parrafos[0]);
+//        syntaxCodeT1.setText(codesList.get(0).getSampleCode());
+    }
+    
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
         Scp_Tema1.setVisible(true);
         mostrarPanelesAprender();
