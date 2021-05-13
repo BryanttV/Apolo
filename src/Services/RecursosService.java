@@ -18,7 +18,7 @@ public final class RecursosService {
     private Font fLabel_Aprender;
     private Font fLabel_HistoriaB;
     private Font fLabel_HistoriaR;
-    private Font fAnalogy;
+    private Font fTitles;
     private Cursor cMano;
     private Cursor cDefault;
     private Color colorPrincipal;
@@ -82,9 +82,14 @@ public final class RecursosService {
         fEuclidB18 = f.fuente(f.EUCB, 0, 18);
         fEuclidB22 = f.fuente(f.EUCB, 0, 22);
         fEuclidB30 = f.fuente(f.EUCB, 0, 30);
+        fTitles = f.fuente(f.EUCB, 0, 18);
     }
 
     // Getters -----------------------------------------------------------------
+    public Font getFTitles() {
+        return fTitles;
+    }
+
     public Font getFContentTip() {
         return fEuclidR14;
     }

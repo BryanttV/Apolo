@@ -60,8 +60,6 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -74,9 +72,12 @@ import javax.swing.JToggleButton;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 public class Home extends javax.swing.JFrame {
 
+    // Clase Recursos
     private final RecursosService sRecursos;
 
     // Ventanas JDialog
@@ -89,7 +90,9 @@ public class Home extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxEjercicio1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio3 = new RSyntaxTextArea();
-    private final RSyntaxTextArea syntaxTemas = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas1 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas2 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas5 = new RSyntaxTextArea();
 
     // Colores ScrollBar
     private final Color thumb_off = new Color(50, 50, 50);
@@ -229,8 +232,10 @@ public class Home extends javax.swing.JFrame {
         for (Component componente : aprenderList) {
             if (componente instanceof JLabel) {
                 JLabel lbl = (JLabel) componente;
-                lbl.setFont(sRecursos.getFLabelsAprender());
-                lbl.setForeground(sRecursos.getColorVerde());
+                if (lbl.getBounds().y == 5) {
+                    lbl.setFont(sRecursos.getFLabelsAprender());
+                    lbl.setForeground(sRecursos.getColorVerde());
+                }
             }
         }
 
@@ -300,7 +305,9 @@ public class Home extends javax.swing.JFrame {
         agregarRSyntax(Pnl_SyntaxEjercicio1, syntaxEjercicio1, tspEjercicio1);
         agregarRSyntax(Pnl_SyntaxEjercicio2, syntaxEjercicio2, tspEjercicio2);
         agregarRSyntax(Pnl_SyntaxEjercicio3, syntaxEjercicio3, tspEjercicio3);
-        agregarRSyntax(Pnl_CodesThemes, syntaxTemas);
+        agregarRSyntax(Pnl_CodesThemes, syntaxTemas1);
+        agregarRSyntax(Pnl_CodesThemes2, syntaxTemas2);
+        agregarRSyntax(Pnl_CodesThemes5, syntaxTemas5);
         syntaxSolution.setEditable(false);
     }
 
@@ -531,6 +538,12 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario2 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario3 = new javax.swing.JButton();
         Lbl_TiposdeDatos = new javax.swing.JLabel();
+        Txa_Analogy2 = new javax.swing.JTextArea();
+        Txa_SubContent2 = new javax.swing.JTextArea();
+        Pnl_CodesThemes2 = new javax.swing.JPanel();
+        Txa_Tips2 = new javax.swing.JTextArea();
+        Lbl_SampleCode2 = new javax.swing.JLabel();
+        Lbl_Tips2 = new javax.swing.JLabel();
         Scp_Cuestionario3 = new javax.swing.JScrollPane();
         Pnl_Cuestionario3 = new javax.swing.JPanel();
         Btn_Anterior_TiposdeDatos = new javax.swing.JButton();
@@ -568,6 +581,14 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Ejercicio1_Principiante = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario6 = new javax.swing.JButton();
         Lbl_OperadoresdeRelacion = new javax.swing.JLabel();
+        Txa_Analogy5 = new javax.swing.JTextArea();
+        Txa_SubContent5 = new javax.swing.JTextArea();
+        Txa_SubContent5_1 = new javax.swing.JTextArea();
+        Lbl_Tabla5 = new javax.swing.JLabel();
+        Pnl_CodesThemes5 = new javax.swing.JPanel();
+        Txa_OutputScreen5 = new javax.swing.JTextArea();
+        Lbl_CodeEjemplo5 = new javax.swing.JLabel();
+        Lbl_ImagenTabla = new javax.swing.JLabel();
         Scp_Cuestionario6 = new javax.swing.JScrollPane();
         Pnl_Cuestionario6 = new javax.swing.JPanel();
         Btn_Anterior_OperadoresdeRelacion = new javax.swing.JButton();
@@ -1455,6 +1476,50 @@ public class Home extends javax.swing.JFrame {
         Lbl_TiposdeDatos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Tema3.add(Lbl_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 230, 45));
 
+        Txa_Analogy2.setEditable(false);
+        Txa_Analogy2.setColumns(20);
+        Txa_Analogy2.setFont(sRecursos.getFTitleTips());
+        Txa_Analogy2.setRows(5);
+        Txa_Analogy2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy2.setFocusable(false);
+        Txa_Analogy2.setOpaque(false);
+        Pnl_Tema3.add(Txa_Analogy2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1120, 70));
+
+        Txa_SubContent2.setEditable(false);
+        Txa_SubContent2.setColumns(20);
+        Txa_SubContent2.setFont(sRecursos.getFWindow());
+        Txa_SubContent2.setLineWrap(true);
+        Txa_SubContent2.setRows(5);
+        Txa_SubContent2.setWrapStyleWord(true);
+        Txa_SubContent2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent2.setFocusable(false);
+        Txa_SubContent2.setOpaque(false);
+        Pnl_Tema3.add(Txa_SubContent2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 1120, 350));
+
+        Pnl_CodesThemes2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes2.setLayout(new java.awt.CardLayout());
+        Pnl_Tema3.add(Pnl_CodesThemes2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 540, 1120, 210));
+
+        Txa_Tips2.setEditable(false);
+        Txa_Tips2.setColumns(20);
+        Txa_Tips2.setFont(sRecursos.getFWindow());
+        Txa_Tips2.setLineWrap(true);
+        Txa_Tips2.setRows(5);
+        Txa_Tips2.setWrapStyleWord(true);
+        Txa_Tips2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Tips2.setFocusable(false);
+        Txa_Tips2.setOpaque(false);
+        Txa_Tips2.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema3.add(Txa_Tips2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 800, 1120, 140));
+
+        Lbl_SampleCode2.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode2.setText("Código de Ejemplo");
+        Pnl_Tema3.add(Lbl_SampleCode2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 510, -1, -1));
+
+        Lbl_Tips2.setFont(sRecursos.getFTitles());
+        Lbl_Tips2.setText("Tips");
+        Pnl_Tema3.add(Lbl_Tips2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 770, -1, -1));
+
         Scp_Tema3.setViewportView(Pnl_Tema3);
 
         Pnl_Temas.add(Scp_Tema3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1176, 605));
@@ -1817,9 +1882,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Tema6.setBackground(sRecursos.getCPrincipal());
         Pnl_Tema6.setCursor(sRecursos.getCDefault());
-        Pnl_Tema6.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema6.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema6.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Tema6.setMaximumSize(new java.awt.Dimension(1176, 1400));
+        Pnl_Tema6.setMinimumSize(new java.awt.Dimension(1176, 1400));
+        Pnl_Tema6.setPreferredSize(new java.awt.Dimension(1176, 1400));
         Pnl_Tema6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Ejercicio1_Principiante.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Ejercicio1_Off.png"))); // NOI18N
@@ -1837,7 +1902,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Ejercicio1_PrincipianteActionPerformed(evt);
             }
         });
-        Pnl_Tema6.add(Btn_Anterior_Ejercicio1_Principiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Tema6.add(Btn_Anterior_Ejercicio1_Principiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1290, 254, 64));
 
         Btn_Siguiente_Cuestionario6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Cuestionario6_Off.png"))); // NOI18N
         Btn_Siguiente_Cuestionario6.setMnemonic(39);
@@ -1854,12 +1919,71 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Cuestionario6ActionPerformed(evt);
             }
         });
-        Pnl_Tema6.add(Btn_Siguiente_Cuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Tema6.add(Btn_Siguiente_Cuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1290, 254, 64));
 
         Lbl_OperadoresdeRelacion.setFont(sRecursos.getFLabels());
         Lbl_OperadoresdeRelacion.setText("Operadores de Relación");
         Lbl_OperadoresdeRelacion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Tema6.add(Lbl_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 440, 45));
+
+        Txa_Analogy5.setEditable(false);
+        Txa_Analogy5.setColumns(20);
+        Txa_Analogy5.setFont(sRecursos.getFTitleTips());
+        Txa_Analogy5.setRows(5);
+        Txa_Analogy5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy5.setFocusable(false);
+        Txa_Analogy5.setOpaque(false);
+        Pnl_Tema6.add(Txa_Analogy5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1120, 100));
+
+        Txa_SubContent5.setEditable(false);
+        Txa_SubContent5.setColumns(20);
+        Txa_SubContent5.setFont(sRecursos.getFWindow());
+        Txa_SubContent5.setLineWrap(true);
+        Txa_SubContent5.setRows(5);
+        Txa_SubContent5.setWrapStyleWord(true);
+        Txa_SubContent5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent5.setFocusable(false);
+        Txa_SubContent5.setOpaque(false);
+        Pnl_Tema6.add(Txa_SubContent5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 1120, 50));
+
+        Txa_SubContent5_1.setEditable(false);
+        Txa_SubContent5_1.setColumns(20);
+        Txa_SubContent5_1.setFont(sRecursos.getFWindow());
+        Txa_SubContent5_1.setLineWrap(true);
+        Txa_SubContent5_1.setRows(5);
+        Txa_SubContent5_1.setWrapStyleWord(true);
+        Txa_SubContent5_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent5_1.setFocusable(false);
+        Txa_SubContent5_1.setOpaque(false);
+        Pnl_Tema6.add(Txa_SubContent5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, 1120, 50));
+
+        Lbl_Tabla5.setFont(sRecursos.getFTitles());
+        Lbl_Tabla5.setText("Tabla de Sintaxis General");
+        Pnl_Tema6.add(Lbl_Tabla5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        Pnl_CodesThemes5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes5.setLayout(new java.awt.CardLayout());
+        Pnl_Tema6.add(Pnl_CodesThemes5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 710, 1120, 270));
+
+        Txa_OutputScreen5.setEditable(false);
+        Txa_OutputScreen5.setColumns(20);
+        Txa_OutputScreen5.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen5.setLineWrap(true);
+        Txa_OutputScreen5.setRows(5);
+        Txa_OutputScreen5.setWrapStyleWord(true);
+        Txa_OutputScreen5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen5.setFocusable(false);
+        Txa_OutputScreen5.setOpaque(false);
+        Txa_OutputScreen5.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema6.add(Txa_OutputScreen5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 990, 1120, 260));
+
+        Lbl_CodeEjemplo5.setFont(sRecursos.getFTitles());
+        Lbl_CodeEjemplo5.setText("Código de Ejemplo");
+        Pnl_Tema6.add(Lbl_CodeEjemplo5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, -1, -1));
+
+        Lbl_ImagenTabla.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        Lbl_ImagenTabla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Learning_Images/Operadores_Relacion.png"))); // NOI18N
+        Pnl_Tema6.add(Lbl_ImagenTabla, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 270, 1130, 320));
 
         Scp_Tema6.setViewportView(Pnl_Tema6);
 
@@ -3703,10 +3827,10 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_AprenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AprenderActionPerformed
         if (Btn_Aprender.isSelected()) {
-            if (active) {
-                new Tips(this, true).setVisible(true);
-                active = false;
-            }
+//            if (active) {
+//                new Tips(this, true).setVisible(true);
+//                active = false;
+//            }
 
             apagarSecciones(1);
             habilitarBotonesAprender();
@@ -3754,7 +3878,7 @@ public class Home extends javax.swing.JFrame {
         String[] parrafos = lstList.get(0).getLearningSubContent().split("\n");
         Txa_Analogy1.setText(lstList.get(0).getTitleAnalogy());
         Txa_SubContent1.setText(parrafos[0]);
-        syntaxTemas.setText(coList.get(0).getSampleCode());
+        syntaxTemas1.setText(coList.get(0).getSampleCode());
         Txa_OutputScreen1.setText(coList.get(0).getOutputScreen() + "\n\n");
         Txa_OutputScreen1.append(parrafos[1] + "\n\n" + parrafos[2]);
     }
@@ -3770,7 +3894,15 @@ public class Home extends javax.swing.JFrame {
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema2ActionPerformed
 
+    private void tiposDeDatos() {
+        Txa_Analogy2.setText(lstList.get(2).getTitleAnalogy());
+        Txa_SubContent2.setText(lstList.get(2).getLearningSubContent());
+        syntaxTemas2.setText(coList.get(4).getSampleCode());
+        Txa_Tips2.setText(lstList.get(2).getTips());
+    }
+
     private void Btn_Aprender_Tema3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema3ActionPerformed
+        tiposDeDatos();
         Scp_Tema3.setVisible(true);
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema3ActionPerformed
@@ -3785,7 +3917,18 @@ public class Home extends javax.swing.JFrame {
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema5ActionPerformed
 
+    private void operadoresDeRelacion() {
+        String[] parrafos = lstList.get(7).getLearningSubContent().split("\n");
+        Txa_Analogy5.setText(lstList.get(7).getTitleAnalogy());
+        Txa_SubContent5.setText(parrafos[0]);
+        syntaxTemas5.setText(coList.get(11).getSampleCode());
+        Txa_SubContent5_1.setText(parrafos[1]);
+        Txa_OutputScreen5.setText(coList.get(11).getOutputScreen() + "\n\n");
+        Txa_OutputScreen5.append(coList.get(11).getCodeDescription());
+    }
+
     private void Btn_Aprender_Tema6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema6ActionPerformed
+        operadoresDeRelacion();
         Scp_Tema6.setVisible(true);
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema6ActionPerformed
@@ -4529,6 +4672,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JToggleButton Btn_Solucion;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
     private javax.swing.JLabel Lbl_Bucles;
+    private javax.swing.JLabel Lbl_CodeEjemplo5;
     private javax.swing.JLabel Lbl_CodeStorm_Fondo;
     private javax.swing.JLabel Lbl_Comentarios;
     private javax.swing.JLabel Lbl_Competencias;
@@ -4565,6 +4709,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_HelloWorld;
     private javax.swing.JLabel Lbl_HomeButttons;
     private javax.swing.JLabel Lbl_Home_Fondo;
+    private javax.swing.JLabel Lbl_ImagenTabla;
     private javax.swing.JLabel Lbl_LecturaeImpresion;
     private javax.swing.JLabel Lbl_Nivel1;
     private javax.swing.JLabel Lbl_Nivel2;
@@ -4577,7 +4722,10 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_PrimerosAlgoritmos;
     private javax.swing.JLabel Lbl_QueEs;
     private javax.swing.JLabel Lbl_Recursion;
+    private javax.swing.JLabel Lbl_SampleCode2;
+    private javax.swing.JLabel Lbl_Tabla5;
     private javax.swing.JLabel Lbl_TiposdeDatos;
+    private javax.swing.JLabel Lbl_Tips2;
     private javax.swing.JProgressBar Pb_Mapa;
     private javax.swing.JProgressBar Pb_Nivel1;
     private javax.swing.JProgressBar Pb_Nivel2;
@@ -4589,6 +4737,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_BotonesPrincipales;
     private javax.swing.JPanel Pnl_CodeStorm;
     private javax.swing.JPanel Pnl_CodesThemes;
+    private javax.swing.JPanel Pnl_CodesThemes2;
+    private javax.swing.JPanel Pnl_CodesThemes5;
     private javax.swing.JPanel Pnl_CodigoFull;
     private javax.swing.JPanel Pnl_Cuestionario1;
     private javax.swing.JPanel Pnl_Cuestionario10;
@@ -4680,9 +4830,16 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Tema8;
     private javax.swing.JScrollPane Scp_Tema9;
     private javax.swing.JTextArea Txa_Analogy1;
+    private javax.swing.JTextArea Txa_Analogy2;
+    private javax.swing.JTextArea Txa_Analogy5;
     private javax.swing.JTextArea Txa_Competencias;
     private javax.swing.JTextArea Txa_OutputScreen1;
+    private javax.swing.JTextArea Txa_OutputScreen5;
     private javax.swing.JTextArea Txa_QueEs;
     private javax.swing.JTextArea Txa_SubContent1;
+    private javax.swing.JTextArea Txa_SubContent2;
+    private javax.swing.JTextArea Txa_SubContent5;
+    private javax.swing.JTextArea Txa_SubContent5_1;
+    private javax.swing.JTextArea Txa_Tips2;
     // End of variables declaration//GEN-END:variables
 }
