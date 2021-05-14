@@ -11,6 +11,7 @@ public final class RecursosService {
     private final Fuentes f = new Fuentes();
     private Font fEuclidB16;
     private Font fEuclidB18;
+    private Font fEuclidB20;
     private Font fEuclidB22;
     private Font fEuclidB30;
     private Font fEuclidR16;
@@ -80,6 +81,7 @@ public final class RecursosService {
         fEuclidR16 = f.fuente(f.EUCR, 0, 16);
         fEuclidB16 = f.fuente(f.EUCB, 0, 16);
         fEuclidB18 = f.fuente(f.EUCB, 0, 18);
+        fEuclidB20 = f.fuente(f.EUCB, 0, 20);
         fEuclidB22 = f.fuente(f.EUCB, 0, 22);
         fEuclidB30 = f.fuente(f.EUCB, 0, 30);
         fTitles = f.fuente(f.EUCB, 0, 18);
@@ -88,6 +90,10 @@ public final class RecursosService {
     // Getters -----------------------------------------------------------------
     public Font getFTitles() {
         return fTitles;
+    }
+
+    public Font getFB20() {
+        return fEuclidB20;
     }
 
     public Font getFContentTip() {

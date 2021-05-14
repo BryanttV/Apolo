@@ -1,13 +1,13 @@
 package ioeditor;
 import java.io.*;
-import java.util.Scanner;
+public class Main{
 
-public class Main {
-	public static void main(String[] args) throws Exception{
-		Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\ioeditor\\input.txt"));
-		long a = sc.nextLong();
-		System.out.println(Integer.MAX_VALUE);
-		System.out.println(Long.MAX_VALUE);
-		
-	}
+    public static void main(String[] args) throws Exception {
+    	//Bucle while
+        int contador = 0;
+        while (contador < 15) {
+            contador++;
+        }
+        System.out.println(contador);
+    }
 }
