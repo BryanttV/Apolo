@@ -99,7 +99,14 @@ public class Home extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxTemas4 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas5 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas6 = new RSyntaxTextArea();
-
+    private final RSyntaxTextArea syntaxTemas7 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas7_1 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas7_2 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas7_3 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas7_4 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas7_5 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas7_6 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas7_7 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas8_1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas8_2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas8_3 = new RSyntaxTextArea();
@@ -328,7 +335,14 @@ public class Home extends javax.swing.JFrame {
         agregarRSyntax(Pnl_CodesThemes4, syntaxTemas4);
         agregarRSyntax(Pnl_CodesThemes5, syntaxTemas5);
         agregarRSyntax(Pnl_CodesThemes6, syntaxTemas6);
-
+        agregarRSyntax(Pnl_CodesThemes7, syntaxTemas7);
+        agregarRSyntax(Pnl_CodesThemes7_1, syntaxTemas7_1);
+        agregarRSyntax(Pnl_CodesThemes7_2, syntaxTemas7_2);
+        agregarRSyntax(Pnl_CodesThemes7_3, syntaxTemas7_3);
+        agregarRSyntax(Pnl_CodesThemes7_4, syntaxTemas7_4);
+        agregarRSyntax(Pnl_CodesThemes7_5, syntaxTemas7_5);
+        agregarRSyntax(Pnl_CodesThemes7_6, syntaxTemas7_6);
+        agregarRSyntax(Pnl_CodesThemes7_7, syntaxTemas7_7);
         agregarRSyntax(Pnl_CodesThemes8_1, syntaxTemas8_1);
         agregarRSyntax(Pnl_CodesThemes8_2, syntaxTemas8_2);
         agregarRSyntax(Pnl_CodesThemes8_3, syntaxTemas8_3);
@@ -665,9 +679,61 @@ public class Home extends javax.swing.JFrame {
         Lbl_Cuestionario7 = new javax.swing.JLabel();
         Scp_Tema8 = new javax.swing.JScrollPane();
         Pnl_Tema8 = new javax.swing.JPanel();
+        Lbl_Condicionales = new javax.swing.JLabel();
+        Txa_Analogy7 = new javax.swing.JTextArea();
+        Txa_SubContent7 = new javax.swing.JTextArea();
+        Lbl_Sintaxis8_1_1 = new javax.swing.JLabel();
+        Txa_CodeDescription7 = new javax.swing.JTextArea();
+        Txa_OutputScreen7 = new javax.swing.JTextArea();
+        Pnl_CodesThemes7 = new javax.swing.JPanel();
+        Txa_CodeDescription7_1 = new javax.swing.JTextArea();
+        Txa_OutputScreen7_1 = new javax.swing.JTextArea();
+        Pnl_CodesThemes7_1 = new javax.swing.JPanel();
+        Lbl_CondicionalesAnidados = new javax.swing.JLabel();
+        Pnl_CodesThemes7_2 = new javax.swing.JPanel();
+        Pnl_CodesThemes7_3 = new javax.swing.JPanel();
+        Txa_OutputScreen7_3 = new javax.swing.JTextArea();
+        Txa_Analogy7_4 = new javax.swing.JTextArea();
+        Txa_SubContent7_4 = new javax.swing.JTextArea();
+        Txa_CodeDescription7_4 = new javax.swing.JTextArea();
+        Txa_OutputScreen7_4 = new javax.swing.JTextArea();
+        Pnl_CodesThemes7_4 = new javax.swing.JPanel();
+        Txa_OutputScreen7_5 = new javax.swing.JTextArea();
+        Pnl_CodesThemes7_5 = new javax.swing.JPanel();
+        Txa_OutputScreen7_6 = new javax.swing.JTextArea();
+        Pnl_CodesThemes7_6 = new javax.swing.JPanel();
+        Txa_CodeDescription7_3 = new javax.swing.JTextArea();
+        Lbl_SwitchCase = new javax.swing.JLabel();
+        Txa_Analogy7_5 = new javax.swing.JTextArea();
+        Txa_CodeDescription7_5 = new javax.swing.JTextArea();
+        Txa_Syntax7_2 = new javax.swing.JTextArea();
+        Txa_OutputScreen7_7 = new javax.swing.JTextArea();
+        Pnl_CodesThemes7_7 = new javax.swing.JPanel();
+        Lbl_SampleCode8_4 = new javax.swing.JLabel();
+        Lbl_Output8_4 = new javax.swing.JLabel();
+        Lbl_SampleCode8_5 = new javax.swing.JLabel();
+        Lbl_Sintaxis8_5 = new javax.swing.JLabel();
+        Lbl_Output8_5 = new javax.swing.JLabel();
+        Lbl_SampleCode8_6 = new javax.swing.JLabel();
+        Lbl_Output8_6 = new javax.swing.JLabel();
+        Lbl_SampleCode8_7 = new javax.swing.JLabel();
+        Lbl_Output8_7 = new javax.swing.JLabel();
+        Lbl_SampleCode8_8 = new javax.swing.JLabel();
+        Lbl_Sintaxis8_6 = new javax.swing.JLabel();
+        Lbl_Output8_8 = new javax.swing.JLabel();
+        Lbl_SampleCode8_9 = new javax.swing.JLabel();
+        Lbl_SampleCode8_10 = new javax.swing.JLabel();
+        Lbl_Sintaxis8_7 = new javax.swing.JLabel();
+        Lbl_Output8_9 = new javax.swing.JLabel();
+        Lbl_Output8_10 = new javax.swing.JLabel();
+        Lbl_TryCatch = new javax.swing.JLabel();
+        Lbl_SampleCode8_11 = new javax.swing.JLabel();
+        Txa_Casos7 = new javax.swing.JTextArea();
+        Spr_CondicionalesAnidados = new javax.swing.JSeparator();
+        Spr_TryCatch = new javax.swing.JSeparator();
+        Spr_SwitchCase = new javax.swing.JSeparator();
         Btn_Anterior_Cuestionario7 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario8 = new javax.swing.JButton();
-        Lbl_Condicionales = new javax.swing.JLabel();
         Scp_Cuestionario8 = new javax.swing.JScrollPane();
         Pnl_Cuestionario8 = new javax.swing.JPanel();
         Btn_Anterior_Condicionales = new javax.swing.JButton();
@@ -2534,10 +2600,372 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Tema8.setBackground(sRecursos.getCPrincipal());
         Pnl_Tema8.setCursor(sRecursos.getCDefault());
-        Pnl_Tema8.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema8.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema8.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Tema8.setMaximumSize(new java.awt.Dimension(1176, 5400));
+        Pnl_Tema8.setMinimumSize(new java.awt.Dimension(1176, 5400));
+        Pnl_Tema8.setPreferredSize(new java.awt.Dimension(1176, 5400));
         Pnl_Tema8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Lbl_Condicionales.setFont(sRecursos.getFLabels());
+        Lbl_Condicionales.setText("Condicionales");
+        Lbl_Condicionales.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Pnl_Tema8.add(Lbl_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+
+        Txa_Analogy7.setEditable(false);
+        Txa_Analogy7.setColumns(20);
+        Txa_Analogy7.setFont(sRecursos.getFTitles());
+        Txa_Analogy7.setRows(5);
+        Txa_Analogy7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy7.setFocusable(false);
+        Txa_Analogy7.setOpaque(false);
+        Pnl_Tema8.add(Txa_Analogy7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 1120, 30));
+
+        Txa_SubContent7.setEditable(false);
+        Txa_SubContent7.setColumns(20);
+        Txa_SubContent7.setFont(sRecursos.getFWindow());
+        Txa_SubContent7.setLineWrap(true);
+        Txa_SubContent7.setRows(5);
+        Txa_SubContent7.setWrapStyleWord(true);
+        Txa_SubContent7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent7.setFocusable(false);
+        Txa_SubContent7.setOpaque(false);
+        Pnl_Tema8.add(Txa_SubContent7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 1120, 90));
+
+        Lbl_Sintaxis8_1_1.setFont(sRecursos.getFTitles());
+        Lbl_Sintaxis8_1_1.setText("Sintaxis");
+        Pnl_Tema8.add(Lbl_Sintaxis8_1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, -1, 20));
+
+        Txa_CodeDescription7.setEditable(false);
+        Txa_CodeDescription7.setColumns(20);
+        Txa_CodeDescription7.setFont(sRecursos.getFWindow());
+        Txa_CodeDescription7.setLineWrap(true);
+        Txa_CodeDescription7.setRows(5);
+        Txa_CodeDescription7.setWrapStyleWord(true);
+        Txa_CodeDescription7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_CodeDescription7.setFocusable(false);
+        Txa_CodeDescription7.setOpaque(false);
+        Pnl_Tema8.add(Txa_CodeDescription7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 1120, 70));
+
+        Txa_OutputScreen7.setEditable(false);
+        Txa_OutputScreen7.setColumns(20);
+        Txa_OutputScreen7.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen7.setLineWrap(true);
+        Txa_OutputScreen7.setRows(5);
+        Txa_OutputScreen7.setWrapStyleWord(true);
+        Txa_OutputScreen7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen7.setFocusable(false);
+        Txa_OutputScreen7.setOpaque(false);
+        Txa_OutputScreen7.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_OutputScreen7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 800, 1120, 90));
+
+        Pnl_CodesThemes7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 500, 1120, 260));
+
+        Txa_CodeDescription7_1.setEditable(false);
+        Txa_CodeDescription7_1.setColumns(20);
+        Txa_CodeDescription7_1.setFont(sRecursos.getFWindow());
+        Txa_CodeDescription7_1.setLineWrap(true);
+        Txa_CodeDescription7_1.setRows(5);
+        Txa_CodeDescription7_1.setWrapStyleWord(true);
+        Txa_CodeDescription7_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_CodeDescription7_1.setFocusable(false);
+        Txa_CodeDescription7_1.setOpaque(false);
+        Txa_CodeDescription7_1.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_CodeDescription7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 900, 1120, 30));
+
+        Txa_OutputScreen7_1.setEditable(false);
+        Txa_OutputScreen7_1.setColumns(20);
+        Txa_OutputScreen7_1.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen7_1.setLineWrap(true);
+        Txa_OutputScreen7_1.setRows(5);
+        Txa_OutputScreen7_1.setWrapStyleWord(true);
+        Txa_OutputScreen7_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen7_1.setFocusable(false);
+        Txa_OutputScreen7_1.setOpaque(false);
+        Txa_OutputScreen7_1.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_OutputScreen7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1360, 1120, 150));
+
+        Pnl_CodesThemes7_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7_1.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 970, 1120, 350));
+
+        Lbl_CondicionalesAnidados.setFont(sRecursos.getFB20());
+        Lbl_CondicionalesAnidados.setForeground(sRecursos.getColorVerde());
+        Lbl_CondicionalesAnidados.setText("Condicionales Anidados");
+        Pnl_Tema8.add(Lbl_CondicionalesAnidados, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1560, 300, 20));
+
+        Pnl_CodesThemes7_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7_2.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1630, 1120, 180));
+
+        Pnl_CodesThemes7_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7_3.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1850, 1118, 300));
+
+        Txa_OutputScreen7_3.setEditable(false);
+        Txa_OutputScreen7_3.setColumns(20);
+        Txa_OutputScreen7_3.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen7_3.setLineWrap(true);
+        Txa_OutputScreen7_3.setRows(5);
+        Txa_OutputScreen7_3.setWrapStyleWord(true);
+        Txa_OutputScreen7_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen7_3.setFocusable(false);
+        Txa_OutputScreen7_3.setOpaque(false);
+        Txa_OutputScreen7_3.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_OutputScreen7_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2190, 1120, 50));
+
+        Txa_Analogy7_4.setEditable(false);
+        Txa_Analogy7_4.setColumns(20);
+        Txa_Analogy7_4.setFont(sRecursos.getFTitles());
+        Txa_Analogy7_4.setLineWrap(true);
+        Txa_Analogy7_4.setRows(5);
+        Txa_Analogy7_4.setWrapStyleWord(true);
+        Txa_Analogy7_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy7_4.setFocusable(false);
+        Txa_Analogy7_4.setOpaque(false);
+        Txa_Analogy7_4.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_Analogy7_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2330, 1120, 40));
+
+        Txa_SubContent7_4.setEditable(false);
+        Txa_SubContent7_4.setColumns(20);
+        Txa_SubContent7_4.setFont(sRecursos.getFWindow());
+        Txa_SubContent7_4.setLineWrap(true);
+        Txa_SubContent7_4.setRows(5);
+        Txa_SubContent7_4.setWrapStyleWord(true);
+        Txa_SubContent7_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent7_4.setFocusable(false);
+        Txa_SubContent7_4.setOpaque(false);
+        Txa_SubContent7_4.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_SubContent7_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2380, 1120, 110));
+
+        Txa_CodeDescription7_4.setEditable(false);
+        Txa_CodeDescription7_4.setColumns(20);
+        Txa_CodeDescription7_4.setFont(sRecursos.getFWindow());
+        Txa_CodeDescription7_4.setLineWrap(true);
+        Txa_CodeDescription7_4.setRows(5);
+        Txa_CodeDescription7_4.setWrapStyleWord(true);
+        Txa_CodeDescription7_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_CodeDescription7_4.setFocusable(false);
+        Txa_CodeDescription7_4.setOpaque(false);
+        Txa_CodeDescription7_4.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_CodeDescription7_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2530, 1120, 280));
+
+        Txa_OutputScreen7_4.setEditable(false);
+        Txa_OutputScreen7_4.setColumns(20);
+        Txa_OutputScreen7_4.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen7_4.setLineWrap(true);
+        Txa_OutputScreen7_4.setRows(5);
+        Txa_OutputScreen7_4.setWrapStyleWord(true);
+        Txa_OutputScreen7_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen7_4.setFocusable(false);
+        Txa_OutputScreen7_4.setOpaque(false);
+        Txa_OutputScreen7_4.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_OutputScreen7_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3170, 1120, 150));
+
+        Pnl_CodesThemes7_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7_4.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2850, 1118, 280));
+
+        Txa_OutputScreen7_5.setEditable(false);
+        Txa_OutputScreen7_5.setColumns(20);
+        Txa_OutputScreen7_5.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen7_5.setLineWrap(true);
+        Txa_OutputScreen7_5.setRows(5);
+        Txa_OutputScreen7_5.setWrapStyleWord(true);
+        Txa_OutputScreen7_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen7_5.setFocusable(false);
+        Txa_OutputScreen7_5.setOpaque(false);
+        Txa_OutputScreen7_5.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_OutputScreen7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3600, 1120, 30));
+
+        Pnl_CodesThemes7_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7_5.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3360, 1118, 190));
+
+        Txa_OutputScreen7_6.setEditable(false);
+        Txa_OutputScreen7_6.setColumns(20);
+        Txa_OutputScreen7_6.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen7_6.setLineWrap(true);
+        Txa_OutputScreen7_6.setRows(5);
+        Txa_OutputScreen7_6.setWrapStyleWord(true);
+        Txa_OutputScreen7_6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen7_6.setFocusable(false);
+        Txa_OutputScreen7_6.setOpaque(false);
+        Txa_OutputScreen7_6.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_OutputScreen7_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4000, 1120, 50));
+
+        Pnl_CodesThemes7_6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7_6.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3730, 1118, 230));
+
+        Txa_CodeDescription7_3.setEditable(false);
+        Txa_CodeDescription7_3.setColumns(20);
+        Txa_CodeDescription7_3.setFont(sRecursos.getFWindow());
+        Txa_CodeDescription7_3.setLineWrap(true);
+        Txa_CodeDescription7_3.setRows(5);
+        Txa_CodeDescription7_3.setWrapStyleWord(true);
+        Txa_CodeDescription7_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_CodeDescription7_3.setFocusable(false);
+        Txa_CodeDescription7_3.setOpaque(false);
+        Txa_CodeDescription7_3.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_CodeDescription7_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3640, 1120, 50));
+
+        Lbl_SwitchCase.setFont(sRecursos.getFB20());
+        Lbl_SwitchCase.setForeground(sRecursos.getColorVerde());
+        Lbl_SwitchCase.setText("Switch Case");
+        Pnl_Tema8.add(Lbl_SwitchCase, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4110, 160, 20));
+
+        Txa_Analogy7_5.setEditable(false);
+        Txa_Analogy7_5.setColumns(20);
+        Txa_Analogy7_5.setFont(sRecursos.getFTitles());
+        Txa_Analogy7_5.setLineWrap(true);
+        Txa_Analogy7_5.setRows(5);
+        Txa_Analogy7_5.setWrapStyleWord(true);
+        Txa_Analogy7_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy7_5.setFocusable(false);
+        Txa_Analogy7_5.setOpaque(false);
+        Txa_Analogy7_5.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_Analogy7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4140, 1120, 70));
+
+        Txa_CodeDescription7_5.setEditable(false);
+        Txa_CodeDescription7_5.setColumns(20);
+        Txa_CodeDescription7_5.setFont(sRecursos.getFWindow());
+        Txa_CodeDescription7_5.setLineWrap(true);
+        Txa_CodeDescription7_5.setRows(5);
+        Txa_CodeDescription7_5.setWrapStyleWord(true);
+        Txa_CodeDescription7_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_CodeDescription7_5.setFocusable(false);
+        Txa_CodeDescription7_5.setOpaque(false);
+        Txa_CodeDescription7_5.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_CodeDescription7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4220, 1120, 50));
+
+        Txa_Syntax7_2.setEditable(false);
+        Txa_Syntax7_2.setColumns(20);
+        Txa_Syntax7_2.setFont(sRecursos.getFWindow());
+        Txa_Syntax7_2.setLineWrap(true);
+        Txa_Syntax7_2.setRows(5);
+        Txa_Syntax7_2.setWrapStyleWord(true);
+        Txa_Syntax7_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Syntax7_2.setFocusable(false);
+        Txa_Syntax7_2.setOpaque(false);
+        Txa_Syntax7_2.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_Syntax7_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4310, 1120, 380));
+
+        Txa_OutputScreen7_7.setEditable(false);
+        Txa_OutputScreen7_7.setColumns(20);
+        Txa_OutputScreen7_7.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen7_7.setLineWrap(true);
+        Txa_OutputScreen7_7.setRows(5);
+        Txa_OutputScreen7_7.setWrapStyleWord(true);
+        Txa_OutputScreen7_7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen7_7.setFocusable(false);
+        Txa_OutputScreen7_7.setOpaque(false);
+        Txa_OutputScreen7_7.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema8.add(Txa_OutputScreen7_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5150, 1120, 50));
+
+        Pnl_CodesThemes7_7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes7_7.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4730, 1118, 380));
+
+        Lbl_SampleCode8_4.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_4.setText("Ejemplo de Código");
+        Pnl_Tema8.add(Lbl_SampleCode8_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 470, -1, 20));
+
+        Lbl_Output8_4.setFont(sRecursos.getFTitles());
+        Lbl_Output8_4.setText("Output");
+        Pnl_Tema8.add(Lbl_Output8_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 5120, -1, -1));
+
+        Lbl_SampleCode8_5.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_5.setText("Ejemplo de Código");
+        Pnl_Tema8.add(Lbl_SampleCode8_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4700, -1, 20));
+
+        Lbl_Sintaxis8_5.setFont(sRecursos.getFTitles());
+        Lbl_Sintaxis8_5.setText("Sintaxis");
+        Pnl_Tema8.add(Lbl_Sintaxis8_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4280, -1, 20));
+
+        Lbl_Output8_5.setFont(sRecursos.getFTitles());
+        Lbl_Output8_5.setText("Output");
+        Pnl_Tema8.add(Lbl_Output8_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3970, -1, -1));
+
+        Lbl_SampleCode8_6.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_6.setText("Ejemplo de Código");
+        Pnl_Tema8.add(Lbl_SampleCode8_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3700, -1, 20));
+
+        Lbl_Output8_6.setFont(sRecursos.getFTitles());
+        Lbl_Output8_6.setText("Output");
+        Pnl_Tema8.add(Lbl_Output8_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3570, -1, -1));
+
+        Lbl_SampleCode8_7.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_7.setText("Ejemplo de Código");
+        Pnl_Tema8.add(Lbl_SampleCode8_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3330, -1, 20));
+
+        Lbl_Output8_7.setFont(sRecursos.getFTitles());
+        Lbl_Output8_7.setText("Output");
+        Pnl_Tema8.add(Lbl_Output8_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3140, -1, -1));
+
+        Lbl_SampleCode8_8.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_8.setText("Ejemplo de Código");
+        Pnl_Tema8.add(Lbl_SampleCode8_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2820, -1, 20));
+
+        Lbl_Sintaxis8_6.setFont(sRecursos.getFTitles());
+        Lbl_Sintaxis8_6.setText("Sintaxis");
+        Pnl_Tema8.add(Lbl_Sintaxis8_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2500, -1, 20));
+
+        Lbl_Output8_8.setFont(sRecursos.getFTitles());
+        Lbl_Output8_8.setText("Output");
+        Pnl_Tema8.add(Lbl_Output8_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2160, -1, -1));
+
+        Lbl_SampleCode8_9.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_9.setText("Ejemplo de Código");
+        Pnl_Tema8.add(Lbl_SampleCode8_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 940, -1, 20));
+
+        Lbl_SampleCode8_10.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_10.setText("Ejemplo de Código");
+        Pnl_Tema8.add(Lbl_SampleCode8_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1820, -1, 20));
+
+        Lbl_Sintaxis8_7.setFont(sRecursos.getFTitles());
+        Lbl_Sintaxis8_7.setText("Sintaxis");
+        Pnl_Tema8.add(Lbl_Sintaxis8_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1600, -1, 20));
+
+        Lbl_Output8_9.setFont(sRecursos.getFTitles());
+        Lbl_Output8_9.setText("Output");
+        Pnl_Tema8.add(Lbl_Output8_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1330, -1, -1));
+
+        Lbl_Output8_10.setFont(sRecursos.getFTitles());
+        Lbl_Output8_10.setText("Output");
+        Pnl_Tema8.add(Lbl_Output8_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 770, -1, -1));
+
+        Lbl_TryCatch.setFont(sRecursos.getFB20());
+        Lbl_TryCatch.setForeground(sRecursos.getColorVerde());
+        Lbl_TryCatch.setText("Try-Catch");
+        Pnl_Tema8.add(Lbl_TryCatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2300, 120, 20));
+
+        Lbl_SampleCode8_11.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode8_11.setText("Casos");
+        Pnl_Tema8.add(Lbl_SampleCode8_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 330, -1, 20));
+
+        Txa_Casos7.setEditable(false);
+        Txa_Casos7.setColumns(20);
+        Txa_Casos7.setFont(sRecursos.getFWindow());
+        Txa_Casos7.setLineWrap(true);
+        Txa_Casos7.setRows(5);
+        Txa_Casos7.setWrapStyleWord(true);
+        Txa_Casos7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Casos7.setFocusable(false);
+        Txa_Casos7.setOpaque(false);
+        Pnl_Tema8.add(Txa_Casos7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 1120, 90));
+
+        Spr_CondicionalesAnidados.setForeground(sRecursos.getColorVerde());
+        Spr_CondicionalesAnidados.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
+        Pnl_Tema8.add(Spr_CondicionalesAnidados, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1540, 1120, -1));
+
+        Spr_TryCatch.setForeground(sRecursos.getColorVerde());
+        Spr_TryCatch.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
+        Pnl_Tema8.add(Spr_TryCatch, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2270, 1120, -1));
+
+        Spr_SwitchCase.setForeground(sRecursos.getColorVerde());
+        Spr_SwitchCase.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
+        Pnl_Tema8.add(Spr_SwitchCase, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4080, 1120, -1));
 
         Btn_Anterior_Cuestionario7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario7_Off.png"))); // NOI18N
         Btn_Anterior_Cuestionario7.setMnemonic(37);
@@ -2554,7 +2982,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario7ActionPerformed(evt);
             }
         });
-        Pnl_Tema8.add(Btn_Anterior_Cuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Tema8.add(Btn_Anterior_Cuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 5300, 254, 64));
 
         Btn_Siguiente_Cuestionario8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Cuestionario8_Off.png"))); // NOI18N
         Btn_Siguiente_Cuestionario8.setMnemonic(39);
@@ -2571,12 +2999,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Cuestionario8ActionPerformed(evt);
             }
         });
-        Pnl_Tema8.add(Btn_Siguiente_Cuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
-
-        Lbl_Condicionales.setFont(sRecursos.getFLabels());
-        Lbl_Condicionales.setText("Condicionales");
-        Lbl_Condicionales.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema8.add(Lbl_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+        Pnl_Tema8.add(Btn_Siguiente_Cuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 5300, 254, 64));
 
         Scp_Tema8.setViewportView(Pnl_Tema8);
 
@@ -3430,7 +3853,6 @@ public class Home extends javax.swing.JFrame {
         Lbl_EDDIntermedias.setText("Estructuras de Datos Intermedias");
         Lbl_EDDIntermedias.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Tema13.add(Lbl_EDDIntermedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 510, 45));
-        Lbl_EDDIntermedias.getAccessibleContext().setAccessibleName("Estructuras de Datos Intermedias");
 
         Txa_Analogy12.setEditable(false);
         Txa_Analogy12.setColumns(20);
@@ -4915,7 +5337,38 @@ public class Home extends javax.swing.JFrame {
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema7ActionPerformed
 
+    private void CondicionalesContent() {
+        Txa_Analogy7.setText(lstList.get(9).getTitleAnalogy());
+        Txa_SubContent7.setText(lstList.get(9).getLearningSubContent());
+        Txa_CodeDescription7.setText(lstList.get(9).getSyntax());
+        Txa_Casos7.setText(lstList.get(9).getTips());
+        syntaxTemas7.setText(coList.get(13).getSampleCode());
+        Txa_OutputScreen7.setText(coList.get(13).getOutputScreen() + "\n\n");
+        Txa_CodeDescription7_1.setText(coList.get(14).getCodeDescription());
+        syntaxTemas7_1.setText(coList.get(14).getSampleCode());
+        Txa_OutputScreen7_1.setText(coList.get(14).getOutputScreen() + "\n\n");
+        syntaxTemas7_2.setText(lstList.get(10).getSyntax());
+        syntaxTemas7_3.setText(coList.get(15).getSampleCode());
+        Txa_OutputScreen7_3.setText(coList.get(15).getOutputScreen() + "\n\n");
+        Txa_Analogy7_4.setText(lstList.get(11).getTitleAnalogy());
+        Txa_SubContent7_4.setText(lstList.get(11).getLearningSubContent());
+        Txa_CodeDescription7_4.setText(lstList.get(11).getSyntax());
+        syntaxTemas7_4.setText(coList.get(16).getSampleCode());
+        Txa_OutputScreen7_4.setText(coList.get(16).getOutputScreen() + "\n\n");
+        syntaxTemas7_5.setText(coList.get(17).getSampleCode());
+        Txa_OutputScreen7_5.setText(coList.get(17).getOutputScreen() + "\n\n");
+        syntaxTemas7_6.setText(coList.get(18).getSampleCode());
+        Txa_OutputScreen7_6.setText(coList.get(18).getOutputScreen() + "\n\n");
+        Txa_CodeDescription7_3.setText(coList.get(18).getCodeDescription());
+        Txa_Analogy7_5.setText(lstList.get(12).getTitleAnalogy());
+        Txa_CodeDescription7_5.setText(lstList.get(12).getLearningSubContent());
+        Txa_Syntax7_2.setText(lstList.get(12).getSyntax());
+        syntaxTemas7_7.setText(coList.get(19).getSampleCode());
+        Txa_OutputScreen7_7.setText(coList.get(19).getOutputScreen() + "\n\n");
+    }
+
     private void Btn_Aprender_Tema8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema8ActionPerformed
+        CondicionalesContent();
         Scp_Tema8.setVisible(true);
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema8ActionPerformed
@@ -5712,6 +6165,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Comentarios;
     private javax.swing.JLabel Lbl_Competencias;
     private javax.swing.JLabel Lbl_Condicionales;
+    private javax.swing.JLabel Lbl_CondicionalesAnidados;
     private javax.swing.JLabel Lbl_Cuestionario1;
     private javax.swing.JLabel Lbl_Cuestionario10;
     private javax.swing.JLabel Lbl_Cuestionario11;
@@ -5768,8 +6222,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Output1_2;
     private javax.swing.JLabel Lbl_Output1_3;
     private javax.swing.JLabel Lbl_Output8_1;
+    private javax.swing.JLabel Lbl_Output8_10;
     private javax.swing.JLabel Lbl_Output8_2;
     private javax.swing.JLabel Lbl_Output8_3;
+    private javax.swing.JLabel Lbl_Output8_4;
+    private javax.swing.JLabel Lbl_Output8_5;
+    private javax.swing.JLabel Lbl_Output8_6;
+    private javax.swing.JLabel Lbl_Output8_7;
+    private javax.swing.JLabel Lbl_Output8_8;
+    private javax.swing.JLabel Lbl_Output8_9;
     private javax.swing.JLabel Lbl_PrimerosAlgoritmos;
     private javax.swing.JLabel Lbl_QueEs;
     private javax.swing.JLabel Lbl_Recursion;
@@ -5779,8 +6240,16 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_SampleCode12_4;
     private javax.swing.JLabel Lbl_SampleCode2;
     private javax.swing.JLabel Lbl_SampleCode8_1;
+    private javax.swing.JLabel Lbl_SampleCode8_10;
+    private javax.swing.JLabel Lbl_SampleCode8_11;
     private javax.swing.JLabel Lbl_SampleCode8_2;
     private javax.swing.JLabel Lbl_SampleCode8_3;
+    private javax.swing.JLabel Lbl_SampleCode8_4;
+    private javax.swing.JLabel Lbl_SampleCode8_5;
+    private javax.swing.JLabel Lbl_SampleCode8_6;
+    private javax.swing.JLabel Lbl_SampleCode8_7;
+    private javax.swing.JLabel Lbl_SampleCode8_8;
+    private javax.swing.JLabel Lbl_SampleCode8_9;
     private javax.swing.JLabel Lbl_SampleCode9_4;
     private javax.swing.JLabel Lbl_Sets;
     private javax.swing.JLabel Lbl_Sintaxis1;
@@ -5789,8 +6258,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Sintaxis12_3;
     private javax.swing.JLabel Lbl_Sintaxis12_4;
     private javax.swing.JLabel Lbl_Sintaxis8_1;
+    private javax.swing.JLabel Lbl_Sintaxis8_1_1;
     private javax.swing.JLabel Lbl_Sintaxis8_2;
     private javax.swing.JLabel Lbl_Sintaxis8_3;
+    private javax.swing.JLabel Lbl_Sintaxis8_5;
+    private javax.swing.JLabel Lbl_Sintaxis8_6;
+    private javax.swing.JLabel Lbl_Sintaxis8_7;
+    private javax.swing.JLabel Lbl_SwitchCase;
     private javax.swing.JLabel Lbl_Tabla5;
     private javax.swing.JLabel Lbl_Tabla6;
     private javax.swing.JLabel Lbl_TablaOperadoresLogicos;
@@ -5802,6 +6276,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Tips2;
     private javax.swing.JLabel Lbl_TreeMap;
     private javax.swing.JLabel Lbl_TreeSet;
+    private javax.swing.JLabel Lbl_TryCatch;
     private javax.swing.JProgressBar Pb_Mapa;
     private javax.swing.JProgressBar Pb_Nivel1;
     private javax.swing.JProgressBar Pb_Nivel2;
@@ -5824,6 +6299,14 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_CodesThemes4;
     private javax.swing.JPanel Pnl_CodesThemes5;
     private javax.swing.JPanel Pnl_CodesThemes6;
+    private javax.swing.JPanel Pnl_CodesThemes7;
+    private javax.swing.JPanel Pnl_CodesThemes7_1;
+    private javax.swing.JPanel Pnl_CodesThemes7_2;
+    private javax.swing.JPanel Pnl_CodesThemes7_3;
+    private javax.swing.JPanel Pnl_CodesThemes7_4;
+    private javax.swing.JPanel Pnl_CodesThemes7_5;
+    private javax.swing.JPanel Pnl_CodesThemes7_6;
+    private javax.swing.JPanel Pnl_CodesThemes7_7;
     private javax.swing.JPanel Pnl_CodesThemes8_1;
     private javax.swing.JPanel Pnl_CodesThemes8_2;
     private javax.swing.JPanel Pnl_CodesThemes8_3;
@@ -5917,14 +6400,17 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Tema7;
     private javax.swing.JScrollPane Scp_Tema8;
     private javax.swing.JScrollPane Scp_Tema9;
+    private javax.swing.JSeparator Spr_CondicionalesAnidados;
     private javax.swing.JSeparator Spr_DoWhile;
     private javax.swing.JSeparator Spr_For;
     private javax.swing.JSeparator Spr_HashMap;
     private javax.swing.JSeparator Spr_HashSet;
     private javax.swing.JSeparator Spr_Maps;
     private javax.swing.JSeparator Spr_Sets;
+    private javax.swing.JSeparator Spr_SwitchCase;
     private javax.swing.JSeparator Spr_TreeMap;
     private javax.swing.JSeparator Spr_TreeSet;
+    private javax.swing.JSeparator Spr_TryCatch;
     private javax.swing.JSeparator Spr_While;
     private javax.swing.JTextArea Txa_Analogy0;
     private javax.swing.JTextArea Txa_Analogy1;
@@ -5933,10 +6419,19 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_Analogy4;
     private javax.swing.JTextArea Txa_Analogy5;
     private javax.swing.JTextArea Txa_Analogy6;
+    private javax.swing.JTextArea Txa_Analogy7;
+    private javax.swing.JTextArea Txa_Analogy7_4;
+    private javax.swing.JTextArea Txa_Analogy7_5;
     private javax.swing.JTextArea Txa_Analogy8;
+    private javax.swing.JTextArea Txa_Casos7;
     private javax.swing.JTextArea Txa_CodeDescription1;
     private javax.swing.JTextArea Txa_CodeDescription1_1;
     private javax.swing.JTextArea Txa_CodeDescription2;
+    private javax.swing.JTextArea Txa_CodeDescription7;
+    private javax.swing.JTextArea Txa_CodeDescription7_1;
+    private javax.swing.JTextArea Txa_CodeDescription7_3;
+    private javax.swing.JTextArea Txa_CodeDescription7_4;
+    private javax.swing.JTextArea Txa_CodeDescription7_5;
     private javax.swing.JTextArea Txa_Competencias;
     private javax.swing.JTextArea Txa_OutputScreen0;
     private javax.swing.JTextArea Txa_OutputScreen1;
@@ -5948,6 +6443,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_OutputScreen1_3;
     private javax.swing.JTextArea Txa_OutputScreen5;
     private javax.swing.JTextArea Txa_OutputScreen6;
+    private javax.swing.JTextArea Txa_OutputScreen7;
+    private javax.swing.JTextArea Txa_OutputScreen7_1;
+    private javax.swing.JTextArea Txa_OutputScreen7_3;
+    private javax.swing.JTextArea Txa_OutputScreen7_4;
+    private javax.swing.JTextArea Txa_OutputScreen7_5;
+    private javax.swing.JTextArea Txa_OutputScreen7_6;
+    private javax.swing.JTextArea Txa_OutputScreen7_7;
     private javax.swing.JTextArea Txa_OutputScreen8_1;
     private javax.swing.JTextArea Txa_OutputScreen8_2;
     private javax.swing.JTextArea Txa_OutputScreen8_3;
@@ -5976,10 +6478,13 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_SubContent5_2;
     private javax.swing.JTextArea Txa_SubContent6_1;
     private javax.swing.JTextArea Txa_SubContent6_2;
+    private javax.swing.JTextArea Txa_SubContent7;
+    private javax.swing.JTextArea Txa_SubContent7_4;
     private javax.swing.JTextArea Txa_SubContent8_1;
     private javax.swing.JTextArea Txa_SubContent8_2;
     private javax.swing.JTextArea Txa_SubContent8_3;
     private javax.swing.JTextArea Txa_SubContent8_4;
+    private javax.swing.JTextArea Txa_Syntax7_2;
     private javax.swing.JTextArea Txa_Tip4_1;
     private javax.swing.JTextArea Txa_Tip6;
     private javax.swing.JTextArea Txa_Tips12_1;
