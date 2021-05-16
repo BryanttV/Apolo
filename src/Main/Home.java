@@ -115,6 +115,8 @@ public class Home extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxTemas12_2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas12_3 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas12_4 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas13 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas13_1 = new RSyntaxTextArea();
 
     // Colores ScrollBar
     private final Color thumb_off = new Color(50, 50, 50);
@@ -352,6 +354,8 @@ public class Home extends javax.swing.JFrame {
         agregarRSyntax(Pnl_CodesThemes12_2, syntaxTemas12_2);
         agregarRSyntax(Pnl_CodesThemes12_3, syntaxTemas12_3);
         agregarRSyntax(Pnl_CodesThemes12_4, syntaxTemas12_4);
+        agregarRSyntax(Pnl_CodesThemes13, syntaxTemas13);
+        agregarRSyntax(Pnl_CodesThemes13_1, syntaxTemas13_1);
 
         syntaxSolution.setEditable(false);
     }
@@ -895,6 +899,33 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario13 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario14 = new javax.swing.JButton();
         Lbl_PrimerosAlgoritmos = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        Txa_SubContent13_1_1 = new javax.swing.JTextArea();
+        Txa_Analogy13 = new javax.swing.JTextArea();
+        Lbl_SampleCode13_1 = new javax.swing.JLabel();
+        Pnl_CodesThemes13 = new javax.swing.JPanel();
+        Txa_OutputScreen13 = new javax.swing.JTextArea();
+        Txa_Syntax13 = new javax.swing.JTextArea();
+        jLabel10 = new javax.swing.JLabel();
+        Txa_SubContent13_1 = new javax.swing.JTextArea();
+        Txa_Analogy13_1 = new javax.swing.JTextArea();
+        Pnl_CodesThemes13_1 = new javax.swing.JPanel();
+        Txa_OutputScreen13_1 = new javax.swing.JTextArea();
+        Txa_SubContent13_1_2 = new javax.swing.JTextArea();
+        Txa_SubContent13_1_3 = new javax.swing.JTextArea();
+        Txa_SubContent13_1_4 = new javax.swing.JTextArea();
+        Lbl_Tip13_1 = new javax.swing.JLabel();
+        Txa_SubContent13_2 = new javax.swing.JTextArea();
+        Txa_SubContent13_3 = new javax.swing.JTextArea();
+        Txa_SubContent13_4 = new javax.swing.JTextArea();
+        Txa_SubContent13_5 = new javax.swing.JTextArea();
+        Txa_Tip13 = new javax.swing.JTextArea();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        Lbl_Output13_1 = new javax.swing.JLabel();
+        Lbl_SampleCode13_2 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        Spr_HashMap1 = new javax.swing.JSeparator();
         Scp_Cuestionario14 = new javax.swing.JScrollPane();
         Pnl_Cuestionario14 = new javax.swing.JPanel();
         Btn_Anterior_PrimerosAlgoritmos = new javax.swing.JButton();
@@ -4341,9 +4372,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Tema14.setBackground(sRecursos.getCPrincipal());
         Pnl_Tema14.setCursor(sRecursos.getCDefault());
-        Pnl_Tema14.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema14.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema14.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Tema14.setMaximumSize(new java.awt.Dimension(1176, 3700));
+        Pnl_Tema14.setMinimumSize(new java.awt.Dimension(1176, 3700));
+        Pnl_Tema14.setPreferredSize(new java.awt.Dimension(1176, 3700));
         Pnl_Tema14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Cuestionario13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario13_Off.png"))); // NOI18N
@@ -4361,7 +4392,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario13ActionPerformed(evt);
             }
         });
-        Pnl_Tema14.add(Btn_Anterior_Cuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Tema14.add(Btn_Anterior_Cuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 3600, 254, 64));
 
         Btn_Siguiente_Cuestionario14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Cuestionario14_Off.png"))); // NOI18N
         Btn_Siguiente_Cuestionario14.setMnemonic(39);
@@ -4378,12 +4409,230 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Cuestionario14ActionPerformed(evt);
             }
         });
-        Pnl_Tema14.add(Btn_Siguiente_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Tema14.add(Btn_Siguiente_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 3600, 254, 64));
 
         Lbl_PrimerosAlgoritmos.setFont(sRecursos.getFLabels());
         Lbl_PrimerosAlgoritmos.setText("Primeros Algoritmos");
         Lbl_PrimerosAlgoritmos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Tema14.add(Lbl_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+
+        jLabel9.setFont(sRecursos.getFTitleEditor());
+        jLabel9.setForeground(sRecursos.getColorVerde());
+        jLabel9.setText("Ordenamiento «Bubble Sort»");
+        Pnl_Tema14.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 400, 20));
+
+        Txa_SubContent13_1_1.setEditable(false);
+        Txa_SubContent13_1_1.setColumns(20);
+        Txa_SubContent13_1_1.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_1_1.setLineWrap(true);
+        Txa_SubContent13_1_1.setRows(5);
+        Txa_SubContent13_1_1.setWrapStyleWord(true);
+        Txa_SubContent13_1_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_1_1.setFocusable(false);
+        Txa_SubContent13_1_1.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 1120, 50));
+
+        Txa_Analogy13.setEditable(false);
+        Txa_Analogy13.setColumns(20);
+        Txa_Analogy13.setFont(sRecursos.getFTitles());
+        Txa_Analogy13.setRows(5);
+        Txa_Analogy13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy13.setFocusable(false);
+        Txa_Analogy13.setOpaque(false);
+        Pnl_Tema14.add(Txa_Analogy13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1120, 60));
+
+        Lbl_SampleCode13_1.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode13_1.setText("Ejemplo de Código");
+        Pnl_Tema14.add(Lbl_SampleCode13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 370, -1, 20));
+
+        Pnl_CodesThemes13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes13.setLayout(new java.awt.CardLayout());
+        Pnl_Tema14.add(Pnl_CodesThemes13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 400, 1120, 380));
+
+        Txa_OutputScreen13.setEditable(false);
+        Txa_OutputScreen13.setColumns(20);
+        Txa_OutputScreen13.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen13.setLineWrap(true);
+        Txa_OutputScreen13.setRows(5);
+        Txa_OutputScreen13.setWrapStyleWord(true);
+        Txa_OutputScreen13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen13.setFocusable(false);
+        Txa_OutputScreen13.setOpaque(false);
+        Txa_OutputScreen13.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema14.add(Txa_OutputScreen13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 820, 1120, 50));
+
+        Txa_Syntax13.setEditable(false);
+        Txa_Syntax13.setColumns(20);
+        Txa_Syntax13.setFont(sRecursos.getFWindow());
+        Txa_Syntax13.setLineWrap(true);
+        Txa_Syntax13.setRows(5);
+        Txa_Syntax13.setWrapStyleWord(true);
+        Txa_Syntax13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Syntax13.setFocusable(false);
+        Txa_Syntax13.setOpaque(false);
+        Txa_Syntax13.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema14.add(Txa_Syntax13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1550, 1120, 30));
+
+        jLabel10.setFont(sRecursos.getFTitleEditor());
+        jLabel10.setForeground(sRecursos.getColorVerde());
+        jLabel10.setText("Búsquedas «Binary Search»");
+        Pnl_Tema14.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1660, 400, 30));
+
+        Txa_SubContent13_1.setEditable(false);
+        Txa_SubContent13_1.setColumns(20);
+        Txa_SubContent13_1.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_1.setLineWrap(true);
+        Txa_SubContent13_1.setRows(5);
+        Txa_SubContent13_1.setWrapStyleWord(true);
+        Txa_SubContent13_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_1.setFocusable(false);
+        Txa_SubContent13_1.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1770, 1120, 30));
+
+        Txa_Analogy13_1.setEditable(false);
+        Txa_Analogy13_1.setColumns(20);
+        Txa_Analogy13_1.setFont(sRecursos.getFTitles());
+        Txa_Analogy13_1.setRows(5);
+        Txa_Analogy13_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy13_1.setFocusable(false);
+        Txa_Analogy13_1.setOpaque(false);
+        Pnl_Tema14.add(Txa_Analogy13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1700, 1120, 60));
+
+        Pnl_CodesThemes13_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes13_1.setLayout(new java.awt.CardLayout());
+        Pnl_Tema14.add(Pnl_CodesThemes13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1940, 1120, 480));
+
+        Txa_OutputScreen13_1.setEditable(false);
+        Txa_OutputScreen13_1.setColumns(20);
+        Txa_OutputScreen13_1.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen13_1.setLineWrap(true);
+        Txa_OutputScreen13_1.setRows(5);
+        Txa_OutputScreen13_1.setWrapStyleWord(true);
+        Txa_OutputScreen13_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen13_1.setFocusable(false);
+        Txa_OutputScreen13_1.setOpaque(false);
+        Txa_OutputScreen13_1.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema14.add(Txa_OutputScreen13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2430, 1120, 50));
+
+        Txa_SubContent13_1_2.setEditable(false);
+        Txa_SubContent13_1_2.setColumns(20);
+        Txa_SubContent13_1_2.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_1_2.setLineWrap(true);
+        Txa_SubContent13_1_2.setRows(5);
+        Txa_SubContent13_1_2.setWrapStyleWord(true);
+        Txa_SubContent13_1_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_1_2.setFocusable(false);
+        Txa_SubContent13_1_2.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_1_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 1120, 90));
+
+        Txa_SubContent13_1_3.setEditable(false);
+        Txa_SubContent13_1_3.setColumns(20);
+        Txa_SubContent13_1_3.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_1_3.setLineWrap(true);
+        Txa_SubContent13_1_3.setRows(5);
+        Txa_SubContent13_1_3.setWrapStyleWord(true);
+        Txa_SubContent13_1_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_1_3.setFocusable(false);
+        Txa_SubContent13_1_3.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_1_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 880, 1120, 70));
+
+        Txa_SubContent13_1_4.setEditable(false);
+        Txa_SubContent13_1_4.setColumns(20);
+        Txa_SubContent13_1_4.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_1_4.setLineWrap(true);
+        Txa_SubContent13_1_4.setRows(5);
+        Txa_SubContent13_1_4.setWrapStyleWord(true);
+        Txa_SubContent13_1_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_1_4.setFocusable(false);
+        Txa_SubContent13_1_4.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_1_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1440, 1120, 70));
+
+        Lbl_Tip13_1.setFont(sRecursos.getFTitles());
+        Lbl_Tip13_1.setText("Tip");
+        Pnl_Tema14.add(Lbl_Tip13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1520, 40, -1));
+
+        Txa_SubContent13_2.setEditable(false);
+        Txa_SubContent13_2.setColumns(20);
+        Txa_SubContent13_2.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_2.setLineWrap(true);
+        Txa_SubContent13_2.setRows(5);
+        Txa_SubContent13_2.setWrapStyleWord(true);
+        Txa_SubContent13_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_2.setFocusable(false);
+        Txa_SubContent13_2.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1810, 1120, 90));
+
+        Txa_SubContent13_3.setEditable(false);
+        Txa_SubContent13_3.setColumns(20);
+        Txa_SubContent13_3.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_3.setLineWrap(true);
+        Txa_SubContent13_3.setRows(5);
+        Txa_SubContent13_3.setWrapStyleWord(true);
+        Txa_SubContent13_3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_3.setFocusable(false);
+        Txa_SubContent13_3.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2490, 1120, 70));
+
+        Txa_SubContent13_4.setEditable(false);
+        Txa_SubContent13_4.setColumns(20);
+        Txa_SubContent13_4.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_4.setLineWrap(true);
+        Txa_SubContent13_4.setRows(5);
+        Txa_SubContent13_4.setWrapStyleWord(true);
+        Txa_SubContent13_4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_4.setFocusable(false);
+        Txa_SubContent13_4.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3160, 1120, 130));
+
+        Txa_SubContent13_5.setEditable(false);
+        Txa_SubContent13_5.setColumns(20);
+        Txa_SubContent13_5.setFont(sRecursos.getFWindow());
+        Txa_SubContent13_5.setLineWrap(true);
+        Txa_SubContent13_5.setRows(5);
+        Txa_SubContent13_5.setWrapStyleWord(true);
+        Txa_SubContent13_5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent13_5.setFocusable(false);
+        Txa_SubContent13_5.setOpaque(false);
+        Pnl_Tema14.add(Txa_SubContent13_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3300, 1120, 110));
+
+        Txa_Tip13.setEditable(false);
+        Txa_Tip13.setColumns(20);
+        Txa_Tip13.setFont(sRecursos.getFWindow());
+        Txa_Tip13.setLineWrap(true);
+        Txa_Tip13.setRows(5);
+        Txa_Tip13.setWrapStyleWord(true);
+        Txa_Tip13.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Tip13.setFocusable(false);
+        Txa_Tip13.setOpaque(false);
+        Pnl_Tema14.add(Txa_Tip13, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3450, 1120, 30));
+
+        jLabel14.setFont(sRecursos.getFTitles());
+        jLabel14.setText("Tip");
+        Pnl_Tema14.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3420, 70, 20));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Imagen");
+        jLabel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Pnl_Tema14.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 960, 1120, 470));
+
+        Lbl_Output13_1.setFont(sRecursos.getFTitles());
+        Lbl_Output13_1.setText("Output");
+        Pnl_Tema14.add(Lbl_Output13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 790, -1, -1));
+
+        Lbl_SampleCode13_2.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode13_2.setText("Ejemplo de Código");
+        Pnl_Tema14.add(Lbl_SampleCode13_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1910, -1, 20));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Imagen");
+        jLabel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Pnl_Tema14.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2570, 1120, 580));
+
+        Spr_HashMap1.setForeground(sRecursos.getColorVerde());
+        Spr_HashMap1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
+        Pnl_Tema14.add(Spr_HashMap1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1620, 1120, -1));
 
         Scp_Tema14.setViewportView(Pnl_Tema14);
 
@@ -5541,7 +5790,31 @@ public class Home extends javax.swing.JFrame {
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema13ActionPerformed
 
+    private void AlgoritmosContent() {
+        String[] parrafos = lstList.get(32).getLearningSubContent().split("\n");
+        String[] parrafos1 = lstList.get(33).getLearningSubContent().split("\n");
+        Txa_Analogy13.setText(lstList.get(32).getTitleAnalogy());
+        Txa_SubContent13_1_1.setText(parrafos[0]);
+        Txa_SubContent13_1_2.setText(parrafos[1]);
+        Txa_SubContent13_1_3.setText(parrafos[2]);
+        Txa_SubContent13_1_4.setText(parrafos[3]);
+        syntaxTemas13.setText(coList.get(37).getSampleCode());
+        Txa_OutputScreen13.setText(coList.get(37).getOutputScreen() + "\n\n");
+        Txa_Syntax13.setText(lstList.get(32).getSyntax());
+        Txa_Analogy13_1.setText(lstList.get(33).getTitleAnalogy());
+        Txa_SubContent13_1.setText(parrafos1[0]);
+        Txa_SubContent13_2.setText(parrafos1[1]);
+        Txa_SubContent13_3.setText(parrafos1[2]);
+        Txa_SubContent13_4.setText(parrafos1[3] + "\n" + parrafos1[4] + "\n"
+                + parrafos1[5] + "\n" + parrafos1[6] + "\n" + parrafos1[7]);
+        Txa_SubContent13_5.setText(parrafos1[8] + "\n\n" + parrafos1[9]);
+        syntaxTemas13_1.setText(coList.get(38).getSampleCode());
+        Txa_OutputScreen13_1.setText(coList.get(38).getOutputScreen() + "\n\n");
+        Txa_Tip13.setText(lstList.get(33).getTips());
+    }
+
     private void Btn_Aprender_Tema14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema14ActionPerformed
+        AlgoritmosContent();
         Scp_Tema14.setVisible(true);
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema14ActionPerformed
@@ -6310,6 +6583,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Output12_2;
     private javax.swing.JLabel Lbl_Output12_3;
     private javax.swing.JLabel Lbl_Output12_4;
+    private javax.swing.JLabel Lbl_Output13_1;
     private javax.swing.JLabel Lbl_Output1_1;
     private javax.swing.JLabel Lbl_Output1_2;
     private javax.swing.JLabel Lbl_Output1_3;
@@ -6331,6 +6605,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_SampleCode12_2;
     private javax.swing.JLabel Lbl_SampleCode12_3;
     private javax.swing.JLabel Lbl_SampleCode12_4;
+    private javax.swing.JLabel Lbl_SampleCode13_1;
+    private javax.swing.JLabel Lbl_SampleCode13_2;
     private javax.swing.JLabel Lbl_SampleCode2;
     private javax.swing.JLabel Lbl_SampleCode8_1;
     private javax.swing.JLabel Lbl_SampleCode8_10;
@@ -6364,6 +6640,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_TablaOperadoresLogicos;
     private javax.swing.JLabel Lbl_TablaOperadoresRelacion;
     private javax.swing.JLabel Lbl_Tip12_1;
+    private javax.swing.JLabel Lbl_Tip13_1;
     private javax.swing.JLabel Lbl_Tip8_1;
     private javax.swing.JLabel Lbl_Tip8_2;
     private javax.swing.JLabel Lbl_TiposdeDatos;
@@ -6387,6 +6664,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_CodesThemes12_2;
     private javax.swing.JPanel Pnl_CodesThemes12_3;
     private javax.swing.JPanel Pnl_CodesThemes12_4;
+    private javax.swing.JPanel Pnl_CodesThemes13;
+    private javax.swing.JPanel Pnl_CodesThemes13_1;
     private javax.swing.JPanel Pnl_CodesThemes1_1;
     private javax.swing.JPanel Pnl_CodesThemes1_2;
     private javax.swing.JPanel Pnl_CodesThemes1_3;
@@ -6499,6 +6778,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator Spr_DoWhile;
     private javax.swing.JSeparator Spr_For;
     private javax.swing.JSeparator Spr_HashMap;
+    private javax.swing.JSeparator Spr_HashMap1;
     private javax.swing.JSeparator Spr_HashSet;
     private javax.swing.JSeparator Spr_Maps;
     private javax.swing.JSeparator Spr_Sets;
@@ -6511,6 +6791,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_Analogy1;
     private javax.swing.JTextArea Txa_Analogy10;
     private javax.swing.JTextArea Txa_Analogy12;
+    private javax.swing.JTextArea Txa_Analogy13;
+    private javax.swing.JTextArea Txa_Analogy13_1;
     private javax.swing.JTextArea Txa_Analogy2;
     private javax.swing.JTextArea Txa_Analogy4;
     private javax.swing.JTextArea Txa_Analogy5;
@@ -6537,6 +6819,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_OutputScreen12_2;
     private javax.swing.JTextArea Txa_OutputScreen12_3;
     private javax.swing.JTextArea Txa_OutputScreen12_4;
+    private javax.swing.JTextArea Txa_OutputScreen13;
+    private javax.swing.JTextArea Txa_OutputScreen13_1;
     private javax.swing.JTextArea Txa_OutputScreen1_2;
     private javax.swing.JTextArea Txa_OutputScreen1_3;
     private javax.swing.JTextArea Txa_OutputScreen5;
@@ -6571,6 +6855,15 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_SubContent12_7;
     private javax.swing.JTextArea Txa_SubContent12_8;
     private javax.swing.JTextArea Txa_SubContent12_9;
+    private javax.swing.JTextArea Txa_SubContent13_1;
+    private javax.swing.JTextArea Txa_SubContent13_1_1;
+    private javax.swing.JTextArea Txa_SubContent13_1_2;
+    private javax.swing.JTextArea Txa_SubContent13_1_3;
+    private javax.swing.JTextArea Txa_SubContent13_1_4;
+    private javax.swing.JTextArea Txa_SubContent13_2;
+    private javax.swing.JTextArea Txa_SubContent13_3;
+    private javax.swing.JTextArea Txa_SubContent13_4;
+    private javax.swing.JTextArea Txa_SubContent13_5;
     private javax.swing.JTextArea Txa_SubContent2;
     private javax.swing.JTextArea Txa_SubContent4;
     private javax.swing.JTextArea Txa_SubContent5_1;
@@ -6584,12 +6877,19 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_SubContent8_3;
     private javax.swing.JTextArea Txa_SubContent8_4;
     private javax.swing.JTextArea Txa_Syntax10;
+    private javax.swing.JTextArea Txa_Syntax13;
     private javax.swing.JTextArea Txa_Syntax7_2;
+    private javax.swing.JTextArea Txa_Tip13;
     private javax.swing.JTextArea Txa_Tip4_1;
     private javax.swing.JTextArea Txa_Tip6;
     private javax.swing.JTextArea Txa_Tips12_1;
     private javax.swing.JTextArea Txa_Tips2;
     private javax.swing.JTextArea Txa_Tips8_1;
     private javax.swing.JTextArea Txa_Tips8_2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel9;
     // End of variables declaration//GEN-END:variables
 }
