@@ -110,6 +110,7 @@ public class Home extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxTemas8_1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas8_2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas8_3 = new RSyntaxTextArea();
+    private final RSyntaxTextArea syntaxTemas10 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas12_1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas12_2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas12_3 = new RSyntaxTextArea();
@@ -346,6 +347,7 @@ public class Home extends javax.swing.JFrame {
         agregarRSyntax(Pnl_CodesThemes8_1, syntaxTemas8_1);
         agregarRSyntax(Pnl_CodesThemes8_2, syntaxTemas8_2);
         agregarRSyntax(Pnl_CodesThemes8_3, syntaxTemas8_3);
+        agregarRSyntax(Pnl_CodesThemes10, syntaxTemas10);
         agregarRSyntax(Pnl_CodesThemes12_1, syntaxTemas12_1);
         agregarRSyntax(Pnl_CodesThemes12_2, syntaxTemas12_2);
         agregarRSyntax(Pnl_CodesThemes12_3, syntaxTemas12_3);
@@ -804,6 +806,15 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Cuestionario10 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario11 = new javax.swing.JButton();
         Lbl_Recursion = new javax.swing.JLabel();
+        Txa_Analogy10 = new javax.swing.JTextArea();
+        Txa_SubContent10 = new javax.swing.JTextArea();
+        Txa_Syntax10 = new javax.swing.JTextArea();
+        Txa_CodeDescription10 = new javax.swing.JTextArea();
+        Pnl_CodesThemes10 = new javax.swing.JPanel();
+        Txa_OutputScreen10 = new javax.swing.JTextArea();
+        Lbl_Sintaxis10_1 = new javax.swing.JLabel();
+        Lbl_SampleCode10_1 = new javax.swing.JLabel();
+        Lbl_Output10_1 = new javax.swing.JLabel();
         Scp_Cuestionario11 = new javax.swing.JScrollPane();
         Pnl_Cuestionario11 = new javax.swing.JPanel();
         Btn_Anterior_Recursion = new javax.swing.JButton();
@@ -3590,9 +3601,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Tema11.setBackground(sRecursos.getCPrincipal());
         Pnl_Tema11.setCursor(sRecursos.getCDefault());
-        Pnl_Tema11.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema11.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Tema11.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Tema11.setMaximumSize(new java.awt.Dimension(1176, 1350));
+        Pnl_Tema11.setMinimumSize(new java.awt.Dimension(1176, 1350));
+        Pnl_Tema11.setPreferredSize(new java.awt.Dimension(1176, 1350));
         Pnl_Tema11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Cuestionario10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario10_Off.png"))); // NOI18N
@@ -3610,7 +3621,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario10ActionPerformed(evt);
             }
         });
-        Pnl_Tema11.add(Btn_Anterior_Cuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Tema11.add(Btn_Anterior_Cuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1250, 254, 64));
 
         Btn_Siguiente_Cuestionario11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Cuestionario11_Off.png"))); // NOI18N
         Btn_Siguiente_Cuestionario11.setMnemonic(39);
@@ -3627,12 +3638,82 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Cuestionario11ActionPerformed(evt);
             }
         });
-        Pnl_Tema11.add(Btn_Siguiente_Cuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Tema11.add(Btn_Siguiente_Cuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1250, 254, 64));
 
         Lbl_Recursion.setFont(sRecursos.getFLabels());
         Lbl_Recursion.setText("Recursión");
         Lbl_Recursion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Tema11.add(Lbl_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+
+        Txa_Analogy10.setEditable(false);
+        Txa_Analogy10.setColumns(20);
+        Txa_Analogy10.setFont(sRecursos.getFTitles());
+        Txa_Analogy10.setRows(5);
+        Txa_Analogy10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Analogy10.setFocusable(false);
+        Txa_Analogy10.setOpaque(false);
+        Pnl_Tema11.add(Txa_Analogy10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1120, 120));
+
+        Txa_SubContent10.setEditable(false);
+        Txa_SubContent10.setColumns(20);
+        Txa_SubContent10.setFont(sRecursos.getFWindow());
+        Txa_SubContent10.setLineWrap(true);
+        Txa_SubContent10.setRows(5);
+        Txa_SubContent10.setWrapStyleWord(true);
+        Txa_SubContent10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_SubContent10.setFocusable(false);
+        Txa_SubContent10.setOpaque(false);
+        Pnl_Tema11.add(Txa_SubContent10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, 1120, 220));
+
+        Txa_Syntax10.setEditable(false);
+        Txa_Syntax10.setColumns(20);
+        Txa_Syntax10.setFont(sRecursos.getFWindow());
+        Txa_Syntax10.setLineWrap(true);
+        Txa_Syntax10.setRows(5);
+        Txa_Syntax10.setWrapStyleWord(true);
+        Txa_Syntax10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_Syntax10.setFocusable(false);
+        Txa_Syntax10.setOpaque(false);
+        Pnl_Tema11.add(Txa_Syntax10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 1120, 140));
+
+        Txa_CodeDescription10.setEditable(false);
+        Txa_CodeDescription10.setColumns(20);
+        Txa_CodeDescription10.setFont(sRecursos.getFWindow());
+        Txa_CodeDescription10.setLineWrap(true);
+        Txa_CodeDescription10.setRows(5);
+        Txa_CodeDescription10.setWrapStyleWord(true);
+        Txa_CodeDescription10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_CodeDescription10.setFocusable(false);
+        Txa_CodeDescription10.setOpaque(false);
+        Pnl_Tema11.add(Txa_CodeDescription10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 1120, 50));
+
+        Pnl_CodesThemes10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Pnl_CodesThemes10.setLayout(new java.awt.CardLayout());
+        Pnl_Tema11.add(Pnl_CodesThemes10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 690, 1120, 350));
+
+        Txa_OutputScreen10.setEditable(false);
+        Txa_OutputScreen10.setColumns(20);
+        Txa_OutputScreen10.setFont(sRecursos.getFWindow());
+        Txa_OutputScreen10.setLineWrap(true);
+        Txa_OutputScreen10.setRows(5);
+        Txa_OutputScreen10.setWrapStyleWord(true);
+        Txa_OutputScreen10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        Txa_OutputScreen10.setFocusable(false);
+        Txa_OutputScreen10.setOpaque(false);
+        Txa_OutputScreen10.setPreferredSize(new java.awt.Dimension(500, 94));
+        Pnl_Tema11.add(Txa_OutputScreen10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1080, 1120, 70));
+
+        Lbl_Sintaxis10_1.setFont(sRecursos.getFTitles());
+        Lbl_Sintaxis10_1.setText("Sintaxis");
+        Pnl_Tema11.add(Lbl_Sintaxis10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 420, -1, 20));
+
+        Lbl_SampleCode10_1.setFont(sRecursos.getFTitles());
+        Lbl_SampleCode10_1.setText("Ejemplo de Código");
+        Pnl_Tema11.add(Lbl_SampleCode10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 660, -1, 20));
+
+        Lbl_Output10_1.setFont(sRecursos.getFTitles());
+        Lbl_Output10_1.setText("Output");
+        Pnl_Tema11.add(Lbl_Output10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1050, -1, -1));
 
         Scp_Tema11.setViewportView(Pnl_Tema11);
 
@@ -5403,7 +5484,17 @@ public class Home extends javax.swing.JFrame {
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema10ActionPerformed
 
+    private void RecursionContent() {
+        Txa_Analogy10.setText(lstList.get(18).getTitleAnalogy());
+        Txa_SubContent10.setText(lstList.get(18).getLearningSubContent());
+        Txa_Syntax10.setText(lstList.get(18).getSyntax());
+        Txa_CodeDescription10.setText(coList.get(24).getCodeDescription());
+        syntaxTemas10.setText(coList.get(24).getSampleCode());
+        Txa_OutputScreen10.setText(coList.get(24).getOutputScreen() + "\n\n");
+    }
+
     private void Btn_Aprender_Tema11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema11ActionPerformed
+        RecursionContent();
         Scp_Tema11.setVisible(true);
         mostrarPanelesAprender();
     }//GEN-LAST:event_Btn_Aprender_Tema11ActionPerformed
@@ -6214,6 +6305,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_OperadoresAritmeticos;
     private javax.swing.JLabel Lbl_OperadoresLogicos;
     private javax.swing.JLabel Lbl_OperadoresdeRelacion;
+    private javax.swing.JLabel Lbl_Output10_1;
     private javax.swing.JLabel Lbl_Output12_1;
     private javax.swing.JLabel Lbl_Output12_2;
     private javax.swing.JLabel Lbl_Output12_3;
@@ -6234,6 +6326,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_PrimerosAlgoritmos;
     private javax.swing.JLabel Lbl_QueEs;
     private javax.swing.JLabel Lbl_Recursion;
+    private javax.swing.JLabel Lbl_SampleCode10_1;
     private javax.swing.JLabel Lbl_SampleCode12_1;
     private javax.swing.JLabel Lbl_SampleCode12_2;
     private javax.swing.JLabel Lbl_SampleCode12_3;
@@ -6253,6 +6346,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_SampleCode9_4;
     private javax.swing.JLabel Lbl_Sets;
     private javax.swing.JLabel Lbl_Sintaxis1;
+    private javax.swing.JLabel Lbl_Sintaxis10_1;
     private javax.swing.JLabel Lbl_Sintaxis12_1;
     private javax.swing.JLabel Lbl_Sintaxis12_2;
     private javax.swing.JLabel Lbl_Sintaxis12_3;
@@ -6288,6 +6382,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_BotonesPrincipales;
     private javax.swing.JPanel Pnl_CodeStorm;
     private javax.swing.JPanel Pnl_CodesThemes0;
+    private javax.swing.JPanel Pnl_CodesThemes10;
     private javax.swing.JPanel Pnl_CodesThemes12_1;
     private javax.swing.JPanel Pnl_CodesThemes12_2;
     private javax.swing.JPanel Pnl_CodesThemes12_3;
@@ -6414,6 +6509,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator Spr_While;
     private javax.swing.JTextArea Txa_Analogy0;
     private javax.swing.JTextArea Txa_Analogy1;
+    private javax.swing.JTextArea Txa_Analogy10;
     private javax.swing.JTextArea Txa_Analogy12;
     private javax.swing.JTextArea Txa_Analogy2;
     private javax.swing.JTextArea Txa_Analogy4;
@@ -6425,6 +6521,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_Analogy8;
     private javax.swing.JTextArea Txa_Casos7;
     private javax.swing.JTextArea Txa_CodeDescription1;
+    private javax.swing.JTextArea Txa_CodeDescription10;
     private javax.swing.JTextArea Txa_CodeDescription1_1;
     private javax.swing.JTextArea Txa_CodeDescription2;
     private javax.swing.JTextArea Txa_CodeDescription7;
@@ -6435,6 +6532,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_Competencias;
     private javax.swing.JTextArea Txa_OutputScreen0;
     private javax.swing.JTextArea Txa_OutputScreen1;
+    private javax.swing.JTextArea Txa_OutputScreen10;
     private javax.swing.JTextArea Txa_OutputScreen12_1;
     private javax.swing.JTextArea Txa_OutputScreen12_2;
     private javax.swing.JTextArea Txa_OutputScreen12_3;
@@ -6463,6 +6561,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_Sintaxis8_3;
     private javax.swing.JTextArea Txa_SubContent0;
     private javax.swing.JTextArea Txa_SubContent1;
+    private javax.swing.JTextArea Txa_SubContent10;
     private javax.swing.JTextArea Txa_SubContent12_1;
     private javax.swing.JTextArea Txa_SubContent12_2;
     private javax.swing.JTextArea Txa_SubContent12_3;
@@ -6484,6 +6583,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JTextArea Txa_SubContent8_2;
     private javax.swing.JTextArea Txa_SubContent8_3;
     private javax.swing.JTextArea Txa_SubContent8_4;
+    private javax.swing.JTextArea Txa_Syntax10;
     private javax.swing.JTextArea Txa_Syntax7_2;
     private javax.swing.JTextArea Txa_Tip4_1;
     private javax.swing.JTextArea Txa_Tip6;
