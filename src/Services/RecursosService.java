@@ -9,6 +9,7 @@ import Tipografias.Fuentes;
 public final class RecursosService {
 
     private final Fuentes f = new Fuentes();
+    private Font fGeneral;
     private Font fEuclidB16;
     private Font fEuclidB18;
     private Font fEuclidB20;
@@ -28,6 +29,7 @@ public final class RecursosService {
     private Color colorRojo;
     private Color colorAzul;
     private Color colorVerde;
+    private Color colorGrisBorde;
     private Dimension dTamanioPaneles;
     private Dimension dTamanioBotones;
     private Dimension dBtns_Aprender;
@@ -63,6 +65,7 @@ public final class RecursosService {
         colorVerde = new Color(0, 37, 26);
         colorDark = new Color(56, 56, 56);
         colorTextGray = new Color(220, 220, 220);
+        colorGrisBorde = new Color(153, 153, 153);
     }
 
     private void crearTamanio() {
@@ -85,9 +88,14 @@ public final class RecursosService {
         fEuclidB22 = f.fuente(f.EUCB, 0, 22);
         fEuclidB30 = f.fuente(f.EUCB, 0, 30);
         fTitles = f.fuente(f.EUCB, 0, 18);
+        fGeneral = f.fuente(f.EUCR, 0, 16);
     }
 
     // Getters -----------------------------------------------------------------
+    public Font getFGeneral(){
+        return fGeneral;
+    }
+    
     public Font getFTitles() {
         return fTitles;
     }
@@ -162,6 +170,10 @@ public final class RecursosService {
 
     public Color getColorTextGray() {
         return colorTextGray;
+    }
+    
+    public Color getColorGrisBorde(){
+        return colorGrisBorde;
     }
 
     public Dimension getDTamanio() {
