@@ -75,6 +75,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JEditorPane;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollBar;
 
 public class Home extends javax.swing.JFrame {
@@ -200,9 +201,9 @@ public class Home extends javax.swing.JFrame {
         configurarVentana();
         ocultarComponentes();
         cargarFuenteyCursor();
-        resaltarCodigo();
         configurarBarraDesplazamiento();
         configurarBarraProgreso();
+        resaltarCodigo();
         confirmarCierre();
     }
 
@@ -256,21 +257,19 @@ public class Home extends javax.swing.JFrame {
     // Personalizar la Barra de Desplazamiento de todos los ScrollPane
     private void configurarBarraDesplazamiento() {
         List<Component> compList = getAllComponents(this);
-        for (Component componente : compList) {
+        compList.stream().map((componente) -> {
             if (componente instanceof JScrollPane) {
                 JScrollPane scp = (JScrollPane) componente;
-                // Agregar Barra de Desplazamiento Personalizada cada ScrollPane
+                // Agregar Barra de Desplazamiento Personalizada a cada ScrollPane
                 JScrollBar v = scp.getVerticalScrollBar();
                 v.setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
                 v.setUnitIncrement(16);
-                // Quitar borde por defecto
                 scp.setBorder(null);
             }
-            if (componente instanceof JButton) {
-                JButton btn = (JButton) componente;
-                btn.setCursor(sRecursos.getCMano());
-            }
-        }
+            return componente;
+        }).filter((componente) -> (componente instanceof JButton)).map((componente) -> (JButton) componente).forEachOrdered((btn) -> {
+            btn.setCursor(sRecursos.getCMano());
+        });
     }
 
     // Personalizar cursor en los Botones de todas las secciones
@@ -279,28 +278,27 @@ public class Home extends javax.swing.JFrame {
 
         // Lista de Componentes de la Seccion de Aprender
         List<Component> aprenderList = getAllComponents(Pnl_Aprender);
-        for (Component componente : aprenderList) {
-            if (componente instanceof JLabel) {
-                JLabel lbl = (JLabel) componente;
-                if (lbl.getBounds().y == 5) {
-                    lbl.setFont(sRecursos.getFLabelsAprender());
-                    lbl.setForeground(sRecursos.getColorVerde());
-                }
-            }
-        }
+        aprenderList.stream().filter((componente) -> (componente instanceof JLabel)).map((componente) -> (JLabel) componente).filter((lbl) -> (lbl.getBounds().y == 5)).map((lbl) -> {
+            lbl.setFont(sRecursos.getFLabelsAprender());
+            return lbl;
+        }).forEachOrdered((lbl) -> {
+            lbl.setForeground(sRecursos.getColorVerde());
+        });
 
         // Lista de Componentes de la Seccion de Historia 
         List<Component> historiaList = getAllComponents(Pnl_Historia);
-        for (Component componente : historiaList) {
+        historiaList.stream().map((componente) -> {
             if (componente instanceof JLabel) {
                 componente.setFont(sRecursos.getFHistoriaB());
                 componente.setForeground(sRecursos.getColorAzul());
             }
-            if (componente instanceof JTextArea) {
-                componente.setFont(sRecursos.getFHistoriaR());
-                componente.setForeground(Color.BLACK);
-            }
-        }
+            return componente;
+        }).filter((componente) -> (componente instanceof JTextArea)).map((componente) -> {
+            componente.setFont(sRecursos.getFHistoriaR());
+            return componente;
+        }).forEachOrdered((componente) -> {
+            componente.setForeground(Color.BLACK);
+        });
     }
 
     // Personalizar RSyntaxTextArea en Editor de Codigo
@@ -500,16 +498,8 @@ public class Home extends javax.swing.JFrame {
 
     // Habilitar o Deshabilitar botones de Siguiente y Anterior en seccion CodeStorm
     private void contador() {
-        if (contador == 0) {
-            Btn_Anterior.setEnabled(false);
-        } else {
-            Btn_Anterior.setEnabled(true);
-        }
-        if (contador == 19) {
-            Btn_Siguiente.setEnabled(false);
-        } else {
-            Btn_Siguiente.setEnabled(true);
-        }
+        Btn_Anterior.setEnabled((contador != 0));
+        Btn_Siguiente.setEnabled((contador != 19));
     }
 
     // Deshabilitar botones de los Ejercicios según Eleccion en CodeStorm
@@ -585,6 +575,11 @@ public class Home extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        Bgr_Question1 = new javax.swing.ButtonGroup();
+        Bgr_Question2 = new javax.swing.ButtonGroup();
+        Bgr_Question3 = new javax.swing.ButtonGroup();
+        Bgr_Question4 = new javax.swing.ButtonGroup();
+        Bgr_Question5 = new javax.swing.ButtonGroup();
         Pnl_Bar_Buttons = new javax.swing.JPanel();
         Btn_Aprender = new javax.swing.JToggleButton();
         Btn_CodeStorm = new javax.swing.JToggleButton();
@@ -632,6 +627,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_HelloWord = new javax.swing.JButton();
         Btn_Siguiente_Comentarios = new javax.swing.JButton();
         Lbl_Cuestionario1 = new javax.swing.JLabel();
+        Rad_Question0_1 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        Btn_Answer0 = new javax.swing.JButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        Rad_Question0 = new javax.swing.JRadioButton();
+        Rad_Question0_2 = new javax.swing.JRadioButton();
+        jRadioButton8 = new javax.swing.JRadioButton();
+        jRadioButton9 = new javax.swing.JRadioButton();
+        Rad_Question01 = new javax.swing.JRadioButton();
+        Rad_Question0_3 = new javax.swing.JRadioButton();
+        jRadioButton11 = new javax.swing.JRadioButton();
+        jRadioButton12 = new javax.swing.JRadioButton();
+        EdtCuestionario1 = new javax.swing.JEditorPane();
         Scp_Tema2 = new javax.swing.JScrollPane();
         Pnl_Tema2 = new javax.swing.JPanel();
         Lbl_Comentarios = new javax.swing.JLabel();
@@ -649,6 +658,18 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Comentarios = new javax.swing.JButton();
         Btn_Siguiente_TiposdeDatos = new javax.swing.JButton();
         Lbl_Cuestionario2 = new javax.swing.JLabel();
+        Rad_Question0_4 = new javax.swing.JRadioButton();
+        Rad_Question1_1 = new javax.swing.JRadioButton();
+        Btn_Answer1 = new javax.swing.JButton();
+        jRadioButton10 = new javax.swing.JRadioButton();
+        jRadioButton13 = new javax.swing.JRadioButton();
+        Rad_Question1_2 = new javax.swing.JRadioButton();
+        Rad_Question0_5 = new javax.swing.JRadioButton();
+        jRadioButton15 = new javax.swing.JRadioButton();
+        Rad_Question1_3 = new javax.swing.JRadioButton();
+        jRadioButton17 = new javax.swing.JRadioButton();
+        jRadioButton16 = new javax.swing.JRadioButton();
+        EdtCuestionario2 = new javax.swing.JEditorPane();
         Scp_Tema3 = new javax.swing.JScrollPane();
         Pnl_Tema3 = new javax.swing.JPanel();
         Lbl_TiposdeDatos = new javax.swing.JLabel();
@@ -662,6 +683,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_TiposdeDatos = new javax.swing.JButton();
         Btn_Siguiente_OperadoresAritmeticos = new javax.swing.JButton();
         Lbl_Cuestionario3 = new javax.swing.JLabel();
+        Rad_Question0_6 = new javax.swing.JRadioButton();
+        Rad_Question1_4 = new javax.swing.JRadioButton();
+        Btn_Answer2 = new javax.swing.JButton();
+        Rad_Question2_1 = new javax.swing.JRadioButton();
+        jRadioButton19 = new javax.swing.JRadioButton();
+        Rad_Question1_5 = new javax.swing.JRadioButton();
+        Rad_Question2_2 = new javax.swing.JRadioButton();
+        jRadioButton20 = new javax.swing.JRadioButton();
+        jRadioButton21 = new javax.swing.JRadioButton();
+        Rad_Question3 = new javax.swing.JRadioButton();
+        Rad_Question1_6 = new javax.swing.JRadioButton();
+        jRadioButton22 = new javax.swing.JRadioButton();
+        Rad_Question2_3 = new javax.swing.JRadioButton();
+        EdtCuestionario3 = new javax.swing.JEditorPane();
         Scp_Tema4 = new javax.swing.JScrollPane();
         Pnl_Tema4 = new javax.swing.JPanel();
         Lbl_OperadoresAritmeticos = new javax.swing.JLabel();
@@ -689,6 +724,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_OperadoresAritmeticos = new javax.swing.JButton();
         Btn_Siguiente_LecturaeImpresion = new javax.swing.JButton();
         Lbl_Cuestionario4 = new javax.swing.JLabel();
+        Rad_Question3_1 = new javax.swing.JRadioButton();
+        Rad_Question1_7 = new javax.swing.JRadioButton();
+        Btn_Answer3 = new javax.swing.JButton();
+        Rad_Question2_4 = new javax.swing.JRadioButton();
+        jRadioButton23 = new javax.swing.JRadioButton();
+        Rad_Question1_8 = new javax.swing.JRadioButton();
+        Rad_Question2_5 = new javax.swing.JRadioButton();
+        Rad_Question3_2 = new javax.swing.JRadioButton();
+        jRadioButton25 = new javax.swing.JRadioButton();
+        Rad_Question4 = new javax.swing.JRadioButton();
+        Rad_Question1_9 = new javax.swing.JRadioButton();
+        jRadioButton26 = new javax.swing.JRadioButton();
+        Rad_Question3_3 = new javax.swing.JRadioButton();
+        EdtCuestionario4 = new javax.swing.JEditorPane();
         Scp_Tema5 = new javax.swing.JScrollPane();
         Pnl_Tema5 = new javax.swing.JPanel();
         Lbl_LecturaeImpresion = new javax.swing.JLabel();
@@ -702,6 +751,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_LecturaeImpresion = new javax.swing.JButton();
         Btn_Siguiente_Ejercicio1 = new javax.swing.JButton();
         Lbl_Cuestionario5 = new javax.swing.JLabel();
+        Rad_Question4_1_1 = new javax.swing.JRadioButton();
+        Rad_Question1_10 = new javax.swing.JRadioButton();
+        Btn_Answer4 = new javax.swing.JButton();
+        Rad_Question2_6 = new javax.swing.JRadioButton();
+        Rad_Question4_1 = new javax.swing.JRadioButton();
+        Rad_Question4_2 = new javax.swing.JRadioButton();
+        Rad_Question4_3 = new javax.swing.JRadioButton();
+        Rad_Question1_20 = new javax.swing.JRadioButton();
+        Rad_Question3_7 = new javax.swing.JRadioButton();
+        Rad_Question4_00 = new javax.swing.JRadioButton();
+        Rad_Question4_7 = new javax.swing.JRadioButton();
+        jRadioButton35 = new javax.swing.JRadioButton();
+        Rad_Question3_13 = new javax.swing.JRadioButton();
+        EdtCuestionario5 = new javax.swing.JEditorPane();
         Scp_Ejercicio1 = new javax.swing.JScrollPane();
         Pnl_Ejercicio1_Aprender = new javax.swing.JPanel();
         Btn_Anterior_Cuestionario5 = new javax.swing.JButton();
@@ -724,6 +787,18 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_OperadoresdeRelacion = new javax.swing.JButton();
         Btn_Siguiente_OperadoresLogicos = new javax.swing.JButton();
         Lbl_Cuestionario6 = new javax.swing.JLabel();
+        Rad_Question5_1_0 = new javax.swing.JRadioButton();
+        Rad_Question1_12 = new javax.swing.JRadioButton();
+        Btn_Answer5 = new javax.swing.JButton();
+        Rad_Question2_8 = new javax.swing.JRadioButton();
+        Rad_Question5_1 = new javax.swing.JRadioButton();
+        Rad_Question2_9 = new javax.swing.JRadioButton();
+        Rad_Question5_2 = new javax.swing.JRadioButton();
+        Rad_Question5_3 = new javax.swing.JRadioButton();
+        Rad_Question4_6 = new javax.swing.JRadioButton();
+        jRadioButton29 = new javax.swing.JRadioButton();
+        Rad_Question3_8 = new javax.swing.JRadioButton();
+        EdtCuestionario6 = new javax.swing.JEditorPane();
         Scp_Tema7 = new javax.swing.JScrollPane();
         Pnl_Tema7 = new javax.swing.JPanel();
         Lbl_OperadoresLogicos = new javax.swing.JLabel();
@@ -739,6 +814,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_OperadoresLogicos = new javax.swing.JButton();
         Btn_Siguiente_Condicionales = new javax.swing.JButton();
         Lbl_Cuestionario7 = new javax.swing.JLabel();
+        Rad_Question5_4 = new javax.swing.JRadioButton();
+        Rad_Question6_1 = new javax.swing.JRadioButton();
+        Btn_Answer6 = new javax.swing.JButton();
+        Rad_Question2_10 = new javax.swing.JRadioButton();
+        Rad_Question6_1_0 = new javax.swing.JRadioButton();
+        Rad_Question1_15 = new javax.swing.JRadioButton();
+        Rad_Question2_11 = new javax.swing.JRadioButton();
+        Rad_Question5_5 = new javax.swing.JRadioButton();
+        Rad_Question6_2 = new javax.swing.JRadioButton();
+        Rad_Question6_3 = new javax.swing.JRadioButton();
+        Rad_Question4_8 = new javax.swing.JRadioButton();
+        jRadioButton31 = new javax.swing.JRadioButton();
+        Rad_Question3_9 = new javax.swing.JRadioButton();
+        EdtCuestionario7 = new javax.swing.JEditorPane();
         Scp_Tema8 = new javax.swing.JScrollPane();
         Pnl_Tema8 = new javax.swing.JPanel();
         Lbl_Condicionales = new javax.swing.JLabel();
@@ -779,6 +868,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Condicionales = new javax.swing.JButton();
         Btn_Siguiente_Bucles = new javax.swing.JButton();
         Lbl_Cuestionario8 = new javax.swing.JLabel();
+        Rad_Question5_6 = new javax.swing.JRadioButton();
+        Rad_Question7_1_0 = new javax.swing.JRadioButton();
+        Btn_Answer7 = new javax.swing.JButton();
+        Rad_Question2_12 = new javax.swing.JRadioButton();
+        Rad_Question7_1 = new javax.swing.JRadioButton();
+        Rad_Question1_17 = new javax.swing.JRadioButton();
+        Rad_Question7_2 = new javax.swing.JRadioButton();
+        Rad_Question5_7 = new javax.swing.JRadioButton();
+        Rad_Question7_2_0 = new javax.swing.JRadioButton();
+        Rad_Question7_3 = new javax.swing.JRadioButton();
+        Rad_Question4_9 = new javax.swing.JRadioButton();
+        jRadioButton32 = new javax.swing.JRadioButton();
+        Rad_Question3_10 = new javax.swing.JRadioButton();
+        EdtCuestionario8 = new javax.swing.JEditorPane();
         Scp_Tema9 = new javax.swing.JScrollPane();
         Pnl_Tema9 = new javax.swing.JPanel();
         Lbl_Bucles = new javax.swing.JLabel();
@@ -811,6 +914,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Bucles = new javax.swing.JButton();
         Btn_Siguiente_Ejercicio2_Intermedio = new javax.swing.JButton();
         Lbl_Cuestionario9 = new javax.swing.JLabel();
+        Rad_Question5_8 = new javax.swing.JRadioButton();
+        Rad_Question8_1 = new javax.swing.JRadioButton();
+        Btn_Answer8 = new javax.swing.JButton();
+        Rad_Question2_14 = new javax.swing.JRadioButton();
+        Rad_Question8_1_0 = new javax.swing.JRadioButton();
+        Rad_Question8_2 = new javax.swing.JRadioButton();
+        Rad_Question8_2_0 = new javax.swing.JRadioButton();
+        Rad_Question5_9 = new javax.swing.JRadioButton();
+        Rad_Question7_5 = new javax.swing.JRadioButton();
+        Rad_Question8_3_0 = new javax.swing.JRadioButton();
+        Rad_Question4_10 = new javax.swing.JRadioButton();
+        jRadioButton33 = new javax.swing.JRadioButton();
+        Rad_Question8_3 = new javax.swing.JRadioButton();
+        EdtCuestionario9 = new javax.swing.JEditorPane();
         Scp_Ejercicio2 = new javax.swing.JScrollPane();
         Pnl_Ejercicio2_Aprender = new javax.swing.JPanel();
         Btn_Anterior_Cuestionario9 = new javax.swing.JButton();
@@ -833,6 +950,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_FuncyProc = new javax.swing.JButton();
         Btn_Siguiente_Recursion = new javax.swing.JButton();
         Lbl_Cuestionario10 = new javax.swing.JLabel();
+        Rad_Question5_10 = new javax.swing.JRadioButton();
+        Rad_Question9_1 = new javax.swing.JRadioButton();
+        Btn_Answer9 = new javax.swing.JButton();
+        Rad_Question2_15 = new javax.swing.JRadioButton();
+        Rad_Question8_4 = new javax.swing.JRadioButton();
+        Rad_Question1_19 = new javax.swing.JRadioButton();
+        Rad_Question8_5 = new javax.swing.JRadioButton();
+        Rad_Question5_11 = new javax.swing.JRadioButton();
+        Rad_Question9_2 = new javax.swing.JRadioButton();
+        Rad_Question8_6 = new javax.swing.JRadioButton();
+        Rad_Question4_11 = new javax.swing.JRadioButton();
+        Rad_Question9_3 = new javax.swing.JRadioButton();
+        Rad_Question3_12 = new javax.swing.JRadioButton();
+        EdtCuestionario10 = new javax.swing.JEditorPane();
         Scp_Tema11 = new javax.swing.JScrollPane();
         Pnl_Tema11 = new javax.swing.JPanel();
         Lbl_Recursion = new javax.swing.JLabel();
@@ -848,6 +979,18 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_Recursion = new javax.swing.JButton();
         Btn_Siguiente_EDDBasicas = new javax.swing.JButton();
         Lbl_Cuestionario11 = new javax.swing.JLabel();
+        Rad_Question5_13 = new javax.swing.JRadioButton();
+        Rad_Question10_1 = new javax.swing.JRadioButton();
+        Btn_Answer10 = new javax.swing.JButton();
+        Rad_Question8_9 = new javax.swing.JRadioButton();
+        Rad_Question10_2 = new javax.swing.JRadioButton();
+        Rad_Question8_10 = new javax.swing.JRadioButton();
+        Rad_Question5_14 = new javax.swing.JRadioButton();
+        Rad_Question10_2_1 = new javax.swing.JRadioButton();
+        Rad_Question8_11 = new javax.swing.JRadioButton();
+        Rad_Question10_3 = new javax.swing.JRadioButton();
+        Rad_Question3_14 = new javax.swing.JRadioButton();
+        EdtCuestionario11 = new javax.swing.JEditorPane();
         Scp_Tema12 = new javax.swing.JScrollPane();
         Pnl_Tema12 = new javax.swing.JPanel();
         Lbl_EDDBasicas = new javax.swing.JLabel();
@@ -890,8 +1033,19 @@ public class Home extends javax.swing.JFrame {
         Scp_Cuestionario12 = new javax.swing.JScrollPane();
         Pnl_Cuestionario12 = new javax.swing.JPanel();
         Btn_Anterior_EDDBasicas = new javax.swing.JButton();
-        Btn_Siguiente_EDDAvanzadas = new javax.swing.JButton();
+        Btn_Siguiente_EDDIntermedias = new javax.swing.JButton();
         Lbl_Cuestionario12 = new javax.swing.JLabel();
+        Rad_Question5_15 = new javax.swing.JRadioButton();
+        Rad_Question10_4 = new javax.swing.JRadioButton();
+        Rad_Question11_1 = new javax.swing.JRadioButton();
+        Rad_Question10_5 = new javax.swing.JRadioButton();
+        Rad_Question11_2 = new javax.swing.JRadioButton();
+        Rad_Question10_2_2 = new javax.swing.JRadioButton();
+        Rad_Question11_3 = new javax.swing.JRadioButton();
+        Rad_Question10_6 = new javax.swing.JRadioButton();
+        Rad_Question3_18 = new javax.swing.JRadioButton();
+        Btn_Answer11 = new javax.swing.JButton();
+        EdtCuestionario12 = new javax.swing.JEditorPane();
         Scp_Tema13 = new javax.swing.JScrollPane();
         Pnl_Tema13 = new javax.swing.JPanel();
         Lbl_EDDIntermedias = new javax.swing.JLabel();
@@ -926,9 +1080,23 @@ public class Home extends javax.swing.JFrame {
         Btn_Siguiente_Cuestionario13 = new javax.swing.JButton();
         Scp_Cuestionario13 = new javax.swing.JScrollPane();
         Pnl_Cuestionario13 = new javax.swing.JPanel();
-        Btn_Anterior_EDDAvanzadas = new javax.swing.JButton();
+        Btn_Anterior_EDDIntermedias = new javax.swing.JButton();
         Btn_Siguiente_PrimerosAlgoritmos = new javax.swing.JButton();
         Lbl_Cuestionario13 = new javax.swing.JLabel();
+        Rad_Question5_17 = new javax.swing.JRadioButton();
+        Rad_Question8_12 = new javax.swing.JRadioButton();
+        Rad_Question12_1 = new javax.swing.JRadioButton();
+        Rad_Question8_1_1 = new javax.swing.JRadioButton();
+        Rad_Question8_13 = new javax.swing.JRadioButton();
+        Rad_Question12_2 = new javax.swing.JRadioButton();
+        Rad_Question5_18 = new javax.swing.JRadioButton();
+        Rad_Question7_6 = new javax.swing.JRadioButton();
+        Rad_Question12_3 = new javax.swing.JRadioButton();
+        Rad_Question4_16 = new javax.swing.JRadioButton();
+        jRadioButton34 = new javax.swing.JRadioButton();
+        Rad_Question8_14 = new javax.swing.JRadioButton();
+        Btn_Answer12 = new javax.swing.JButton();
+        EdtCuestionario13 = new javax.swing.JEditorPane();
         Scp_Tema14 = new javax.swing.JScrollPane();
         Pnl_Tema14 = new javax.swing.JPanel();
         Lbl_PrimerosAlgoritmos = new javax.swing.JLabel();
@@ -952,6 +1120,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_PrimerosAlgoritmos = new javax.swing.JButton();
         Btn_Siguiente_EjercicioFinal = new javax.swing.JButton();
         Lbl_Cuestionario14 = new javax.swing.JLabel();
+        Rad_Question13_1 = new javax.swing.JRadioButton();
+        Rad_Question10_7 = new javax.swing.JRadioButton();
+        Rad_Question2_21 = new javax.swing.JRadioButton();
+        Rad_Question11_4 = new javax.swing.JRadioButton();
+        Rad_Question10_8 = new javax.swing.JRadioButton();
+        Rad_Question11_5 = new javax.swing.JRadioButton();
+        Rad_Question13_2 = new javax.swing.JRadioButton();
+        Rad_Question10_2_3 = new javax.swing.JRadioButton();
+        Rad_Question11_6 = new javax.swing.JRadioButton();
+        Rad_Question13_3 = new javax.swing.JRadioButton();
+        Rad_Question10_3_3 = new javax.swing.JRadioButton();
+        Rad_Question3_19 = new javax.swing.JRadioButton();
+        Btn_Answer13 = new javax.swing.JButton();
+        EdtCuestionario14 = new javax.swing.JEditorPane();
         Scp_Ejercicio3 = new javax.swing.JScrollPane();
         Pnl_Ejercicio3_Aprender = new javax.swing.JPanel();
         Btn_Anterior_Cuestionario14 = new javax.swing.JButton();
@@ -1020,18 +1202,6 @@ public class Home extends javax.swing.JFrame {
         Pnl_Historia = new javax.swing.JPanel();
         Pnl_Pagina1 = new javax.swing.JPanel();
         Lbl_Header_Historia = new javax.swing.JLabel();
-        Lbl_QueEs = new javax.swing.JLabel();
-        Scp_QueEs = new javax.swing.JScrollPane();
-        Txa_QueEs = new javax.swing.JTextArea();
-        Lbl_Competencias = new javax.swing.JLabel();
-        Scp_Competencias = new javax.swing.JScrollPane();
-        Txa_Competencias = new javax.swing.JTextArea();
-        Pnl_Pagina2 = new javax.swing.JPanel();
-        Lbl_Header_Historia2 = new javax.swing.JLabel();
-        Pnl_Pagina3 = new javax.swing.JPanel();
-        Lbl_Header_Historia3 = new javax.swing.JLabel();
-        Pnl_Pagina4 = new javax.swing.JPanel();
-        Lbl_Header_Historia4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -1535,9 +1705,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario1.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario1.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario1.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario1.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario1.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario1.setMaximumSize(new java.awt.Dimension(1176, 860));
+        Pnl_Cuestionario1.setMinimumSize(new java.awt.Dimension(1176, 860));
+        Pnl_Cuestionario1.setPreferredSize(new java.awt.Dimension(1176, 860));
         Pnl_Cuestionario1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_HelloWord.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_HelloWorld_Off.png"))); // NOI18N
@@ -1555,7 +1725,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_HelloWordActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario1.add(Btn_Anterior_HelloWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario1.add(Btn_Anterior_HelloWord, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 760, 254, 64));
 
         Btn_Siguiente_Comentarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Comentarios_Off.png"))); // NOI18N
         Btn_Siguiente_Comentarios.setMnemonic(KeyEvent.VK_RIGHT);
@@ -1572,12 +1742,75 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_ComentariosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario1.add(Btn_Siguiente_Comentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario1.add(Btn_Siguiente_Comentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 760, 254, 64));
 
         Lbl_Cuestionario1.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario1.setText("Hello World | Cuestionario");
         Lbl_Cuestionario1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario1.add(Lbl_Cuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 420, 45));
+
+        Bgr_Question1.add(Rad_Question0_1);
+        Rad_Question0_1.setOpaque(false);
+        Pnl_Cuestionario1.add(Rad_Question0_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 185, -1, -1));
+
+        Bgr_Question1.add(jRadioButton4);
+        jRadioButton4.setOpaque(false);
+        Pnl_Cuestionario1.add(jRadioButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 165, -1, -1));
+
+        Btn_Answer0.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer0.setContentAreaFilled(false);
+        Btn_Answer0.setFocusPainted(false);
+        Btn_Answer0.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer0ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario1.add(Btn_Answer0, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 590, 260, 50));
+
+        Bgr_Question1.add(jRadioButton5);
+        jRadioButton5.setOpaque(false);
+        Pnl_Cuestionario1.add(jRadioButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 205, -1, -1));
+
+        Bgr_Question1.add(jRadioButton6);
+        jRadioButton6.setOpaque(false);
+        Pnl_Cuestionario1.add(jRadioButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 145, -1, -1));
+
+        Bgr_Question2.add(Rad_Question0);
+        Rad_Question0.setOpaque(false);
+        Pnl_Cuestionario1.add(Rad_Question0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        Bgr_Question2.add(Rad_Question0_2);
+        Rad_Question0_2.setOpaque(false);
+        Pnl_Cuestionario1.add(Rad_Question0_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        Bgr_Question2.add(jRadioButton8);
+        jRadioButton8.setOpaque(false);
+        Pnl_Cuestionario1.add(jRadioButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+
+        Bgr_Question2.add(jRadioButton9);
+        jRadioButton9.setOpaque(false);
+        Pnl_Cuestionario1.add(jRadioButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        Bgr_Question3.add(Rad_Question01);
+        Rad_Question01.setOpaque(false);
+        Pnl_Cuestionario1.add(Rad_Question01, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 495, -1, -1));
+
+        Bgr_Question3.add(Rad_Question0_3);
+        Rad_Question0_3.setOpaque(false);
+        Pnl_Cuestionario1.add(Rad_Question0_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 475, -1, -1));
+
+        Bgr_Question3.add(jRadioButton11);
+        jRadioButton11.setOpaque(false);
+        Pnl_Cuestionario1.add(jRadioButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 515, -1, -1));
+
+        Bgr_Question3.add(jRadioButton12);
+        jRadioButton12.setOpaque(false);
+        Pnl_Cuestionario1.add(jRadioButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
+
+        EdtCuestionario1.setContentType("text/html"); // NOI18N
+        EdtCuestionario1.setOpaque(false);
+        Pnl_Cuestionario1.add(EdtCuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 660, 450));
 
         Scp_Cuestionario1.setViewportView(Pnl_Cuestionario1);
 
@@ -1681,9 +1914,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario2.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario2.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario2.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario2.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario2.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario2.setMaximumSize(new java.awt.Dimension(1176, 850));
+        Pnl_Cuestionario2.setMinimumSize(new java.awt.Dimension(1176, 850));
+        Pnl_Cuestionario2.setPreferredSize(new java.awt.Dimension(1176, 850));
         Pnl_Cuestionario2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Comentarios.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Comentarios_Off.png"))); // NOI18N
@@ -1701,7 +1934,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_ComentariosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario2.add(Btn_Anterior_Comentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario2.add(Btn_Anterior_Comentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 750, 254, 64));
 
         Btn_Siguiente_TiposdeDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_TiposdeDatos_Off.png"))); // NOI18N
         Btn_Siguiente_TiposdeDatos.setMnemonic(KeyEvent.VK_RIGHT);
@@ -1718,12 +1951,73 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_TiposdeDatosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario2.add(Btn_Siguiente_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario2.add(Btn_Siguiente_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 750, 254, 64));
 
         Lbl_Cuestionario2.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario2.setText("Comentarios | Cuestionario");
         Lbl_Cuestionario2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario2.add(Lbl_Cuestionario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 440, 45));
+
+        Bgr_Question1.add(Rad_Question0_4);
+        Rad_Question0_4.setOpaque(false);
+        Rad_Question0_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Rad_Question0_4ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario2.add(Rad_Question0_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 185, -1, -1));
+
+        Bgr_Question1.add(Rad_Question1_1);
+        Rad_Question1_1.setOpaque(false);
+        Pnl_Cuestionario2.add(Rad_Question1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 165, -1, -1));
+
+        Btn_Answer1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer1.setBorderPainted(false);
+        Btn_Answer1.setContentAreaFilled(false);
+        Btn_Answer1.setFocusPainted(false);
+        Btn_Answer1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer1ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario2.add(Btn_Answer1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 260, 50));
+
+        Bgr_Question1.add(jRadioButton10);
+        jRadioButton10.setOpaque(false);
+        Pnl_Cuestionario2.add(jRadioButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 205, -1, -1));
+
+        Bgr_Question1.add(jRadioButton13);
+        jRadioButton13.setOpaque(false);
+        Pnl_Cuestionario2.add(jRadioButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 145, -1, -1));
+
+        Bgr_Question2.add(Rad_Question1_2);
+        Rad_Question1_2.setOpaque(false);
+        Pnl_Cuestionario2.add(Rad_Question1_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        Bgr_Question2.add(Rad_Question0_5);
+        Rad_Question0_5.setOpaque(false);
+        Pnl_Cuestionario2.add(Rad_Question0_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        Bgr_Question2.add(jRadioButton15);
+        jRadioButton15.setOpaque(false);
+        Pnl_Cuestionario2.add(jRadioButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        Bgr_Question3.add(Rad_Question1_3);
+        Rad_Question1_3.setOpaque(false);
+        Pnl_Cuestionario2.add(Rad_Question1_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 475, -1, -1));
+
+        Bgr_Question3.add(jRadioButton17);
+        jRadioButton17.setOpaque(false);
+        Pnl_Cuestionario2.add(jRadioButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
+
+        Bgr_Question2.add(jRadioButton16);
+        jRadioButton16.setOpaque(false);
+        Pnl_Cuestionario2.add(jRadioButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+
+        EdtCuestionario2.setContentType("text/html"); // NOI18N
+        EdtCuestionario2.setOpaque(false);
+        Pnl_Cuestionario2.add(EdtCuestionario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 730, 450));
 
         Scp_Cuestionario2.setViewportView(Pnl_Cuestionario2);
 
@@ -1807,9 +2101,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario3.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario3.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario3.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario3.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario3.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario3.setMaximumSize(new java.awt.Dimension(1176, 1000));
+        Pnl_Cuestionario3.setMinimumSize(new java.awt.Dimension(1176, 1000));
+        Pnl_Cuestionario3.setPreferredSize(new java.awt.Dimension(1176, 1000));
         Pnl_Cuestionario3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_TiposdeDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_TiposdeDatos_Off.png"))); // NOI18N
@@ -1827,7 +2121,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_TiposdeDatosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario3.add(Btn_Anterior_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario3.add(Btn_Anterior_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 900, 254, 64));
 
         Btn_Siguiente_OperadoresAritmeticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_OperadoresAritmeticos_Off.png"))); // NOI18N
         Btn_Siguiente_OperadoresAritmeticos.setMnemonic(39);
@@ -1844,12 +2138,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_OperadoresAritmeticosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario3.add(Btn_Siguiente_OperadoresAritmeticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario3.add(Btn_Siguiente_OperadoresAritmeticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 900, 254, 64));
 
         Lbl_Cuestionario3.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario3.setText("Tipos de Datos | Cuestionario");
         Lbl_Cuestionario3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario3.add(Lbl_Cuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 430, 45));
+
+        Bgr_Question1.add(Rad_Question0_6);
+        Rad_Question0_6.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question0_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 185, -1, -1));
+
+        Bgr_Question1.add(Rad_Question1_4);
+        Rad_Question1_4.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question1_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 165, -1, -1));
+
+        Btn_Answer2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer2.setBorderPainted(false);
+        Btn_Answer2.setContentAreaFilled(false);
+        Btn_Answer2.setFocusPainted(false);
+        Btn_Answer2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer2ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario3.add(Btn_Answer2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_1);
+        Rad_Question2_1.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 205, -1, -1));
+
+        Bgr_Question1.add(jRadioButton19);
+        jRadioButton19.setOpaque(false);
+        Pnl_Cuestionario3.add(jRadioButton19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 145, -1, -1));
+
+        Bgr_Question2.add(Rad_Question1_5);
+        Rad_Question1_5.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question1_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 465, -1, -1));
+
+        Bgr_Question2.add(Rad_Question2_2);
+        Rad_Question2_2.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 445, -1, -1));
+
+        Bgr_Question2.add(jRadioButton20);
+        jRadioButton20.setOpaque(false);
+        Pnl_Cuestionario3.add(jRadioButton20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 485, -1, -1));
+
+        Bgr_Question2.add(jRadioButton21);
+        jRadioButton21.setOpaque(false);
+        Pnl_Cuestionario3.add(jRadioButton21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 425, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3);
+        Rad_Question3.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 620, -1, -1));
+
+        Bgr_Question3.add(Rad_Question1_6);
+        Rad_Question1_6.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question1_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 600, -1, -1));
+
+        Bgr_Question3.add(jRadioButton22);
+        jRadioButton22.setOpaque(false);
+        Pnl_Cuestionario3.add(jRadioButton22, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 640, -1, -1));
+
+        Bgr_Question3.add(Rad_Question2_3);
+        Rad_Question2_3.setOpaque(false);
+        Pnl_Cuestionario3.add(Rad_Question2_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
+
+        EdtCuestionario3.setContentType("text/html"); // NOI18N
+        EdtCuestionario3.setOpaque(false);
+        Pnl_Cuestionario3.add(EdtCuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 580));
 
         Scp_Cuestionario3.setViewportView(Pnl_Cuestionario3);
 
@@ -2002,9 +2360,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario4.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario4.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario4.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario4.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario4.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario4.setMaximumSize(new java.awt.Dimension(1176, 860));
+        Pnl_Cuestionario4.setMinimumSize(new java.awt.Dimension(1176, 860));
+        Pnl_Cuestionario4.setPreferredSize(new java.awt.Dimension(1176, 860));
         Pnl_Cuestionario4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_OperadoresAritmeticos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_OperadoresAritmeticos_Off.png"))); // NOI18N
@@ -2022,7 +2380,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_OperadoresAritmeticosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario4.add(Btn_Anterior_OperadoresAritmeticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario4.add(Btn_Anterior_OperadoresAritmeticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 760, 254, 64));
 
         Btn_Siguiente_LecturaeImpresion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_LecturaeImpresion_Off.png"))); // NOI18N
         Btn_Siguiente_LecturaeImpresion.setMnemonic(39);
@@ -2039,12 +2397,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_LecturaeImpresionActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario4.add(Btn_Siguiente_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario4.add(Btn_Siguiente_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 760, 254, 64));
 
         Lbl_Cuestionario4.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario4.setText("Operadores Aritméticos | Cuestionario");
         Lbl_Cuestionario4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario4.add(Lbl_Cuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question3_1);
+        Rad_Question3_1.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 185, -1, -1));
+
+        Bgr_Question1.add(Rad_Question1_7);
+        Rad_Question1_7.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question1_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 165, -1, -1));
+
+        Btn_Answer3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer3.setBorderPainted(false);
+        Btn_Answer3.setContentAreaFilled(false);
+        Btn_Answer3.setFocusPainted(false);
+        Btn_Answer3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer3ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario4.add(Btn_Answer3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_4);
+        Rad_Question2_4.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question2_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 205, -1, -1));
+
+        Bgr_Question1.add(jRadioButton23);
+        jRadioButton23.setOpaque(false);
+        Pnl_Cuestionario4.add(jRadioButton23, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 145, -1, -1));
+
+        Bgr_Question2.add(Rad_Question1_8);
+        Rad_Question1_8.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question1_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        Bgr_Question2.add(Rad_Question2_5);
+        Rad_Question2_5.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question2_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        Bgr_Question2.add(Rad_Question3_2);
+        Rad_Question3_2.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+
+        Bgr_Question2.add(jRadioButton25);
+        jRadioButton25.setOpaque(false);
+        Pnl_Cuestionario4.add(jRadioButton25, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4);
+        Rad_Question4.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 495, -1, -1));
+
+        Bgr_Question3.add(Rad_Question1_9);
+        Rad_Question1_9.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question1_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 475, -1, -1));
+
+        Bgr_Question3.add(jRadioButton26);
+        jRadioButton26.setOpaque(false);
+        Pnl_Cuestionario4.add(jRadioButton26, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 515, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_3);
+        Rad_Question3_3.setOpaque(false);
+        Pnl_Cuestionario4.add(Rad_Question3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
+
+        EdtCuestionario4.setContentType("text/html"); // NOI18N
+        EdtCuestionario4.setOpaque(false);
+        Pnl_Cuestionario4.add(EdtCuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 460));
 
         Scp_Cuestionario4.setViewportView(Pnl_Cuestionario4);
 
@@ -2128,9 +2550,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario5.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario5.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario5.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario5.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario5.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario5.setMaximumSize(new java.awt.Dimension(1176, 930));
+        Pnl_Cuestionario5.setMinimumSize(new java.awt.Dimension(1176, 930));
+        Pnl_Cuestionario5.setPreferredSize(new java.awt.Dimension(1176, 930));
         Pnl_Cuestionario5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_LecturaeImpresion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_LecturaeImpresion_Off.png"))); // NOI18N
@@ -2148,7 +2570,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_LecturaeImpresionActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario5.add(Btn_Anterior_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario5.add(Btn_Anterior_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 830, 254, 64));
 
         Btn_Siguiente_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Ejercicio1_Off.png"))); // NOI18N
         Btn_Siguiente_Ejercicio1.setMnemonic(39);
@@ -2165,12 +2587,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Ejercicio1ActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario5.add(Btn_Siguiente_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario5.add(Btn_Siguiente_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 830, 254, 64));
 
         Lbl_Cuestionario5.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario5.setText("Lectura e Impresión | Cuestionario");
         Lbl_Cuestionario5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario5.add(Lbl_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question4_1_1);
+        Rad_Question4_1_1.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question4_1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, -1, -1));
+
+        Bgr_Question1.add(Rad_Question1_10);
+        Rad_Question1_10.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question1_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, -1, -1));
+
+        Btn_Answer4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer4.setBorderPainted(false);
+        Btn_Answer4.setContentAreaFilled(false);
+        Btn_Answer4.setFocusPainted(false);
+        Btn_Answer4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer4ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario5.add(Btn_Answer4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 660, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_6);
+        Rad_Question2_6.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question2_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, -1, -1));
+
+        Bgr_Question1.add(Rad_Question4_1);
+        Rad_Question4_1.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question4_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, -1, -1));
+
+        Bgr_Question2.add(Rad_Question4_2);
+        Rad_Question4_2.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question4_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 363, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4_3);
+        Rad_Question4_3.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question4_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
+
+        Bgr_Question2.add(Rad_Question1_20);
+        Rad_Question1_20.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question1_20, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 383, -1, -1));
+
+        Bgr_Question2.add(Rad_Question3_7);
+        Rad_Question3_7.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question3_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 403, -1, -1));
+
+        Bgr_Question2.add(Rad_Question4_00);
+        Rad_Question4_00.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question4_00, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 343, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4_7);
+        Rad_Question4_7.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question4_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
+
+        Bgr_Question3.add(jRadioButton35);
+        jRadioButton35.setOpaque(false);
+        Pnl_Cuestionario5.add(jRadioButton35, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_13);
+        Rad_Question3_13.setOpaque(false);
+        Pnl_Cuestionario5.add(Rad_Question3_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
+
+        EdtCuestionario5.setContentType("text/html"); // NOI18N
+        EdtCuestionario5.setOpaque(false);
+        Pnl_Cuestionario5.add(EdtCuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 850, 500));
 
         Scp_Cuestionario5.setViewportView(Pnl_Cuestionario5);
 
@@ -2340,9 +2826,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario6.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario6.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario6.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario6.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario6.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario6.setMaximumSize(new java.awt.Dimension(1176, 1100));
+        Pnl_Cuestionario6.setMinimumSize(new java.awt.Dimension(1176, 1100));
+        Pnl_Cuestionario6.setPreferredSize(new java.awt.Dimension(1176, 1100));
         Pnl_Cuestionario6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_OperadoresdeRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_OperadoresdeRelacion_Off.png"))); // NOI18N
@@ -2360,7 +2846,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_OperadoresdeRelacionActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario6.add(Btn_Anterior_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario6.add(Btn_Anterior_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1000, 254, 64));
 
         Btn_Siguiente_OperadoresLogicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_OperadoresLogicos_Off.png"))); // NOI18N
         Btn_Siguiente_OperadoresLogicos.setMnemonic(39);
@@ -2377,12 +2863,73 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_OperadoresLogicosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario6.add(Btn_Siguiente_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario6.add(Btn_Siguiente_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1000, 254, 64));
 
         Lbl_Cuestionario6.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario6.setText("Operadores de Relación | Cuestionario");
         Lbl_Cuestionario6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario6.add(Lbl_Cuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question5_1_0);
+        Rad_Question5_1_0.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question5_1_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 435, -1, -1));
+
+        Bgr_Question1.add(Rad_Question1_12);
+        Rad_Question1_12.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question1_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 415, -1, -1));
+
+        Btn_Answer5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer5.setBorderPainted(false);
+        Btn_Answer5.setContentAreaFilled(false);
+        Btn_Answer5.setFocusPainted(false);
+        Btn_Answer5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer5ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario6.add(Btn_Answer5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 830, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_8);
+        Rad_Question2_8.setOpaque(false);
+        Rad_Question2_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Rad_Question2_8ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario6.add(Rad_Question2_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
+
+        Bgr_Question1.add(Rad_Question5_1);
+        Rad_Question5_1.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 395, -1, -1));
+
+        Bgr_Question2.add(Rad_Question2_9);
+        Rad_Question2_9.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question2_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 572, -1, -1));
+
+        Bgr_Question2.add(Rad_Question5_2);
+        Rad_Question5_2.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question5_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 552, -1, -1));
+
+        Bgr_Question3.add(Rad_Question5_3);
+        Rad_Question5_3.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question5_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 708, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4_6);
+        Rad_Question4_6.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question4_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 688, -1, -1));
+
+        Bgr_Question3.add(jRadioButton29);
+        jRadioButton29.setOpaque(false);
+        Pnl_Cuestionario6.add(jRadioButton29, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 728, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_8);
+        Rad_Question3_8.setOpaque(false);
+        Pnl_Cuestionario6.add(Rad_Question3_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 668, -1, -1));
+
+        EdtCuestionario6.setContentType("text/html"); // NOI18N
+        EdtCuestionario6.setOpaque(false);
+        Pnl_Cuestionario6.add(EdtCuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 660));
 
         Scp_Cuestionario6.setViewportView(Pnl_Cuestionario6);
 
@@ -2476,9 +3023,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario7.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario7.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario7.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario7.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario7.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario7.setMaximumSize(new java.awt.Dimension(1176, 1050));
+        Pnl_Cuestionario7.setMinimumSize(new java.awt.Dimension(1176, 1050));
+        Pnl_Cuestionario7.setPreferredSize(new java.awt.Dimension(1176, 1050));
         Pnl_Cuestionario7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_OperadoresLogicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_OperadoresLogicos_Off.png"))); // NOI18N
@@ -2496,7 +3043,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_OperadoresLogicosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario7.add(Btn_Anterior_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario7.add(Btn_Anterior_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 950, 254, 64));
 
         Btn_Siguiente_Condicionales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Condicionales_Off.png"))); // NOI18N
         Btn_Siguiente_Condicionales.setMnemonic(39);
@@ -2513,12 +3060,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_CondicionalesActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario7.add(Btn_Siguiente_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario7.add(Btn_Siguiente_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 950, 254, 64));
 
         Lbl_Cuestionario7.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario7.setText("Operadores Lógicos | Cuestionario");
         Lbl_Cuestionario7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario7.add(Lbl_Cuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question5_4);
+        Rad_Question5_4.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question5_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 350, -1, -1));
+
+        Bgr_Question1.add(Rad_Question6_1);
+        Rad_Question6_1.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question6_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, -1));
+
+        Btn_Answer6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer6.setBorderPainted(false);
+        Btn_Answer6.setContentAreaFilled(false);
+        Btn_Answer6.setFocusPainted(false);
+        Btn_Answer6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer6ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario7.add(Btn_Answer6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 790, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_10);
+        Rad_Question2_10.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question2_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 370, -1, -1));
+
+        Bgr_Question1.add(Rad_Question6_1_0);
+        Rad_Question6_1_0.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question6_1_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, -1));
+
+        Bgr_Question2.add(Rad_Question1_15);
+        Rad_Question1_15.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question1_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 508, -1, -1));
+
+        Bgr_Question2.add(Rad_Question2_11);
+        Rad_Question2_11.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question2_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 488, -1, -1));
+
+        Bgr_Question2.add(Rad_Question5_5);
+        Rad_Question5_5.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question5_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 528, -1, -1));
+
+        Bgr_Question2.add(Rad_Question6_2);
+        Rad_Question6_2.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question6_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 468, -1, -1));
+
+        Bgr_Question3.add(Rad_Question6_3);
+        Rad_Question6_3.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question6_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 662, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4_8);
+        Rad_Question4_8.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question4_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 642, -1, -1));
+
+        Bgr_Question3.add(jRadioButton31);
+        jRadioButton31.setOpaque(false);
+        Pnl_Cuestionario7.add(jRadioButton31, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 682, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_9);
+        Rad_Question3_9.setOpaque(false);
+        Pnl_Cuestionario7.add(Rad_Question3_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 622, -1, -1));
+
+        EdtCuestionario7.setContentType("text/html"); // NOI18N
+        EdtCuestionario7.setOpaque(false);
+        Pnl_Cuestionario7.add(EdtCuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 620));
 
         Scp_Cuestionario7.setViewportView(Pnl_Cuestionario7);
 
@@ -2729,9 +3340,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario8.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario8.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario8.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario8.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario8.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario8.setMaximumSize(new java.awt.Dimension(1176, 930));
+        Pnl_Cuestionario8.setMinimumSize(new java.awt.Dimension(1176, 930));
+        Pnl_Cuestionario8.setPreferredSize(new java.awt.Dimension(1176, 930));
         Pnl_Cuestionario8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Condicionales.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Condicionales_Off.png"))); // NOI18N
@@ -2749,7 +3360,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_CondicionalesActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario8.add(Btn_Anterior_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario8.add(Btn_Anterior_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 830, 254, 64));
 
         Btn_Siguiente_Bucles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Bucles_Off.png"))); // NOI18N
         Btn_Siguiente_Bucles.setMnemonic(39);
@@ -2766,12 +3377,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_BuclesActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario8.add(Btn_Siguiente_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario8.add(Btn_Siguiente_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 830, 254, 64));
 
         Lbl_Cuestionario8.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario8.setText("Condicionales | Cuestionario");
         Lbl_Cuestionario8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario8.add(Lbl_Cuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question5_6);
+        Rad_Question5_6.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question5_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 183, -1, -1));
+
+        Bgr_Question1.add(Rad_Question7_1_0);
+        Rad_Question7_1_0.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question7_1_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 163, -1, -1));
+
+        Btn_Answer7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer7.setBorderPainted(false);
+        Btn_Answer7.setContentAreaFilled(false);
+        Btn_Answer7.setFocusPainted(false);
+        Btn_Answer7.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer7ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario8.add(Btn_Answer7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 680, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_12);
+        Rad_Question2_12.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question2_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 203, -1, -1));
+
+        Bgr_Question1.add(Rad_Question7_1);
+        Rad_Question7_1.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 143, -1, -1));
+
+        Bgr_Question2.add(Rad_Question1_17);
+        Rad_Question1_17.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question1_17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        Bgr_Question2.add(Rad_Question7_2);
+        Rad_Question7_2.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question7_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        Bgr_Question2.add(Rad_Question5_7);
+        Rad_Question5_7.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question5_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+
+        Bgr_Question2.add(Rad_Question7_2_0);
+        Rad_Question7_2_0.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question7_2_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        Bgr_Question3.add(Rad_Question7_3);
+        Rad_Question7_3.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question7_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 560, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4_9);
+        Rad_Question4_9.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question4_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 540, -1, -1));
+
+        Bgr_Question3.add(jRadioButton32);
+        jRadioButton32.setOpaque(false);
+        Pnl_Cuestionario8.add(jRadioButton32, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_10);
+        Rad_Question3_10.setOpaque(false);
+        Pnl_Cuestionario8.add(Rad_Question3_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
+
+        EdtCuestionario8.setContentType("text/html"); // NOI18N
+        EdtCuestionario8.setOpaque(false);
+        Pnl_Cuestionario8.add(EdtCuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 520));
 
         Scp_Cuestionario8.setViewportView(Pnl_Cuestionario8);
 
@@ -2944,9 +3619,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario9.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario9.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario9.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario9.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario9.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario9.setMaximumSize(new java.awt.Dimension(1176, 1300));
+        Pnl_Cuestionario9.setMinimumSize(new java.awt.Dimension(1176, 1300));
+        Pnl_Cuestionario9.setPreferredSize(new java.awt.Dimension(1176, 1300));
         Pnl_Cuestionario9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Bucles.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Bucles_Off.png"))); // NOI18N
@@ -2964,7 +3639,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_BuclesActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario9.add(Btn_Anterior_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario9.add(Btn_Anterior_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1200, 254, 64));
 
         Btn_Siguiente_Ejercicio2_Intermedio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Ejercicio2_Off.png"))); // NOI18N
         Btn_Siguiente_Ejercicio2_Intermedio.setMnemonic(39);
@@ -2981,12 +3656,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Ejercicio2_IntermedioActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario9.add(Btn_Siguiente_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario9.add(Btn_Siguiente_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1200, 254, 64));
 
         Lbl_Cuestionario9.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario9.setText("Bucles | Cuestionario");
         Lbl_Cuestionario9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario9.add(Lbl_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question5_8);
+        Rad_Question5_8.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question5_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 310, -1, 20));
+
+        Bgr_Question1.add(Rad_Question8_1);
+        Rad_Question8_1.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question8_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 290, -1, 20));
+
+        Btn_Answer8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer8.setBorderPainted(false);
+        Btn_Answer8.setContentAreaFilled(false);
+        Btn_Answer8.setFocusPainted(false);
+        Btn_Answer8.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer8ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario9.add(Btn_Answer8, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1030, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_14);
+        Rad_Question2_14.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question2_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 330, -1, 20));
+
+        Bgr_Question1.add(Rad_Question8_1_0);
+        Rad_Question8_1_0.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question8_1_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, -1, 20));
+
+        Bgr_Question2.add(Rad_Question8_2);
+        Rad_Question8_2.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question8_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 466, -1, 20));
+
+        Bgr_Question2.add(Rad_Question8_2_0);
+        Rad_Question8_2_0.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question8_2_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 446, -1, 20));
+
+        Bgr_Question2.add(Rad_Question5_9);
+        Rad_Question5_9.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question5_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 486, -1, 20));
+
+        Bgr_Question2.add(Rad_Question7_5);
+        Rad_Question7_5.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 426, -1, 20));
+
+        Bgr_Question3.add(Rad_Question8_3_0);
+        Rad_Question8_3_0.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question8_3_0, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 920, -1, 20));
+
+        Bgr_Question3.add(Rad_Question4_10);
+        Rad_Question4_10.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question4_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 900, -1, 20));
+
+        Bgr_Question3.add(jRadioButton33);
+        jRadioButton33.setOpaque(false);
+        Pnl_Cuestionario9.add(jRadioButton33, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 940, -1, 20));
+
+        Bgr_Question3.add(Rad_Question8_3);
+        Rad_Question8_3.setOpaque(false);
+        Pnl_Cuestionario9.add(Rad_Question8_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 880, -1, 20));
+
+        EdtCuestionario9.setContentType("text/html"); // NOI18N
+        EdtCuestionario9.setOpaque(false);
+        Pnl_Cuestionario9.add(EdtCuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 1070, 870));
 
         Scp_Cuestionario9.setViewportView(Pnl_Cuestionario9);
 
@@ -3156,9 +3895,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario10.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario10.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario10.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario10.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario10.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario10.setMaximumSize(new java.awt.Dimension(1176, 880));
+        Pnl_Cuestionario10.setMinimumSize(new java.awt.Dimension(1176, 880));
+        Pnl_Cuestionario10.setPreferredSize(new java.awt.Dimension(1176, 880));
         Pnl_Cuestionario10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_FuncyProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_FuncyProc_Off.png"))); // NOI18N
@@ -3176,7 +3915,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_FuncyProcActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario10.add(Btn_Anterior_FuncyProc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario10.add(Btn_Anterior_FuncyProc, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 780, 254, 64));
 
         Btn_Siguiente_Recursion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Recursion_Off.png"))); // NOI18N
         Btn_Siguiente_Recursion.setMnemonic(39);
@@ -3193,12 +3932,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_RecursionActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario10.add(Btn_Siguiente_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario10.add(Btn_Siguiente_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 780, 254, 64));
 
         Lbl_Cuestionario10.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario10.setText("Funciones y Procedimientos | Cuestionario");
         Lbl_Cuestionario10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario10.add(Lbl_Cuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 650, 45));
+
+        Bgr_Question1.add(Rad_Question5_10);
+        Rad_Question5_10.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question5_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 182, -1, -1));
+
+        Bgr_Question1.add(Rad_Question9_1);
+        Rad_Question9_1.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question9_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 162, -1, -1));
+
+        Btn_Answer9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer9.setBorderPainted(false);
+        Btn_Answer9.setContentAreaFilled(false);
+        Btn_Answer9.setFocusPainted(false);
+        Btn_Answer9.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer9ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario10.add(Btn_Answer9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 620, 260, 50));
+
+        Bgr_Question1.add(Rad_Question2_15);
+        Rad_Question2_15.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question2_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 202, -1, -1));
+
+        Bgr_Question1.add(Rad_Question8_4);
+        Rad_Question8_4.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question8_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 142, -1, -1));
+
+        Bgr_Question2.add(Rad_Question1_19);
+        Rad_Question1_19.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question1_19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        Bgr_Question2.add(Rad_Question8_5);
+        Rad_Question8_5.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question8_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        Bgr_Question2.add(Rad_Question5_11);
+        Rad_Question5_11.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question5_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+
+        Bgr_Question2.add(Rad_Question9_2);
+        Rad_Question9_2.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question9_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        Bgr_Question3.add(Rad_Question8_6);
+        Rad_Question8_6.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question8_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 495, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4_11);
+        Rad_Question4_11.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question4_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 475, -1, -1));
+
+        Bgr_Question3.add(Rad_Question9_3);
+        Rad_Question9_3.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question9_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 515, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_12);
+        Rad_Question3_12.setOpaque(false);
+        Pnl_Cuestionario10.add(Rad_Question3_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
+
+        EdtCuestionario10.setContentType("text/html"); // NOI18N
+        EdtCuestionario10.setOpaque(false);
+        Pnl_Cuestionario10.add(EdtCuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 450));
 
         Scp_Cuestionario10.setViewportView(Pnl_Cuestionario10);
 
@@ -3292,9 +4095,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario11.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario11.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario11.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario11.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario11.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario11.setMaximumSize(new java.awt.Dimension(1176, 850));
+        Pnl_Cuestionario11.setMinimumSize(new java.awt.Dimension(1176, 850));
+        Pnl_Cuestionario11.setPreferredSize(new java.awt.Dimension(1176, 850));
         Pnl_Cuestionario11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Recursion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Recursion_Off.png"))); // NOI18N
@@ -3312,7 +4115,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_RecursionActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario11.add(Btn_Anterior_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario11.add(Btn_Anterior_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 750, 254, 64));
 
         Btn_Siguiente_EDDBasicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDBasicas_Off.png"))); // NOI18N
         Btn_Siguiente_EDDBasicas.setMnemonic(39);
@@ -3329,12 +4132,68 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_EDDBasicasActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario11.add(Btn_Siguiente_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario11.add(Btn_Siguiente_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 750, 254, 64));
 
         Lbl_Cuestionario11.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario11.setText("Recursión | Cuestionario");
         Lbl_Cuestionario11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario11.add(Lbl_Cuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question5_13);
+        Rad_Question5_13.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question5_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 182, -1, -1));
+
+        Bgr_Question1.add(Rad_Question10_1);
+        Rad_Question10_1.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 162, -1, -1));
+
+        Btn_Answer10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer10.setBorderPainted(false);
+        Btn_Answer10.setContentAreaFilled(false);
+        Btn_Answer10.setFocusPainted(false);
+        Btn_Answer10.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer10ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario11.add(Btn_Answer10, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 580, 260, 50));
+
+        Bgr_Question1.add(Rad_Question8_9);
+        Rad_Question8_9.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question8_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 142, -1, -1));
+
+        Bgr_Question2.add(Rad_Question10_2);
+        Rad_Question10_2.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question10_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 318, -1, -1));
+
+        Bgr_Question2.add(Rad_Question8_10);
+        Rad_Question8_10.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question8_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 298, -1, -1));
+
+        Bgr_Question2.add(Rad_Question5_14);
+        Rad_Question5_14.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question5_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 338, -1, -1));
+
+        Bgr_Question2.add(Rad_Question10_2_1);
+        Rad_Question10_2_1.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question10_2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 278, -1, -1));
+
+        Bgr_Question3.add(Rad_Question8_11);
+        Rad_Question8_11.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question8_11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 475, -1, -1));
+
+        Bgr_Question3.add(Rad_Question10_3);
+        Rad_Question10_3.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question10_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_14);
+        Rad_Question3_14.setOpaque(false);
+        Pnl_Cuestionario11.add(Rad_Question3_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 435, -1, -1));
+
+        EdtCuestionario11.setContentType("text/html"); // NOI18N
+        EdtCuestionario11.setOpaque(false);
+        Pnl_Cuestionario11.add(EdtCuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 410));
 
         Scp_Cuestionario11.setViewportView(Pnl_Cuestionario11);
 
@@ -3572,9 +4431,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario12.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario12.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario12.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario12.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario12.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario12.setMaximumSize(new java.awt.Dimension(1176, 820));
+        Pnl_Cuestionario12.setMinimumSize(new java.awt.Dimension(1176, 820));
+        Pnl_Cuestionario12.setPreferredSize(new java.awt.Dimension(1176, 820));
         Pnl_Cuestionario12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_EDDBasicas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDBasicas_Off.png"))); // NOI18N
@@ -3592,29 +4451,81 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_EDDBasicasActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario12.add(Btn_Anterior_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario12.add(Btn_Anterior_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 720, 254, 64));
 
-        Btn_Siguiente_EDDAvanzadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDAvanzadas_Off.png"))); // NOI18N
-        Btn_Siguiente_EDDAvanzadas.setMnemonic(39);
-        Btn_Siguiente_EDDAvanzadas.setBorderPainted(false);
-        Btn_Siguiente_EDDAvanzadas.setContentAreaFilled(false);
-        Btn_Siguiente_EDDAvanzadas.setFocusPainted(false);
-        Btn_Siguiente_EDDAvanzadas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_Siguiente_EDDAvanzadas.setMaximumSize(sRecursos.getDBtns_Aprender());
-        Btn_Siguiente_EDDAvanzadas.setMinimumSize(sRecursos.getDBtns_Aprender());
-        Btn_Siguiente_EDDAvanzadas.setPreferredSize(sRecursos.getDBtns_Aprender());
-        Btn_Siguiente_EDDAvanzadas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDAvanzadas_On.png"))); // NOI18N
-        Btn_Siguiente_EDDAvanzadas.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Siguiente_EDDIntermedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDAvanzadas_Off.png"))); // NOI18N
+        Btn_Siguiente_EDDIntermedias.setMnemonic(39);
+        Btn_Siguiente_EDDIntermedias.setBorderPainted(false);
+        Btn_Siguiente_EDDIntermedias.setContentAreaFilled(false);
+        Btn_Siguiente_EDDIntermedias.setFocusPainted(false);
+        Btn_Siguiente_EDDIntermedias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Siguiente_EDDIntermedias.setMaximumSize(sRecursos.getDBtns_Aprender());
+        Btn_Siguiente_EDDIntermedias.setMinimumSize(sRecursos.getDBtns_Aprender());
+        Btn_Siguiente_EDDIntermedias.setPreferredSize(sRecursos.getDBtns_Aprender());
+        Btn_Siguiente_EDDIntermedias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDAvanzadas_On.png"))); // NOI18N
+        Btn_Siguiente_EDDIntermedias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Siguiente_EDDAvanzadasActionPerformed(evt);
+                Btn_Siguiente_EDDIntermediasActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario12.add(Btn_Siguiente_EDDAvanzadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario12.add(Btn_Siguiente_EDDIntermedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 720, 254, 64));
 
         Lbl_Cuestionario12.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario12.setText("Estructuras de Datos Básicas | Cuestionario");
         Lbl_Cuestionario12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario12.add(Lbl_Cuestionario12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 630, 45));
+
+        Bgr_Question1.add(Rad_Question5_15);
+        Rad_Question5_15.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question5_15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 185, -1, -1));
+
+        Bgr_Question1.add(Rad_Question10_4);
+        Rad_Question10_4.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question10_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 165, -1, -1));
+
+        Bgr_Question1.add(Rad_Question11_1);
+        Rad_Question11_1.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question11_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 145, -1, -1));
+
+        Bgr_Question2.add(Rad_Question10_5);
+        Rad_Question10_5.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question10_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        Bgr_Question2.add(Rad_Question11_2);
+        Rad_Question11_2.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question11_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        Bgr_Question2.add(Rad_Question10_2_2);
+        Rad_Question10_2_2.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question10_2_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, -1, -1));
+
+        Bgr_Question3.add(Rad_Question11_3);
+        Rad_Question11_3.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question11_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 452, -1, -1));
+
+        Bgr_Question3.add(Rad_Question10_6);
+        Rad_Question10_6.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question10_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 432, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_18);
+        Rad_Question3_18.setOpaque(false);
+        Pnl_Cuestionario12.add(Rad_Question3_18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 412, -1, -1));
+
+        Btn_Answer11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer11.setBorderPainted(false);
+        Btn_Answer11.setContentAreaFilled(false);
+        Btn_Answer11.setFocusPainted(false);
+        Btn_Answer11.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer11ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario12.add(Btn_Answer11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 260, 50));
+
+        EdtCuestionario12.setContentType("text/html"); // NOI18N
+        EdtCuestionario12.setOpaque(false);
+        Pnl_Cuestionario12.add(EdtCuestionario12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 390));
 
         Scp_Cuestionario12.setViewportView(Pnl_Cuestionario12);
 
@@ -3818,27 +4729,27 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario13.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario13.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario13.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario13.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario13.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario13.setMaximumSize(new java.awt.Dimension(1176, 1160));
+        Pnl_Cuestionario13.setMinimumSize(new java.awt.Dimension(1176, 1160));
+        Pnl_Cuestionario13.setPreferredSize(new java.awt.Dimension(1176, 1160));
         Pnl_Cuestionario13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Btn_Anterior_EDDAvanzadas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDAvanzadas_Off.png"))); // NOI18N
-        Btn_Anterior_EDDAvanzadas.setMnemonic(37);
-        Btn_Anterior_EDDAvanzadas.setBorderPainted(false);
-        Btn_Anterior_EDDAvanzadas.setContentAreaFilled(false);
-        Btn_Anterior_EDDAvanzadas.setFocusPainted(false);
-        Btn_Anterior_EDDAvanzadas.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_Anterior_EDDAvanzadas.setMaximumSize(sRecursos.getDBtns_Aprender());
-        Btn_Anterior_EDDAvanzadas.setMinimumSize(sRecursos.getDBtns_Aprender());
-        Btn_Anterior_EDDAvanzadas.setPreferredSize(sRecursos.getDBtns_Aprender());
-        Btn_Anterior_EDDAvanzadas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDAvanzadas_On.png"))); // NOI18N
-        Btn_Anterior_EDDAvanzadas.addActionListener(new java.awt.event.ActionListener() {
+        Btn_Anterior_EDDIntermedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDAvanzadas_Off.png"))); // NOI18N
+        Btn_Anterior_EDDIntermedias.setMnemonic(37);
+        Btn_Anterior_EDDIntermedias.setBorderPainted(false);
+        Btn_Anterior_EDDIntermedias.setContentAreaFilled(false);
+        Btn_Anterior_EDDIntermedias.setFocusPainted(false);
+        Btn_Anterior_EDDIntermedias.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Anterior_EDDIntermedias.setMaximumSize(sRecursos.getDBtns_Aprender());
+        Btn_Anterior_EDDIntermedias.setMinimumSize(sRecursos.getDBtns_Aprender());
+        Btn_Anterior_EDDIntermedias.setPreferredSize(sRecursos.getDBtns_Aprender());
+        Btn_Anterior_EDDIntermedias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDAvanzadas_On.png"))); // NOI18N
+        Btn_Anterior_EDDIntermedias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Anterior_EDDAvanzadasActionPerformed(evt);
+                Btn_Anterior_EDDIntermediasActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario13.add(Btn_Anterior_EDDAvanzadas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario13.add(Btn_Anterior_EDDIntermedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1060, 254, 64));
 
         Btn_Siguiente_PrimerosAlgoritmos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_PrimerosAlgoritmos_Off.png"))); // NOI18N
         Btn_Siguiente_PrimerosAlgoritmos.setMnemonic(39);
@@ -3855,12 +4766,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_PrimerosAlgoritmosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario13.add(Btn_Siguiente_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario13.add(Btn_Siguiente_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1060, 254, 64));
 
         Lbl_Cuestionario13.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario13.setText("Estructuras de Datos Avanzadas | Cuestionario");
+        Lbl_Cuestionario13.setText("Estructuras de Datos Intermedias | Cuestionario");
         Lbl_Cuestionario13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario13.add(Lbl_Cuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 700, 45));
+
+        Bgr_Question1.add(Rad_Question5_17);
+        Rad_Question5_17.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question5_17, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 355, -1, -1));
+
+        Bgr_Question1.add(Rad_Question8_12);
+        Rad_Question8_12.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question8_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 335, -1, -1));
+
+        Bgr_Question1.add(Rad_Question12_1);
+        Rad_Question12_1.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question12_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 375, -1, -1));
+
+        Bgr_Question1.add(Rad_Question8_1_1);
+        Rad_Question8_1_1.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question8_1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 315, -1, -1));
+
+        Bgr_Question2.add(Rad_Question8_13);
+        Rad_Question8_13.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question8_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 632, -1, -1));
+
+        Bgr_Question2.add(Rad_Question12_2);
+        Rad_Question12_2.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question12_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 612, -1, -1));
+
+        Bgr_Question2.add(Rad_Question5_18);
+        Rad_Question5_18.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question5_18, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 652, -1, -1));
+
+        Bgr_Question2.add(Rad_Question7_6);
+        Rad_Question7_6.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question7_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 592, -1, -1));
+
+        Bgr_Question3.add(Rad_Question12_3);
+        Rad_Question12_3.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question12_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 790, -1, -1));
+
+        Bgr_Question3.add(Rad_Question4_16);
+        Rad_Question4_16.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question4_16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 770, -1, -1));
+
+        Bgr_Question3.add(jRadioButton34);
+        jRadioButton34.setOpaque(false);
+        Pnl_Cuestionario13.add(jRadioButton34, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 810, -1, -1));
+
+        Bgr_Question3.add(Rad_Question8_14);
+        Rad_Question8_14.setOpaque(false);
+        Pnl_Cuestionario13.add(Rad_Question8_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 750, -1, -1));
+
+        Btn_Answer12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer12.setBorderPainted(false);
+        Btn_Answer12.setContentAreaFilled(false);
+        Btn_Answer12.setFocusPainted(false);
+        Btn_Answer12.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer12.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer12ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario13.add(Btn_Answer12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 920, 260, 50));
+
+        EdtCuestionario13.setContentType("text/html"); // NOI18N
+        EdtCuestionario13.setOpaque(false);
+        Pnl_Cuestionario13.add(EdtCuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 1060, 740));
 
         Scp_Cuestionario13.setViewportView(Pnl_Cuestionario13);
 
@@ -3996,9 +4971,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Cuestionario14.setBackground(sRecursos.getCPrincipal());
         Pnl_Cuestionario14.setCursor(sRecursos.getCDefault());
-        Pnl_Cuestionario14.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario14.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Cuestionario14.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Cuestionario14.setMaximumSize(new java.awt.Dimension(1176, 860));
+        Pnl_Cuestionario14.setMinimumSize(new java.awt.Dimension(1176, 860));
+        Pnl_Cuestionario14.setPreferredSize(new java.awt.Dimension(1176, 860));
         Pnl_Cuestionario14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_PrimerosAlgoritmos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_PrimerosAlgoritmos_Off.png"))); // NOI18N
@@ -4016,7 +4991,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_PrimerosAlgoritmosActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario14.add(Btn_Anterior_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Cuestionario14.add(Btn_Anterior_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 760, 254, 64));
 
         Btn_Siguiente_EjercicioFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EjercicioFinal_Off.png"))); // NOI18N
         Btn_Siguiente_EjercicioFinal.setMnemonic(39);
@@ -4033,12 +5008,76 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_EjercicioFinalActionPerformed(evt);
             }
         });
-        Pnl_Cuestionario14.add(Btn_Siguiente_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Cuestionario14.add(Btn_Siguiente_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 760, 254, 64));
 
         Lbl_Cuestionario14.setFont(sRecursos.getFLabels());
         Lbl_Cuestionario14.setText("Primeros Algoritmos | Cuestionario");
         Lbl_Cuestionario14.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         Pnl_Cuestionario14.add(Lbl_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+
+        Bgr_Question1.add(Rad_Question13_1);
+        Rad_Question13_1.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 183, -1, -1));
+
+        Bgr_Question1.add(Rad_Question10_7);
+        Rad_Question10_7.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question10_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 163, -1, -1));
+
+        Bgr_Question1.add(Rad_Question2_21);
+        Rad_Question2_21.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question2_21, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 203, -1, -1));
+
+        Bgr_Question1.add(Rad_Question11_4);
+        Rad_Question11_4.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question11_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 143, -1, -1));
+
+        Bgr_Question2.add(Rad_Question10_8);
+        Rad_Question10_8.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question10_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, -1, -1));
+
+        Bgr_Question2.add(Rad_Question11_5);
+        Rad_Question11_5.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question11_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, -1, -1));
+
+        Bgr_Question2.add(Rad_Question13_2);
+        Rad_Question13_2.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question13_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
+
+        Bgr_Question2.add(Rad_Question10_2_3);
+        Rad_Question10_2_3.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question10_2_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, -1, -1));
+
+        Bgr_Question3.add(Rad_Question11_6);
+        Rad_Question11_6.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question11_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 495, -1, -1));
+
+        Bgr_Question3.add(Rad_Question13_3);
+        Rad_Question13_3.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question13_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 475, -1, -1));
+
+        Bgr_Question3.add(Rad_Question10_3_3);
+        Rad_Question10_3_3.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question10_3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 515, -1, -1));
+
+        Bgr_Question3.add(Rad_Question3_19);
+        Rad_Question3_19.setOpaque(false);
+        Pnl_Cuestionario14.add(Rad_Question3_19, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
+
+        Btn_Answer13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOff.png"))); // NOI18N
+        Btn_Answer13.setBorderPainted(false);
+        Btn_Answer13.setContentAreaFilled(false);
+        Btn_Answer13.setFocusPainted(false);
+        Btn_Answer13.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/VerificarRespuestaOn.png"))); // NOI18N
+        Btn_Answer13.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Answer13ActionPerformed(evt);
+            }
+        });
+        Pnl_Cuestionario14.add(Btn_Answer13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 260, 50));
+
+        EdtCuestionario14.setContentType("text/html"); // NOI18N
+        EdtCuestionario14.setOpaque(false);
+        Pnl_Cuestionario14.add(EdtCuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 450));
 
         Scp_Cuestionario14.setViewportView(Pnl_Cuestionario14);
 
@@ -4765,68 +5804,7 @@ public class Home extends javax.swing.JFrame {
         Lbl_Header_Historia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_Historia.png"))); // NOI18N
         Pnl_Pagina1.add(Lbl_Header_Historia, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
-        Lbl_QueEs.setText("¿Qué es la Programación Competitiva?");
-        Pnl_Pagina1.add(Lbl_QueEs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 590, 70));
-
-        Scp_QueEs.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        Scp_QueEs.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        Txa_QueEs.setEditable(false);
-        Txa_QueEs.setBackground(new java.awt.Color(237, 234, 243));
-        Txa_QueEs.setColumns(20);
-        Txa_QueEs.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        Txa_QueEs.setLineWrap(true);
-        Txa_QueEs.setRows(5);
-        Txa_QueEs.setTabSize(4);
-        Txa_QueEs.setText("La Programación Competitiva es un deporte mental que generalmente se realiza a través de Internet y en algunas ocasiones de manera presencial. Los competidores deben resolver una gran variedad de problemas de programación en un tiempo estipulado siguiendo reglas ya preestablecidas. La persona o equipo ganador será quien resuelva la mayor cantidad de problemas en el menor tiempo posible. De igual forma, se evalúan conceptos como el uso de memoria y tiempo de ejecución del programa.");
-        Txa_QueEs.setWrapStyleWord(true);
-        Scp_QueEs.setViewportView(Txa_QueEs);
-
-        Pnl_Pagina1.add(Scp_QueEs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 1100, 150));
-
-        Lbl_Competencias.setText("Competencias de Programación");
-        Pnl_Pagina1.add(Lbl_Competencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 340, 590, 70));
-
-        Scp_Competencias.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        Scp_Competencias.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        Txa_Competencias.setEditable(false);
-        Txa_Competencias.setBackground(new java.awt.Color(237, 234, 243));
-        Txa_Competencias.setColumns(20);
-        Txa_Competencias.setLineWrap(true);
-        Txa_Competencias.setRows(5);
-        Txa_Competencias.setTabSize(4);
-        Txa_Competencias.setText("En la actualidad existen un gran número de competencias de programación organizadas por distintas empresas y organizaciones, cada una con formatos distintos, ya sea en tiempo, lugar, accesibilidad, premios, entre otros. A continuación se describirán las competencias más importantes que deberías tener en cuenta:");
-        Txa_Competencias.setWrapStyleWord(true);
-        Scp_Competencias.setViewportView(Txa_Competencias);
-
-        Pnl_Pagina1.add(Scp_Competencias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 420, 1100, 160));
-
         Pnl_Historia.add(Pnl_Pagina1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 705));
-
-        Pnl_Pagina2.setBackground(sRecursos.getCPrincipal());
-        Pnl_Pagina2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Lbl_Header_Historia2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_Historia.png"))); // NOI18N
-        Pnl_Pagina2.add(Lbl_Header_Historia2, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
-
-        Pnl_Historia.add(Pnl_Pagina2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 705));
-
-        Pnl_Pagina3.setBackground(sRecursos.getCPrincipal());
-        Pnl_Pagina3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Lbl_Header_Historia3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_Historia.png"))); // NOI18N
-        Pnl_Pagina3.add(Lbl_Header_Historia3, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
-
-        Pnl_Historia.add(Pnl_Pagina3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 705));
-
-        Pnl_Pagina4.setBackground(sRecursos.getCPrincipal());
-        Pnl_Pagina4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Lbl_Header_Historia4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_Historia.png"))); // NOI18N
-        Pnl_Pagina4.add(Lbl_Header_Historia4, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
-
-        Pnl_Historia.add(Pnl_Pagina4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 705));
 
         Pnl_Principal.add(Pnl_Historia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1176, 705));
 
@@ -4893,8 +5871,7 @@ public class Home extends javax.swing.JFrame {
     private void Btn_ProgramarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_ProgramarActionPerformed
         if (evt.getSource() == Btn_Programar) {
             Btn_Programar.setSelected(false);
-            CodeEditor edc = new CodeEditor();
-            edc.setVisible(true);
+            new CodeEditor().setVisible(true);
         }
     }//GEN-LAST:event_Btn_ProgramarActionPerformed
 
@@ -5581,6 +6558,173 @@ public class Home extends javax.swing.JFrame {
         configurarHTML(tmp12_11, Edt12_11, out12_4);
     }
 
+    String template = "<html>\n"
+            + "<p>%s</p>\n"
+            + "<p>%s</p>\n"
+            + "<br>\n"
+            + "<p>%s</p>\n"
+            + "<p>%s</p>\n"
+            + "<br>\n"
+            + "<p>%s</p>\n"
+            + "<p>%s</p>\n"
+            + "</html>";
+
+    private void QuestionnairesHelloW() {
+        configurarHTML(template, EdtCuestionario1,
+                qList.get(0).getQuestionContent(),
+                qList.get(0).getQuestionOptions(),
+                qList.get(1).getQuestionContent(),
+                qList.get(1).getQuestionOptions(),
+                qList.get(2).getQuestionContent(),
+                qList.get(2).getQuestionOptions());
+    }
+
+    private void QuestionnairesComent() {
+        configurarHTML(template, EdtCuestionario2,
+                qList.get(3).getQuestionContent(),
+                qList.get(3).getQuestionOptions(),
+                qList.get(4).getQuestionContent(),
+                qList.get(4).getQuestionOptions(),
+                qList.get(5).getQuestionContent(),
+                qList.get(5).getQuestionOptions());
+    }
+
+    private void QuestionnairesDatos() {
+        configurarHTML(template, EdtCuestionario3,
+                qList.get(6).getQuestionContent(),
+                qList.get(6).getQuestionOptions(),
+                qList.get(7).getQuestionContent(),
+                qList.get(7).getQuestionOptions(),
+                qList.get(8).getQuestionContent(),
+                qList.get(8).getQuestionOptions());
+    }
+
+    private void QuestionnairesAritm() {
+        configurarHTML(template, EdtCuestionario4,
+                qList.get(9).getQuestionContent(),
+                qList.get(9).getQuestionOptions(),
+                qList.get(10).getQuestionContent(),
+                qList.get(10).getQuestionOptions(),
+                qList.get(11).getQuestionContent(),
+                qList.get(11).getQuestionOptions());
+    }
+
+    private void QuestionnairesLect() {
+        configurarHTML(template, EdtCuestionario5,
+                qList.get(13).getQuestionContent(),
+                qList.get(13).getQuestionOptions(),
+                qList.get(14).getQuestionContent(),
+                qList.get(14).getQuestionOptions(),
+                qList.get(15).getQuestionContent(),
+                qList.get(15).getQuestionOptions());
+    }
+
+    private void QuestionnairesRela() {
+        configurarHTML(template, EdtCuestionario6,
+                qList.get(18).getQuestionContent(),
+                qList.get(18).getQuestionOptions(),
+                qList.get(19).getQuestionContent(),
+                qList.get(19).getQuestionOptions(),
+                qList.get(20).getQuestionContent(),
+                qList.get(20).getQuestionOptions());
+    }
+
+    private void QuestionnairesLog() {
+        configurarHTML(template, EdtCuestionario7,
+                qList.get(21).getQuestionContent(),
+                qList.get(21).getQuestionOptions(),
+                qList.get(22).getQuestionContent(),
+                qList.get(22).getQuestionOptions(),
+                qList.get(23).getQuestionContent(),
+                qList.get(23).getQuestionOptions());
+    }
+
+    private void QuestionnairesCond() {
+        configurarHTML(template, EdtCuestionario8,
+                qList.get(24).getQuestionContent(),
+                qList.get(24).getQuestionOptions(),
+                qList.get(25).getQuestionContent(),
+                qList.get(25).getQuestionOptions(),
+                qList.get(26).getQuestionContent(),
+                qList.get(26).getQuestionOptions());
+    }
+
+    private void QuestionnairesBucl() {
+        configurarHTML(template, EdtCuestionario9,
+                qList.get(27).getQuestionContent(),
+                qList.get(27).getQuestionOptions(),
+                qList.get(28).getQuestionContent(),
+                qList.get(28).getQuestionOptions(),
+                qList.get(29).getQuestionContent(),
+                qList.get(29).getQuestionOptions());
+    }
+
+    private void QuestionnairesFunc() {
+        configurarHTML(template, EdtCuestionario10,
+                qList.get(32).getQuestionContent(),
+                qList.get(32).getQuestionOptions(),
+                qList.get(33).getQuestionContent(),
+                qList.get(33).getQuestionOptions(),
+                qList.get(34).getQuestionContent(),
+                qList.get(34).getQuestionOptions());
+//        Txa_Question9_1.setText(qList.get(32).getQuestionContent() + "\n\n" + qList.get(32).getQuestionOptions());
+//        Txa_Question9_2.setText(qList.get(33).getQuestionContent() + "\n\n" + qList.get(33).getQuestionOptions());
+//        Txa_Question9_3.setText(qList.get(34).getQuestionContent() + "\n\n" + qList.get(34).getQuestionOptions());
+    }
+
+    private void QuestionnairesRecu() {
+        configurarHTML(template, EdtCuestionario11,
+                qList.get(35).getQuestionContent(),
+                qList.get(35).getQuestionOptions(),
+                qList.get(36).getQuestionContent(),
+                qList.get(36).getQuestionOptions(),
+                qList.get(37).getQuestionContent(),
+                qList.get(37).getQuestionOptions());
+//        Txa_Question10_1.setText(qList.get(35).getQuestionContent() + "\n\n" + qList.get(35).getQuestionOptions());
+//        Txa_Question10_2.setText(qList.get(36).getQuestionContent() + "\n\n" + qList.get(36).getQuestionOptions());
+//        Txa_Question10_3.setText(qList.get(37).getQuestionContent() + "\n\n" + qList.get(37).getQuestionOptions());
+    }
+
+    private void QuestionnairesEstB() {
+        configurarHTML(template, EdtCuestionario12,
+                qList.get(38).getQuestionContent(),
+                qList.get(38).getQuestionOptions(),
+                qList.get(39).getQuestionContent(),
+                qList.get(39).getQuestionOptions(),
+                qList.get(40).getQuestionContent(),
+                qList.get(40).getQuestionOptions());
+//        Txa_Question11_1.setText(qList.get(38).getQuestionContent() + "\n\n" + qList.get(38).getQuestionOptions());
+//        Txa_Question11_2.setText(qList.get(39).getQuestionContent() + "\n\n" + qList.get(39).getQuestionOptions());
+//        Txa_Question11_3.setText(qList.get(40).getQuestionContent() + "\n\n" + qList.get(40).getQuestionOptions());
+    }
+
+    private void QuestionnairesEstA() {
+        configurarHTML(template, EdtCuestionario13,
+                qList.get(41).getQuestionContent(),
+                qList.get(41).getQuestionOptions(),
+                qList.get(42).getQuestionContent(),
+                qList.get(42).getQuestionOptions(),
+                qList.get(43).getQuestionContent(),
+                qList.get(43).getQuestionOptions());
+//        Txa_Question12_1.setText(qList.get(41).getQuestionContent() + "\n\n" + qList.get(41).getQuestionOptions());
+//        Txa_Question12_2.setText(qList.get(42).getQuestionContent() + "\n\n" + qList.get(42).getQuestionOptions());
+//        Txa_Question12_3.setText(qList.get(43).getQuestionContent() + "\n\n" + qList.get(43).getQuestionOptions());
+    }
+
+    private void QuestionnairesAlg() {
+        configurarHTML(template, EdtCuestionario14,
+                qList.get(46).getQuestionContent(),
+                qList.get(46).getQuestionOptions(),
+                qList.get(47).getQuestionContent(),
+                qList.get(47).getQuestionOptions(),
+                qList.get(48).getQuestionContent(),
+                qList.get(48).getQuestionOptions());
+//        Txa_Question13_1.setText(qList.get(46).getQuestionContent() + "\n\n" + qList.get(46).getQuestionOptions());
+//        Txa_Question13_2.setText(qList.get(47).getQuestionContent() + "\n\n" + qList.get(47).getQuestionOptions());
+//        Txa_Question13_3.setText(qList.get(48).getQuestionContent() + "\n\n" + qList.get(48).getQuestionOptions());
+    }
+
+
     private void Btn_Aprender_Tema13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema13ActionPerformed
         estructurasIntermedias();
         Scp_Tema13.setVisible(true);
@@ -5641,7 +6785,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Aprender_Tema14ActionPerformed
 
     private void Btn_Siguiente_Cuestionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario1ActionPerformed
-        ComentariosContent();
+        QuestionnairesHelloW();
         Scp_Tema1.setVisible(false);
         Scp_Cuestionario1.setVisible(true);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario1ActionPerformed
@@ -5659,16 +6803,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_ComentariosActionPerformed
 
     private void Btn_Anterior_Cuestionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario1ActionPerformed
+        QuestionnairesHelloW();
         Scp_Cuestionario1.setVisible(true);
         Scp_Tema2.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario1ActionPerformed
 
     private void Btn_Siguiente_Cuestionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario2ActionPerformed
+        QuestionnairesComent();
         Scp_Cuestionario2.setVisible(true);
         Scp_Tema2.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario2ActionPerformed
 
     private void Btn_Anterior_ComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_ComentariosActionPerformed
+        ComentariosContent();
         Scp_Tema2.setVisible(true);
         Scp_Cuestionario2.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_ComentariosActionPerformed
@@ -5680,12 +6827,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_TiposdeDatosActionPerformed
 
     private void Btn_Anterior_Cuestionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario2ActionPerformed
-        ComentariosContent();
+        QuestionnairesComent();
         Scp_Cuestionario2.setVisible(true);
         Scp_Tema3.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario2ActionPerformed
 
     private void Btn_Siguiente_Cuestionario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario3ActionPerformed
+        QuestionnairesDatos();
         Scp_Cuestionario3.setVisible(true);
         Scp_Tema3.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario3ActionPerformed
@@ -5703,11 +6851,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_OperadoresAritmeticosActionPerformed
 
     private void Btn_Anterior_Cuestionario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario3ActionPerformed
+        QuestionnairesDatos();
         Scp_Cuestionario3.setVisible(true);
         Scp_Tema4.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario3ActionPerformed
 
     private void Btn_Siguiente_Cuestionario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario4ActionPerformed
+        QuestionnairesAritm();
         Scp_Cuestionario4.setVisible(true);
         Scp_Tema4.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario4ActionPerformed
@@ -5725,11 +6875,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_LecturaeImpresionActionPerformed
 
     private void Btn_Anterior_Cuestionario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario4ActionPerformed
+        QuestionnairesAritm();
         Scp_Cuestionario4.setVisible(true);
         Scp_Tema5.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario4ActionPerformed
 
     private void Btn_Siguiente_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario5ActionPerformed
+        QuestionnairesLect();
         Scp_Cuestionario5.setVisible(true);
         Scp_Tema5.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario5ActionPerformed
@@ -5976,6 +7128,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
 
     private void Btn_Siguiente_Cuestionario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario6ActionPerformed
+        QuestionnairesRela();
         Scp_Cuestionario6.setVisible(true);
         Scp_Tema6.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario6ActionPerformed
@@ -5993,11 +7146,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_OperadoresLogicosActionPerformed
 
     private void Btn_Anterior_Cuestionario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario6ActionPerformed
+        QuestionnairesRela();
         Scp_Cuestionario6.setVisible(true);
         Scp_Tema7.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario6ActionPerformed
 
     private void Btn_Siguiente_Cuestionario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario7ActionPerformed
+        QuestionnairesLog();
         Scp_Cuestionario7.setVisible(true);
         Scp_Tema7.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario7ActionPerformed
@@ -6015,11 +7170,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_CondicionalesActionPerformed
 
     private void Btn_Anterior_Cuestionario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario7ActionPerformed
+        QuestionnairesLog();
         Scp_Cuestionario7.setVisible(true);
         Scp_Tema8.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario7ActionPerformed
 
     private void Btn_Siguiente_Cuestionario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario8ActionPerformed
+        QuestionnairesCond();
         Scp_Cuestionario8.setVisible(true);
         Scp_Tema8.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario8ActionPerformed
@@ -6037,11 +7194,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_BuclesActionPerformed
 
     private void Btn_Anterior_Cuestionario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario8ActionPerformed
+        QuestionnairesCond();
         Scp_Cuestionario8.setVisible(true);
         Scp_Tema9.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario8ActionPerformed
 
     private void Btn_Siguiente_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario9ActionPerformed
+        QuestionnairesBucl();
         Scp_Cuestionario9.setVisible(true);
         Scp_Tema9.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario9ActionPerformed
@@ -6063,6 +7222,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
 
     private void Btn_Siguiente_Cuestionario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario10ActionPerformed
+        QuestionnairesFunc();
         Scp_Cuestionario10.setVisible(true);
         Scp_Tema10.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario10ActionPerformed
@@ -6080,11 +7240,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_RecursionActionPerformed
 
     private void Btn_Anterior_Cuestionario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario10ActionPerformed
+        QuestionnairesFunc();
         Scp_Cuestionario10.setVisible(true);
         Scp_Tema11.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario10ActionPerformed
 
     private void Btn_Siguiente_Cuestionario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario11ActionPerformed
+        QuestionnairesRecu();
         Scp_Cuestionario11.setVisible(true);
         Scp_Tema11.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario11ActionPerformed
@@ -6102,11 +7264,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_EDDBasicasActionPerformed
 
     private void Btn_Anterior_Cuestionario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario11ActionPerformed
+        QuestionnairesRecu();
         Scp_Cuestionario11.setVisible(true);
         Scp_Tema12.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario11ActionPerformed
 
     private void Btn_Siguiente_Cuestionario12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario12ActionPerformed
+        QuestionnairesEstB();
         Scp_Cuestionario12.setVisible(true);
         Scp_Tema12.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario12ActionPerformed
@@ -6117,27 +7281,29 @@ public class Home extends javax.swing.JFrame {
         Scp_Cuestionario12.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_EDDBasicasActionPerformed
 
-    private void Btn_Siguiente_EDDAvanzadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDAvanzadasActionPerformed
+    private void Btn_Siguiente_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDIntermediasActionPerformed
         estructurasIntermedias();
         Scp_Tema13.setVisible(true);
         Scp_Cuestionario12.setVisible(false);
-    }//GEN-LAST:event_Btn_Siguiente_EDDAvanzadasActionPerformed
+    }//GEN-LAST:event_Btn_Siguiente_EDDIntermediasActionPerformed
 
     private void Btn_Anterior_Cuestionario12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario12ActionPerformed
+        QuestionnairesEstB();
         Scp_Cuestionario12.setVisible(true);
         Scp_Tema13.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario12ActionPerformed
 
     private void Btn_Siguiente_Cuestionario13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario13ActionPerformed
+        QuestionnairesEstA();
         Scp_Cuestionario13.setVisible(true);
         Scp_Tema13.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario13ActionPerformed
 
-    private void Btn_Anterior_EDDAvanzadasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDAvanzadasActionPerformed
+    private void Btn_Anterior_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDIntermediasActionPerformed
         estructurasIntermedias();
         Scp_Tema13.setVisible(true);
         Scp_Cuestionario13.setVisible(false);
-    }//GEN-LAST:event_Btn_Anterior_EDDAvanzadasActionPerformed
+    }//GEN-LAST:event_Btn_Anterior_EDDIntermediasActionPerformed
 
     private void Btn_Siguiente_PrimerosAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_PrimerosAlgoritmosActionPerformed
         AlgoritmosContent();
@@ -6146,11 +7312,13 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_PrimerosAlgoritmosActionPerformed
 
     private void Btn_Anterior_Cuestionario13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario13ActionPerformed
+        QuestionnairesEstA();
         Scp_Cuestionario13.setVisible(true);
         Scp_Tema14.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario13ActionPerformed
 
     private void Btn_Siguiente_Cuestionario14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario14ActionPerformed
+        QuestionnairesAlg();
         Scp_Cuestionario14.setVisible(true);
         Scp_Tema14.setVisible(false);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario14ActionPerformed
@@ -6167,6 +7335,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_EjercicioFinalActionPerformed
 
     private void Btn_Anterior_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario5ActionPerformed
+        QuestionnairesLect();
         Scp_Cuestionario5.setVisible(true);
         Scp_Ejercicio1.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario5ActionPerformed
@@ -6178,6 +7347,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
 
     private void Btn_Anterior_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario9ActionPerformed
+        QuestionnairesBucl();
         Scp_Cuestionario9.setVisible(true);
         Scp_Ejercicio2.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario9ActionPerformed
@@ -6189,6 +7359,7 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_FuncionesyProcActionPerformed
 
     private void Btn_Anterior_Cuestionario14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario14ActionPerformed
+        QuestionnairesAlg();
         Scp_Cuestionario14.setVisible(true);
         Scp_Ejercicio3.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario14ActionPerformed
@@ -6238,6 +7409,98 @@ public class Home extends javax.swing.JFrame {
         juzgador("input3", code, "ioaprender", "ioaprender", "3");
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
 
+    private void Btn_Answer0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer0ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question0_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question0_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question0_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer0ActionPerformed
+
+    private void Rad_Question0_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rad_Question0_4ActionPerformed
+
+    }//GEN-LAST:event_Rad_Question0_4ActionPerformed
+
+    private void Btn_Answer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer1ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question1_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question1_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question1_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer1ActionPerformed
+
+    private void Btn_Answer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer2ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question2_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question2_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question2_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer2ActionPerformed
+
+    private void Btn_Answer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer3ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question3_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question3_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question3_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer3ActionPerformed
+
+    private void Btn_Answer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer4ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question4_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question4_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question4_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer4ActionPerformed
+
+    private void Btn_Answer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer5ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question5_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question5_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question5_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer5ActionPerformed
+
+    private void Rad_Question2_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rad_Question2_8ActionPerformed
+
+    }//GEN-LAST:event_Rad_Question2_8ActionPerformed
+
+    private void Btn_Answer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer6ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question6_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question6_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question6_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer6ActionPerformed
+
+    private void Btn_Answer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer7ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question7_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question7_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question7_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer7ActionPerformed
+
+    private void Btn_Answer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer8ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question8_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question8_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question8_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer8ActionPerformed
+
+    private void Btn_Answer9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer9ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question9_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question9_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question9_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer9ActionPerformed
+
+    private void Btn_Answer10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer10ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question10_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question10_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question10_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer10ActionPerformed
+
+    private void Btn_Answer11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer11ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question11_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question11_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question11_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer11ActionPerformed
+
+    private void Btn_Answer12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer12ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question12_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question12_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question12_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer12ActionPerformed
+
+    private void Btn_Answer13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer13ActionPerformed
+        JOptionPane.showMessageDialog(null, ((Rad_Question13_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question13_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((Rad_Question13_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }//GEN-LAST:event_Btn_Answer13ActionPerformed
+
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -6250,7 +7513,26 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.ButtonGroup Bgr_Question1;
+    private javax.swing.ButtonGroup Bgr_Question2;
+    private javax.swing.ButtonGroup Bgr_Question3;
+    private javax.swing.ButtonGroup Bgr_Question4;
+    private javax.swing.ButtonGroup Bgr_Question5;
     private javax.swing.JToggleButton Btn_AcercaDe;
+    private javax.swing.JButton Btn_Answer0;
+    private javax.swing.JButton Btn_Answer1;
+    private javax.swing.JButton Btn_Answer10;
+    private javax.swing.JButton Btn_Answer11;
+    private javax.swing.JButton Btn_Answer12;
+    private javax.swing.JButton Btn_Answer13;
+    private javax.swing.JButton Btn_Answer2;
+    private javax.swing.JButton Btn_Answer3;
+    private javax.swing.JButton Btn_Answer4;
+    private javax.swing.JButton Btn_Answer5;
+    private javax.swing.JButton Btn_Answer6;
+    private javax.swing.JButton Btn_Answer7;
+    private javax.swing.JButton Btn_Answer8;
+    private javax.swing.JButton Btn_Answer9;
     private javax.swing.JButton Btn_Anterior;
     private javax.swing.JButton Btn_Anterior_Bucles;
     private javax.swing.JButton Btn_Anterior_Comentarios;
@@ -6269,8 +7551,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Anterior_Cuestionario7;
     private javax.swing.JButton Btn_Anterior_Cuestionario8;
     private javax.swing.JButton Btn_Anterior_Cuestionario9;
-    private javax.swing.JButton Btn_Anterior_EDDAvanzadas;
     private javax.swing.JButton Btn_Anterior_EDDBasicas;
+    private javax.swing.JButton Btn_Anterior_EDDIntermedias;
     private javax.swing.JButton Btn_Anterior_Ejercicio1_Principiante;
     private javax.swing.JButton Btn_Anterior_Ejercicio2_Intermedio;
     private javax.swing.JButton Btn_Anterior_FuncyProc;
@@ -6351,8 +7633,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Siguiente_Cuestionario7;
     private javax.swing.JButton Btn_Siguiente_Cuestionario8;
     private javax.swing.JButton Btn_Siguiente_Cuestionario9;
-    private javax.swing.JButton Btn_Siguiente_EDDAvanzadas;
     private javax.swing.JButton Btn_Siguiente_EDDBasicas;
+    private javax.swing.JButton Btn_Siguiente_EDDIntermedias;
     private javax.swing.JButton Btn_Siguiente_Ejercicio1;
     private javax.swing.JButton Btn_Siguiente_Ejercicio2_Intermedio;
     private javax.swing.JButton Btn_Siguiente_EjercicioFinal;
@@ -6443,6 +7725,20 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JEditorPane Edt9_1;
     private javax.swing.JEditorPane Edt9_2;
     private javax.swing.JEditorPane Edt9_3;
+    private javax.swing.JEditorPane EdtCuestionario1;
+    private javax.swing.JEditorPane EdtCuestionario10;
+    private javax.swing.JEditorPane EdtCuestionario11;
+    private javax.swing.JEditorPane EdtCuestionario12;
+    private javax.swing.JEditorPane EdtCuestionario13;
+    private javax.swing.JEditorPane EdtCuestionario14;
+    private javax.swing.JEditorPane EdtCuestionario2;
+    private javax.swing.JEditorPane EdtCuestionario3;
+    private javax.swing.JEditorPane EdtCuestionario4;
+    private javax.swing.JEditorPane EdtCuestionario5;
+    private javax.swing.JEditorPane EdtCuestionario6;
+    private javax.swing.JEditorPane EdtCuestionario7;
+    private javax.swing.JEditorPane EdtCuestionario8;
+    private javax.swing.JEditorPane EdtCuestionario9;
     private javax.swing.JLabel Lbl_Acumuladores;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
     private javax.swing.JLabel Lbl_BinarySearch;
@@ -6454,7 +7750,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_CodeStorm_Fondo;
     private javax.swing.JLabel Lbl_Colas;
     private javax.swing.JLabel Lbl_Comentarios;
-    private javax.swing.JLabel Lbl_Competencias;
     private javax.swing.JLabel Lbl_Condicionales;
     private javax.swing.JLabel Lbl_CondicionalesAnidados;
     private javax.swing.JLabel Lbl_Cuestionario1;
@@ -6484,9 +7779,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_Header_CodeStorm1;
     private javax.swing.JLabel Lbl_Header_CodeStorm2;
     private javax.swing.JLabel Lbl_Header_Historia;
-    private javax.swing.JLabel Lbl_Header_Historia2;
-    private javax.swing.JLabel Lbl_Header_Historia3;
-    private javax.swing.JLabel Lbl_Header_Historia4;
     private javax.swing.JLabel Lbl_HelloWorld;
     private javax.swing.JLabel Lbl_HomeButttons;
     private javax.swing.JLabel Lbl_Home_Fondo;
@@ -6507,7 +7799,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JLabel Lbl_OperadoresdeRelacion;
     private javax.swing.JLabel Lbl_Pilas;
     private javax.swing.JLabel Lbl_PrimerosAlgoritmos;
-    private javax.swing.JLabel Lbl_QueEs;
     private javax.swing.JLabel Lbl_Recursion;
     private javax.swing.JLabel Lbl_SampleCode8_1;
     private javax.swing.JLabel Lbl_SampleCode8_10;
@@ -6614,9 +7905,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Mapa;
     private javax.swing.JPanel Pnl_Navegacion;
     private javax.swing.JPanel Pnl_Pagina1;
-    private javax.swing.JPanel Pnl_Pagina2;
-    private javax.swing.JPanel Pnl_Pagina3;
-    private javax.swing.JPanel Pnl_Pagina4;
     private javax.swing.JPanel Pnl_Principal;
     private javax.swing.JPanel Pnl_SolucionFull;
     private javax.swing.JPanel Pnl_SyntaxCode;
@@ -6639,7 +7927,140 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Tema8;
     private javax.swing.JPanel Pnl_Tema9;
     private javax.swing.JPanel Pnl_Temas;
-    private javax.swing.JScrollPane Scp_Competencias;
+    private javax.swing.JRadioButton Rad_Question0;
+    private javax.swing.JRadioButton Rad_Question01;
+    private javax.swing.JRadioButton Rad_Question0_1;
+    private javax.swing.JRadioButton Rad_Question0_2;
+    private javax.swing.JRadioButton Rad_Question0_3;
+    private javax.swing.JRadioButton Rad_Question0_4;
+    private javax.swing.JRadioButton Rad_Question0_5;
+    private javax.swing.JRadioButton Rad_Question0_6;
+    private javax.swing.JRadioButton Rad_Question10_1;
+    private javax.swing.JRadioButton Rad_Question10_2;
+    private javax.swing.JRadioButton Rad_Question10_2_1;
+    private javax.swing.JRadioButton Rad_Question10_2_2;
+    private javax.swing.JRadioButton Rad_Question10_2_3;
+    private javax.swing.JRadioButton Rad_Question10_3;
+    private javax.swing.JRadioButton Rad_Question10_3_3;
+    private javax.swing.JRadioButton Rad_Question10_4;
+    private javax.swing.JRadioButton Rad_Question10_5;
+    private javax.swing.JRadioButton Rad_Question10_6;
+    private javax.swing.JRadioButton Rad_Question10_7;
+    private javax.swing.JRadioButton Rad_Question10_8;
+    private javax.swing.JRadioButton Rad_Question11_1;
+    private javax.swing.JRadioButton Rad_Question11_2;
+    private javax.swing.JRadioButton Rad_Question11_3;
+    private javax.swing.JRadioButton Rad_Question11_4;
+    private javax.swing.JRadioButton Rad_Question11_5;
+    private javax.swing.JRadioButton Rad_Question11_6;
+    private javax.swing.JRadioButton Rad_Question12_1;
+    private javax.swing.JRadioButton Rad_Question12_2;
+    private javax.swing.JRadioButton Rad_Question12_3;
+    private javax.swing.JRadioButton Rad_Question13_1;
+    private javax.swing.JRadioButton Rad_Question13_2;
+    private javax.swing.JRadioButton Rad_Question13_3;
+    private javax.swing.JRadioButton Rad_Question1_1;
+    private javax.swing.JRadioButton Rad_Question1_10;
+    private javax.swing.JRadioButton Rad_Question1_12;
+    private javax.swing.JRadioButton Rad_Question1_15;
+    private javax.swing.JRadioButton Rad_Question1_17;
+    private javax.swing.JRadioButton Rad_Question1_19;
+    private javax.swing.JRadioButton Rad_Question1_2;
+    private javax.swing.JRadioButton Rad_Question1_20;
+    private javax.swing.JRadioButton Rad_Question1_3;
+    private javax.swing.JRadioButton Rad_Question1_4;
+    private javax.swing.JRadioButton Rad_Question1_5;
+    private javax.swing.JRadioButton Rad_Question1_6;
+    private javax.swing.JRadioButton Rad_Question1_7;
+    private javax.swing.JRadioButton Rad_Question1_8;
+    private javax.swing.JRadioButton Rad_Question1_9;
+    private javax.swing.JRadioButton Rad_Question2_1;
+    private javax.swing.JRadioButton Rad_Question2_10;
+    private javax.swing.JRadioButton Rad_Question2_11;
+    private javax.swing.JRadioButton Rad_Question2_12;
+    private javax.swing.JRadioButton Rad_Question2_14;
+    private javax.swing.JRadioButton Rad_Question2_15;
+    private javax.swing.JRadioButton Rad_Question2_2;
+    private javax.swing.JRadioButton Rad_Question2_21;
+    private javax.swing.JRadioButton Rad_Question2_3;
+    private javax.swing.JRadioButton Rad_Question2_4;
+    private javax.swing.JRadioButton Rad_Question2_5;
+    private javax.swing.JRadioButton Rad_Question2_6;
+    private javax.swing.JRadioButton Rad_Question2_8;
+    private javax.swing.JRadioButton Rad_Question2_9;
+    private javax.swing.JRadioButton Rad_Question3;
+    private javax.swing.JRadioButton Rad_Question3_1;
+    private javax.swing.JRadioButton Rad_Question3_10;
+    private javax.swing.JRadioButton Rad_Question3_12;
+    private javax.swing.JRadioButton Rad_Question3_13;
+    private javax.swing.JRadioButton Rad_Question3_14;
+    private javax.swing.JRadioButton Rad_Question3_18;
+    private javax.swing.JRadioButton Rad_Question3_19;
+    private javax.swing.JRadioButton Rad_Question3_2;
+    private javax.swing.JRadioButton Rad_Question3_3;
+    private javax.swing.JRadioButton Rad_Question3_7;
+    private javax.swing.JRadioButton Rad_Question3_8;
+    private javax.swing.JRadioButton Rad_Question3_9;
+    private javax.swing.JRadioButton Rad_Question4;
+    private javax.swing.JRadioButton Rad_Question4_00;
+    private javax.swing.JRadioButton Rad_Question4_1;
+    private javax.swing.JRadioButton Rad_Question4_10;
+    private javax.swing.JRadioButton Rad_Question4_11;
+    private javax.swing.JRadioButton Rad_Question4_16;
+    private javax.swing.JRadioButton Rad_Question4_1_1;
+    private javax.swing.JRadioButton Rad_Question4_2;
+    private javax.swing.JRadioButton Rad_Question4_3;
+    private javax.swing.JRadioButton Rad_Question4_6;
+    private javax.swing.JRadioButton Rad_Question4_7;
+    private javax.swing.JRadioButton Rad_Question4_8;
+    private javax.swing.JRadioButton Rad_Question4_9;
+    private javax.swing.JRadioButton Rad_Question5_1;
+    private javax.swing.JRadioButton Rad_Question5_10;
+    private javax.swing.JRadioButton Rad_Question5_11;
+    private javax.swing.JRadioButton Rad_Question5_13;
+    private javax.swing.JRadioButton Rad_Question5_14;
+    private javax.swing.JRadioButton Rad_Question5_15;
+    private javax.swing.JRadioButton Rad_Question5_17;
+    private javax.swing.JRadioButton Rad_Question5_18;
+    private javax.swing.JRadioButton Rad_Question5_1_0;
+    private javax.swing.JRadioButton Rad_Question5_2;
+    private javax.swing.JRadioButton Rad_Question5_3;
+    private javax.swing.JRadioButton Rad_Question5_4;
+    private javax.swing.JRadioButton Rad_Question5_5;
+    private javax.swing.JRadioButton Rad_Question5_6;
+    private javax.swing.JRadioButton Rad_Question5_7;
+    private javax.swing.JRadioButton Rad_Question5_8;
+    private javax.swing.JRadioButton Rad_Question5_9;
+    private javax.swing.JRadioButton Rad_Question6_1;
+    private javax.swing.JRadioButton Rad_Question6_1_0;
+    private javax.swing.JRadioButton Rad_Question6_2;
+    private javax.swing.JRadioButton Rad_Question6_3;
+    private javax.swing.JRadioButton Rad_Question7_1;
+    private javax.swing.JRadioButton Rad_Question7_1_0;
+    private javax.swing.JRadioButton Rad_Question7_2;
+    private javax.swing.JRadioButton Rad_Question7_2_0;
+    private javax.swing.JRadioButton Rad_Question7_3;
+    private javax.swing.JRadioButton Rad_Question7_5;
+    private javax.swing.JRadioButton Rad_Question7_6;
+    private javax.swing.JRadioButton Rad_Question8_1;
+    private javax.swing.JRadioButton Rad_Question8_10;
+    private javax.swing.JRadioButton Rad_Question8_11;
+    private javax.swing.JRadioButton Rad_Question8_12;
+    private javax.swing.JRadioButton Rad_Question8_13;
+    private javax.swing.JRadioButton Rad_Question8_14;
+    private javax.swing.JRadioButton Rad_Question8_1_0;
+    private javax.swing.JRadioButton Rad_Question8_1_1;
+    private javax.swing.JRadioButton Rad_Question8_2;
+    private javax.swing.JRadioButton Rad_Question8_2_0;
+    private javax.swing.JRadioButton Rad_Question8_3;
+    private javax.swing.JRadioButton Rad_Question8_3_0;
+    private javax.swing.JRadioButton Rad_Question8_4;
+    private javax.swing.JRadioButton Rad_Question8_5;
+    private javax.swing.JRadioButton Rad_Question8_6;
+    private javax.swing.JRadioButton Rad_Question8_9;
+    private javax.swing.JRadioButton Rad_Question9_1;
+    private javax.swing.JRadioButton Rad_Question9_2;
+    private javax.swing.JRadioButton Rad_Question9_3;
     private javax.swing.JScrollPane Scp_Cuestionario1;
     private javax.swing.JScrollPane Scp_Cuestionario10;
     private javax.swing.JScrollPane Scp_Cuestionario11;
@@ -6659,7 +8080,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Ejercicio3;
     private javax.swing.JScrollPane Scp_EjerciciosFull;
     private javax.swing.JScrollPane Scp_Introduccion;
-    private javax.swing.JScrollPane Scp_QueEs;
     private javax.swing.JScrollPane Scp_Tema1;
     private javax.swing.JScrollPane Scp_Tema10;
     private javax.swing.JScrollPane Scp_Tema11;
@@ -6695,7 +8115,30 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JSeparator Spr_VectorDinamico;
     private javax.swing.JSeparator Spr_VectorFijo;
     private javax.swing.JSeparator Spr_While;
-    private javax.swing.JTextArea Txa_Competencias;
-    private javax.swing.JTextArea Txa_QueEs;
+    private javax.swing.JRadioButton jRadioButton10;
+    private javax.swing.JRadioButton jRadioButton11;
+    private javax.swing.JRadioButton jRadioButton12;
+    private javax.swing.JRadioButton jRadioButton13;
+    private javax.swing.JRadioButton jRadioButton15;
+    private javax.swing.JRadioButton jRadioButton16;
+    private javax.swing.JRadioButton jRadioButton17;
+    private javax.swing.JRadioButton jRadioButton19;
+    private javax.swing.JRadioButton jRadioButton20;
+    private javax.swing.JRadioButton jRadioButton21;
+    private javax.swing.JRadioButton jRadioButton22;
+    private javax.swing.JRadioButton jRadioButton23;
+    private javax.swing.JRadioButton jRadioButton25;
+    private javax.swing.JRadioButton jRadioButton26;
+    private javax.swing.JRadioButton jRadioButton29;
+    private javax.swing.JRadioButton jRadioButton31;
+    private javax.swing.JRadioButton jRadioButton32;
+    private javax.swing.JRadioButton jRadioButton33;
+    private javax.swing.JRadioButton jRadioButton34;
+    private javax.swing.JRadioButton jRadioButton35;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JRadioButton jRadioButton8;
+    private javax.swing.JRadioButton jRadioButton9;
     // End of variables declaration//GEN-END:variables
 }
