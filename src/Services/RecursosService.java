@@ -10,6 +10,8 @@ public final class RecursosService {
 
     private final Fuentes f = new Fuentes();
     private Font fGeneral;
+    private Font fGeneral_19R;
+    private Font fExContent;
     private Font fEuclidB16;
     private Font fEuclidB18;
     private Font fEuclidB20;
@@ -89,13 +91,24 @@ public final class RecursosService {
         fEuclidB30 = f.fuente(f.EUCB, 0, 30);
         fTitles = f.fuente(f.EUCB, 0, 18);
         fGeneral = f.fuente(f.EUCR, 0, 16);
+        fGeneral_19R = f.fuente(f.EUCR, 0, 19);
+        fExContent = f.fuente(f.EUCR, 0, 19);
+
     }
 
     // Getters -----------------------------------------------------------------
-    public Font getFGeneral(){
+    public Font getFGeneral() {
         return fGeneral;
     }
-    
+
+    public Font getFExContent() {
+        return fExContent;
+    }
+
+    public Font getFGeneral_19R() {
+        return fGeneral_19R;
+    }
+
     public Font getFTitles() {
         return fTitles;
     }
@@ -171,8 +184,8 @@ public final class RecursosService {
     public Color getColorTextGray() {
         return colorTextGray;
     }
-    
-    public Color getColorGrisBorde(){
+
+    public Color getColorGrisBorde() {
         return colorGrisBorde;
     }
 

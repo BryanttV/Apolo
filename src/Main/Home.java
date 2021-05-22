@@ -76,13 +76,15 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JEditorPane;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollBar;
 
 public class Home extends javax.swing.JFrame {
 
     // Clase Recursos
     private final RecursosService sRecursos;
-    private final TemplatesHTML t = new TemplatesHTML();
+    private final HTMLTemplates t = new HTMLTemplates();
+    private final ThemesContent tc = new ThemesContent();
 
     // Ventanas JDialog
     private final About st = new About(this, true);
@@ -150,65 +152,108 @@ public class Home extends javax.swing.JFrame {
 
     // Variables Auxiliares
     private int aux = 1;
-    private int contador = 0;
+    private int cont = 0;
     private boolean active = true;
     private final String stx = "Sintaxis";
     private final String ejm = "Código de Ejemplo";
     private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
+
+    // Tamanio de EditorPane en los ejercicios de CodeStorm
+    int[] sizes = new int[]{820, 1150, 550, 550, 820, 760, 710, 680, 780, 1050, 750, 750, 730, 855, 800, 665, 930, 1020, 630, 980};
 
     // Llamada informacion DDBB -------------------------------------------------
     // Creación de Fabrica de Entidades
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
 
     // Creacion de Controladores
-    AlternativeSolutionsJpaController asjpa = new AlternativeSolutionsJpaController(emf);
-    CodesJpaController cojpa = new CodesJpaController(emf);
-    CuriositiesJpaController cujpa = new CuriositiesJpaController(emf);
-    ExercisesContentJpaController ecjpa = new ExercisesContentJpaController(emf);
-    ExercisesJpaController ejpa = new ExercisesJpaController(emf);
-    HistoryImagesJpaController hijpa = new HistoryImagesJpaController(emf);
-    HistorySubtopicsJpaController hsjpa = new HistorySubtopicsJpaController(emf);
-    HistoryTopicsJpaController htjpa = new HistoryTopicsJpaController(emf);
-    LearningImagesJpaController lijpa = new LearningImagesJpaController(emf);
-    LearningSubtopicsJpaController lstjpa = new LearningSubtopicsJpaController(emf);
-    LearningTopicsJpaController ltjpa = new LearningTopicsJpaController(emf);
-    ProgressJpaController projpa = new ProgressJpaController(emf);
-    QuestionnairesJpaController qresjpa = new QuestionnairesJpaController(emf);
-    QuestionsJpaController qjpa = new QuestionsJpaController(emf);
-    TestCasesJpaController tcjpa = new TestCasesJpaController(emf);
+    AlternativeSolutionsJpaController asjpa = null;
+    CodesJpaController cojpa = null;
+    CuriositiesJpaController cujpa = null;
+    ExercisesContentJpaController ecjpa = null;
+    ExercisesJpaController ejpa = null;
+    HistoryImagesJpaController hijpa = null;
+    HistorySubtopicsJpaController hsjpa = null;
+    HistoryTopicsJpaController htjpa = null;
+    LearningImagesJpaController lijpa = null;
+    LearningSubtopicsJpaController lstjpa = null;
+    LearningTopicsJpaController ltjpa = null;
+    ProgressJpaController projpa = null;
+    QuestionnairesJpaController qresjpa = null;
+    QuestionsJpaController qjpa = null;
+    TestCasesJpaController tcjpa = null;
 
     // Creacion de Listas 
-    List<AlternativeSolutions> asList = asjpa.findAlternativeSolutionsEntities();
-    List<Codes> coList = cojpa.findCodesEntities();
-    List<Curiosities> cuList = cujpa.findCuriositiesEntities();
-    List<ExercisesContent> ecList = ecjpa.findExercisesContentEntities();
-    List<Exercises> eList = ejpa.findExercisesEntities();
-    List<HistoryImages> hiList = hijpa.findHistoryImagesEntities();
-    List<HistorySubtopics> hsList = hsjpa.findHistorySubtopicsEntities();
-    List<HistoryTopics> htList = htjpa.findHistoryTopicsEntities();
-    List<LearningImages> liList = lijpa.findLearningImagesEntities();
-    List<LearningSubtopics> lstList = lstjpa.findLearningSubtopicsEntities();
-    List<LearningTopics> ltList = ltjpa.findLearningTopicsEntities();
-    List<Progress> proList = projpa.findProgressEntities();
-    List<Questionnaires> qresList = qresjpa.findQuestionnairesEntities();
-    List<Questions> qList = qjpa.findQuestionsEntities();
-    List<TestCases> tcList = tcjpa.findTestCasesEntities();
+    List<AlternativeSolutions> asList = null;
+    List<Codes> coList = null;
+    List<Curiosities> cuList = null;
+    List<ExercisesContent> ecList = null;
+    List<Exercises> eList = null;
+    List<HistoryImages> hiList = null;
+    List<HistorySubtopics> hsList = null;
+    List<HistoryTopics> htList = null;
+    List<LearningImages> liList = null;
+    List<LearningSubtopics> lstList = null;
+    List<LearningTopics> ltList = null;
+    List<Progress> proList = null;
+    List<Questionnaires> qresList = null;
+    List<Questions> qList = null;
+    List<TestCases> tcList = null;
+
+    private void generateAllControllers() {
+        asjpa = new AlternativeSolutionsJpaController(emf);
+        cojpa = new CodesJpaController(emf);
+        cujpa = new CuriositiesJpaController(emf);
+        ecjpa = new ExercisesContentJpaController(emf);
+        ejpa = new ExercisesJpaController(emf);
+        hijpa = new HistoryImagesJpaController(emf);
+        hsjpa = new HistorySubtopicsJpaController(emf);
+        htjpa = new HistoryTopicsJpaController(emf);
+        lijpa = new LearningImagesJpaController(emf);
+        lstjpa = new LearningSubtopicsJpaController(emf);
+        ltjpa = new LearningTopicsJpaController(emf);
+        projpa = new ProgressJpaController(emf);
+        qresjpa = new QuestionnairesJpaController(emf);
+        qjpa = new QuestionsJpaController(emf);
+        tcjpa = new TestCasesJpaController(emf);
+    }
+
+    private void generateAllLists() {
+        asList = asjpa.findAlternativeSolutionsEntities();
+        coList = cojpa.findCodesEntities();
+        cuList = cujpa.findCuriositiesEntities();
+        ecList = ecjpa.findExercisesContentEntities();
+        eList = ejpa.findExercisesEntities();
+        hiList = hijpa.findHistoryImagesEntities();
+        hsList = hsjpa.findHistorySubtopicsEntities();
+        htList = htjpa.findHistoryTopicsEntities();
+        liList = lijpa.findLearningImagesEntities();
+        lstList = lstjpa.findLearningSubtopicsEntities();
+        ltList = ltjpa.findLearningTopicsEntities();
+        proList = projpa.findProgressEntities();
+        qresList = qresjpa.findQuestionnairesEntities();
+        qList = qjpa.findQuestionsEntities();
+        tcList = tcjpa.findTestCasesEntities();
+    }
 
     // Constructor
     public Home() {
         sRecursos = RecursosService.getService();
+        generateAllControllers();
+        generateAllLists();
         initComponents();
-        configurarVentana();
-        ocultarComponentes();
-        cargarFuenteyCursor();
-        configurarBarraDesplazamiento();
-        configurarBarraProgreso();
-        resaltarCodigo();
-        confirmarCierre();
+        configureWindow();
+        hideComponents();
+        loadFontAndCursor();
+        configureScrollBar();
+        configureProgressBar();
+        highlightCode();
+        confirmaClosing();
+        HistoryGPC();
+        IntroductionCode();
     }
 
     // Configurar las Caracteristicas de la Ventana Principal
-    private void configurarVentana() {
+    private void configureWindow() {
         this.setLocationRelativeTo(null);
         this.setExtendedState(((int) DimMax.getHeight() == 768) ? 6 : 0);
         this.setResizable((int) DimMax.getHeight() == 768);
@@ -219,7 +264,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Ocultar Componentes de todas las Secciones
-    private void ocultarComponentes() {
+    private void hideComponents() {
         for (Component component : Pnl_Aprender.getComponents()) {
             component.setVisible(false);
         }
@@ -245,7 +290,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Personalizar las Barras de Progreso de la aplicacion
-    private void configurarBarraProgreso() {
+    private void configureProgressBar() {
         Pb_Mapa.setUI(new CustomProgressBarUIHorizontal());
         Pb_Nivel1.setUI(new CustomProgressBarUIVertical());
         Pb_Nivel2.setUI(new CustomProgressBarUIVertical());
@@ -255,7 +300,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Personalizar la Barra de Desplazamiento de todos los ScrollPane
-    private void configurarBarraDesplazamiento() {
+    private void configureScrollBar() {
         List<Component> compList = getAllComponents(this);
         compList.stream().map((componente) -> {
             if (componente instanceof JScrollPane) {
@@ -267,18 +312,25 @@ public class Home extends javax.swing.JFrame {
                 scp.setBorder(null);
             }
             return componente;
-        }).filter((componente) -> (componente instanceof JButton)).map((componente) -> (JButton) componente).forEachOrdered((btn) -> {
+        }).filter((componente)
+                -> (componente instanceof JButton)).map((componente)
+                -> (JButton) componente).forEachOrdered((btn)
+                -> {
             btn.setCursor(sRecursos.getCMano());
         });
     }
 
     // Personalizar cursor en los Botones de todas las secciones
     // Cargar fuente personalizada del paquete Tipografias en todas las Secciones
-    private void cargarFuenteyCursor() {
+    private void loadFontAndCursor() {
 
         // Lista de Componentes de la Seccion de Aprender
         List<Component> aprenderList = getAllComponents(Pnl_Aprender);
-        aprenderList.stream().filter((componente) -> (componente instanceof JLabel)).map((componente) -> (JLabel) componente).filter((lbl) -> (lbl.getBounds().y == 5)).map((lbl) -> {
+        aprenderList.stream().filter((componente)
+                -> (componente instanceof JLabel)).map((componente)
+                -> (JLabel) componente).filter((lbl)
+                -> (lbl.getBounds().y == 5)).map((lbl)
+                -> {
             lbl.setFont(sRecursos.getFLabelsAprender());
             return lbl;
         }).forEachOrdered((lbl) -> {
@@ -302,7 +354,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Personalizar RSyntaxTextArea en Editor de Codigo
-    private void agregarRSyntax(JPanel p, RSyntaxTextArea rta, RTextScrollPane tsp) {
+    private void addRSyntax(JPanel p, RSyntaxTextArea rta, RTextScrollPane tsp) {
         rta.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         tsp = new RTextScrollPane(rta);
 
@@ -332,7 +384,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Personalizar RSyntaxTextArea en Codigo de Ejemplo
-    private void agregarRSyntax(JPanel p, RSyntaxTextArea rta) {
+    private void addRSyntax(JPanel p, RSyntaxTextArea rta) {
         rta.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         changeStyleViaThemeXml(rta);
         rta.setFont(new Font("Consolas", Font.PLAIN, 14));
@@ -345,66 +397,66 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Agregar RSyntaxText a panel de Codigo y Solucion en CodeStorm
-    private void resaltarCodigo() {
+    private void highlightCode() {
         // Creacion de Resaltado de Sintaxis para Codigo y Solucion en CodeStorm
         RTextScrollPane tspCode = new RTextScrollPane();
         RTextScrollPane tspSolution = new RTextScrollPane();
         RTextScrollPane tspEjercicio1 = new RTextScrollPane();
         RTextScrollPane tspEjercicio2 = new RTextScrollPane();
         RTextScrollPane tspEjercicio3 = new RTextScrollPane();
-        agregarRSyntax(Pnl_SyntaxCode, syntaxCode, tspCode);
-        agregarRSyntax(Pnl_SyntaxSolution, syntaxSolution, tspSolution);
-        agregarRSyntax(Pnl_SyntaxEjercicio1, syntaxEjercicio1, tspEjercicio1);
-        agregarRSyntax(Pnl_SyntaxEjercicio2, syntaxEjercicio2, tspEjercicio2);
-        agregarRSyntax(Pnl_SyntaxEjercicio3, syntaxEjercicio3, tspEjercicio3);
+        addRSyntax(Pnl_SyntaxCode, syntaxCode, tspCode);
+        addRSyntax(Pnl_SyntaxSolution, syntaxSolution, tspSolution);
+        addRSyntax(Pnl_SyntaxEjercicio1, syntaxEjercicio1, tspEjercicio1);
+        addRSyntax(Pnl_SyntaxEjercicio2, syntaxEjercicio2, tspEjercicio2);
+        addRSyntax(Pnl_SyntaxEjercicio3, syntaxEjercicio3, tspEjercicio3);
 
-        agregarRSyntax(Pnl_CodesThemes0, syntaxTemas0);
-        agregarRSyntax(Pnl_CodesThemes1_1, syntaxTemas1_1);
-        agregarRSyntax(Pnl_CodesThemes1_2, syntaxTemas1_2);
-        agregarRSyntax(Pnl_CodesThemes1_3, syntaxTemas1_3);
-        agregarRSyntax(Pnl_CodesThemes2, syntaxTemas2);
-        agregarRSyntax(Pnl_Codes_Themes3_1, syntaxTema3_1);
-        agregarRSyntax(Pnl_Codes_Themes3_2, syntaxTema3_2);
-        agregarRSyntax(Pnl_Codes_Themes3_3, syntaxTema3_3);
-        agregarRSyntax(Pnl_Codes_Themes3_4, syntaxTema3_4);
-        agregarRSyntax(Pnl_Codes_Themes3_5, syntaxTema3_5);
-        agregarRSyntax(Pnl_CodesThemes4, syntaxTemas4);
-        agregarRSyntax(Pnl_CodesThemes5, syntaxTemas5);
-        agregarRSyntax(Pnl_CodesThemes6, syntaxTemas6);
-        agregarRSyntax(Pnl_CodesThemes7_1, syntaxTemas7_1);
-        agregarRSyntax(Pnl_CodesThemes7_2, syntaxTemas7_2);
-        agregarRSyntax(Pnl_CodesThemes7_3, syntaxTemas7_3);
-        agregarRSyntax(Pnl_CodesThemes7_4, syntaxTemas7_4);
-        agregarRSyntax(Pnl_CodesThemes7_5, syntaxTemas7_5);
-        agregarRSyntax(Pnl_CodesThemes7_6, syntaxTemas7_6);
-        agregarRSyntax(Pnl_CodesThemes7_7, syntaxTemas7_7);
-        agregarRSyntax(Pnl_CodesThemes7_8, syntaxTemas7_8);
-        agregarRSyntax(Pnl_CodesThemes7_9, syntaxTemas7_9);
-        agregarRSyntax(Pnl_CodesThemes7_10, syntaxTemas7_10);
-        agregarRSyntax(Pnl_CodesThemes8_1, syntaxTemas8_1);
-        agregarRSyntax(Pnl_CodesThemes8_2, syntaxTemas8_2);
-        agregarRSyntax(Pnl_CodesThemes8_3, syntaxTemas8_3);
-        agregarRSyntax(Pnl_CodesThemes8_4, syntaxTemas8_4);
-        agregarRSyntax(Pnl_CodesThemes8_5, syntaxTemas8_5);
-        agregarRSyntax(Pnl_CodesThemes8_6, syntaxTemas8_6);
-        agregarRSyntax(Pnl_Codes_Themes9_1, syntaxTema9_1);
-        agregarRSyntax(Pnl_Codes_Themes9_2, syntaxTema9_2);
-        agregarRSyntax(Pnl_CodesThemes10_1, syntaxTemas10_1);
-        agregarRSyntax(Pnl_CodesThemes10_2, syntaxTemas10_2);
-        agregarRSyntax(Pnl_Codes_Themes11_1, syntaxTema11_1);
-        agregarRSyntax(Pnl_Codes_Themes11_2, syntaxTema11_2);
-        agregarRSyntax(Pnl_Codes_Themes11_3, syntaxTema11_3);
-        agregarRSyntax(Pnl_Codes_Themes11_4, syntaxTema11_4);
-        agregarRSyntax(Pnl_Codes_Themes11_5, syntaxTema11_5);
-        agregarRSyntax(Pnl_Codes_Themes11_6, syntaxTema11_6);
-        agregarRSyntax(Pnl_Codes_Themes11_7, syntaxTema11_7);
-        agregarRSyntax(Pnl_Codes_Themes11_8, syntaxTema11_8);
-        agregarRSyntax(Pnl_CodesThemes12_1, syntaxTemas12_1);
-        agregarRSyntax(Pnl_CodesThemes12_2, syntaxTemas12_2);
-        agregarRSyntax(Pnl_CodesThemes12_3, syntaxTemas12_3);
-        agregarRSyntax(Pnl_CodesThemes12_4, syntaxTemas12_4);
-        agregarRSyntax(Pnl_CodesThemes13_1, syntaxTemas13_1);
-        agregarRSyntax(Pnl_CodesThemes13_2, syntaxTemas13_2);
+        addRSyntax(Pnl_CodesThemes0, syntaxTemas0);
+        addRSyntax(Pnl_CodesThemes1_1, syntaxTemas1_1);
+        addRSyntax(Pnl_CodesThemes1_2, syntaxTemas1_2);
+        addRSyntax(Pnl_CodesThemes1_3, syntaxTemas1_3);
+        addRSyntax(Pnl_CodesThemes2, syntaxTemas2);
+        addRSyntax(Pnl_Codes_Themes3_1, syntaxTema3_1);
+        addRSyntax(Pnl_Codes_Themes3_2, syntaxTema3_2);
+        addRSyntax(Pnl_Codes_Themes3_3, syntaxTema3_3);
+        addRSyntax(Pnl_Codes_Themes3_4, syntaxTema3_4);
+        addRSyntax(Pnl_Codes_Themes3_5, syntaxTema3_5);
+        addRSyntax(Pnl_CodesThemes4, syntaxTemas4);
+        addRSyntax(Pnl_CodesThemes5, syntaxTemas5);
+        addRSyntax(Pnl_CodesThemes6, syntaxTemas6);
+        addRSyntax(Pnl_CodesThemes7_1, syntaxTemas7_1);
+        addRSyntax(Pnl_CodesThemes7_2, syntaxTemas7_2);
+        addRSyntax(Pnl_CodesThemes7_3, syntaxTemas7_3);
+        addRSyntax(Pnl_CodesThemes7_4, syntaxTemas7_4);
+        addRSyntax(Pnl_CodesThemes7_5, syntaxTemas7_5);
+        addRSyntax(Pnl_CodesThemes7_6, syntaxTemas7_6);
+        addRSyntax(Pnl_CodesThemes7_7, syntaxTemas7_7);
+        addRSyntax(Pnl_CodesThemes7_8, syntaxTemas7_8);
+        addRSyntax(Pnl_CodesThemes7_9, syntaxTemas7_9);
+        addRSyntax(Pnl_CodesThemes7_10, syntaxTemas7_10);
+        addRSyntax(Pnl_CodesThemes8_1, syntaxTemas8_1);
+        addRSyntax(Pnl_CodesThemes8_2, syntaxTemas8_2);
+        addRSyntax(Pnl_CodesThemes8_3, syntaxTemas8_3);
+        addRSyntax(Pnl_CodesThemes8_4, syntaxTemas8_4);
+        addRSyntax(Pnl_CodesThemes8_5, syntaxTemas8_5);
+        addRSyntax(Pnl_CodesThemes8_6, syntaxTemas8_6);
+        addRSyntax(Pnl_Codes_Themes9_1, syntaxTema9_1);
+        addRSyntax(Pnl_Codes_Themes9_2, syntaxTema9_2);
+        addRSyntax(Pnl_Codes_Themes10_1, syntaxTemas10_1);
+        addRSyntax(Pnl_Codes_Themes10_2, syntaxTemas10_2);
+        addRSyntax(Pnl_Codes_Themes11_1, syntaxTema11_1);
+        addRSyntax(Pnl_Codes_Themes11_2, syntaxTema11_2);
+        addRSyntax(Pnl_Codes_Themes11_3, syntaxTema11_3);
+        addRSyntax(Pnl_Codes_Themes11_4, syntaxTema11_4);
+        addRSyntax(Pnl_Codes_Themes11_5, syntaxTema11_5);
+        addRSyntax(Pnl_Codes_Themes11_6, syntaxTema11_6);
+        addRSyntax(Pnl_Codes_Themes11_7, syntaxTema11_7);
+        addRSyntax(Pnl_Codes_Themes11_8, syntaxTema11_8);
+        addRSyntax(Pnl_CodesThemes12_1, syntaxTemas12_1);
+        addRSyntax(Pnl_CodesThemes12_2, syntaxTemas12_2);
+        addRSyntax(Pnl_CodesThemes12_3, syntaxTemas12_3);
+        addRSyntax(Pnl_CodesThemes12_4, syntaxTemas12_4);
+        addRSyntax(Pnl_CodesThemes13_1, syntaxTemas13_1);
+        addRSyntax(Pnl_CodesThemes13_2, syntaxTemas13_2);
 
         syntaxSolution.setEditable(false);
     }
@@ -421,7 +473,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Confirmar el cierre de la Aplicacion
-    private void confirmarCierre() {
+    private void confirmaClosing() {
         try {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
@@ -436,8 +488,8 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Deseleccionar Botones y Componentes de Secciones Principales
-    private void apagarSecciones(int boton) {
-        switch (boton) {
+    private void shutDownSection(int btn) {
+        switch (btn) {
             case 1:
                 Btn_Programar.setSelected(false);
                 Btn_CodeStorm.setSelected(false);
@@ -467,20 +519,20 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Habilitar botones de la Seccion Aprender
-    private void habilitarBotonesAprender() {
+    private void enableLearnButtons() {
         for (Component component : Pnl_Aprender.getComponents()) {
             component.setVisible(true);
         }
     }
 
     // Mostrar panel de Encabezado en Seccion Aprender
-    private void mostrarPanelesAprender() {
+    private void showLearnPanels() {
         Pnl_Mapa.setVisible(false);
         Pnl_Encabezado.setVisible(true);
     }
 
     // Habilitar botones de la Seccion CodeStorm
-    private void habilitarBotonesCodeStorm() {
+    private void enableCodeStormButtons() {
         for (Component component : Pnl_CodeStorm.getComponents()) {
             if (component instanceof JButton || component instanceof JToggleButton) {
                 component.setVisible(true);
@@ -489,7 +541,7 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Inicializar botones según navegacion en seccion CodeStorm
-    private void inicializarBotonesCodeStorm() {
+    private void initializeCodeStormButtons() {
         Btn_Ejercicio.doClick();
         Btn_Ejercicio.setSelected(true);
         Btn_Codigo.setSelected(false);
@@ -497,14 +549,14 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Habilitar o Deshabilitar botones de Siguiente y Anterior en seccion CodeStorm
-    private void contador() {
-        Btn_Anterior.setEnabled((contador != 0));
-        Btn_Siguiente.setEnabled((contador != 19));
+    private void counter() {
+        Btn_Anterior.setEnabled((cont != 0));
+        Btn_Siguiente.setEnabled((cont != 19));
     }
 
     // Deshabilitar botones de los Ejercicios según Eleccion en CodeStorm
-    private void validarSeleccionBotones(int opcion) {
-        switch (opcion) {
+    private void validateCodeStormButtons(int option) {
+        switch (option) {
             case 0:
                 Btn_Codigo.setSelected(false);
                 Btn_Solucion.setSelected(false);
@@ -523,19 +575,19 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Deshabilitar paneles comunes de la seccion CodeStorm
-    private void paneles_ON_OFF() {
+    private void ON_OFF_Panels() {
         Pnl_General.setVisible(true);
         Pnl_Main.setVisible(true);
         Pnl_ListadoEjercicios.setVisible(false);
-        inicializarBotonesCodeStorm();
-        contador();
+        initializeCodeStormButtons();
+        counter();
     }
 
     // Asignar titulo a los paneles en seccion CodeStorm
-    private void asignarTitulo(JPanel p) {
+    private void addTitle(JPanel p) {
         p.setBorder(new TitledBorder(
                 new LineBorder(sRecursos.getColorRojo(), 2, true),
-                " Nivel " + (int) Math.ceil(((double) contador + 1) / 4)
+                " Nivel " + (int) Math.ceil(((double) cont + 1) / 4)
                 + " | Ejercicio " + (aux) + " ",
                 TitledBorder.LEFT,
                 TitledBorder.TOP,
@@ -544,26 +596,26 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Validar ejercicio que se encuentra activo en Seccion CodeStorm
-    private void validarEjercicioActivo() {
+    private void validateActiveExcercise() {
         if (aux > 4) {
             aux = 1;
         } else if (aux == 0) {
             aux = 4;
         }
-        asignarTitulo(Pnl_EjercicioFull);
-        asignarTitulo(Pnl_CodigoFull);
-        asignarTitulo(Pnl_SolucionFull);
+        addTitle(Pnl_EjercicioFull);
+        addTitle(Pnl_CodigoFull);
+        addTitle(Pnl_SolucionFull);
     }
 
     // Habilitar botones de la Seccion Historia
-    private void habilitarBotonesHistoria() {
+    private void enableHistoryButtons() {
         for (Component component : Pnl_Historia.getComponents()) {
             component.setVisible(true);
         }
     }
 
     // Configurar el texto de HTML
-    private void configurarHTML(String tmp, JEditorPane edt, String... s) {
+    private void addHTML(String tmp, JEditorPane edt, String... s) {
         String text = String.format(tmp, (Object[]) s);
         edt.setText(text);
         edt.setFont(sRecursos.getFGeneral());
@@ -578,8 +630,6 @@ public class Home extends javax.swing.JFrame {
         Bgr_Question1 = new javax.swing.ButtonGroup();
         Bgr_Question2 = new javax.swing.ButtonGroup();
         Bgr_Question3 = new javax.swing.ButtonGroup();
-        Bgr_Question4 = new javax.swing.ButtonGroup();
-        Bgr_Question5 = new javax.swing.ButtonGroup();
         Pnl_Bar_Buttons = new javax.swing.JPanel();
         Btn_Aprender = new javax.swing.JToggleButton();
         Btn_CodeStorm = new javax.swing.JToggleButton();
@@ -968,9 +1018,9 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema11 = new javax.swing.JPanel();
         Lbl_Recursion = new javax.swing.JLabel();
         Edt10_1 = new javax.swing.JEditorPane();
-        Pnl_CodesThemes10_1 = new javax.swing.JPanel();
+        Pnl_Codes_Themes10_1 = new javax.swing.JPanel();
         Edt10_2 = new javax.swing.JEditorPane();
-        Pnl_CodesThemes10_2 = new javax.swing.JPanel();
+        Pnl_Codes_Themes10_2 = new javax.swing.JPanel();
         Edt10_3 = new javax.swing.JEditorPane();
         Btn_Anterior_Cuestionario10 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario11 = new javax.swing.JButton();
@@ -1179,6 +1229,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_Introduccion = new javax.swing.JPanel();
         Lbl_Header_CodeStorm1 = new javax.swing.JLabel();
         Btn_Introduccion_Siguiente = new javax.swing.JButton();
+        Edt_Introduccion = new javax.swing.JEditorPane();
         Pnl_General = new javax.swing.JPanel();
         Pnl_Header = new javax.swing.JPanel();
         Lbl_Header_CodeStorm2 = new javax.swing.JLabel();
@@ -1193,8 +1244,8 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior = new javax.swing.JButton();
         Pnl_Main = new javax.swing.JPanel();
         Pnl_EjercicioFull = new javax.swing.JPanel();
-        Scp_EjerciciosFull = new javax.swing.JScrollPane();
-        Pnl_EjerciciosFull = new javax.swing.JPanel();
+        Scp_General = new javax.swing.JScrollPane();
+        Pnl_ExerciseInfo = new javax.swing.JPanel();
         Pnl_CodigoFull = new javax.swing.JPanel();
         Pnl_SyntaxCode = new javax.swing.JPanel();
         Pnl_SolucionFull = new javax.swing.JPanel();
@@ -1202,6 +1253,9 @@ public class Home extends javax.swing.JFrame {
         Pnl_Historia = new javax.swing.JPanel();
         Pnl_Pagina1 = new javax.swing.JPanel();
         Lbl_Header_Historia = new javax.swing.JLabel();
+        Scp_ContenidoHistoria = new javax.swing.JScrollPane();
+        Pnl_ContenidoHistoria = new javax.swing.JPanel();
+        Edt_ContenidoHistoria = new javax.swing.JEditorPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -1960,11 +2014,6 @@ public class Home extends javax.swing.JFrame {
 
         Bgr_Question1.add(Rad_Question0_4);
         Rad_Question0_4.setOpaque(false);
-        Rad_Question0_4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Rad_Question0_4ActionPerformed(evt);
-            }
-        });
         Pnl_Cuestionario2.add(Rad_Question0_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 185, -1, -1));
 
         Bgr_Question1.add(Rad_Question1_1);
@@ -2892,11 +2941,6 @@ public class Home extends javax.swing.JFrame {
 
         Bgr_Question1.add(Rad_Question2_8);
         Rad_Question2_8.setOpaque(false);
-        Rad_Question2_8.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Rad_Question2_8ActionPerformed(evt);
-            }
-        });
         Pnl_Cuestionario6.add(Rad_Question2_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_1);
@@ -4030,9 +4074,9 @@ public class Home extends javax.swing.JFrame {
         Edt10_1.setOpaque(false);
         Pnl_Tema11.add(Edt10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 430));
 
-        Pnl_CodesThemes10_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes10_1.setLayout(new java.awt.CardLayout());
-        Pnl_Tema11.add(Pnl_CodesThemes10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 1120, 110));
+        Pnl_Codes_Themes10_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_Codes_Themes10_1.setLayout(new java.awt.CardLayout());
+        Pnl_Tema11.add(Pnl_Codes_Themes10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 490, 1120, 110));
 
         Edt10_2.setContentType("text/html"); // NOI18N
         Edt10_2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -4040,9 +4084,9 @@ public class Home extends javax.swing.JFrame {
         Edt10_2.setOpaque(false);
         Pnl_Tema11.add(Edt10_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 610, 1120, 120));
 
-        Pnl_CodesThemes10_2.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes10_2.setLayout(new java.awt.CardLayout());
-        Pnl_Tema11.add(Pnl_CodesThemes10_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 740, 1120, 350));
+        Pnl_Codes_Themes10_2.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_Codes_Themes10_2.setLayout(new java.awt.CardLayout());
+        Pnl_Tema11.add(Pnl_Codes_Themes10_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 740, 1120, 350));
 
         Edt10_3.setContentType("text/html"); // NOI18N
         Edt10_3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -5573,7 +5617,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_Introduccion.setBackground(sRecursos.getCPrincipal());
         Pnl_Introduccion.setMaximumSize(new java.awt.Dimension(1176, 4000));
         Pnl_Introduccion.setMinimumSize(new java.awt.Dimension(1176, 4000));
-        Pnl_Introduccion.setPreferredSize(new java.awt.Dimension(1176, 4000));
+        Pnl_Introduccion.setPreferredSize(new java.awt.Dimension(1176, 1800));
         Pnl_Introduccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Header_CodeStorm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_CodeStorm.png"))); // NOI18N
@@ -5593,7 +5637,12 @@ public class Home extends javax.swing.JFrame {
                 Btn_Introduccion_SiguienteActionPerformed(evt);
             }
         });
-        Pnl_Introduccion.add(Btn_Introduccion_Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 3900, 254, 64));
+        Pnl_Introduccion.add(Btn_Introduccion_Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 1700, 254, 64));
+
+        Edt_Introduccion.setBackground(sRecursos.getCPrincipal());
+        Edt_Introduccion.setBorder(null);
+        Edt_Introduccion.setContentType("text/html"); // NOI18N
+        Pnl_Introduccion.add(Edt_Introduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1120, 1500));
 
         Scp_Introduccion.setViewportView(Pnl_Introduccion);
 
@@ -5759,12 +5808,25 @@ public class Home extends javax.swing.JFrame {
         Pnl_EjercicioFull.setBackground(sRecursos.getCPrincipal());
         Pnl_EjercicioFull.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Scp_EjerciciosFull.setBackground(sRecursos.getCPrincipal());
+        Scp_General.setOpaque(false);
 
-        Pnl_EjerciciosFull.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        Scp_EjerciciosFull.setViewportView(Pnl_EjerciciosFull);
+        Pnl_ExerciseInfo.setInheritsPopupMenu(true);
+        Pnl_ExerciseInfo.setMaximumSize(new java.awt.Dimension(1060, 3000));
 
-        Pnl_EjercicioFull.add(Scp_EjerciciosFull, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, 1090, 440));
+        javax.swing.GroupLayout Pnl_ExerciseInfoLayout = new javax.swing.GroupLayout(Pnl_ExerciseInfo);
+        Pnl_ExerciseInfo.setLayout(Pnl_ExerciseInfoLayout);
+        Pnl_ExerciseInfoLayout.setHorizontalGroup(
+            Pnl_ExerciseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1061, Short.MAX_VALUE)
+        );
+        Pnl_ExerciseInfoLayout.setVerticalGroup(
+            Pnl_ExerciseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 820, Short.MAX_VALUE)
+        );
+
+        Scp_General.setViewportView(Pnl_ExerciseInfo);
+
+        Pnl_EjercicioFull.add(Scp_General, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1080, 440));
 
         Pnl_Main.add(Pnl_EjercicioFull, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1110, 510));
 
@@ -5804,6 +5866,24 @@ public class Home extends javax.swing.JFrame {
         Lbl_Header_Historia.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_Historia.png"))); // NOI18N
         Pnl_Pagina1.add(Lbl_Header_Historia, new org.netbeans.lib.awtextra.AbsoluteConstraints(22, 20, 1115, 55));
 
+        Scp_ContenidoHistoria.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_ContenidoHistoria.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        Scp_ContenidoHistoria.setOpaque(false);
+
+        Pnl_ContenidoHistoria.setBackground(sRecursos.getCPrincipal());
+        Pnl_ContenidoHistoria.setMaximumSize(new java.awt.Dimension(1176, 4600));
+        Pnl_ContenidoHistoria.setMinimumSize(new java.awt.Dimension(1176, 4600));
+        Pnl_ContenidoHistoria.setPreferredSize(new java.awt.Dimension(1176, 4600));
+        Pnl_ContenidoHistoria.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Edt_ContenidoHistoria.setBackground(sRecursos.getCPrincipal());
+        Edt_ContenidoHistoria.setContentType("text/html"); // NOI18N
+        Pnl_ContenidoHistoria.add(Edt_ContenidoHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 0, 1120, 4530));
+
+        Scp_ContenidoHistoria.setViewportView(Pnl_ContenidoHistoria);
+
+        Pnl_Pagina1.add(Scp_ContenidoHistoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1176, 605));
+
         Pnl_Historia.add(Pnl_Pagina1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 705));
 
         Pnl_Principal.add(Pnl_Historia, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 0, 1176, 705));
@@ -5812,7 +5892,6 @@ public class Home extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
 
     private void Btn_AcercaDeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AcercaDeActionPerformed
         // Habilitar Ventana de Acerca de
@@ -5824,8 +5903,8 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_CodeStormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CodeStormActionPerformed
         if (Btn_CodeStorm.isSelected()) {
-            apagarSecciones(3);
-            habilitarBotonesCodeStorm();
+            shutDownSection(3);
+            enableCodeStormButtons();
 
             // Paneles Internos
             Pnl_CodeStorm.setVisible(true);
@@ -5845,13 +5924,13 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_AprenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AprenderActionPerformed
         if (Btn_Aprender.isSelected()) {
-            //if (active) {
-            //    new Tips(this, true).setVisible(true);
-            //    active = false;
-            //}
+//            if (active) {
+//                new Tips(this, true).setVisible(true);
+//                active = false;
+//            }
 
-            apagarSecciones(1);
-            habilitarBotonesAprender();
+            shutDownSection(1);
+            enableLearnButtons();
             Pnl_Aprender.setVisible(true);
             Pnl_Mapa.setVisible(true);
             Pnl_Encabezado.setVisible(false);
@@ -5877,8 +5956,8 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_HistoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_HistoriaActionPerformed
         if (Btn_Historia.isSelected()) {
-            apagarSecciones(4);
-            habilitarBotonesHistoria();
+            shutDownSection(4);
+            enableHistoryButtons();
             Pnl_Historia.setVisible(true);
 
             // Paneles Principales
@@ -5891,66 +5970,16 @@ public class Home extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_Btn_HistoriaActionPerformed
 
-    private void helloWorldContent() {
-        String[] parrafos = lstList.get(0).getLearningSubContent().split("\n");
-        // EditorPane0_1
-        String anlg0 = lstList.get(0).getTitleAnalogy();
-        String sbct0_1 = parrafos[0];
-        // Codigo Resaltado
-        syntaxTemas0.setText(coList.get(0).getSampleCode());
-        // EditorPane0_2
-        String out0 = coList.get(0).getOutputScreen();
-        String sbct0_2 = parrafos[1];
-        String sbct0_3 = parrafos[2];
-
-        String tmp0_1 = t.getTemplate("h2_p_h3");
-        String tmp0_2 = t.getTemplate("p_p_p");
-
-        configurarHTML(tmp0_1, Edt0_1, anlg0, sbct0_1, ejm);
-        configurarHTML(tmp0_2, Edt0_2, out0, sbct0_2, sbct0_3);
-    }
-
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
-        helloWorldContent();
+        tc.getHelloWorldContent(Edt0_1, Edt0_2, syntaxTemas0);
         Scp_Tema1.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema1ActionPerformed
 
-    private void ComentariosContent() {
-        // EditorPane1_1
-        String anlg1 = lstList.get(1).getTitleAnalogy();
-        String sbct1_1 = lstList.get(1).getLearningSubContent();
-        String sbct1_2 = lstList.get(1).getSyntax();
-        // Codigo Resaltado
-        syntaxTemas1_1.setText(coList.get(1).getSampleCode());
-        // EditorPane1_2
-        String out1_1 = coList.get(1).getOutputScreen();
-        String sbct1_3 = coList.get(2).getCodeDescription();
-        // Codigo Resaltado
-        syntaxTemas1_2.setText(coList.get(2).getSampleCode());
-        // EditorPane1_3
-        String out1_2 = coList.get(2).getOutputScreen();
-        String sbct1_4 = coList.get(3).getCodeDescription();
-        // Codigo Resaltado
-        syntaxTemas1_3.setText(coList.get(3).getSampleCode());
-        // EditorPane1_4
-        String out1_3 = coList.get(3).getOutputScreen();
-
-        String tmp1_1 = t.getTemplate("h2_p_p_h3BR2");
-        String tmp1_2 = t.getTemplate("p_p_h3BR1");
-        String tmp1_3 = t.getTemplate("p_p_h3BR1");
-        String tmp1_4 = t.getTemplate("p");
-
-        configurarHTML(tmp1_1, Edt1_1, anlg1, sbct1_1, sbct1_2, ejm);
-        configurarHTML(tmp1_2, Edt1_2, out1_1, sbct1_3, ejm);
-        configurarHTML(tmp1_3, Edt1_3, out1_2, sbct1_4, ejm);
-        configurarHTML(tmp1_4, Edt1_4, out1_3);
-    }
-
     private void Btn_Aprender_Tema2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema2ActionPerformed
-        ComentariosContent();
+        tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1, Edt1_2, Edt1_3, Edt1_4);
         Scp_Tema2.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema2ActionPerformed
 
     private void tiposDeDatos() {
@@ -5965,14 +5994,14 @@ public class Home extends javax.swing.JFrame {
         String tmp2_1 = t.getTemplate("h2_p_h3BR");
         String tmp2_2 = t.getTemplate("pBR");
 
-        configurarHTML(tmp2_1, Edt2_1, anlg2, sbct2_1, ejm);
-        configurarHTML(tmp2_2, Edt2_2, tips2_1);
+        addHTML(tmp2_1, Edt2_1, anlg2, sbct2_1, ejm);
+        addHTML(tmp2_2, Edt2_2, tips2_1);
     }
 
     private void Btn_Aprender_Tema3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema3ActionPerformed
         tiposDeDatos();
         Scp_Tema3.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema3ActionPerformed
 
     private void operadoresAritmeticosContent() {
@@ -5995,9 +6024,9 @@ public class Home extends javax.swing.JFrame {
         String tmp3_2 = t.getTemplate("p_h3BR");
         String tmp3_3 = t.getTemplate("p_p");
 
-        configurarHTML(tmp3_1, Edt3_1, anlg3_1, sbct3_1, sbct3_2, ejm);
-        configurarHTML(tmp3_2, Edt3_2, out3_1, ejm);
-        configurarHTML(tmp3_3, Edt3_3, out3_2, tips3_1);
+        addHTML(tmp3_1, Edt3_1, anlg3_1, sbct3_1, sbct3_2, ejm);
+        addHTML(tmp3_2, Edt3_2, out3_1, ejm);
+        addHTML(tmp3_3, Edt3_3, out3_2, tips3_1);
 
         // Acumuladores ---------------------------------------------------------------------
         // EditorPane3_4
@@ -6018,9 +6047,9 @@ public class Home extends javax.swing.JFrame {
         String tmp3_5 = t.getTemplate("p_h3BR");
         String tmp3_6 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp3_4, Edt3_4, anlg3_2, sbct3_3, stx3_1, ejm);
-        configurarHTML(tmp3_5, Edt3_5, out3_3, ejm);
-        configurarHTML(tmp3_6, Edt3_6, out3_4, tips3_2);
+        addHTML(tmp3_4, Edt3_4, anlg3_2, sbct3_3, stx3_1, ejm);
+        addHTML(tmp3_5, Edt3_5, out3_3, ejm);
+        addHTML(tmp3_6, Edt3_6, out3_4, tips3_2);
 
         // ---------------------------------------------------------------------
         //Operadores de Incremento y decremento
@@ -6036,14 +6065,14 @@ public class Home extends javax.swing.JFrame {
         String tmp3_7 = t.getTemplate("h2_p_p_h3BR1");
         String tmp3_8 = t.getTemplate("p");
 
-        configurarHTML(tmp3_7, Edt3_7, anlg3_3, sbct3_4, stx3_2, ejm);
-        configurarHTML(tmp3_8, Edt3_8, out3_5);
+        addHTML(tmp3_7, Edt3_7, anlg3_3, sbct3_4, stx3_2, ejm);
+        addHTML(tmp3_8, Edt3_8, out3_5);
     }
 
     private void Btn_Aprender_Tema4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema4ActionPerformed
         operadoresAritmeticosContent();
         Scp_Tema4.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema4ActionPerformed
 
     private void LecturaContent() {
@@ -6059,14 +6088,14 @@ public class Home extends javax.swing.JFrame {
         String tmp4_1 = t.getTemplate("h2_p_h3BR");
         String tmp4_2 = t.getTemplate("p_p");
 
-        configurarHTML(tmp4_1, Edt4_1, anlg4_1, sbct4_1, ejm);
-        configurarHTML(tmp4_2, Edt4_2, out4_1, tips4_1);
+        addHTML(tmp4_1, Edt4_1, anlg4_1, sbct4_1, ejm);
+        addHTML(tmp4_2, Edt4_2, out4_1, tips4_1);
     }
 
     private void Btn_Aprender_Tema5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema5ActionPerformed
         LecturaContent();
         Scp_Tema5.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema5ActionPerformed
 
     private void operadoresDeRelacion() {
@@ -6087,15 +6116,15 @@ public class Home extends javax.swing.JFrame {
         String tmp5_2 = t.getTemplate("p_h3BR");
         String tmp5_3 = t.getTemplate("p_p");
 
-        configurarHTML(tmp5_1, Edt5_1, anlg5_1, sbct5_1, "Tabla de Sintaxis General");
-        configurarHTML(tmp5_2, Edt5_2, sbct5_2, ejm);
-        configurarHTML(tmp5_3, Edt5_3, out5_1, tip5_1);
+        addHTML(tmp5_1, Edt5_1, anlg5_1, sbct5_1, "Tabla de Sintaxis General");
+        addHTML(tmp5_2, Edt5_2, sbct5_2, ejm);
+        addHTML(tmp5_3, Edt5_3, out5_1, tip5_1);
     }
 
     private void Btn_Aprender_Tema6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema6ActionPerformed
         operadoresDeRelacion();
         Scp_Tema6.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema6ActionPerformed
 
     private void OperadoresLogicos() {
@@ -6118,15 +6147,15 @@ public class Home extends javax.swing.JFrame {
         String tmp6_2 = t.getTemplate("p_p_p_h3BR");
         String tmp6_3 = t.getTemplate("p_p");
 
-        configurarHTML(tmp6_1, Edt6_1, anlg6_1, sbct6_1, "Tabla de Sintaxis General");
-        configurarHTML(tmp6_2, Edt6_2, sbct6_2, sbct6_3, sbct6_4, ejm);
-        configurarHTML(tmp6_3, Edt6_3, out6_1, tips6_1);
+        addHTML(tmp6_1, Edt6_1, anlg6_1, sbct6_1, "Tabla de Sintaxis General");
+        addHTML(tmp6_2, Edt6_2, sbct6_2, sbct6_3, sbct6_4, ejm);
+        addHTML(tmp6_3, Edt6_3, out6_1, tips6_1);
     }
 
     private void Btn_Aprender_Tema7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema7ActionPerformed
         OperadoresLogicos();
         Scp_Tema7.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema7ActionPerformed
 
     private void CondicionalesContent() {
@@ -6149,9 +6178,9 @@ public class Home extends javax.swing.JFrame {
         String tmp7_2 = t.getTemplate("p_p_h3BR1");
         String tmp7_3 = t.getTemplate("p");
 
-        configurarHTML(tmp7_1, Edt7_1, anlg7_1, sbct7_1, stx7_1, cs7_1, ejm);
-        configurarHTML(tmp7_2, Edt7_2, out7_1, cds7_1, ejm);
-        configurarHTML(tmp7_3, Edt7_3, out7_2);
+        addHTML(tmp7_1, Edt7_1, anlg7_1, sbct7_1, stx7_1, cs7_1, ejm);
+        addHTML(tmp7_2, Edt7_2, out7_1, cds7_1, ejm);
+        addHTML(tmp7_3, Edt7_3, out7_2);
 
         // Condicionales Anidados ----------------------------------------------
         // Resaltado de Sintaxis
@@ -6162,7 +6191,7 @@ public class Home extends javax.swing.JFrame {
 
         String tmp7_4 = t.getTemplate("p");
 
-        configurarHTML(tmp7_4, Edt7_4, out7_3);
+        addHTML(tmp7_4, Edt7_4, out7_3);
 
         // Try-Catch -----------------------------------------------------------
         // EditorPane7_5
@@ -6188,10 +6217,10 @@ public class Home extends javax.swing.JFrame {
         String tmp7_7 = t.getTemplate("p_p_h3BR1");
         String tmp7_8 = t.getTemplate("p");
 
-        configurarHTML(tmp7_5, Edt7_5, anlg7_2, sbct7_2, stx);
-        configurarHTML(tmp7_6, Edt7_6, out7_4, ejm);
-        configurarHTML(tmp7_7, Edt7_7, out7_5, cds7_2, ejm);
-        configurarHTML(tmp7_8, Edt7_8, out7_6);
+        addHTML(tmp7_5, Edt7_5, anlg7_2, sbct7_2, stx);
+        addHTML(tmp7_6, Edt7_6, out7_4, ejm);
+        addHTML(tmp7_7, Edt7_7, out7_5, cds7_2, ejm);
+        addHTML(tmp7_8, Edt7_8, out7_6);
 
         // Switch-Case ---------------------------------------------------------
         // EditorPane7_9
@@ -6206,15 +6235,15 @@ public class Home extends javax.swing.JFrame {
         String tmp7_9 = t.getTemplate("h2_p_h3BR");
         String tmp7_10 = t.getTemplate("p");
 
-        configurarHTML(tmp7_9, Edt7_9, anlg7_3, sbct7_3, stx);
-        configurarHTML(tmp7_10, Edt7_10, out7_7);
+        addHTML(tmp7_9, Edt7_9, anlg7_3, sbct7_3, stx);
+        addHTML(tmp7_10, Edt7_10, out7_7);
 
     }
 
     private void Btn_Aprender_Tema8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema8ActionPerformed
         CondicionalesContent();
         Scp_Tema8.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema8ActionPerformed
 
     private void Bucles() {
@@ -6224,7 +6253,7 @@ public class Home extends javax.swing.JFrame {
 
         String tmp8_1 = t.getTemplate("h2_p");
 
-        configurarHTML(tmp8_1, Edt8_1, anlg8_1, sbct8_1);
+        addHTML(tmp8_1, Edt8_1, anlg8_1, sbct8_1);
 
         // Bucle While ---------------------------------------------------------
         // EditorPane8_2
@@ -6239,8 +6268,8 @@ public class Home extends javax.swing.JFrame {
         String tmp8_2 = t.getTemplate("p_h3BR");
         String tmp8_3 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp8_2, Edt8_2, sbct8_2, stx);
-        configurarHTML(tmp8_3, Edt8_3, out8_1, tips8_1);
+        addHTML(tmp8_2, Edt8_2, sbct8_2, stx);
+        addHTML(tmp8_3, Edt8_3, out8_1, tips8_1);
 
         // Bucle For -----------------------------------------------------------
         // EditorPane8_4
@@ -6254,8 +6283,8 @@ public class Home extends javax.swing.JFrame {
         String tmp8_4 = t.getTemplate("p_h3BR");
         String tmp8_5 = t.getTemplate("pBR");
 
-        configurarHTML(tmp8_4, Edt8_4, sbct8_3, stx);
-        configurarHTML(tmp8_5, Edt8_5, out8_2, stx);
+        addHTML(tmp8_4, Edt8_4, sbct8_3, stx);
+        addHTML(tmp8_5, Edt8_5, out8_2, stx);
 
         // Bucle Do-While ------------------------------------------------------
         // EditorPane8_6
@@ -6270,14 +6299,14 @@ public class Home extends javax.swing.JFrame {
         String tmp8_6 = t.getTemplate("p_h3BR");
         String tmp8_7 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp8_6, Edt8_6, sbct8_4, stx);
-        configurarHTML(tmp8_7, Edt8_7, out8_3, tips8_2);
+        addHTML(tmp8_6, Edt8_6, sbct8_4, stx);
+        addHTML(tmp8_7, Edt8_7, out8_3, tips8_2);
     }
 
     private void Btn_Aprender_Tema9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema9ActionPerformed
         Bucles();
         Scp_Tema9.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema9ActionPerformed
 
     private void funcionesyProcedimientos() {
@@ -6298,15 +6327,15 @@ public class Home extends javax.swing.JFrame {
         String tmp9_2 = t.getTemplate("p_h3BR");
         String tmp9_3 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp9_1, Edt9_1, anlg9_1, sbct9_1, stx);
-        configurarHTML(tmp9_2, Edt9_2, tips9_1, ejm);
-        configurarHTML(tmp9_3, Edt9_3, out9_1, cds9_1);
+        addHTML(tmp9_1, Edt9_1, anlg9_1, sbct9_1, stx);
+        addHTML(tmp9_2, Edt9_2, tips9_1, ejm);
+        addHTML(tmp9_3, Edt9_3, out9_1, cds9_1);
     }
 
     private void Btn_Aprender_Tema10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema10ActionPerformed
         funcionesyProcedimientos();
         Scp_Tema10.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema10ActionPerformed
 
     private void RecursionContent() {
@@ -6326,15 +6355,15 @@ public class Home extends javax.swing.JFrame {
         String tmp10_2 = t.getTemplate("p_h3BR");
         String tmp10_3 = t.getTemplate("pBR");
 
-        configurarHTML(tmp10_1, Edt10_1, anlg10_1, sbct10_1, stx);
-        configurarHTML(tmp10_2, Edt10_2, cds10_1, ejm);
-        configurarHTML(tmp10_3, Edt10_3, out10_1);
+        addHTML(tmp10_1, Edt10_1, anlg10_1, sbct10_1, stx);
+        addHTML(tmp10_2, Edt10_2, cds10_1, ejm);
+        addHTML(tmp10_3, Edt10_3, out10_1);
     }
 
     private void Btn_Aprender_Tema11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema11ActionPerformed
         RecursionContent();
         Scp_Tema11.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema11ActionPerformed
 
     private void estructurasBasicas() {
@@ -6349,7 +6378,7 @@ public class Home extends javax.swing.JFrame {
 
         String tmp11_1 = t.getTemplate("h2_p_p_p_h3BR3");
 
-        configurarHTML(tmp11_1, Edt11_1, anlg11_1, sbct11_1, tips11_1, stx11_1, ejm);
+        addHTML(tmp11_1, Edt11_1, anlg11_1, sbct11_1, tips11_1, stx11_1, ejm);
 
         // Vectores Fijos ------------------------------------------------------
         // EditorPane11_2
@@ -6371,9 +6400,9 @@ public class Home extends javax.swing.JFrame {
         String tmp11_3 = t.getTemplate("p_h3BR");
         String tmp11_4 = t.getTemplate("p_p_pBR2");
 
-        configurarHTML(tmp11_2, Edt11_2, anlg11_2, sbct11_2, stx11_2, ejm);
-        configurarHTML(tmp11_3, Edt11_3, out11_1, ejm);
-        configurarHTML(tmp11_4, Edt11_4, out11_2, cds11_1, tips11_2);
+        addHTML(tmp11_2, Edt11_2, anlg11_2, sbct11_2, stx11_2, ejm);
+        addHTML(tmp11_3, Edt11_3, out11_1, ejm);
+        addHTML(tmp11_4, Edt11_4, out11_2, cds11_1, tips11_2);
 
         // Vectores dinamicos --------------------------------------------------
         // EditorPane11_5
@@ -6389,8 +6418,8 @@ public class Home extends javax.swing.JFrame {
         String tmp11_5 = t.getTemplate("h2_p_p_h3BR2");
         String tmp11_6 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp11_5, Edt11_5, anlg11_3, sbct11_3, stx11_3, ejm);
-        configurarHTML(tmp11_6, Edt11_6, out11_3, tips11_3);
+        addHTML(tmp11_5, Edt11_5, anlg11_3, sbct11_3, stx11_3, ejm);
+        addHTML(tmp11_6, Edt11_6, out11_3, tips11_3);
 
         // Matrices Fijas ------------------------------------------------------
         // EditorPane11_7
@@ -6406,8 +6435,8 @@ public class Home extends javax.swing.JFrame {
         String tmp11_7 = t.getTemplate("h2_p_p_h3BR2");
         String tmp11_8 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp11_7, Edt11_7, anlg11_4, sbct11_4, stx11_4, ejm);
-        configurarHTML(tmp11_8, Edt11_8, out11_4, tips11_4);
+        addHTML(tmp11_7, Edt11_7, anlg11_4, sbct11_4, stx11_4, ejm);
+        addHTML(tmp11_8, Edt11_8, out11_4, tips11_4);
 
         // Matrices Dinamicas --------------------------------------------------
         // EditorPane11_9
@@ -6423,8 +6452,8 @@ public class Home extends javax.swing.JFrame {
         String tmp11_9 = t.getTemplate("h2_p_p_h3BR2");
         String tmp11_10 = t.getTemplate("p_p");
 
-        configurarHTML(tmp11_9, Edt11_9, anlg11_5, sbct11_5, stx11_5, ejm);
-        configurarHTML(tmp11_10, Edt11_10, out11_5, tips11_5);
+        addHTML(tmp11_9, Edt11_9, anlg11_5, sbct11_5, stx11_5, ejm);
+        addHTML(tmp11_10, Edt11_10, out11_5, tips11_5);
 
         // Pilas ---------------------------------------------------------------
         // EditorPane11_11
@@ -6440,8 +6469,8 @@ public class Home extends javax.swing.JFrame {
         String tmp11_11 = t.getTemplate("h2_p_p_h3BR2");
         String tmp11_12 = t.getTemplate("p_p");
 
-        configurarHTML(tmp11_11, Edt11_11, anlg11_6, sbct11_6, stx11_6, ejm);
-        configurarHTML(tmp11_12, Edt11_12, out11_6, tips11_6);
+        addHTML(tmp11_11, Edt11_11, anlg11_6, sbct11_6, stx11_6, ejm);
+        addHTML(tmp11_12, Edt11_12, out11_6, tips11_6);
 
         //Colas ----------------------------------------------------------------
         // EditorPane11_13
@@ -6457,26 +6486,24 @@ public class Home extends javax.swing.JFrame {
         String tmp11_13 = t.getTemplate("h2_p_p_h3BR2");
         String tmp11_14 = t.getTemplate("p_p");
 
-        configurarHTML(tmp11_13, Edt11_13, anlg11_7, sbct11_7, stx11_7, ejm);
-        configurarHTML(tmp11_14, Edt11_14, out11_7, tips11_7);
+        addHTML(tmp11_13, Edt11_13, anlg11_7, sbct11_7, stx11_7, ejm);
+        addHTML(tmp11_14, Edt11_14, out11_7, tips11_7);
     }
 
     private void Btn_Aprender_Tema12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema12ActionPerformed
         estructurasBasicas();
         Scp_Tema12.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema12ActionPerformed
 
     private void estructurasIntermedias() {
-//        String[] parrafos2 = lstList.get(29).getLearningSubContent().split("su valor.");
-
         // EditorPane12_1
         String anlg12_1 = lstList.get(26).getTitleAnalogy();
         String sbct12_1 = lstList.get(26).getSyntax();
 
         String tmp12_1 = t.getTemplate("h2_p");
 
-        configurarHTML(tmp12_1, Edt12_1, anlg12_1, sbct12_1);
+        addHTML(tmp12_1, Edt12_1, anlg12_1, sbct12_1);
 
         // ---------------------------------------------------------------------
         // EditorPane12_2
@@ -6484,7 +6511,7 @@ public class Home extends javax.swing.JFrame {
 
         String tmp12_2 = t.getTemplate("p");
 
-        configurarHTML(tmp12_2, Edt12_2, sbct12_2);
+        addHTML(tmp12_2, Edt12_2, sbct12_2);
 
         // HashSet -------------------------------------------------------------
         // EditorPane12_3
@@ -6498,8 +6525,8 @@ public class Home extends javax.swing.JFrame {
         String tmp12_3 = t.getTemplate("p_p_h3BR1");
         String tmp12_4 = t.getTemplate("p");
 
-        configurarHTML(tmp12_3, Edt12_3, sbct12_3, stx12_1, ejm);
-        configurarHTML(tmp12_4, Edt12_4, out12_1);
+        addHTML(tmp12_3, Edt12_3, sbct12_3, stx12_1, ejm);
+        addHTML(tmp12_4, Edt12_4, out12_1);
 
         // TreeSet -------------------------------------------------------------
         // EditorPane12_5
@@ -6514,8 +6541,8 @@ public class Home extends javax.swing.JFrame {
         String tmp12_5 = t.getTemplate("p_p_h3BR1");
         String tmp12_6 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp12_5, Edt12_5, sbct12_4, stx12_2, ejm);
-        configurarHTML(tmp12_6, Edt12_6, out12_2, tips12_1);
+        addHTML(tmp12_5, Edt12_5, sbct12_4, stx12_2, ejm);
+        addHTML(tmp12_6, Edt12_6, out12_2, tips12_1);
 
         // Maps ----------------------------------------------------------------
         // EditorPane12_7
@@ -6525,7 +6552,7 @@ public class Home extends javax.swing.JFrame {
 
         String tmp12_7 = t.getTemplate("p");
 
-        configurarHTML(tmp12_7, Edt12_7, sbct12_5);
+        addHTML(tmp12_7, Edt12_7, sbct12_5);
 
         // HashMap -------------------------------------------------------------
         // EditorPane12_8
@@ -6539,8 +6566,8 @@ public class Home extends javax.swing.JFrame {
         String tmp12_8 = t.getTemplate("p_p_h3BR2");
         String tmp12_9 = t.getTemplate("p");
 
-        configurarHTML(tmp12_8, Edt12_8, sbct12_6, stx12_3, ejm);
-        configurarHTML(tmp12_9, Edt12_9, out12_3);
+        addHTML(tmp12_8, Edt12_8, sbct12_6, stx12_3, ejm);
+        addHTML(tmp12_9, Edt12_9, out12_3);
 
         // TreeMap -------------------------------------------------------------
         // EditorPane12_10
@@ -6554,181 +6581,14 @@ public class Home extends javax.swing.JFrame {
         String tmp12_10 = t.getTemplate("p_p_h3BR2");
         String tmp12_11 = t.getTemplate("p");
 
-        configurarHTML(tmp12_10, Edt12_10, sbct12_7, stx12_4, ejm);
-        configurarHTML(tmp12_11, Edt12_11, out12_4);
+        addHTML(tmp12_10, Edt12_10, sbct12_7, stx12_4, ejm);
+        addHTML(tmp12_11, Edt12_11, out12_4);
     }
-
-    String template = "<html>\n"
-            + "<p>%s</p>\n"
-            + "<p>%s</p>\n"
-            + "<br>\n"
-            + "<p>%s</p>\n"
-            + "<p>%s</p>\n"
-            + "<br>\n"
-            + "<p>%s</p>\n"
-            + "<p>%s</p>\n"
-            + "</html>";
-
-    private void QuestionnairesHelloW() {
-        configurarHTML(template, EdtCuestionario1,
-                qList.get(0).getQuestionContent(),
-                qList.get(0).getQuestionOptions(),
-                qList.get(1).getQuestionContent(),
-                qList.get(1).getQuestionOptions(),
-                qList.get(2).getQuestionContent(),
-                qList.get(2).getQuestionOptions());
-    }
-
-    private void QuestionnairesComent() {
-        configurarHTML(template, EdtCuestionario2,
-                qList.get(3).getQuestionContent(),
-                qList.get(3).getQuestionOptions(),
-                qList.get(4).getQuestionContent(),
-                qList.get(4).getQuestionOptions(),
-                qList.get(5).getQuestionContent(),
-                qList.get(5).getQuestionOptions());
-    }
-
-    private void QuestionnairesDatos() {
-        configurarHTML(template, EdtCuestionario3,
-                qList.get(6).getQuestionContent(),
-                qList.get(6).getQuestionOptions(),
-                qList.get(7).getQuestionContent(),
-                qList.get(7).getQuestionOptions(),
-                qList.get(8).getQuestionContent(),
-                qList.get(8).getQuestionOptions());
-    }
-
-    private void QuestionnairesAritm() {
-        configurarHTML(template, EdtCuestionario4,
-                qList.get(9).getQuestionContent(),
-                qList.get(9).getQuestionOptions(),
-                qList.get(10).getQuestionContent(),
-                qList.get(10).getQuestionOptions(),
-                qList.get(11).getQuestionContent(),
-                qList.get(11).getQuestionOptions());
-    }
-
-    private void QuestionnairesLect() {
-        configurarHTML(template, EdtCuestionario5,
-                qList.get(13).getQuestionContent(),
-                qList.get(13).getQuestionOptions(),
-                qList.get(14).getQuestionContent(),
-                qList.get(14).getQuestionOptions(),
-                qList.get(15).getQuestionContent(),
-                qList.get(15).getQuestionOptions());
-    }
-
-    private void QuestionnairesRela() {
-        configurarHTML(template, EdtCuestionario6,
-                qList.get(18).getQuestionContent(),
-                qList.get(18).getQuestionOptions(),
-                qList.get(19).getQuestionContent(),
-                qList.get(19).getQuestionOptions(),
-                qList.get(20).getQuestionContent(),
-                qList.get(20).getQuestionOptions());
-    }
-
-    private void QuestionnairesLog() {
-        configurarHTML(template, EdtCuestionario7,
-                qList.get(21).getQuestionContent(),
-                qList.get(21).getQuestionOptions(),
-                qList.get(22).getQuestionContent(),
-                qList.get(22).getQuestionOptions(),
-                qList.get(23).getQuestionContent(),
-                qList.get(23).getQuestionOptions());
-    }
-
-    private void QuestionnairesCond() {
-        configurarHTML(template, EdtCuestionario8,
-                qList.get(24).getQuestionContent(),
-                qList.get(24).getQuestionOptions(),
-                qList.get(25).getQuestionContent(),
-                qList.get(25).getQuestionOptions(),
-                qList.get(26).getQuestionContent(),
-                qList.get(26).getQuestionOptions());
-    }
-
-    private void QuestionnairesBucl() {
-        configurarHTML(template, EdtCuestionario9,
-                qList.get(27).getQuestionContent(),
-                qList.get(27).getQuestionOptions(),
-                qList.get(28).getQuestionContent(),
-                qList.get(28).getQuestionOptions(),
-                qList.get(29).getQuestionContent(),
-                qList.get(29).getQuestionOptions());
-    }
-
-    private void QuestionnairesFunc() {
-        configurarHTML(template, EdtCuestionario10,
-                qList.get(32).getQuestionContent(),
-                qList.get(32).getQuestionOptions(),
-                qList.get(33).getQuestionContent(),
-                qList.get(33).getQuestionOptions(),
-                qList.get(34).getQuestionContent(),
-                qList.get(34).getQuestionOptions());
-//        Txa_Question9_1.setText(qList.get(32).getQuestionContent() + "\n\n" + qList.get(32).getQuestionOptions());
-//        Txa_Question9_2.setText(qList.get(33).getQuestionContent() + "\n\n" + qList.get(33).getQuestionOptions());
-//        Txa_Question9_3.setText(qList.get(34).getQuestionContent() + "\n\n" + qList.get(34).getQuestionOptions());
-    }
-
-    private void QuestionnairesRecu() {
-        configurarHTML(template, EdtCuestionario11,
-                qList.get(35).getQuestionContent(),
-                qList.get(35).getQuestionOptions(),
-                qList.get(36).getQuestionContent(),
-                qList.get(36).getQuestionOptions(),
-                qList.get(37).getQuestionContent(),
-                qList.get(37).getQuestionOptions());
-//        Txa_Question10_1.setText(qList.get(35).getQuestionContent() + "\n\n" + qList.get(35).getQuestionOptions());
-//        Txa_Question10_2.setText(qList.get(36).getQuestionContent() + "\n\n" + qList.get(36).getQuestionOptions());
-//        Txa_Question10_3.setText(qList.get(37).getQuestionContent() + "\n\n" + qList.get(37).getQuestionOptions());
-    }
-
-    private void QuestionnairesEstB() {
-        configurarHTML(template, EdtCuestionario12,
-                qList.get(38).getQuestionContent(),
-                qList.get(38).getQuestionOptions(),
-                qList.get(39).getQuestionContent(),
-                qList.get(39).getQuestionOptions(),
-                qList.get(40).getQuestionContent(),
-                qList.get(40).getQuestionOptions());
-//        Txa_Question11_1.setText(qList.get(38).getQuestionContent() + "\n\n" + qList.get(38).getQuestionOptions());
-//        Txa_Question11_2.setText(qList.get(39).getQuestionContent() + "\n\n" + qList.get(39).getQuestionOptions());
-//        Txa_Question11_3.setText(qList.get(40).getQuestionContent() + "\n\n" + qList.get(40).getQuestionOptions());
-    }
-
-    private void QuestionnairesEstA() {
-        configurarHTML(template, EdtCuestionario13,
-                qList.get(41).getQuestionContent(),
-                qList.get(41).getQuestionOptions(),
-                qList.get(42).getQuestionContent(),
-                qList.get(42).getQuestionOptions(),
-                qList.get(43).getQuestionContent(),
-                qList.get(43).getQuestionOptions());
-//        Txa_Question12_1.setText(qList.get(41).getQuestionContent() + "\n\n" + qList.get(41).getQuestionOptions());
-//        Txa_Question12_2.setText(qList.get(42).getQuestionContent() + "\n\n" + qList.get(42).getQuestionOptions());
-//        Txa_Question12_3.setText(qList.get(43).getQuestionContent() + "\n\n" + qList.get(43).getQuestionOptions());
-    }
-
-    private void QuestionnairesAlg() {
-        configurarHTML(template, EdtCuestionario14,
-                qList.get(46).getQuestionContent(),
-                qList.get(46).getQuestionOptions(),
-                qList.get(47).getQuestionContent(),
-                qList.get(47).getQuestionOptions(),
-                qList.get(48).getQuestionContent(),
-                qList.get(48).getQuestionOptions());
-//        Txa_Question13_1.setText(qList.get(46).getQuestionContent() + "\n\n" + qList.get(46).getQuestionOptions());
-//        Txa_Question13_2.setText(qList.get(47).getQuestionContent() + "\n\n" + qList.get(47).getQuestionOptions());
-//        Txa_Question13_3.setText(qList.get(48).getQuestionContent() + "\n\n" + qList.get(48).getQuestionOptions());
-    }
-
 
     private void Btn_Aprender_Tema13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema13ActionPerformed
         estructurasIntermedias();
         Scp_Tema13.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema13ActionPerformed
 
     private void AlgoritmosContent() {
@@ -6750,9 +6610,9 @@ public class Home extends javax.swing.JFrame {
         String tmp13_2 = t.getTemplate("p_pBR");
         String tmp13_3 = t.getTemplate("p_pBR");
 
-        configurarHTML(tmp13_1, Edt13_1, anlg13_1, sbct13_1, ejm);
-        configurarHTML(tmp13_2, Edt13_2, out13_1, sbct13_2);
-        configurarHTML(tmp13_3, Edt13_3, sbct13_3, tip13_1);
+        addHTML(tmp13_1, Edt13_1, anlg13_1, sbct13_1, ejm);
+        addHTML(tmp13_2, Edt13_2, out13_1, sbct13_2);
+        addHTML(tmp13_3, Edt13_3, sbct13_3, tip13_1);
 
         // BinarySearch --------------------------------------------------------
         String[] parrafos_1 = lstList.get(33).getLearningSubContent().split("\n");
@@ -6773,149 +6633,243 @@ public class Home extends javax.swing.JFrame {
         String tmp13_5 = t.getTemplate("p_pBR");
         String tmp13_6 = t.getTemplate("p_pBR");;
 
-        configurarHTML(tmp13_4, Edt13_4, anlg13_2, sbct13_4, ejm);
-        configurarHTML(tmp13_5, Edt13_5, out13_2, sbct13_5);
-        configurarHTML(tmp13_6, Edt13_6, sbct13_6, tips13_2);
+        addHTML(tmp13_4, Edt13_4, anlg13_2, sbct13_4, ejm);
+        addHTML(tmp13_5, Edt13_5, out13_2, sbct13_5);
+        addHTML(tmp13_6, Edt13_6, sbct13_6, tips13_2);
     }
 
     private void Btn_Aprender_Tema14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema14ActionPerformed
         AlgoritmosContent();
         Scp_Tema14.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema14ActionPerformed
 
     private void Btn_Siguiente_Cuestionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario1ActionPerformed
-        QuestionnairesHelloW();
+        templateQuestionnaires(EdtCuestionario1, 0, 1, 2);
         Scp_Tema1.setVisible(false);
         Scp_Cuestionario1.setVisible(true);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario1ActionPerformed
 
+    private void templateQuestionnaires(JEditorPane edt, int q1, int q2, int q3) {
+        addHTML(t.getQuestionnairesTemplate(), edt,
+                qList.get(q1).getQuestionContent(),
+                qList.get(q1).getQuestionOptions(),
+                qList.get(q2).getQuestionContent(),
+                qList.get(q2).getQuestionOptions(),
+                qList.get(q3).getQuestionContent(),
+                qList.get(q3).getQuestionOptions());
+    }
+
+    private void HistoryGPC() {
+
+        String Title1 = htList.get(0).getHistoryTopicTitle();
+        String Title2 = htList.get(1).getHistoryTopicTitle();
+        String Title3 = htList.get(2).getHistoryTopicTitle();
+        String Title4 = htList.get(3).getHistoryTopicTitle();
+        String Title5 = htList.get(4).getHistoryTopicTitle();
+        String Title6 = htList.get(5).getHistoryTopicTitle();
+
+        String SubTitle1 = hsList.get(1).getHistorySubTitle();
+        String SubTitle2 = hsList.get(2).getHistorySubTitle();
+        String SubTitle3 = hsList.get(3).getHistorySubTitle();
+        String SubTitle4 = hsList.get(4).getHistorySubTitle();
+        String SubTitle5 = hsList.get(5).getHistorySubTitle();
+        String SubTitle6 = hsList.get(6).getHistorySubTitle();
+        String SubTitle7 = hsList.get(7).getHistorySubTitle();
+        String SubTitle8 = hsList.get(8).getHistorySubTitle();
+        String SubTitle9 = hsList.get(9).getHistorySubTitle();
+        String SubTitle10 = hsList.get(10).getHistorySubTitle();
+        String SubTitle11 = hsList.get(11).getHistorySubTitle();
+        String SubTitle12 = hsList.get(13).getHistorySubTitle();
+        String SubTitle13 = hsList.get(14).getHistorySubTitle();
+        String SubTitle14 = hsList.get(15).getHistorySubTitle();
+
+        String Content1 = hsList.get(0).getHistorySubContent();
+        String Content2 = hsList.get(1).getHistorySubContent();
+        String Content3 = hsList.get(2).getHistorySubContent();
+        String Content4 = hsList.get(3).getHistorySubContent();
+        String Content5 = hsList.get(4).getHistorySubContent();
+        String Content6 = hsList.get(5).getHistorySubContent();
+        String Content7 = hsList.get(6).getHistorySubContent();
+        String Content8 = hsList.get(7).getHistorySubContent();
+        String Content9 = hsList.get(8).getHistorySubContent();
+        String Content10 = hsList.get(9).getHistorySubContent();
+        String Content11 = hsList.get(10).getHistorySubContent();
+        String Content12 = hsList.get(11).getHistorySubContent();
+        String Content13 = hsList.get(12).getHistorySubContent();
+        String Content14 = hsList.get(13).getHistorySubContent();
+        String Content15 = hsList.get(14).getHistorySubContent();
+        String Content16 = hsList.get(15).getHistorySubContent();
+        String Content17 = hsList.get(16).getHistorySubContent();
+
+        String Template1 = "<html>\n"
+                + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+                + "    <p>%s</p><br>\n"
+                + "<hr>\n"
+                + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "<hr>\n"
+                + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "<hr>\n"
+                + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br><br>\n"
+                + "<hr>\n"
+                + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "    <h2>%s</h2>\n"
+                + "    <p style=\"margin:0\">%s</p><br>\n"
+                + "<hr>\n"
+                + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+                + "    <p style=\"margin:0\">%s</p>\n"
+                + "    </html>";
+
+        addHTML(Template1, Edt_ContenidoHistoria, Title1, Content1, Title2,
+                SubTitle1, Content2, SubTitle2, Content3, Title3,
+                SubTitle3, Content4, SubTitle4, Content5, SubTitle5,
+                Content6, SubTitle6, Content7, SubTitle7, Content8,
+                SubTitle8, Content9, SubTitle9, Content10, Title4,
+                SubTitle10, Content11, SubTitle11,
+                Content12, Title5, Content13, SubTitle12, Content14,
+                SubTitle13, Content15, SubTitle14, Content16, Title6,
+                Content17);
+    }
+
+    private void IntroductionCode() {
+        String Template2 = t.getIntroductionTemplate();
+        addHTML(Template2, Edt_Introduccion);
+    }
+
+    private void visibleAndInvisibleScp(JScrollPane scp1, JScrollPane scp2) {
+        scp1.setVisible(true);
+        scp2.setVisible(false);
+    }
+
     private void Btn_Anterior_HelloWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_HelloWordActionPerformed
-        helloWorldContent();
-        Scp_Tema1.setVisible(true);
-        Scp_Cuestionario1.setVisible(false);
+        tc.getHelloWorldContent(Edt0_1, Edt0_2, syntaxCode);
+        visibleAndInvisibleScp(Scp_Tema1, Scp_Cuestionario1);
     }//GEN-LAST:event_Btn_Anterior_HelloWordActionPerformed
 
     private void Btn_Siguiente_ComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_ComentariosActionPerformed
-        ComentariosContent();
-        Scp_Tema2.setVisible(true);
-        Scp_Cuestionario1.setVisible(false);
+        tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1, Edt1_2, Edt1_3, Edt1_4);
+        visibleAndInvisibleScp(Scp_Tema2, Scp_Cuestionario1);
     }//GEN-LAST:event_Btn_Siguiente_ComentariosActionPerformed
 
     private void Btn_Anterior_Cuestionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario1ActionPerformed
-        QuestionnairesHelloW();
-        Scp_Cuestionario1.setVisible(true);
-        Scp_Tema2.setVisible(false);
+        templateQuestionnaires(EdtCuestionario1, 0, 1, 2);
+        visibleAndInvisibleScp(Scp_Cuestionario1, Scp_Tema2);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario1ActionPerformed
 
     private void Btn_Siguiente_Cuestionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario2ActionPerformed
-        QuestionnairesComent();
-        Scp_Cuestionario2.setVisible(true);
-        Scp_Tema2.setVisible(false);
+        templateQuestionnaires(EdtCuestionario2, 3, 4, 5);
+        visibleAndInvisibleScp(Scp_Cuestionario2, Scp_Tema2);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario2ActionPerformed
 
     private void Btn_Anterior_ComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_ComentariosActionPerformed
-        ComentariosContent();
-        Scp_Tema2.setVisible(true);
-        Scp_Cuestionario2.setVisible(false);
+        tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1, Edt1_2, Edt1_3, Edt1_4);
+        visibleAndInvisibleScp(Scp_Tema2, Scp_Cuestionario2);
     }//GEN-LAST:event_Btn_Anterior_ComentariosActionPerformed
 
     private void Btn_Siguiente_TiposdeDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_TiposdeDatosActionPerformed
         tiposDeDatos();
-        Scp_Tema3.setVisible(true);
-        Scp_Cuestionario2.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema3, Scp_Cuestionario2);
     }//GEN-LAST:event_Btn_Siguiente_TiposdeDatosActionPerformed
 
     private void Btn_Anterior_Cuestionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario2ActionPerformed
-        QuestionnairesComent();
-        Scp_Cuestionario2.setVisible(true);
-        Scp_Tema3.setVisible(false);
+        templateQuestionnaires(EdtCuestionario2, 3, 4, 5);
+        visibleAndInvisibleScp(Scp_Cuestionario2, Scp_Tema3);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario2ActionPerformed
 
     private void Btn_Siguiente_Cuestionario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario3ActionPerformed
-        QuestionnairesDatos();
-        Scp_Cuestionario3.setVisible(true);
-        Scp_Tema3.setVisible(false);
+        templateQuestionnaires(EdtCuestionario3, 6, 7, 8);
+        visibleAndInvisibleScp(Scp_Cuestionario3, Scp_Tema3);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario3ActionPerformed
 
     private void Btn_Anterior_TiposdeDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_TiposdeDatosActionPerformed
         tiposDeDatos();
-        Scp_Tema3.setVisible(true);
-        Scp_Cuestionario3.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema3, Scp_Cuestionario3);
     }//GEN-LAST:event_Btn_Anterior_TiposdeDatosActionPerformed
 
     private void Btn_Siguiente_OperadoresAritmeticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresAritmeticosActionPerformed
         operadoresAritmeticosContent();
-        Scp_Tema4.setVisible(true);
-        Scp_Cuestionario3.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema4, Scp_Cuestionario3);
     }//GEN-LAST:event_Btn_Siguiente_OperadoresAritmeticosActionPerformed
 
     private void Btn_Anterior_Cuestionario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario3ActionPerformed
-        QuestionnairesDatos();
-        Scp_Cuestionario3.setVisible(true);
-        Scp_Tema4.setVisible(false);
+        templateQuestionnaires(EdtCuestionario3, 6, 7, 8);
+        visibleAndInvisibleScp(Scp_Cuestionario3, Scp_Tema4);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario3ActionPerformed
 
     private void Btn_Siguiente_Cuestionario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario4ActionPerformed
-        QuestionnairesAritm();
-        Scp_Cuestionario4.setVisible(true);
-        Scp_Tema4.setVisible(false);
+        templateQuestionnaires(EdtCuestionario4, 9, 10, 11);
+        visibleAndInvisibleScp(Scp_Cuestionario4, Scp_Tema4);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario4ActionPerformed
 
     private void Btn_Anterior_OperadoresAritmeticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_OperadoresAritmeticosActionPerformed
         operadoresAritmeticosContent();
-        Scp_Tema4.setVisible(true);
-        Scp_Cuestionario4.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema4, Scp_Cuestionario4);
     }//GEN-LAST:event_Btn_Anterior_OperadoresAritmeticosActionPerformed
 
     private void Btn_Siguiente_LecturaeImpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_LecturaeImpresionActionPerformed
         LecturaContent();
-        Scp_Tema5.setVisible(true);
-        Scp_Cuestionario4.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema5, Scp_Cuestionario4);
     }//GEN-LAST:event_Btn_Siguiente_LecturaeImpresionActionPerformed
 
     private void Btn_Anterior_Cuestionario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario4ActionPerformed
-        QuestionnairesAritm();
-        Scp_Cuestionario4.setVisible(true);
-        Scp_Tema5.setVisible(false);
+        templateQuestionnaires(EdtCuestionario4, 9, 10, 11);
+        visibleAndInvisibleScp(Scp_Cuestionario4, Scp_Tema5);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario4ActionPerformed
 
     private void Btn_Siguiente_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario5ActionPerformed
-        QuestionnairesLect();
-        Scp_Cuestionario5.setVisible(true);
-        Scp_Tema5.setVisible(false);
+        templateQuestionnaires(EdtCuestionario5, 13, 14, 15);
+        visibleAndInvisibleScp(Scp_Cuestionario5, Scp_Tema5);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario5ActionPerformed
 
+    private void configureExerciseButton(JPanel main, int _cont, int _aux) {
+        main.setVisible(true);
+        cont = _cont;
+        aux = _aux;
+        validateActiveExcercise();
+        ON_OFF_Panels();
+    }
+
     private void Btn_Nivel1_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel1_Ejercicio1ActionPerformed
-        Pnl_Main.setVisible(true);
-        contador = 0;
-        aux = 1;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_Main, 0, 1);
     }//GEN-LAST:event_Btn_Nivel1_Ejercicio1ActionPerformed
 
     private void Btn_Nivel1_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel1_Ejercicio2ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 1;
-        aux = 2;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 1, 2);
     }//GEN-LAST:event_Btn_Nivel1_Ejercicio2ActionPerformed
 
     private void Btn_Nivel1_Ejercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel1_Ejercicio3ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 2;
-        aux = 3;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 2, 3);
     }//GEN-LAST:event_Btn_Nivel1_Ejercicio3ActionPerformed
 
     private void Btn_Nivel1_Ejercicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel1_Ejercicio4ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 3;
-        aux = 4;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 3, 4);
     }//GEN-LAST:event_Btn_Nivel1_Ejercicio4ActionPerformed
 
     private void Btn_IntroduccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_IntroduccionActionPerformed
@@ -6924,143 +6878,80 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_IntroduccionActionPerformed
 
     private void Btn_Nivel2_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel2_Ejercicio1ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 4;
-        aux = 1;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 4, 1);
     }//GEN-LAST:event_Btn_Nivel2_Ejercicio1ActionPerformed
 
     private void Btn_Nivel2_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel2_Ejercicio2ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 5;
-        aux = 2;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 5, 2);
     }//GEN-LAST:event_Btn_Nivel2_Ejercicio2ActionPerformed
 
     private void Btn_Nivel2_Ejercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel2_Ejercicio3ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 6;
-        aux = 3;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 6, 3);
     }//GEN-LAST:event_Btn_Nivel2_Ejercicio3ActionPerformed
 
     private void Btn_Nivel2_Ejercicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel2_Ejercicio4ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 7;
-        aux = 4;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 7, 4);
     }//GEN-LAST:event_Btn_Nivel2_Ejercicio4ActionPerformed
 
     private void Btn_Nivel3_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel3_Ejercicio1ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 8;
-        aux = 1;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 8, 1);
     }//GEN-LAST:event_Btn_Nivel3_Ejercicio1ActionPerformed
 
     private void Btn_Nivel3_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel3_Ejercicio2ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 9;
-        aux = 2;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 9, 2);
     }//GEN-LAST:event_Btn_Nivel3_Ejercicio2ActionPerformed
 
     private void Btn_Nivel3_Ejercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel3_Ejercicio3ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 10;
-        aux = 3;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 10, 3);
     }//GEN-LAST:event_Btn_Nivel3_Ejercicio3ActionPerformed
 
     private void Btn_Nivel3_Ejercicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel3_Ejercicio4ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 11;
-        aux = 4;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 11, 4);
     }//GEN-LAST:event_Btn_Nivel3_Ejercicio4ActionPerformed
 
     private void Btn_Nivel4_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel4_Ejercicio1ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 12;
-        aux = 1;
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 12, 1);
     }//GEN-LAST:event_Btn_Nivel4_Ejercicio1ActionPerformed
 
     private void Btn_Nivel4_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel4_Ejercicio2ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 13;
-        aux = 2;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 13, 2);
     }//GEN-LAST:event_Btn_Nivel4_Ejercicio2ActionPerformed
 
     private void Btn_Nivel4_Ejercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel4_Ejercicio3ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 14;
-        aux = 3;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 14, 3);
     }//GEN-LAST:event_Btn_Nivel4_Ejercicio3ActionPerformed
 
     private void Btn_Nivel4_Ejercicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel4_Ejercicio4ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 15;
-        aux = 4;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 15, 4);
     }//GEN-LAST:event_Btn_Nivel4_Ejercicio4ActionPerformed
 
     private void Btn_Nivel5_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel5_Ejercicio1ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 16;
-        aux = 1;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 16, 1);
     }//GEN-LAST:event_Btn_Nivel5_Ejercicio1ActionPerformed
 
     private void Btn_Nivel5_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel5_Ejercicio2ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 17;
-        aux = 2;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 17, 2);
     }//GEN-LAST:event_Btn_Nivel5_Ejercicio2ActionPerformed
 
     private void Btn_Nivel5_Ejercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel5_Ejercicio3ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 18;
-        aux = 3;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 18, 3);
     }//GEN-LAST:event_Btn_Nivel5_Ejercicio3ActionPerformed
 
     private void Btn_Nivel5_Ejercicio4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel5_Ejercicio4ActionPerformed
-        Pnl_EjercicioFull.setVisible(true);
-        contador = 19;
-        aux = 4;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_EjercicioFull, 19, 4);
     }//GEN-LAST:event_Btn_Nivel5_Ejercicio4ActionPerformed
 
     private void Btn_EjercicioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EjercicioActionPerformed
         Pnl_CodigoFull.setVisible(false);
         Pnl_EjercicioFull.setVisible(true);
         Pnl_SolucionFull.setVisible(false);
-        validarSeleccionBotones(0);
+        validateCodeStormButtons(0);
     }//GEN-LAST:event_Btn_EjercicioActionPerformed
 
     private void Btn_EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarActionPerformed
         String code = syntaxCode.getText();
-        String id = "input" + (contador + 1);
-        juzgador(id, code, "judge", "iofiles", Integer.toString(contador + 1));
+        String id = "input" + (cont + 1);
+        juzgador(id, code, "judge", "iofiles", Integer.toString(cont + 1));
         Btn_Enviar.setSelected(false);
     }//GEN-LAST:event_Btn_EnviarActionPerformed
 
@@ -7068,22 +6959,22 @@ public class Home extends javax.swing.JFrame {
         Pnl_CodigoFull.setVisible(true);
         Pnl_EjercicioFull.setVisible(false);
         Pnl_SolucionFull.setVisible(false);
-        validarSeleccionBotones(1);
+        validateCodeStormButtons(1);
     }//GEN-LAST:event_Btn_CodigoActionPerformed
 
     private void Btn_SolucionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionActionPerformed
         Pnl_CodigoFull.setVisible(false);
         Pnl_EjercicioFull.setVisible(false);
         Pnl_SolucionFull.setVisible(true);
-        validarSeleccionBotones(2);
+        validateCodeStormButtons(2);
     }//GEN-LAST:event_Btn_SolucionActionPerformed
 
     private void Btn_AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AnteriorActionPerformed
-        inicializarBotonesCodeStorm();
-        contador--;
+        initializeCodeStormButtons();
+        cont--;
         aux--;
-        validarEjercicioActivo();
-        if (contador == 0) {
+        validateActiveExcercise();
+        if (cont == 0) {
             Btn_Anterior.setEnabled(false);
         } else {
             Btn_Siguiente.setEnabled(true);
@@ -7091,11 +6982,11 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_AnteriorActionPerformed
 
     private void Btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SiguienteActionPerformed
-        inicializarBotonesCodeStorm();
-        contador++;
+        initializeCodeStormButtons();
+        cont++;
         aux++;
-        validarEjercicioActivo();
-        if (contador == 19) {
+        validateActiveExcercise();
+        if (cont == 19) {
             Btn_Siguiente.setEnabled(false);
         } else {
             Btn_Anterior.setEnabled(true);
@@ -7104,279 +6995,233 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_Introduccion_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Introduccion_SiguienteActionPerformed
         Scp_Introduccion.setVisible(false);
-        Pnl_Main.setVisible(true);
-        contador = 0;
-        aux = 1;
-        validarEjercicioActivo();
-        paneles_ON_OFF();
+        configureExerciseButton(Pnl_Main, 0, 1);
     }//GEN-LAST:event_Btn_Introduccion_SiguienteActionPerformed
 
     private void Btn_Anterior_LecturaeImpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_LecturaeImpresionActionPerformed
         LecturaContent();
-        Scp_Tema5.setVisible(true);
-        Scp_Cuestionario5.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema5, Scp_Cuestionario5);
     }//GEN-LAST:event_Btn_Anterior_LecturaeImpresionActionPerformed
 
     private void Btn_Siguiente_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio1ActionPerformed
-        Scp_Ejercicio1.setVisible(true);
-        Scp_Cuestionario5.setVisible(false);
+        visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Cuestionario5);
     }//GEN-LAST:event_Btn_Siguiente_Ejercicio1ActionPerformed
 
     private void Btn_Anterior_Ejercicio1_PrincipianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
-        Scp_Ejercicio1.setVisible(true);
-        Scp_Tema6.setVisible(false);
+        visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Tema6);
     }//GEN-LAST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
 
     private void Btn_Siguiente_Cuestionario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario6ActionPerformed
-        QuestionnairesRela();
-        Scp_Cuestionario6.setVisible(true);
-        Scp_Tema6.setVisible(false);
+        templateQuestionnaires(EdtCuestionario6, 18, 19, 20);
+        visibleAndInvisibleScp(Scp_Cuestionario6, Scp_Tema6);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario6ActionPerformed
 
     private void Btn_Anterior_OperadoresdeRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_OperadoresdeRelacionActionPerformed
         operadoresDeRelacion();
-        Scp_Tema6.setVisible(true);
-        Scp_Cuestionario6.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema6, Scp_Cuestionario6);
     }//GEN-LAST:event_Btn_Anterior_OperadoresdeRelacionActionPerformed
 
     private void Btn_Siguiente_OperadoresLogicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresLogicosActionPerformed
         OperadoresLogicos();
-        Scp_Tema7.setVisible(true);
-        Scp_Cuestionario6.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema7, Scp_Cuestionario6);
     }//GEN-LAST:event_Btn_Siguiente_OperadoresLogicosActionPerformed
 
     private void Btn_Anterior_Cuestionario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario6ActionPerformed
-        QuestionnairesRela();
-        Scp_Cuestionario6.setVisible(true);
-        Scp_Tema7.setVisible(false);
+        templateQuestionnaires(EdtCuestionario6, 18, 19, 20);
+        visibleAndInvisibleScp(Scp_Cuestionario6, Scp_Tema7);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario6ActionPerformed
 
     private void Btn_Siguiente_Cuestionario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario7ActionPerformed
-        QuestionnairesLog();
-        Scp_Cuestionario7.setVisible(true);
-        Scp_Tema7.setVisible(false);
+        templateQuestionnaires(EdtCuestionario7, 21, 22, 23);
+        visibleAndInvisibleScp(Scp_Cuestionario7, Scp_Tema7);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario7ActionPerformed
 
     private void Btn_Anterior_OperadoresLogicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_OperadoresLogicosActionPerformed
         OperadoresLogicos();
-        Scp_Tema7.setVisible(true);
-        Scp_Cuestionario7.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema7, Scp_Cuestionario7);
     }//GEN-LAST:event_Btn_Anterior_OperadoresLogicosActionPerformed
 
     private void Btn_Siguiente_CondicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_CondicionalesActionPerformed
         CondicionalesContent();
-        Scp_Tema8.setVisible(true);
-        Scp_Cuestionario7.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario7);
     }//GEN-LAST:event_Btn_Siguiente_CondicionalesActionPerformed
 
     private void Btn_Anterior_Cuestionario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario7ActionPerformed
-        QuestionnairesLog();
-        Scp_Cuestionario7.setVisible(true);
-        Scp_Tema8.setVisible(false);
+        templateQuestionnaires(EdtCuestionario7, 21, 22, 23);
+        visibleAndInvisibleScp(Scp_Cuestionario7, Scp_Tema8);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario7ActionPerformed
 
     private void Btn_Siguiente_Cuestionario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario8ActionPerformed
-        QuestionnairesCond();
-        Scp_Cuestionario8.setVisible(true);
-        Scp_Tema8.setVisible(false);
+        templateQuestionnaires(EdtCuestionario8, 24, 25, 26);
+        visibleAndInvisibleScp(Scp_Cuestionario8, Scp_Tema8);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario8ActionPerformed
 
     private void Btn_Anterior_CondicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_CondicionalesActionPerformed
         CondicionalesContent();
-        Scp_Tema8.setVisible(true);
-        Scp_Cuestionario8.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario8);
     }//GEN-LAST:event_Btn_Anterior_CondicionalesActionPerformed
 
     private void Btn_Siguiente_BuclesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_BuclesActionPerformed
         Bucles();
-        Scp_Tema9.setVisible(true);
-        Scp_Cuestionario8.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema9, Scp_Cuestionario8);
     }//GEN-LAST:event_Btn_Siguiente_BuclesActionPerformed
 
     private void Btn_Anterior_Cuestionario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario8ActionPerformed
-        QuestionnairesCond();
-        Scp_Cuestionario8.setVisible(true);
-        Scp_Tema9.setVisible(false);
+        templateQuestionnaires(EdtCuestionario8, 24, 25, 26);
+        visibleAndInvisibleScp(Scp_Cuestionario8, Scp_Tema9);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario8ActionPerformed
 
     private void Btn_Siguiente_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario9ActionPerformed
-        QuestionnairesBucl();
-        Scp_Cuestionario9.setVisible(true);
-        Scp_Tema9.setVisible(false);
+        templateQuestionnaires(EdtCuestionario9, 27, 28, 29);
+        visibleAndInvisibleScp(Scp_Cuestionario9, Scp_Tema9);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario9ActionPerformed
 
     private void Btn_Anterior_BuclesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_BuclesActionPerformed
         Bucles();
-        Scp_Tema9.setVisible(true);
-        Scp_Cuestionario9.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema9, Scp_Cuestionario9);
     }//GEN-LAST:event_Btn_Anterior_BuclesActionPerformed
 
     private void Btn_Siguiente_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
-        Scp_Ejercicio2.setVisible(true);
-        Scp_Cuestionario9.setVisible(false);
+        visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Cuestionario9);
     }//GEN-LAST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
 
     private void Btn_Anterior_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
-        Scp_Ejercicio2.setVisible(true);
-        Scp_Tema10.setVisible(false);
+        visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Tema10);
     }//GEN-LAST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
 
     private void Btn_Siguiente_Cuestionario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario10ActionPerformed
-        QuestionnairesFunc();
-        Scp_Cuestionario10.setVisible(true);
-        Scp_Tema10.setVisible(false);
+        templateQuestionnaires(EdtCuestionario10, 32, 33, 34);
+        visibleAndInvisibleScp(Scp_Cuestionario10, Scp_Tema10);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario10ActionPerformed
 
     private void Btn_Anterior_FuncyProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_FuncyProcActionPerformed
         funcionesyProcedimientos();
-        Scp_Tema10.setVisible(true);
-        Scp_Cuestionario10.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema10, Scp_Cuestionario10);
     }//GEN-LAST:event_Btn_Anterior_FuncyProcActionPerformed
 
     private void Btn_Siguiente_RecursionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_RecursionActionPerformed
         RecursionContent();
-        Scp_Tema11.setVisible(true);
-        Scp_Cuestionario10.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema11, Scp_Cuestionario10);
     }//GEN-LAST:event_Btn_Siguiente_RecursionActionPerformed
 
     private void Btn_Anterior_Cuestionario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario10ActionPerformed
-        QuestionnairesFunc();
-        Scp_Cuestionario10.setVisible(true);
-        Scp_Tema11.setVisible(false);
+        templateQuestionnaires(EdtCuestionario10, 32, 33, 34);
+        visibleAndInvisibleScp(Scp_Cuestionario10, Scp_Tema11);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario10ActionPerformed
 
     private void Btn_Siguiente_Cuestionario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario11ActionPerformed
-        QuestionnairesRecu();
-        Scp_Cuestionario11.setVisible(true);
-        Scp_Tema11.setVisible(false);
+        templateQuestionnaires(EdtCuestionario11, 35, 36, 37);
+        visibleAndInvisibleScp(Scp_Cuestionario11, Scp_Tema11);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario11ActionPerformed
 
     private void Btn_Anterior_RecursionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_RecursionActionPerformed
         RecursionContent();
-        Scp_Tema11.setVisible(true);
-        Scp_Cuestionario11.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema11, Scp_Cuestionario11);
     }//GEN-LAST:event_Btn_Anterior_RecursionActionPerformed
 
     private void Btn_Siguiente_EDDBasicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDBasicasActionPerformed
         estructurasBasicas();
-        Scp_Tema12.setVisible(true);
-        Scp_Cuestionario11.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario11);
     }//GEN-LAST:event_Btn_Siguiente_EDDBasicasActionPerformed
 
     private void Btn_Anterior_Cuestionario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario11ActionPerformed
-        QuestionnairesRecu();
-        Scp_Cuestionario11.setVisible(true);
-        Scp_Tema12.setVisible(false);
+        templateQuestionnaires(EdtCuestionario11, 35, 36, 37);
+        visibleAndInvisibleScp(Scp_Cuestionario11, Scp_Tema12);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario11ActionPerformed
 
     private void Btn_Siguiente_Cuestionario12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario12ActionPerformed
-        QuestionnairesEstB();
-        Scp_Cuestionario12.setVisible(true);
-        Scp_Tema12.setVisible(false);
+        templateQuestionnaires(EdtCuestionario12, 38, 39, 40);
+        visibleAndInvisibleScp(Scp_Cuestionario12, Scp_Tema12);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario12ActionPerformed
 
     private void Btn_Anterior_EDDBasicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDBasicasActionPerformed
         estructurasBasicas();
-        Scp_Tema12.setVisible(true);
-        Scp_Cuestionario12.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario12);
     }//GEN-LAST:event_Btn_Anterior_EDDBasicasActionPerformed
 
     private void Btn_Siguiente_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDIntermediasActionPerformed
         estructurasIntermedias();
-        Scp_Tema13.setVisible(true);
-        Scp_Cuestionario12.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario12);
     }//GEN-LAST:event_Btn_Siguiente_EDDIntermediasActionPerformed
 
     private void Btn_Anterior_Cuestionario12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario12ActionPerformed
-        QuestionnairesEstB();
-        Scp_Cuestionario12.setVisible(true);
-        Scp_Tema13.setVisible(false);
+        templateQuestionnaires(EdtCuestionario12, 38, 39, 40);
+        visibleAndInvisibleScp(Scp_Cuestionario12, Scp_Tema13);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario12ActionPerformed
 
     private void Btn_Siguiente_Cuestionario13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario13ActionPerformed
-        QuestionnairesEstA();
-        Scp_Cuestionario13.setVisible(true);
-        Scp_Tema13.setVisible(false);
+        templateQuestionnaires(EdtCuestionario13, 41, 42, 43);
+        visibleAndInvisibleScp(Scp_Cuestionario13, Scp_Tema13);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario13ActionPerformed
 
     private void Btn_Anterior_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDIntermediasActionPerformed
         estructurasIntermedias();
-        Scp_Tema13.setVisible(true);
-        Scp_Cuestionario13.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario13);
     }//GEN-LAST:event_Btn_Anterior_EDDIntermediasActionPerformed
 
     private void Btn_Siguiente_PrimerosAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_PrimerosAlgoritmosActionPerformed
         AlgoritmosContent();
-        Scp_Tema14.setVisible(true);
-        Scp_Cuestionario13.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema14, Scp_Cuestionario13);
     }//GEN-LAST:event_Btn_Siguiente_PrimerosAlgoritmosActionPerformed
 
     private void Btn_Anterior_Cuestionario13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario13ActionPerformed
-        QuestionnairesEstA();
-        Scp_Cuestionario13.setVisible(true);
-        Scp_Tema14.setVisible(false);
+        templateQuestionnaires(EdtCuestionario13, 41, 42, 43);
+        visibleAndInvisibleScp(Scp_Cuestionario13, Scp_Tema14);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario13ActionPerformed
 
     private void Btn_Siguiente_Cuestionario14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario14ActionPerformed
-        QuestionnairesAlg();
-        Scp_Cuestionario14.setVisible(true);
-        Scp_Tema14.setVisible(false);
+        templateQuestionnaires(EdtCuestionario14, 46, 47, 48);
+        visibleAndInvisibleScp(Scp_Cuestionario14, Scp_Tema14);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario14ActionPerformed
 
     private void Btn_Anterior_PrimerosAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_PrimerosAlgoritmosActionPerformed
         AlgoritmosContent();
-        Scp_Tema14.setVisible(true);
-        Scp_Cuestionario14.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema14, Scp_Cuestionario14);
     }//GEN-LAST:event_Btn_Anterior_PrimerosAlgoritmosActionPerformed
 
     private void Btn_Siguiente_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EjercicioFinalActionPerformed
-        Scp_Cuestionario14.setVisible(false);
-        Scp_Ejercicio3.setVisible(true);
+        visibleAndInvisibleScp(Scp_Cuestionario14, Scp_Ejercicio3);
     }//GEN-LAST:event_Btn_Siguiente_EjercicioFinalActionPerformed
 
     private void Btn_Anterior_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario5ActionPerformed
-        QuestionnairesLect();
-        Scp_Cuestionario5.setVisible(true);
-        Scp_Ejercicio1.setVisible(false);
+        templateQuestionnaires(EdtCuestionario5, 13, 14, 15);
+        visibleAndInvisibleScp(Scp_Cuestionario5, Scp_Ejercicio1);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario5ActionPerformed
 
     private void Btn_Siguiente_OperadoresdeRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
         operadoresDeRelacion();
-        Scp_Tema6.setVisible(true);
-        Scp_Ejercicio1.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema6, Scp_Ejercicio1);
     }//GEN-LAST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
 
     private void Btn_Anterior_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario9ActionPerformed
-        QuestionnairesBucl();
-        Scp_Cuestionario9.setVisible(true);
-        Scp_Ejercicio2.setVisible(false);
+        templateQuestionnaires(EdtCuestionario9, 27, 28, 29);
+        visibleAndInvisibleScp(Scp_Cuestionario9, Scp_Ejercicio2);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario9ActionPerformed
 
     private void Btn_Siguiente_FuncionesyProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_FuncionesyProcActionPerformed
         funcionesyProcedimientos();
-        Scp_Tema10.setVisible(true);
-        Scp_Ejercicio2.setVisible(false);
+        visibleAndInvisibleScp(Scp_Tema10, Scp_Ejercicio2);
     }//GEN-LAST:event_Btn_Siguiente_FuncionesyProcActionPerformed
 
     private void Btn_Anterior_Cuestionario14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario14ActionPerformed
-        QuestionnairesAlg();
+        templateQuestionnaires(EdtCuestionario14, 46, 47, 48);
         Scp_Cuestionario14.setVisible(true);
         Scp_Ejercicio3.setVisible(false);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario14ActionPerformed
 
     private void Btn_Aprender_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio1ActionPerformed
         Scp_Ejercicio1.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Ejercicio1ActionPerformed
 
     private void Btn_Aprender_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio2ActionPerformed
         Scp_Ejercicio2.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Ejercicio2ActionPerformed
 
     private void Btn_Aprender_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_EjercicioFinalActionPerformed
         Scp_Ejercicio3.setVisible(true);
-        mostrarPanelesAprender();
+        showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_EjercicioFinalActionPerformed
 
     private void Btn_Atras_CodeStormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Atras_CodeStormActionPerformed
@@ -7396,12 +7241,12 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_EnviarEjercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio1ActionPerformed
         String code = syntaxEjercicio1.getText();
-        juzgador("input1", code, "ioaprender", "ioaprender", "3");
+        juzgador("input1", code, "ioaprender", "ioaprender", "1");
     }//GEN-LAST:event_Btn_EnviarEjercicio1ActionPerformed
 
     private void Btn_EnviarEjercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio2ActionPerformed
         String code = syntaxEjercicio2.getText();
-        juzgador("input2", code, "ioaprender", "ioaprender", "3");
+        juzgador("input2", code, "ioaprender", "ioaprender", "2");
     }//GEN-LAST:event_Btn_EnviarEjercicio2ActionPerformed
 
     private void Btn_EnviarEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio3ActionPerformed
@@ -7409,96 +7254,66 @@ public class Home extends javax.swing.JFrame {
         juzgador("input3", code, "ioaprender", "ioaprender", "3");
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
 
+    private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3) {
+        JOptionPane.showMessageDialog(null, ((r1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((r2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+        JOptionPane.showMessageDialog(null, ((r3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+    }
+
     private void Btn_Answer0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer0ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question0_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question0_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question0_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question0_1, Rad_Question0_2, Rad_Question0_3);
     }//GEN-LAST:event_Btn_Answer0ActionPerformed
 
-    private void Rad_Question0_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rad_Question0_4ActionPerformed
-
-    }//GEN-LAST:event_Rad_Question0_4ActionPerformed
-
     private void Btn_Answer1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer1ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question1_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question1_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question1_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question1_1, Rad_Question1_2, Rad_Question1_3);
     }//GEN-LAST:event_Btn_Answer1ActionPerformed
 
     private void Btn_Answer2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer2ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question2_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question2_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question2_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question2_1, Rad_Question2_2, Rad_Question2_3);
     }//GEN-LAST:event_Btn_Answer2ActionPerformed
 
     private void Btn_Answer3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer3ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question3_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question3_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question3_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question3_1, Rad_Question3_2, Rad_Question3_3);
     }//GEN-LAST:event_Btn_Answer3ActionPerformed
 
     private void Btn_Answer4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer4ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question4_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question4_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question4_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question4_1, Rad_Question4_2, Rad_Question4_3);
     }//GEN-LAST:event_Btn_Answer4ActionPerformed
 
     private void Btn_Answer5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer5ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question5_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question5_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question5_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question5_1, Rad_Question5_2, Rad_Question5_3);
     }//GEN-LAST:event_Btn_Answer5ActionPerformed
 
-    private void Rad_Question2_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Rad_Question2_8ActionPerformed
-
-    }//GEN-LAST:event_Rad_Question2_8ActionPerformed
-
     private void Btn_Answer6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer6ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question6_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question6_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question6_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question6_1, Rad_Question6_2, Rad_Question6_3);
     }//GEN-LAST:event_Btn_Answer6ActionPerformed
 
     private void Btn_Answer7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer7ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question7_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question7_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question7_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question7_1, Rad_Question7_2, Rad_Question7_3);
     }//GEN-LAST:event_Btn_Answer7ActionPerformed
 
     private void Btn_Answer8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer8ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question8_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question8_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question8_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question8_1, Rad_Question8_2, Rad_Question8_3);
     }//GEN-LAST:event_Btn_Answer8ActionPerformed
 
     private void Btn_Answer9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer9ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question9_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question9_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question9_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question9_1, Rad_Question9_2, Rad_Question9_3);
     }//GEN-LAST:event_Btn_Answer9ActionPerformed
 
     private void Btn_Answer10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer10ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question10_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question10_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question10_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question10_1, Rad_Question10_2, Rad_Question10_3);
     }//GEN-LAST:event_Btn_Answer10ActionPerformed
 
     private void Btn_Answer11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer11ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question11_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question11_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question11_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question11_1, Rad_Question11_2, Rad_Question11_3);
     }//GEN-LAST:event_Btn_Answer11ActionPerformed
 
     private void Btn_Answer12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer12ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question12_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question12_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question12_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question12_1, Rad_Question12_2, Rad_Question12_3);
     }//GEN-LAST:event_Btn_Answer12ActionPerformed
 
     private void Btn_Answer13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer13ActionPerformed
-        JOptionPane.showMessageDialog(null, ((Rad_Question13_1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question13_2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((Rad_Question13_3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        showAnswerWindow(Rad_Question13_1, Rad_Question13_2, Rad_Question13_3);
     }//GEN-LAST:event_Btn_Answer13ActionPerformed
 
     public static void main(String args[]) {
@@ -7516,8 +7331,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.ButtonGroup Bgr_Question1;
     private javax.swing.ButtonGroup Bgr_Question2;
     private javax.swing.ButtonGroup Bgr_Question3;
-    private javax.swing.ButtonGroup Bgr_Question4;
-    private javax.swing.ButtonGroup Bgr_Question5;
     private javax.swing.JToggleButton Btn_AcercaDe;
     private javax.swing.JButton Btn_Answer0;
     private javax.swing.JButton Btn_Answer1;
@@ -7739,6 +7552,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JEditorPane EdtCuestionario7;
     private javax.swing.JEditorPane EdtCuestionario8;
     private javax.swing.JEditorPane EdtCuestionario9;
+    private javax.swing.JEditorPane Edt_ContenidoHistoria;
+    private javax.swing.JEditorPane Edt_Introduccion;
     private javax.swing.JLabel Lbl_Acumuladores;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
     private javax.swing.JLabel Lbl_BinarySearch;
@@ -7828,8 +7643,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_BotonesPrincipales;
     private javax.swing.JPanel Pnl_CodeStorm;
     private javax.swing.JPanel Pnl_CodesThemes0;
-    private javax.swing.JPanel Pnl_CodesThemes10_1;
-    private javax.swing.JPanel Pnl_CodesThemes10_2;
     private javax.swing.JPanel Pnl_CodesThemes12_1;
     private javax.swing.JPanel Pnl_CodesThemes12_2;
     private javax.swing.JPanel Pnl_CodesThemes12_3;
@@ -7859,6 +7672,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_CodesThemes8_4;
     private javax.swing.JPanel Pnl_CodesThemes8_5;
     private javax.swing.JPanel Pnl_CodesThemes8_6;
+    private javax.swing.JPanel Pnl_Codes_Themes10_1;
+    private javax.swing.JPanel Pnl_Codes_Themes10_2;
     private javax.swing.JPanel Pnl_Codes_Themes11_1;
     private javax.swing.JPanel Pnl_Codes_Themes11_2;
     private javax.swing.JPanel Pnl_Codes_Themes11_3;
@@ -7875,6 +7690,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Codes_Themes9_1;
     private javax.swing.JPanel Pnl_Codes_Themes9_2;
     private javax.swing.JPanel Pnl_CodigoFull;
+    private javax.swing.JPanel Pnl_ContenidoHistoria;
     private javax.swing.JPanel Pnl_Cuestionario1;
     private javax.swing.JPanel Pnl_Cuestionario10;
     private javax.swing.JPanel Pnl_Cuestionario11;
@@ -7893,8 +7709,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Ejercicio2_Aprender;
     private javax.swing.JPanel Pnl_Ejercicio3_Aprender;
     private javax.swing.JPanel Pnl_EjercicioFull;
-    private javax.swing.JPanel Pnl_EjerciciosFull;
     private javax.swing.JPanel Pnl_Encabezado;
+    private javax.swing.JPanel Pnl_ExerciseInfo;
     private javax.swing.JPanel Pnl_General;
     private javax.swing.JPanel Pnl_Header;
     private javax.swing.JPanel Pnl_Historia;
@@ -8061,6 +7877,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JRadioButton Rad_Question9_1;
     private javax.swing.JRadioButton Rad_Question9_2;
     private javax.swing.JRadioButton Rad_Question9_3;
+    private javax.swing.JScrollPane Scp_ContenidoHistoria;
     private javax.swing.JScrollPane Scp_Cuestionario1;
     private javax.swing.JScrollPane Scp_Cuestionario10;
     private javax.swing.JScrollPane Scp_Cuestionario11;
@@ -8078,7 +7895,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Ejercicio1;
     private javax.swing.JScrollPane Scp_Ejercicio2;
     private javax.swing.JScrollPane Scp_Ejercicio3;
-    private javax.swing.JScrollPane Scp_EjerciciosFull;
+    private javax.swing.JScrollPane Scp_General;
     private javax.swing.JScrollPane Scp_Introduccion;
     private javax.swing.JScrollPane Scp_Tema1;
     private javax.swing.JScrollPane Scp_Tema10;
