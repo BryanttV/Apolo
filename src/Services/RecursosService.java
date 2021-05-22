@@ -32,6 +32,9 @@ public final class RecursosService {
     private Color colorAzul;
     private Color colorVerde;
     private Color colorGrisBorde;
+    private Color colorThumb_Off = new Color(50, 50, 50);
+    private Color colorThumb_On = new Color(32, 30, 33);
+    private Color colorDrag = new Color(32, 30, 33);
     private Dimension dTamanioPaneles;
     private Dimension dTamanioBotones;
     private Dimension dBtns_Aprender;
@@ -68,6 +71,9 @@ public final class RecursosService {
         colorDark = new Color(56, 56, 56);
         colorTextGray = new Color(220, 220, 220);
         colorGrisBorde = new Color(153, 153, 153);
+        colorThumb_Off = new Color(50, 50, 50);
+        colorThumb_On = new Color(32, 30, 33);
+        colorDrag = new Color(32, 30, 33);
     }
 
     private void crearTamanio() {
@@ -96,7 +102,7 @@ public final class RecursosService {
 
     }
 
-    // Getters -----------------------------------------------------------------
+    // Getters Fuentes ---------------------------------------------------------
     public Font getFGeneral() {
         return fGeneral;
     }
@@ -152,6 +158,8 @@ public final class RecursosService {
     public Font getFHistoriaB() {
         return fLabel_HistoriaB;
     }
+    
+    // Getters Cursores --------------------------------------------------------
 
     public Cursor getCMano() {
         return cMano;
@@ -160,7 +168,21 @@ public final class RecursosService {
     public Cursor getCDefault() {
         return cDefault;
     }
+    
+    // Getters Colores ---------------------------------------------------------
 
+    public Color getColorThumbOff(){
+        return colorThumb_Off;
+    }
+    
+    public Color getColorThumbOn(){
+        return colorThumb_On;
+    }
+    
+    public Color getColorDrag(){
+        return colorDrag;
+    }
+    
     public Color getCPrincipal() {
         return colorPrincipal;
     }
