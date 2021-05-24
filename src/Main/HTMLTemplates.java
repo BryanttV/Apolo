@@ -148,17 +148,38 @@ public class HTMLTemplates {
             + "<p>%s</p>\n"
             + "</html>";
 
-    private final String exercisesTemplate = "<html>\n"
-            + "    <h1 style=\"color: rgb(0, 47, 108);\">%s</h1>\n"
+    private final String exercisesTemplateLearn = "<html>\n"
+            + "    <h1 style=\"color: rgb(0, 37, 26);\">%s</h1>\n"
             + "    <p style=\"margin: 0;\">%s</p><br>\n"
-            + "    <h2 style=\"color: rgb(0, 47, 108);\">Input</h2>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Input</h2>\n"
             + "    <p style=\"margin: 0;\">%s</p><br>\n"
-            + "    <h2 style=\"color: rgb(0, 47, 108);\">Output</h2>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Output</h2>\n"
             + "    <p style=\"margin: 0;\">%s</p><br>\n"
-            + "    <h2 style=\"color: rgb(0, 47, 108);\">Sample Input</h2>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Sample Input</h2>\n"
             + "    <p style=\"margin: 0;\">%s</p><br>\n"
-            + "    <h2 style=\"color: rgb(0, 47, 108);\">Sample Output</h2>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Sample Output</h2>\n"
             + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "</html>";
+    
+    private final String exercisesTemplateCodeStorm = "<html>\n"
+            + "  <h1 style=\"color: rgb(183, 30, 29);\">%s</h1>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Input</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Output</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Sample Input</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Sample Output</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p>\n"
             + "</html>";
 
     public String getGeneralTemplate(String s) {
@@ -177,7 +198,11 @@ public class HTMLTemplates {
         return historyTemplate;
     }
 
-    public String getExerciseTemplate() {
-        return exercisesTemplate;
+    public String getExerciseTemplateLearn() {
+        return exercisesTemplateLearn;
+    }
+    
+    public String getExerciseTemplateCodeStorm(){
+        return exercisesTemplateCodeStorm;
     }
 }

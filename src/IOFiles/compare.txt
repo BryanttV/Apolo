@@ -1,1 +1,5 @@
-Si sale
+7
+Numero 20 no se encuentra en el arreglo
+1
+Numero 2 no se encuentra en el arreglo
+3

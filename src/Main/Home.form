@@ -748,6 +748,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[71, 123]"/>
@@ -782,6 +783,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[90, 140]"/>
                     </Property>
@@ -815,6 +817,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[121, 184]"/>
                     </Property>
@@ -1013,12 +1016,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Hello World"/>
+                            <Property name="text" type="java.lang.String" value="1. Hello World"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="190" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1229,12 +1241,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Hello World | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="1. Hello World | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="420" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1478,12 +1499,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Comentarios"/>
+                            <Property name="text" type="java.lang.String" value="2. Comentarios"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="190" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1790,12 +1820,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Comentarios | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="2. Comentarios | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="440" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2014,12 +2053,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tipos de Datos"/>
+                            <Property name="text" type="java.lang.String" value="3. Tipos de Datos"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="230" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2260,12 +2308,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Tipos de Datos | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="3. Tipos de Datos | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="430" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2510,12 +2567,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Operadores Aritm&#xe9;ticos"/>
+                            <Property name="text" type="java.lang.String" value="4. Operadores Aritm&#xe9;ticos"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="350" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2983,12 +3049,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Operadores Aritm&#xe9;ticos | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="4. Operadores Aritm&#xe9;ticos | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3233,12 +3308,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Lectura e Impresi&#xf3;n"/>
+                            <Property name="text" type="java.lang.String" value="5. Lectura e Impresi&#xf3;n"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="340" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3479,12 +3563,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Lectura e Impresi&#xf3;n | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="5. Lectura e Impresi&#xf3;n | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3709,14 +3802,14 @@
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="sRecursos.getCDefault()" type="code"/>
                         </Property>
-                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1300]"/>
                         </Property>
-                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1300]"/>
                         </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1300]"/>
                         </Property>
                       </Properties>
 
@@ -3754,7 +3847,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="1410" width="254" height="64"/>
+                              <AbsoluteConstraints x="40" y="1200" width="254" height="64"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3788,7 +3881,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="870" y="1410" width="254" height="64"/>
+                              <AbsoluteConstraints x="870" y="1200" width="254" height="64"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3799,10 +3892,19 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Ejercicio 1 | Principiante"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3833,7 +3935,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="990" width="170" height="50"/>
+                              <AbsoluteConstraints x="40" y="750" width="170" height="50"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3852,7 +3954,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="1050" width="1080" height="330"/>
+                              <AbsoluteConstraints x="40" y="810" width="1080" height="330"/>
                             </Constraint>
                           </Constraints>
 
@@ -3864,10 +3966,11 @@
                               <Connection code="sRecursos.getCPrincipal()" type="code"/>
                             </Property>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
+                            <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="80" width="1120" height="880"/>
+                              <AbsoluteConstraints x="20" y="80" width="1120" height="610"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3924,12 +4027,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Operadores de Relaci&#xf3;n"/>
+                            <Property name="text" type="java.lang.String" value="6. Operadores de Relaci&#xf3;n"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="440" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4198,12 +4310,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Operadores de Relaci&#xf3;n | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="6. Operadores de Relaci&#xf3;n | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4423,12 +4544,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Operadores L&#xf3;gicos"/>
+                            <Property name="text" type="java.lang.String" value="7. Operadores L&#xf3;gicos"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="340" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4696,12 +4826,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Operadores L&#xf3;gicos | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="7. Operadores L&#xf3;gicos | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4946,12 +5085,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Condicionales"/>
+                            <Property name="text" type="java.lang.String" value="8. Condicionales"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="340" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -5631,12 +5779,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Condicionales | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="8. Condicionales | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -5881,12 +6038,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Bucles"/>
+                            <Property name="text" type="java.lang.String" value="9. Bucles"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="340" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6436,12 +6602,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Bucles | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="9. Bucles | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6666,14 +6841,14 @@
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="sRecursos.getCDefault()" type="code"/>
                         </Property>
-                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1290]"/>
                         </Property>
-                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1290]"/>
                         </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1290]"/>
                         </Property>
                       </Properties>
 
@@ -6711,7 +6886,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="1410" width="254" height="64"/>
+                              <AbsoluteConstraints x="40" y="1190" width="254" height="64"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6745,7 +6920,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="870" y="1410" width="254" height="64"/>
+                              <AbsoluteConstraints x="870" y="1190" width="254" height="64"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6756,10 +6931,19 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Ejercicio 2 | Intermedio"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6790,7 +6974,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="990" width="170" height="50"/>
+                              <AbsoluteConstraints x="40" y="730" width="170" height="50"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6809,7 +6993,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="1050" width="1080" height="330"/>
+                              <AbsoluteConstraints x="40" y="790" width="1080" height="330"/>
                             </Constraint>
                           </Constraints>
 
@@ -6821,10 +7005,11 @@
                               <Connection code="sRecursos.getCPrincipal()" type="code"/>
                             </Property>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
+                            <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="80" width="1120" height="880"/>
+                              <AbsoluteConstraints x="20" y="80" width="1120" height="590"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6881,12 +7066,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Funciones y Procedimientos"/>
+                            <Property name="text" type="java.lang.String" value="10. Funciones y Procedimientos"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="460" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -7160,12 +7354,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Funciones y Procedimientos | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="10. Funciones y Procedimientos | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="650" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -7410,12 +7613,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Recursi&#xf3;n"/>
+                            <Property name="text" type="java.lang.String" value="11. Recursi&#xf3;n"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="340" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -7689,12 +7901,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Recursi&#xf3;n | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="11. Recursi&#xf3;n | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="610" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -7913,12 +8134,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Estructuras de Datos B&#xe1;sicas"/>
+                            <Property name="text" type="java.lang.String" value="12. Estructuras de Datos B&#xe1;sicas"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="450" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -8639,7 +8869,7 @@
                         <Component class="javax.swing.JButton" name="Btn_Siguiente_EDDIntermedias">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/Resources/Aprender/Siguiente_EDDAvanzadas_Off.png"/>
+                              <Image iconType="3" name="/Resources/Aprender/Siguiente_EDDIntermedias_Off.png"/>
                             </Property>
                             <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="39" type="code"/>
@@ -8658,7 +8888,7 @@
                               <Connection code="sRecursos.getDBtns_Aprender()" type="code"/>
                             </Property>
                             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/Resources/Aprender/Siguiente_EDDAvanzadas_On.png"/>
+                              <Image iconType="3" name="/Resources/Aprender/Siguiente_EDDIntermedias_On.png"/>
                             </Property>
                           </Properties>
                           <Events>
@@ -8675,12 +8905,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Estructuras de Datos B&#xe1;sicas | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="12. Estructuras de Datos B&#xe1;sicas | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="630" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -8886,12 +9125,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Estructuras de Datos Intermedias"/>
+                            <Property name="text" type="java.lang.String" value="13. Estructuras de Datos Intermedias"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="510" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -9461,7 +9709,7 @@
                         <Component class="javax.swing.JButton" name="Btn_Anterior_EDDIntermedias">
                           <Properties>
                             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/Resources/Aprender/Anterior_EDDAvanzadas_Off.png"/>
+                              <Image iconType="3" name="/Resources/Aprender/Anterior_EDDIntermedias_Off.png"/>
                             </Property>
                             <Property name="mnemonic" type="int" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="37" type="code"/>
@@ -9480,7 +9728,7 @@
                               <Connection code="sRecursos.getDBtns_Aprender()" type="code"/>
                             </Property>
                             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                              <Image iconType="3" name="/Resources/Aprender/Anterior_EDDAvanzadas_On.png"/>
+                              <Image iconType="3" name="/Resources/Aprender/Anterior_EDDIntermedias_On.png"/>
                             </Property>
                           </Properties>
                           <Events>
@@ -9531,12 +9779,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Estructuras de Datos Intermedias | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="13. Estructuras de Datos Intermedias | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="700" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -9781,12 +10038,21 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Primeros Algoritmos"/>
+                            <Property name="text" type="java.lang.String" value="14. Primeros Algoritmos"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="340" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -10184,8 +10450,17 @@
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getFLabels()" type="code"/>
                             </Property>
-                            <Property name="text" type="java.lang.String" value="Primeros Algoritmos | Cuestionario"/>
+                            <Property name="text" type="java.lang.String" value="14. Primeros Algoritmos | Cuestionario"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
@@ -10414,14 +10689,14 @@
                         <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="sRecursos.getCDefault()" type="code"/>
                         </Property>
-                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1290]"/>
                         </Property>
-                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1290]"/>
                         </Property>
-                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                          <Connection code="sRecursos.getDPnls_Temas()" type="code"/>
+                        <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                          <Dimension value="[1176, 1290]"/>
                         </Property>
                       </Properties>
 
@@ -10459,7 +10734,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="1410" width="254" height="64"/>
+                              <AbsoluteConstraints x="40" y="1190" width="254" height="64"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -10470,10 +10745,19 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="Ejercicio Final"/>
                             <Property name="verticalAlignment" type="int" value="1"/>
+                            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
+                            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                              <Connection code="sRecursos.getDLbls_Temas()" type="code"/>
+                            </Property>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="30" y="5" width="350" height="45"/>
+                              <AbsoluteConstraints x="30" y="5" width="-1" height="-1"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -10504,7 +10788,7 @@
                           </Events>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="990" width="170" height="50"/>
+                              <AbsoluteConstraints x="40" y="730" width="170" height="50"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -10523,7 +10807,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="40" y="1050" width="1080" height="330"/>
+                              <AbsoluteConstraints x="40" y="790" width="1080" height="330"/>
                             </Constraint>
                           </Constraints>
 
@@ -10535,10 +10819,11 @@
                               <Connection code="sRecursos.getCPrincipal()" type="code"/>
                             </Property>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
+                            <Property name="opaque" type="boolean" value="false"/>
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="80" width="1120" height="880"/>
+                              <AbsoluteConstraints x="20" y="80" width="1120" height="580"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -11939,15 +12224,37 @@
                               <Layout>
                                 <DimensionLayout dim="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="1061" max="32767" attributes="0"/>
+                                      <Component id="Edt_General_info" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <EmptySpace min="0" pref="820" max="32767" attributes="0"/>
+                                      <Component id="Edt_General_info" alignment="0" max="32767" attributes="0"/>
                                   </Group>
                                 </DimensionLayout>
                               </Layout>
+                              <SubComponents>
+                                <Component class="javax.swing.JEditorPane" name="Edt_General_info">
+                                  <Properties>
+                                    <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+                                      <Connection code="sRecursos.getCPrincipal()" type="code"/>
+                                    </Property>
+                                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                                      <Border info="null"/>
+                                    </Property>
+                                    <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
+                                    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[1060, 3000]"/>
+                                    </Property>
+                                    <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[1060, 820]"/>
+                                    </Property>
+                                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                                      <Dimension value="[1060, 820]"/>
+                                    </Property>
+                                  </Properties>
+                                </Component>
+                              </SubComponents>
                             </Container>
                           </SubComponents>
                         </Container>

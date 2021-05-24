@@ -14,13 +14,17 @@ import JPA_Controllers.HistoryTopicsJpaController;
 import JPA_Controllers.LearningSubtopicsJpaController;
 import Services.RecursosService;
 import java.util.List;
+import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.Query;
 import javax.swing.JEditorPane;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 
 public class ThemesContent {
 
     private final RecursosService sRecursos = RecursosService.getService();
+    private EntityManagerFactory _emf = null;
 
     // Controladores
     private CodesJpaController cojpa = null;
@@ -49,6 +53,7 @@ public class ThemesContent {
         String text = String.format(tmp, (Object[]) s);
         edt.setText(text);
         edt.setFont(sRecursos.getFGeneral());
+//      edt.setFont(sRecursos.getFGeneral_19R());
         edt.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
         edt.setEditable(false);
     }
@@ -877,7 +882,7 @@ public class ThemesContent {
                 Content17);
     }
 
-    public void getExerLearn1Content(JEditorPane edt_Ejercicio1) {
+    public void getExer1LearnContent(JEditorPane edt_Ejercicio1) {
 
         String title1 = eList.get(20).getExerciseName();
         String content1 = ecList.get(20).getExerciseDescription();
@@ -886,10 +891,11 @@ public class ThemesContent {
         String sample_Input1 = ecList.get(20).getSampleInput();
         String sample_Output1 = ecList.get(20).getSampleOutput();
 
-        addHTML(t.getExerciseTemplate(), edt_Ejercicio1, title1, content1, input1, output1, sample_Input1, sample_Output1);
+        addHTML(t.getExerciseTemplateLearn(), edt_Ejercicio1, title1, content1, input1,
+                output1, sample_Input1, sample_Output1);
     }
 
-    public void getExerLearn2Content(JEditorPane edt_Ejercicio2) {
+    public void getExer2LearnContent(JEditorPane edt_Ejercicio2) {
 
         String title2 = eList.get(21).getExerciseName();
         String content2 = ecList.get(21).getExerciseDescription();
@@ -898,7 +904,8 @@ public class ThemesContent {
         String sample_Input2 = ecList.get(21).getSampleInput();
         String sample_Output2 = ecList.get(21).getSampleOutput();
 
-        addHTML(t.getExerciseTemplate(), edt_Ejercicio2, title2, content2, input2, output2, sample_Input2, sample_Output2);
+        addHTML(t.getExerciseTemplateLearn(), edt_Ejercicio2, title2, content2, input2,
+                output2, sample_Input2, sample_Output2);
     }
 
     public void getExer3LearnContent(JEditorPane edt_Ejercicio3) {
@@ -910,6 +917,23 @@ public class ThemesContent {
         String sample_Input3 = ecList.get(22).getSampleInput();
         String sample_Output3 = ecList.get(22).getSampleOutput();
 
-        addHTML(t.getExerciseTemplate(), edt_Ejercicio3, title3, content3, input3, output3, sample_Input3, sample_Output3);
+        addHTML(t.getExerciseTemplateLearn(), edt_Ejercicio3, title3, content3, input3,
+                output3, sample_Input3, sample_Output3);
+    }
+    
+    public void clearListExercises(){
+        eList.clear();
+    }
+
+    public EntityManagerFactory regenerateConnectionUpdatep() {
+        _emf = Persistence.createEntityManagerFactory("ApoloPU");
+        setConnectionDB(_emf);
+        EntityManager em = _emf.createEntityManager();
+        em.getTransaction().begin();
+        clearListExercises();
+        Query q = em.createQuery("Select ex from Exercises ex");
+        eList = (List<Exercises>) q.getResultList();
+        em.close();
+        return _emf;
     }
 }

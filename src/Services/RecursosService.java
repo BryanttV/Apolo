@@ -40,6 +40,7 @@ public final class RecursosService {
     private Dimension dBtns_Aprender;
     private Dimension dBtns_CodeStorm;
     private Dimension dPnl_Temas;
+    private Dimension dLbl_Temas;
 
     static private RecursosService servicio;
 
@@ -82,6 +83,7 @@ public final class RecursosService {
         dTamanioBotones = new Dimension(172, 47);
         dTamanioPaneles = new Dimension(1176, 705);
         dPnl_Temas = new Dimension(1155, 1500);
+        dLbl_Temas = new Dimension(750, 45);
     }
 
     private void crearFuentes() {
@@ -103,6 +105,7 @@ public final class RecursosService {
     }
 
     // Getters Fuentes ---------------------------------------------------------
+    
     public Font getFGeneral() {
         return fGeneral;
     }
@@ -210,6 +213,8 @@ public final class RecursosService {
     public Color getColorGrisBorde() {
         return colorGrisBorde;
     }
+    
+    // Getters Dimension
 
     public Dimension getDTamanio() {
         return dTamanioPaneles;
@@ -229,5 +234,9 @@ public final class RecursosService {
 
     public Dimension getDPnls_Temas() {
         return dPnl_Temas;
+    }
+    
+    public Dimension getDLbls_Temas(){
+        return dLbl_Temas;
     }
 }

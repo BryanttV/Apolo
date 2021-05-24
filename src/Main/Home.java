@@ -81,6 +81,7 @@ public class Home extends javax.swing.JFrame {
     // Instancias de Clases
     private final HTMLTemplates t = new HTMLTemplates();
     private final ThemesContent tc = new ThemesContent();
+    private final Exercise ex = new Exercise();
 
     // Ventanas JDialog
     private final About st = new About(this, true);
@@ -148,8 +149,8 @@ public class Home extends javax.swing.JFrame {
     private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
 
     // Tamanio de EditorPane en los ejercicios de CodeStorm
-    int[] sizes = new int[]{820, 1150, 550, 550, 820, 760, 710, 680, 780, 1050,
-        750, 750, 730, 855, 800, 665, 930, 1020, 630, 980};
+    int[] sizes = new int[]{820, 1000, 530, 530, 800, 760, 710, 680, 780, 950,
+        750, 750, 730, 800, 800, 665, 900, 980, 630, 960};
 
     // Llamada informacion DDBB -------------------------------------------------
     // Creación de Fabrica de Entidades
@@ -218,6 +219,7 @@ public class Home extends javax.swing.JFrame {
         callInfoThemes();
         configureWindow();
         hideComponents();
+        initClassExercise();
         loadFontAndCursor();
         configureScrollBar();
         configureProgressBar();
@@ -605,6 +607,56 @@ public class Home extends javax.swing.JFrame {
         addCodeStormTitle(Pnl_SolucionFull);
     }
 
+    // Cristian ----------------------------------------------------------------
+    private String title;
+    private String content;
+    private String input;
+    private String output;
+    private String sampleInput;
+    private String sampleOutput;
+
+    //Definicion de funciones iniciales
+    private void initClassExercise() {
+        ex.setConnectionDB(emf);
+        ex.generateListsInfo();
+    }
+
+    private void getAndPublicInfo() {
+        //Obtener info de las listas
+        title = ex.getTitle();
+        content = ex.getContent();
+        input = ex.getInput();
+        output = ex.getOutput();
+        sampleInput = ex.getSampleInput();
+        sampleOutput = ex.getSampleOutput();
+
+        //Calcular la nueva medida vertical del panel
+//        resize_Txe_Editor();
+        ex.setVerticalSize(sizes[ex.getCounter()]);
+        Dimension size = new Dimension(1060, ex.getVerticalSize());
+        //Resize panel
+        Pnl_ExerciseInfo.setSize(size);
+        Pnl_ExerciseInfo.setMaximumSize(size);
+        Pnl_ExerciseInfo.setMinimumSize(size);
+        Pnl_ExerciseInfo.setPreferredSize(size);
+
+        //Generar formato
+        tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_General_info, title, content, input, output, sampleInput, sampleOutput);
+
+    }
+
+    private void verifySolutionStatus() {
+//        int tmp = ex.getCounter();
+//        ex.setCounter(tmp);
+        if (!ex.getStatus().equals("ACCEPTED")) {
+            Btn_Solucion.setEnabled(false);
+        } else {
+            Btn_Solucion.setEnabled(true);
+            syntaxSolution.setText(ex.getSolution());
+        }
+    }
+
+    // Cristian ----------------------------------------------------------------
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -1231,6 +1283,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_EjercicioFull = new javax.swing.JPanel();
         Scp_General = new javax.swing.JScrollPane();
         Pnl_ExerciseInfo = new javax.swing.JPanel();
+        Edt_General_info = new javax.swing.JEditorPane();
         Pnl_CodigoFull = new javax.swing.JPanel();
         Pnl_SyntaxCode = new javax.swing.JPanel();
         Pnl_SolucionFull = new javax.swing.JPanel();
@@ -1591,6 +1644,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_Ejercicio1.setBorderPainted(false);
         Btn_Aprender_Ejercicio1.setContentAreaFilled(false);
         Btn_Aprender_Ejercicio1.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Ejercicio1.setFocusPainted(false);
         Btn_Aprender_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Aprender_Ejercicio1.setMaximumSize(new java.awt.Dimension(71, 123));
         Btn_Aprender_Ejercicio1.setMinimumSize(new java.awt.Dimension(71, 123));
@@ -1608,6 +1662,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_Ejercicio2.setBorderPainted(false);
         Btn_Aprender_Ejercicio2.setContentAreaFilled(false);
         Btn_Aprender_Ejercicio2.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Ejercicio2.setFocusPainted(false);
         Btn_Aprender_Ejercicio2.setMaximumSize(new java.awt.Dimension(90, 140));
         Btn_Aprender_Ejercicio2.setMinimumSize(new java.awt.Dimension(90, 140));
         Btn_Aprender_Ejercicio2.setPreferredSize(new java.awt.Dimension(90, 140));
@@ -1624,6 +1679,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_EjercicioFinal.setBorderPainted(false);
         Btn_Aprender_EjercicioFinal.setContentAreaFilled(false);
         Btn_Aprender_EjercicioFinal.setCursor(sRecursos.getCMano());
+        Btn_Aprender_EjercicioFinal.setFocusPainted(false);
         Btn_Aprender_EjercicioFinal.setMaximumSize(new java.awt.Dimension(121, 184));
         Btn_Aprender_EjercicioFinal.setMinimumSize(new java.awt.Dimension(121, 184));
         Btn_Aprender_EjercicioFinal.setPreferredSize(new java.awt.Dimension(121, 184));
@@ -1693,9 +1749,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_HelloWorld.setFont(sRecursos.getFLabels());
-        Lbl_HelloWorld.setText("Hello World");
+        Lbl_HelloWorld.setText("1. Hello World");
         Lbl_HelloWorld.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema1.add(Lbl_HelloWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 190, 45));
+        Lbl_HelloWorld.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_HelloWorld.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_HelloWorld.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema1.add(Lbl_HelloWorld, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt0_1.setContentType("text/html"); // NOI18N
         Edt0_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -1784,9 +1843,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario1.add(Btn_Siguiente_Comentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 760, 254, 64));
 
         Lbl_Cuestionario1.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario1.setText("Hello World | Cuestionario");
+        Lbl_Cuestionario1.setText("1. Hello World | Cuestionario");
         Lbl_Cuestionario1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario1.add(Lbl_Cuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 420, 45));
+        Lbl_Cuestionario1.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario1.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario1.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario1.add(Lbl_Cuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question0_1);
         Rad_Question0_1.setOpaque(false);
@@ -1868,9 +1930,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Comentarios.setFont(sRecursos.getFLabels());
-        Lbl_Comentarios.setText("Comentarios");
+        Lbl_Comentarios.setText("2. Comentarios");
         Lbl_Comentarios.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema2.add(Lbl_Comentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 190, 45));
+        Lbl_Comentarios.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Comentarios.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Comentarios.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema2.add(Lbl_Comentarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt1_1.setContentType("text/html"); // NOI18N
         Edt1_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -1993,9 +2058,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario2.add(Btn_Siguiente_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 750, 254, 64));
 
         Lbl_Cuestionario2.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario2.setText("Comentarios | Cuestionario");
+        Lbl_Cuestionario2.setText("2. Comentarios | Cuestionario");
         Lbl_Cuestionario2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario2.add(Lbl_Cuestionario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 440, 45));
+        Lbl_Cuestionario2.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario2.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario2.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario2.add(Lbl_Cuestionario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question0_4);
         Rad_Question0_4.setOpaque(false);
@@ -2070,9 +2138,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_TiposdeDatos.setFont(sRecursos.getFLabels());
-        Lbl_TiposdeDatos.setText("Tipos de Datos");
+        Lbl_TiposdeDatos.setText("3. Tipos de Datos");
         Lbl_TiposdeDatos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema3.add(Lbl_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 230, 45));
+        Lbl_TiposdeDatos.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_TiposdeDatos.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_TiposdeDatos.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema3.add(Lbl_TiposdeDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt2_1.setContentType("text/html"); // NOI18N
         Edt2_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -2175,9 +2246,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario3.add(Btn_Siguiente_OperadoresAritmeticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 900, 254, 64));
 
         Lbl_Cuestionario3.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario3.setText("Tipos de Datos | Cuestionario");
+        Lbl_Cuestionario3.setText("3. Tipos de Datos | Cuestionario");
         Lbl_Cuestionario3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario3.add(Lbl_Cuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 430, 45));
+        Lbl_Cuestionario3.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario3.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario3.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario3.add(Lbl_Cuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question0_6);
         Rad_Question0_6.setOpaque(false);
@@ -2260,9 +2334,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_OperadoresAritmeticos.setFont(sRecursos.getFLabels());
-        Lbl_OperadoresAritmeticos.setText("Operadores Aritméticos");
+        Lbl_OperadoresAritmeticos.setText("4. Operadores Aritméticos");
         Lbl_OperadoresAritmeticos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema4.add(Lbl_OperadoresAritmeticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 350, 45));
+        Lbl_OperadoresAritmeticos.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_OperadoresAritmeticos.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_OperadoresAritmeticos.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema4.add(Lbl_OperadoresAritmeticos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt3_1.setContentType("text/html"); // NOI18N
         Edt3_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -2434,9 +2511,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario4.add(Btn_Siguiente_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 760, 254, 64));
 
         Lbl_Cuestionario4.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario4.setText("Operadores Aritméticos | Cuestionario");
+        Lbl_Cuestionario4.setText("4. Operadores Aritméticos | Cuestionario");
         Lbl_Cuestionario4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario4.add(Lbl_Cuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Cuestionario4.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario4.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario4.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario4.add(Lbl_Cuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question3_1);
         Rad_Question3_1.setOpaque(false);
@@ -2519,9 +2599,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_LecturaeImpresion.setFont(sRecursos.getFLabels());
-        Lbl_LecturaeImpresion.setText("Lectura e Impresión");
+        Lbl_LecturaeImpresion.setText("5. Lectura e Impresión");
         Lbl_LecturaeImpresion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema5.add(Lbl_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+        Lbl_LecturaeImpresion.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_LecturaeImpresion.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_LecturaeImpresion.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema5.add(Lbl_LecturaeImpresion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt4_1.setContentType("text/html"); // NOI18N
         Edt4_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -2624,9 +2707,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario5.add(Btn_Siguiente_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 830, 254, 64));
 
         Lbl_Cuestionario5.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario5.setText("Lectura e Impresión | Cuestionario");
+        Lbl_Cuestionario5.setText("5. Lectura e Impresión | Cuestionario");
         Lbl_Cuestionario5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario5.add(Lbl_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Cuestionario5.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario5.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario5.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario5.add(Lbl_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question4_1_1);
         Rad_Question4_1_1.setOpaque(false);
@@ -2703,9 +2789,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Ejercicio1_Aprender.setBackground(sRecursos.getCPrincipal());
         Pnl_Ejercicio1_Aprender.setCursor(sRecursos.getCDefault());
-        Pnl_Ejercicio1_Aprender.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Ejercicio1_Aprender.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Ejercicio1_Aprender.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Ejercicio1_Aprender.setMaximumSize(new java.awt.Dimension(1176, 1300));
+        Pnl_Ejercicio1_Aprender.setMinimumSize(new java.awt.Dimension(1176, 1300));
+        Pnl_Ejercicio1_Aprender.setPreferredSize(new java.awt.Dimension(1176, 1300));
         Pnl_Ejercicio1_Aprender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Cuestionario5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario5_Off.png"))); // NOI18N
@@ -2723,7 +2809,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario5ActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio1_Aprender.add(Btn_Anterior_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Ejercicio1_Aprender.add(Btn_Anterior_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1200, 254, 64));
 
         Btn_Siguiente_OperadoresdeRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_OperadoresdeRelacion_Off.png"))); // NOI18N
         Btn_Siguiente_OperadoresdeRelacion.setMnemonic(39);
@@ -2740,12 +2826,15 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_OperadoresdeRelacionActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio1_Aprender.add(Btn_Siguiente_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Ejercicio1_Aprender.add(Btn_Siguiente_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1200, 254, 64));
 
         Lbl_Ejercicio1_Principiante.setFont(sRecursos.getFLabels());
         Lbl_Ejercicio1_Principiante.setText("Ejercicio 1 | Principiante");
         Lbl_Ejercicio1_Principiante.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Ejercicio1_Aprender.add(Lbl_Ejercicio1_Principiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Ejercicio1_Principiante.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Ejercicio1_Principiante.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Ejercicio1_Principiante.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Ejercicio1_Aprender.add(Lbl_Ejercicio1_Principiante, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Btn_EnviarEjercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/EnviarAprender_Off.png"))); // NOI18N
         Btn_EnviarEjercicio1.setBorderPainted(false);
@@ -2761,16 +2850,17 @@ public class Home extends javax.swing.JFrame {
                 Btn_EnviarEjercicio1ActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio1_Aprender.add(Btn_EnviarEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 990, 170, 50));
+        Pnl_Ejercicio1_Aprender.add(Btn_EnviarEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 750, 170, 50));
 
         Pnl_SyntaxEjercicio1.setBackground(new java.awt.Color(204, 204, 204));
         Pnl_SyntaxEjercicio1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
         Pnl_SyntaxEjercicio1.setLayout(new java.awt.CardLayout());
-        Pnl_Ejercicio1_Aprender.add(Pnl_SyntaxEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1050, 1080, 330));
+        Pnl_Ejercicio1_Aprender.add(Pnl_SyntaxEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 810, 1080, 330));
 
         Edt_Ejercicio1.setBackground(sRecursos.getCPrincipal());
         Edt_Ejercicio1.setContentType("text/html"); // NOI18N
-        Pnl_Ejercicio1_Aprender.add(Edt_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 880));
+        Edt_Ejercicio1.setOpaque(false);
+        Pnl_Ejercicio1_Aprender.add(Edt_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 610));
 
         Scp_Ejercicio1.setViewportView(Pnl_Ejercicio1_Aprender);
 
@@ -2789,9 +2879,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_OperadoresdeRelacion.setFont(sRecursos.getFLabels());
-        Lbl_OperadoresdeRelacion.setText("Operadores de Relación");
+        Lbl_OperadoresdeRelacion.setText("6. Operadores de Relación");
         Lbl_OperadoresdeRelacion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema6.add(Lbl_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 440, 45));
+        Lbl_OperadoresdeRelacion.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_OperadoresdeRelacion.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_OperadoresdeRelacion.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema6.add(Lbl_OperadoresdeRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt5_1.setContentType("text/html"); // NOI18N
         Edt5_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -2904,9 +2997,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario6.add(Btn_Siguiente_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1000, 254, 64));
 
         Lbl_Cuestionario6.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario6.setText("Operadores de Relación | Cuestionario");
+        Lbl_Cuestionario6.setText("6. Operadores de Relación | Cuestionario");
         Lbl_Cuestionario6.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario6.add(Lbl_Cuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Cuestionario6.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario6.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario6.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario6.add(Lbl_Cuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_1_0);
         Rad_Question5_1_0.setOpaque(false);
@@ -2982,9 +3078,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_OperadoresLogicos.setFont(sRecursos.getFLabels());
-        Lbl_OperadoresLogicos.setText("Operadores Lógicos");
+        Lbl_OperadoresLogicos.setText("7. Operadores Lógicos");
         Lbl_OperadoresLogicos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema7.add(Lbl_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+        Lbl_OperadoresLogicos.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_OperadoresLogicos.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_OperadoresLogicos.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema7.add(Lbl_OperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt6_1.setContentType("text/html"); // NOI18N
         Edt6_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -3096,9 +3195,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario7.add(Btn_Siguiente_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 950, 254, 64));
 
         Lbl_Cuestionario7.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario7.setText("Operadores Lógicos | Cuestionario");
+        Lbl_Cuestionario7.setText("7. Operadores Lógicos | Cuestionario");
         Lbl_Cuestionario7.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario7.add(Lbl_Cuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Cuestionario7.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario7.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario7.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario7.add(Lbl_Cuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_4);
         Rad_Question5_4.setOpaque(false);
@@ -3181,9 +3283,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema8.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Condicionales.setFont(sRecursos.getFLabels());
-        Lbl_Condicionales.setText("Condicionales");
+        Lbl_Condicionales.setText("8. Condicionales");
         Lbl_Condicionales.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema8.add(Lbl_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+        Lbl_Condicionales.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Condicionales.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Condicionales.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema8.add(Lbl_Condicionales, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt7_1.setContentType("text/html"); // NOI18N
         Edt7_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -3413,9 +3518,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario8.add(Btn_Siguiente_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 830, 254, 64));
 
         Lbl_Cuestionario8.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario8.setText("Condicionales | Cuestionario");
+        Lbl_Cuestionario8.setText("8. Condicionales | Cuestionario");
         Lbl_Cuestionario8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario8.add(Lbl_Cuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Cuestionario8.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario8.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario8.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario8.add(Lbl_Cuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_6);
         Rad_Question5_6.setOpaque(false);
@@ -3498,9 +3606,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema9.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Bucles.setFont(sRecursos.getFLabels());
-        Lbl_Bucles.setText("Bucles");
+        Lbl_Bucles.setText("9. Bucles");
         Lbl_Bucles.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema9.add(Lbl_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+        Lbl_Bucles.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Bucles.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Bucles.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema9.add(Lbl_Bucles, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt8_1.setContentType("text/html"); // NOI18N
         Edt8_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -3692,9 +3803,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario9.add(Btn_Siguiente_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1200, 254, 64));
 
         Lbl_Cuestionario9.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario9.setText("Bucles | Cuestionario");
+        Lbl_Cuestionario9.setText("9. Bucles | Cuestionario");
         Lbl_Cuestionario9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario9.add(Lbl_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Cuestionario9.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario9.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario9.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario9.add(Lbl_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_8);
         Rad_Question5_8.setOpaque(false);
@@ -3771,9 +3885,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Ejercicio2_Aprender.setBackground(sRecursos.getCPrincipal());
         Pnl_Ejercicio2_Aprender.setCursor(sRecursos.getCDefault());
-        Pnl_Ejercicio2_Aprender.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Ejercicio2_Aprender.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Ejercicio2_Aprender.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Ejercicio2_Aprender.setMaximumSize(new java.awt.Dimension(1176, 1290));
+        Pnl_Ejercicio2_Aprender.setMinimumSize(new java.awt.Dimension(1176, 1290));
+        Pnl_Ejercicio2_Aprender.setPreferredSize(new java.awt.Dimension(1176, 1290));
         Pnl_Ejercicio2_Aprender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Cuestionario9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario9_Off.png"))); // NOI18N
@@ -3791,7 +3905,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario9ActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio2_Aprender.add(Btn_Anterior_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Ejercicio2_Aprender.add(Btn_Anterior_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1190, 254, 64));
 
         Btn_Siguiente_FuncionesyProc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_FuncyProc_Off.png"))); // NOI18N
         Btn_Siguiente_FuncionesyProc.setMnemonic(39);
@@ -3808,12 +3922,15 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_FuncionesyProcActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio2_Aprender.add(Btn_Siguiente_FuncionesyProc, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1410, 254, 64));
+        Pnl_Ejercicio2_Aprender.add(Btn_Siguiente_FuncionesyProc, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1190, 254, 64));
 
         Lbl_Ejercicio2_Intermedio.setFont(sRecursos.getFLabels());
         Lbl_Ejercicio2_Intermedio.setText("Ejercicio 2 | Intermedio");
         Lbl_Ejercicio2_Intermedio.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Ejercicio2_Aprender.add(Lbl_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Ejercicio2_Intermedio.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Ejercicio2_Intermedio.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Ejercicio2_Intermedio.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Ejercicio2_Aprender.add(Lbl_Ejercicio2_Intermedio, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Btn_EnviarEjercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/EnviarAprender_Off.png"))); // NOI18N
         Btn_EnviarEjercicio2.setBorderPainted(false);
@@ -3829,16 +3946,17 @@ public class Home extends javax.swing.JFrame {
                 Btn_EnviarEjercicio2ActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio2_Aprender.add(Btn_EnviarEjercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 990, 170, 50));
+        Pnl_Ejercicio2_Aprender.add(Btn_EnviarEjercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, 170, 50));
 
         Pnl_SyntaxEjercicio2.setBackground(new java.awt.Color(204, 204, 204));
         Pnl_SyntaxEjercicio2.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
         Pnl_SyntaxEjercicio2.setLayout(new java.awt.CardLayout());
-        Pnl_Ejercicio2_Aprender.add(Pnl_SyntaxEjercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1050, 1080, 330));
+        Pnl_Ejercicio2_Aprender.add(Pnl_SyntaxEjercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 790, 1080, 330));
 
         Edt_Ejercicio2.setBackground(sRecursos.getCPrincipal());
         Edt_Ejercicio2.setContentType("text/html"); // NOI18N
-        Pnl_Ejercicio2_Aprender.add(Edt_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 880));
+        Edt_Ejercicio2.setOpaque(false);
+        Pnl_Ejercicio2_Aprender.add(Edt_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 590));
 
         Scp_Ejercicio2.setViewportView(Pnl_Ejercicio2_Aprender);
 
@@ -3857,9 +3975,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema10.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_FuncionesyProcs.setFont(sRecursos.getFLabels());
-        Lbl_FuncionesyProcs.setText("Funciones y Procedimientos");
+        Lbl_FuncionesyProcs.setText("10. Funciones y Procedimientos");
         Lbl_FuncionesyProcs.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema10.add(Lbl_FuncionesyProcs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 460, 45));
+        Lbl_FuncionesyProcs.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_FuncionesyProcs.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_FuncionesyProcs.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema10.add(Lbl_FuncionesyProcs, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt9_1.setContentType("text/html"); // NOI18N
         Edt9_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -3972,9 +4093,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario10.add(Btn_Siguiente_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 780, 254, 64));
 
         Lbl_Cuestionario10.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario10.setText("Funciones y Procedimientos | Cuestionario");
+        Lbl_Cuestionario10.setText("10. Funciones y Procedimientos | Cuestionario");
         Lbl_Cuestionario10.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario10.add(Lbl_Cuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 650, 45));
+        Lbl_Cuestionario10.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario10.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario10.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario10.add(Lbl_Cuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_10);
         Rad_Question5_10.setOpaque(false);
@@ -4057,9 +4181,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema11.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Recursion.setFont(sRecursos.getFLabels());
-        Lbl_Recursion.setText("Recursión");
+        Lbl_Recursion.setText("11. Recursión");
         Lbl_Recursion.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema11.add(Lbl_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+        Lbl_Recursion.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Recursion.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Recursion.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema11.add(Lbl_Recursion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt10_1.setContentType("text/html"); // NOI18N
         Edt10_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -4172,9 +4299,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario11.add(Btn_Siguiente_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 750, 254, 64));
 
         Lbl_Cuestionario11.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario11.setText("Recursión | Cuestionario");
+        Lbl_Cuestionario11.setText("11. Recursión | Cuestionario");
         Lbl_Cuestionario11.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario11.add(Lbl_Cuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
+        Lbl_Cuestionario11.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario11.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario11.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario11.add(Lbl_Cuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_13);
         Rad_Question5_13.setOpaque(false);
@@ -4249,9 +4379,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema12.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_EDDBasicas.setFont(sRecursos.getFLabels());
-        Lbl_EDDBasicas.setText("Estructuras de Datos Básicas");
+        Lbl_EDDBasicas.setText("12. Estructuras de Datos Básicas");
         Lbl_EDDBasicas.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema12.add(Lbl_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 450, 45));
+        Lbl_EDDBasicas.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_EDDBasicas.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_EDDBasicas.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema12.add(Lbl_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt11_1.setContentType("text/html"); // NOI18N
         Edt11_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -4490,7 +4623,7 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Cuestionario12.add(Btn_Anterior_EDDBasicas, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 720, 254, 64));
 
-        Btn_Siguiente_EDDIntermedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDAvanzadas_Off.png"))); // NOI18N
+        Btn_Siguiente_EDDIntermedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDIntermedias_Off.png"))); // NOI18N
         Btn_Siguiente_EDDIntermedias.setMnemonic(39);
         Btn_Siguiente_EDDIntermedias.setBorderPainted(false);
         Btn_Siguiente_EDDIntermedias.setContentAreaFilled(false);
@@ -4499,7 +4632,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Siguiente_EDDIntermedias.setMaximumSize(sRecursos.getDBtns_Aprender());
         Btn_Siguiente_EDDIntermedias.setMinimumSize(sRecursos.getDBtns_Aprender());
         Btn_Siguiente_EDDIntermedias.setPreferredSize(sRecursos.getDBtns_Aprender());
-        Btn_Siguiente_EDDIntermedias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDAvanzadas_On.png"))); // NOI18N
+        Btn_Siguiente_EDDIntermedias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_EDDIntermedias_On.png"))); // NOI18N
         Btn_Siguiente_EDDIntermedias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_Siguiente_EDDIntermediasActionPerformed(evt);
@@ -4508,9 +4641,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario12.add(Btn_Siguiente_EDDIntermedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 720, 254, 64));
 
         Lbl_Cuestionario12.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario12.setText("Estructuras de Datos Básicas | Cuestionario");
+        Lbl_Cuestionario12.setText("12. Estructuras de Datos Básicas | Cuestionario");
         Lbl_Cuestionario12.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario12.add(Lbl_Cuestionario12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 630, 45));
+        Lbl_Cuestionario12.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario12.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario12.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario12.add(Lbl_Cuestionario12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_15);
         Rad_Question5_15.setOpaque(false);
@@ -4581,9 +4717,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_EDDIntermedias.setFont(sRecursos.getFLabels());
-        Lbl_EDDIntermedias.setText("Estructuras de Datos Intermedias");
+        Lbl_EDDIntermedias.setText("13. Estructuras de Datos Intermedias");
         Lbl_EDDIntermedias.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema13.add(Lbl_EDDIntermedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 510, 45));
+        Lbl_EDDIntermedias.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_EDDIntermedias.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_EDDIntermedias.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema13.add(Lbl_EDDIntermedias, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Edt12_1.setContentType("text/html"); // NOI18N
         Edt12_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -4771,7 +4910,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario13.setPreferredSize(new java.awt.Dimension(1176, 1160));
         Pnl_Cuestionario13.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Btn_Anterior_EDDIntermedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDAvanzadas_Off.png"))); // NOI18N
+        Btn_Anterior_EDDIntermedias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDIntermedias_Off.png"))); // NOI18N
         Btn_Anterior_EDDIntermedias.setMnemonic(37);
         Btn_Anterior_EDDIntermedias.setBorderPainted(false);
         Btn_Anterior_EDDIntermedias.setContentAreaFilled(false);
@@ -4780,7 +4919,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior_EDDIntermedias.setMaximumSize(sRecursos.getDBtns_Aprender());
         Btn_Anterior_EDDIntermedias.setMinimumSize(sRecursos.getDBtns_Aprender());
         Btn_Anterior_EDDIntermedias.setPreferredSize(sRecursos.getDBtns_Aprender());
-        Btn_Anterior_EDDIntermedias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDAvanzadas_On.png"))); // NOI18N
+        Btn_Anterior_EDDIntermedias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_EDDIntermedias_On.png"))); // NOI18N
         Btn_Anterior_EDDIntermedias.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_Anterior_EDDIntermediasActionPerformed(evt);
@@ -4806,9 +4945,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario13.add(Btn_Siguiente_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 1060, 254, 64));
 
         Lbl_Cuestionario13.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario13.setText("Estructuras de Datos Intermedias | Cuestionario");
+        Lbl_Cuestionario13.setText("13. Estructuras de Datos Intermedias | Cuestionario");
         Lbl_Cuestionario13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Cuestionario13.add(Lbl_Cuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 700, 45));
+        Lbl_Cuestionario13.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario13.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario13.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Cuestionario13.add(Lbl_Cuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Bgr_Question1.add(Rad_Question5_17);
         Rad_Question5_17.setOpaque(false);
@@ -4891,9 +5033,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema14.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_PrimerosAlgoritmos.setFont(sRecursos.getFLabels());
-        Lbl_PrimerosAlgoritmos.setText("Primeros Algoritmos");
+        Lbl_PrimerosAlgoritmos.setText("14. Primeros Algoritmos");
         Lbl_PrimerosAlgoritmos.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Tema14.add(Lbl_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 340, 45));
+        Lbl_PrimerosAlgoritmos.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_PrimerosAlgoritmos.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_PrimerosAlgoritmos.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Tema14.add(Lbl_PrimerosAlgoritmos, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Lbl_BubbleSort.setFont(sRecursos.getFTitleEditor());
         Lbl_BubbleSort.setForeground(sRecursos.getColorVerde());
@@ -5048,8 +5193,11 @@ public class Home extends javax.swing.JFrame {
         Pnl_Cuestionario14.add(Btn_Siguiente_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 760, 254, 64));
 
         Lbl_Cuestionario14.setFont(sRecursos.getFLabels());
-        Lbl_Cuestionario14.setText("Primeros Algoritmos | Cuestionario");
+        Lbl_Cuestionario14.setText("14. Primeros Algoritmos | Cuestionario");
         Lbl_Cuestionario14.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        Lbl_Cuestionario14.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario14.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_Cuestionario14.setPreferredSize(sRecursos.getDLbls_Temas());
         Pnl_Cuestionario14.add(Lbl_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 610, 45));
 
         Bgr_Question1.add(Rad_Question13_1);
@@ -5127,9 +5275,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Ejercicio3_Aprender.setBackground(sRecursos.getCPrincipal());
         Pnl_Ejercicio3_Aprender.setCursor(sRecursos.getCDefault());
-        Pnl_Ejercicio3_Aprender.setMaximumSize(sRecursos.getDPnls_Temas());
-        Pnl_Ejercicio3_Aprender.setMinimumSize(sRecursos.getDPnls_Temas());
-        Pnl_Ejercicio3_Aprender.setPreferredSize(sRecursos.getDPnls_Temas());
+        Pnl_Ejercicio3_Aprender.setMaximumSize(new java.awt.Dimension(1176, 1290));
+        Pnl_Ejercicio3_Aprender.setMinimumSize(new java.awt.Dimension(1176, 1290));
+        Pnl_Ejercicio3_Aprender.setPreferredSize(new java.awt.Dimension(1176, 1290));
         Pnl_Ejercicio3_Aprender.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Anterior_Cuestionario14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario14_Off.png"))); // NOI18N
@@ -5147,12 +5295,15 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario14ActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio3_Aprender.add(Btn_Anterior_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1410, 254, 64));
+        Pnl_Ejercicio3_Aprender.add(Btn_Anterior_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1190, 254, 64));
 
         Lbl_EjercicioFinal.setFont(sRecursos.getFLabels());
         Lbl_EjercicioFinal.setText("Ejercicio Final");
         Lbl_EjercicioFinal.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        Pnl_Ejercicio3_Aprender.add(Lbl_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, 350, 45));
+        Lbl_EjercicioFinal.setMaximumSize(sRecursos.getDLbls_Temas());
+        Lbl_EjercicioFinal.setMinimumSize(sRecursos.getDLbls_Temas());
+        Lbl_EjercicioFinal.setPreferredSize(sRecursos.getDLbls_Temas());
+        Pnl_Ejercicio3_Aprender.add(Lbl_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 5, -1, -1));
 
         Btn_EnviarEjercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/EnviarAprender_Off.png"))); // NOI18N
         Btn_EnviarEjercicio3.setBorderPainted(false);
@@ -5168,16 +5319,17 @@ public class Home extends javax.swing.JFrame {
                 Btn_EnviarEjercicio3ActionPerformed(evt);
             }
         });
-        Pnl_Ejercicio3_Aprender.add(Btn_EnviarEjercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 990, 170, 50));
+        Pnl_Ejercicio3_Aprender.add(Btn_EnviarEjercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 730, 170, 50));
 
         Pnl_SyntaxEjercicio3.setBackground(new java.awt.Color(204, 204, 204));
         Pnl_SyntaxEjercicio3.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
         Pnl_SyntaxEjercicio3.setLayout(new java.awt.CardLayout());
-        Pnl_Ejercicio3_Aprender.add(Pnl_SyntaxEjercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 1050, 1080, 330));
+        Pnl_Ejercicio3_Aprender.add(Pnl_SyntaxEjercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 790, 1080, 330));
 
         Edt_Ejercicio3.setBackground(sRecursos.getCPrincipal());
         Edt_Ejercicio3.setContentType("text/html"); // NOI18N
-        Pnl_Ejercicio3_Aprender.add(Edt_Ejercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 880));
+        Edt_Ejercicio3.setOpaque(false);
+        Pnl_Ejercicio3_Aprender.add(Edt_Ejercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 580));
 
         Scp_Ejercicio3.setViewportView(Pnl_Ejercicio3_Aprender);
 
@@ -5810,15 +5962,22 @@ public class Home extends javax.swing.JFrame {
         Pnl_ExerciseInfo.setInheritsPopupMenu(true);
         Pnl_ExerciseInfo.setMaximumSize(new java.awt.Dimension(1060, 3000));
 
+        Edt_General_info.setBackground(sRecursos.getCPrincipal());
+        Edt_General_info.setBorder(null);
+        Edt_General_info.setContentType("text/html"); // NOI18N
+        Edt_General_info.setMaximumSize(new java.awt.Dimension(1060, 3000));
+        Edt_General_info.setMinimumSize(new java.awt.Dimension(1060, 820));
+        Edt_General_info.setPreferredSize(new java.awt.Dimension(1060, 820));
+
         javax.swing.GroupLayout Pnl_ExerciseInfoLayout = new javax.swing.GroupLayout(Pnl_ExerciseInfo);
         Pnl_ExerciseInfo.setLayout(Pnl_ExerciseInfoLayout);
         Pnl_ExerciseInfoLayout.setHorizontalGroup(
             Pnl_ExerciseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1061, Short.MAX_VALUE)
+            .addComponent(Edt_General_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         Pnl_ExerciseInfoLayout.setVerticalGroup(
             Pnl_ExerciseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 820, Short.MAX_VALUE)
+            .addComponent(Edt_General_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         Scp_General.setViewportView(Pnl_ExerciseInfo);
@@ -6015,9 +6174,9 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_Aprender_Tema8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema8ActionPerformed
         tc.getCondicionalesContent(syntaxTemas7_1, syntaxTemas7_2, syntaxTemas7_3,
-                syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7, syntaxTemas7_8,
-                syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2, Edt7_3, Edt7_4, Edt7_5,
-                Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
+                syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7,
+                syntaxTemas7_8, syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2,
+                Edt7_3, Edt7_4, Edt7_5, Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
         Scp_Tema8.setVisible(true);
         showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema8ActionPerformed
@@ -6181,9 +6340,12 @@ public class Home extends javax.swing.JFrame {
     private void configureExerciseButton(JPanel main, int cont, int aux) {
         main.setVisible(true);
         this.cont = cont;
+        ex.setCounter(cont);
         this.aux = aux;
         validateActiveExcercise();
         ON_OFF_CodeStormPanels();
+        getAndPublicInfo();
+        verifySolutionStatus();
     }
 
     private void Btn_Nivel1_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel1_Ejercicio1ActionPerformed
@@ -6281,8 +6443,16 @@ public class Home extends javax.swing.JFrame {
     private void Btn_EnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarActionPerformed
         String code = syntaxCode.getText();
         String id = "input" + (cont + 1);
-        juzgador(id, code, "judge", "iofiles", Integer.toString(cont + 1));
+        try {
+            juzgador(id, code, "judge", "iofiles", Integer.toString(cont + 1), ex.getCounter(), emf);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
         Btn_Enviar.setSelected(false);
+        emf = ex.regenerateConnectionUpdatep();
+        System.out.println(ex.getCounter());
+        System.out.println(ex.getStatus());
+        verifySolutionStatus();
     }//GEN-LAST:event_Btn_EnviarActionPerformed
 
     private void Btn_CodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CodigoActionPerformed
@@ -6300,27 +6470,37 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_SolucionActionPerformed
 
     private void Btn_AnteriorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AnteriorActionPerformed
+        int tmp = ex.getCounter();
+        ex.setCounter(--tmp);
         initializeCodeStormButtons();
         cont--;
         aux--;
         validateActiveExcercise();
+        getAndPublicInfo();
         if (cont == 0) {
             Btn_Anterior.setEnabled(false);
         } else {
             Btn_Siguiente.setEnabled(true);
         }
+        verifySolutionStatus();
+        syntaxCode.setText("//Pega aquí tú código...");
     }//GEN-LAST:event_Btn_AnteriorActionPerformed
 
     private void Btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SiguienteActionPerformed
+        int tmp = ex.getCounter();
+        ex.setCounter(++tmp);
         initializeCodeStormButtons();
         cont++;
         aux++;
         validateActiveExcercise();
+        getAndPublicInfo();
         if (cont == 19) {
             Btn_Siguiente.setEnabled(false);
         } else {
             Btn_Anterior.setEnabled(true);
         }
+        verifySolutionStatus();
+        syntaxCode.setText("//Pega aqui tú código...");
     }//GEN-LAST:event_Btn_SiguienteActionPerformed
 
     private void Btn_Introduccion_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Introduccion_SiguienteActionPerformed
@@ -6334,10 +6514,12 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_LecturaeImpresionActionPerformed
 
     private void Btn_Siguiente_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio1ActionPerformed
+        tc.getExer1LearnContent(Edt_Ejercicio1);
         visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Cuestionario5);
     }//GEN-LAST:event_Btn_Siguiente_Ejercicio1ActionPerformed
 
     private void Btn_Anterior_Ejercicio1_PrincipianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
+        tc.getExer1LearnContent(Edt_Ejercicio1);
         visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Tema6);
     }//GEN-LAST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
 
@@ -6373,9 +6555,9 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_Siguiente_CondicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_CondicionalesActionPerformed
         tc.getCondicionalesContent(syntaxTemas7_1, syntaxTemas7_2, syntaxTemas7_3,
-                syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7, syntaxTemas7_8,
-                syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2, Edt7_3, Edt7_4, Edt7_5,
-                Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
+                syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7,
+                syntaxTemas7_8, syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2,
+                Edt7_3, Edt7_4, Edt7_5, Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
         visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario7);
     }//GEN-LAST:event_Btn_Siguiente_CondicionalesActionPerformed
 
@@ -6391,8 +6573,8 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_Anterior_CondicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_CondicionalesActionPerformed
         tc.getCondicionalesContent(syntaxTemas7_1, syntaxTemas7_2, syntaxTemas7_3,
-                syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7, 
-                syntaxTemas7_8, syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2, 
+                syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7,
+                syntaxTemas7_8, syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2,
                 Edt7_3, Edt7_4, Edt7_5, Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
         visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario8);
     }//GEN-LAST:event_Btn_Anterior_CondicionalesActionPerformed
@@ -6422,10 +6604,12 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_BuclesActionPerformed
 
     private void Btn_Siguiente_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
+        tc.getExer2LearnContent(Edt_Ejercicio2);
         visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Cuestionario9);
     }//GEN-LAST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
 
     private void Btn_Anterior_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
+        tc.getExer2LearnContent(Edt_Ejercicio2);
         visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Tema10);
     }//GEN-LAST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
 
@@ -6486,8 +6670,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_EDDBasicasActionPerformed
 
     private void Btn_Siguiente_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDIntermediasActionPerformed
-        tc.getEstructIntermediasContent(syntaxTemas12_1, syntaxTemas12_2, 
-                syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3, 
+        tc.getEstructIntermediasContent(syntaxTemas12_1, syntaxTemas12_2,
+                syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3,
                 Edt12_4, Edt12_5, Edt12_6, Edt12_7, Edt12_8, Edt12_9, Edt12_10, Edt12_11);
         visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario12);
     }//GEN-LAST:event_Btn_Siguiente_EDDIntermediasActionPerformed
@@ -6503,8 +6687,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario13ActionPerformed
 
     private void Btn_Anterior_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDIntermediasActionPerformed
-        tc.getEstructIntermediasContent(syntaxTemas12_1, syntaxTemas12_2, 
-                syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3, 
+        tc.getEstructIntermediasContent(syntaxTemas12_1, syntaxTemas12_2,
+                syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3,
                 Edt12_4, Edt12_5, Edt12_6, Edt12_7, Edt12_8, Edt12_9, Edt12_10, Edt12_11);
         visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario13);
     }//GEN-LAST:event_Btn_Anterior_EDDIntermediasActionPerformed
@@ -6532,7 +6716,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_PrimerosAlgoritmosActionPerformed
 
     private void Btn_Siguiente_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EjercicioFinalActionPerformed
-        visibleAndInvisibleScp(Scp_Cuestionario14, Scp_Ejercicio3);
+        tc.getExer3LearnContent(Edt_Ejercicio3);
+        visibleAndInvisibleScp(Scp_Ejercicio3, Scp_Cuestionario14);
     }//GEN-LAST:event_Btn_Siguiente_EjercicioFinalActionPerformed
 
     private void Btn_Anterior_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario5ActionPerformed
@@ -6561,16 +6746,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_Cuestionario14ActionPerformed
 
     private void Btn_Aprender_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio1ActionPerformed
+        tc.getExer1LearnContent(Edt_Ejercicio1);
         Scp_Ejercicio1.setVisible(true);
         showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Ejercicio1ActionPerformed
 
     private void Btn_Aprender_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio2ActionPerformed
+        tc.getExer2LearnContent(Edt_Ejercicio2);
         Scp_Ejercicio2.setVisible(true);
         showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Ejercicio2ActionPerformed
 
     private void Btn_Aprender_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_EjercicioFinalActionPerformed
+        tc.getExer3LearnContent(Edt_Ejercicio3);
         Scp_Ejercicio3.setVisible(true);
         showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_EjercicioFinalActionPerformed
@@ -6592,17 +6780,35 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_EnviarEjercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio1ActionPerformed
         String code = syntaxEjercicio1.getText();
-        juzgador("input1", code, "ioaprender", "ioaprender", "1");
+        try {
+            juzgador("input1", code, "ioaprender", "ioaprender", "1", 20, emf);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        emf = ex.regenerateConnectionUpdatep();
+        verifySolutionStatus();
     }//GEN-LAST:event_Btn_EnviarEjercicio1ActionPerformed
 
     private void Btn_EnviarEjercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio2ActionPerformed
         String code = syntaxEjercicio2.getText();
-        juzgador("input2", code, "ioaprender", "ioaprender", "2");
+        try {
+            juzgador("input2", code, "ioaprender", "ioaprender", "2", 21, emf);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        emf = ex.regenerateConnectionUpdatep();
+        verifySolutionStatus();
     }//GEN-LAST:event_Btn_EnviarEjercicio2ActionPerformed
 
     private void Btn_EnviarEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio3ActionPerformed
         String code = syntaxEjercicio3.getText();
-        juzgador("input3", code, "ioaprender", "ioaprender", "3");
+        try {
+            juzgador("input3", code, "ioaprender", "ioaprender", "3", 22, emf);
+        } catch (Exception ex) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        emf = ex.regenerateConnectionUpdatep();
+        verifySolutionStatus();
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
 
     private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3) {
@@ -6678,84 +6884,6 @@ public class Home extends javax.swing.JFrame {
         });
     }
 
-    private String Title1_1 = eList.get(20).getExerciseName();
-    private String Title2_2 = eList.get(21).getExerciseName();
-    private String Title3_3 = eList.get(22).getExerciseName();
-
-    private String Content1_1 = ecList.get(20).getExerciseDescription();
-    private String Content2_2 = ecList.get(21).getExerciseDescription();
-    private String Content3_3 = ecList.get(22).getExerciseDescription();
-
-    private String Input1 = ecList.get(20).getInput();
-    private String Input2 = ecList.get(21).getInput();
-    private String Input3 = ecList.get(22).getInput();
-
-    private String Output1 = ecList.get(20).getOutput();
-    private String Output2 = ecList.get(21).getOutput();
-    private String Output3 = ecList.get(22).getOutput();
-
-    private String Sample_Input1 = ecList.get(20).getSampleInput();
-    private String Sample_Input2 = ecList.get(21).getSampleInput();
-    private String Sample_Input3 = ecList.get(22).getSampleInput();
-
-    private String Sample_Output1 = ecList.get(20).getSampleOutput();
-    private String Sample_Output2 = ecList.get(21).getSampleOutput();
-    private String Sample_Output3 = ecList.get(22).getSampleOutput();
-
-    private void ExerciseLearn1() {
-
-        String Template3 = "<html>\n"
-                + "    <h1 style=\"color: rgb(183, 30, 29);\">%s</h1>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Input</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Output</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Sample Input</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Sample Output</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "</html>";
-
-        tc.addHTML(Template3, Edt_Ejercicio1, Title1_1, Content1_1, Input1, Output1, Sample_Input1, Sample_Output1);
-    }
-    
-    private void ExerciseLearn2() {
-
-        String Template4 = "<html>\n"
-                + "    <h1 style=\"color: rgb(183, 30, 29);\">%s</h1>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Input</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Output</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Sample Input</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Sample Output</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "</html>";
-
-        tc.addHTML(Template4, Edt_Ejercicio2, Title2_2, Content2_2, Input2, Output2, Sample_Input2, Sample_Output2);
-    }
-    
-    private void ExerciseLearn3() {
-
-        String Template5 = "<html>\n"
-                + "    <h1 style=\"color: rgb(183, 30, 29);\">%s</h1>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Input</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Output</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Sample Input</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "    <h2 style=\"color: rgb(183, 30, 29);\">Sample Output</h2>\n"
-                + "    <p style=\"margin: 0;\">%s</p><br>\n"
-                + "</html>";
-
-        tc.addHTML(Template5, Edt_Ejercicio3, Title3_3, Content3_3, Input3, Output3, Sample_Input3, Sample_Output3);
-    }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Bgr_Question1;
     private javax.swing.ButtonGroup Bgr_Question2;
@@ -6985,6 +7113,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JEditorPane Edt_Ejercicio1;
     private javax.swing.JEditorPane Edt_Ejercicio2;
     private javax.swing.JEditorPane Edt_Ejercicio3;
+    private javax.swing.JEditorPane Edt_General_info;
     private javax.swing.JEditorPane Edt_Introduccion;
     private javax.swing.JLabel Lbl_Acumuladores;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
