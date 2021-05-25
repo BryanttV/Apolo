@@ -800,7 +800,7 @@ public class ThemesContent {
         String tmp13_2 = t.getGeneralTemplate("p_pBR");
         String tmp13_3 = t.getGeneralTemplate("p_pBR");
 
-        addHTML(tmp13_1, edt1, anlg13_1, sbct13_1, ejm);
+        addHTML(tmp13_1, edt1, anlg13_1, sbct13_1, "<br>" + ejm);
         addHTML(tmp13_2, edt2, out13_1, sbct13_2);
         addHTML(tmp13_3, edt3, sbct13_3, tip13_1);
 

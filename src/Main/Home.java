@@ -528,9 +528,10 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Mostrar panel de Encabezado en Seccion Aprender
-    private void showLearnPanels() {
+    private void showLearnPanels(JEditorPane edt) {
         Pnl_Mapa.setVisible(false);
         Pnl_Encabezado.setVisible(true);
+        edt.setCaretPosition(0);
     }
 
     // Inicializar botones según navegacion en Seccion CodeStorm
@@ -713,7 +714,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question0_3 = new javax.swing.JRadioButton();
         jRadioButton11 = new javax.swing.JRadioButton();
         jRadioButton12 = new javax.swing.JRadioButton();
-        EdtCuestionario1 = new javax.swing.JEditorPane();
+        Edt_Cuestionario1 = new javax.swing.JEditorPane();
         Scp_Tema2 = new javax.swing.JScrollPane();
         Pnl_Tema2 = new javax.swing.JPanel();
         Lbl_Comentarios = new javax.swing.JLabel();
@@ -742,7 +743,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question1_3 = new javax.swing.JRadioButton();
         jRadioButton17 = new javax.swing.JRadioButton();
         jRadioButton16 = new javax.swing.JRadioButton();
-        EdtCuestionario2 = new javax.swing.JEditorPane();
+        Edt_Cuestionario2 = new javax.swing.JEditorPane();
         Scp_Tema3 = new javax.swing.JScrollPane();
         Pnl_Tema3 = new javax.swing.JPanel();
         Lbl_TiposdeDatos = new javax.swing.JLabel();
@@ -769,7 +770,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question1_6 = new javax.swing.JRadioButton();
         jRadioButton22 = new javax.swing.JRadioButton();
         Rad_Question2_3 = new javax.swing.JRadioButton();
-        EdtCuestionario3 = new javax.swing.JEditorPane();
+        Edt_Cuestionario3 = new javax.swing.JEditorPane();
         Scp_Tema4 = new javax.swing.JScrollPane();
         Pnl_Tema4 = new javax.swing.JPanel();
         Lbl_OperadoresAritmeticos = new javax.swing.JLabel();
@@ -810,7 +811,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question1_9 = new javax.swing.JRadioButton();
         jRadioButton26 = new javax.swing.JRadioButton();
         Rad_Question3_3 = new javax.swing.JRadioButton();
-        EdtCuestionario4 = new javax.swing.JEditorPane();
+        Edt_Cuestionario4 = new javax.swing.JEditorPane();
         Scp_Tema5 = new javax.swing.JScrollPane();
         Pnl_Tema5 = new javax.swing.JPanel();
         Lbl_LecturaeImpresion = new javax.swing.JLabel();
@@ -837,7 +838,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question4_7 = new javax.swing.JRadioButton();
         jRadioButton35 = new javax.swing.JRadioButton();
         Rad_Question3_13 = new javax.swing.JRadioButton();
-        EdtCuestionario5 = new javax.swing.JEditorPane();
+        Edt_Cuestionario5 = new javax.swing.JEditorPane();
         Scp_Ejercicio1 = new javax.swing.JScrollPane();
         Pnl_Ejercicio1_Aprender = new javax.swing.JPanel();
         Btn_Anterior_Cuestionario5 = new javax.swing.JButton();
@@ -873,7 +874,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question4_6 = new javax.swing.JRadioButton();
         jRadioButton29 = new javax.swing.JRadioButton();
         Rad_Question3_8 = new javax.swing.JRadioButton();
-        EdtCuestionario6 = new javax.swing.JEditorPane();
+        Edt_Cuestionario6 = new javax.swing.JEditorPane();
         Scp_Tema7 = new javax.swing.JScrollPane();
         Pnl_Tema7 = new javax.swing.JPanel();
         Lbl_OperadoresLogicos = new javax.swing.JLabel();
@@ -902,7 +903,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question4_8 = new javax.swing.JRadioButton();
         jRadioButton31 = new javax.swing.JRadioButton();
         Rad_Question3_9 = new javax.swing.JRadioButton();
-        EdtCuestionario7 = new javax.swing.JEditorPane();
+        Edt_Cuestionario7 = new javax.swing.JEditorPane();
         Scp_Tema8 = new javax.swing.JScrollPane();
         Pnl_Tema8 = new javax.swing.JPanel();
         Lbl_Condicionales = new javax.swing.JLabel();
@@ -956,7 +957,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question4_9 = new javax.swing.JRadioButton();
         jRadioButton32 = new javax.swing.JRadioButton();
         Rad_Question3_10 = new javax.swing.JRadioButton();
-        EdtCuestionario8 = new javax.swing.JEditorPane();
+        Edt_Cuestionario8 = new javax.swing.JEditorPane();
         Scp_Tema9 = new javax.swing.JScrollPane();
         Pnl_Tema9 = new javax.swing.JPanel();
         Lbl_Bucles = new javax.swing.JLabel();
@@ -1002,7 +1003,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question4_10 = new javax.swing.JRadioButton();
         jRadioButton33 = new javax.swing.JRadioButton();
         Rad_Question8_3 = new javax.swing.JRadioButton();
-        EdtCuestionario9 = new javax.swing.JEditorPane();
+        Edt_Cuestionario9 = new javax.swing.JEditorPane();
         Scp_Ejercicio2 = new javax.swing.JScrollPane();
         Pnl_Ejercicio2_Aprender = new javax.swing.JPanel();
         Btn_Anterior_Cuestionario9 = new javax.swing.JButton();
@@ -1040,7 +1041,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question4_11 = new javax.swing.JRadioButton();
         Rad_Question9_3 = new javax.swing.JRadioButton();
         Rad_Question3_12 = new javax.swing.JRadioButton();
-        EdtCuestionario10 = new javax.swing.JEditorPane();
+        Edt_Cuestionario10 = new javax.swing.JEditorPane();
         Scp_Tema11 = new javax.swing.JScrollPane();
         Pnl_Tema11 = new javax.swing.JPanel();
         Lbl_Recursion = new javax.swing.JLabel();
@@ -1067,7 +1068,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question8_11 = new javax.swing.JRadioButton();
         Rad_Question10_3 = new javax.swing.JRadioButton();
         Rad_Question3_14 = new javax.swing.JRadioButton();
-        EdtCuestionario11 = new javax.swing.JEditorPane();
+        Edt_Cuestionario11 = new javax.swing.JEditorPane();
         Scp_Tema12 = new javax.swing.JScrollPane();
         Pnl_Tema12 = new javax.swing.JPanel();
         Lbl_EDDBasicas = new javax.swing.JLabel();
@@ -1122,7 +1123,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question10_6 = new javax.swing.JRadioButton();
         Rad_Question3_18 = new javax.swing.JRadioButton();
         Btn_Answer11 = new javax.swing.JButton();
-        EdtCuestionario12 = new javax.swing.JEditorPane();
+        Edt_Cuestionario12 = new javax.swing.JEditorPane();
         Scp_Tema13 = new javax.swing.JScrollPane();
         Pnl_Tema13 = new javax.swing.JPanel();
         Lbl_EDDIntermedias = new javax.swing.JLabel();
@@ -1173,7 +1174,7 @@ public class Home extends javax.swing.JFrame {
         jRadioButton34 = new javax.swing.JRadioButton();
         Rad_Question8_14 = new javax.swing.JRadioButton();
         Btn_Answer12 = new javax.swing.JButton();
-        EdtCuestionario13 = new javax.swing.JEditorPane();
+        Edt_Cuestionario13 = new javax.swing.JEditorPane();
         Scp_Tema14 = new javax.swing.JScrollPane();
         Pnl_Tema14 = new javax.swing.JPanel();
         Lbl_PrimerosAlgoritmos = new javax.swing.JLabel();
@@ -1210,7 +1211,7 @@ public class Home extends javax.swing.JFrame {
         Rad_Question10_3_3 = new javax.swing.JRadioButton();
         Rad_Question3_19 = new javax.swing.JRadioButton();
         Btn_Answer13 = new javax.swing.JButton();
-        EdtCuestionario14 = new javax.swing.JEditorPane();
+        Edt_Cuestionario14 = new javax.swing.JEditorPane();
         Scp_Ejercicio3 = new javax.swing.JScrollPane();
         Pnl_Ejercicio3_Aprender = new javax.swing.JPanel();
         Btn_Anterior_Cuestionario14 = new javax.swing.JButton();
@@ -1751,7 +1752,7 @@ public class Home extends javax.swing.JFrame {
         Edt0_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt0_1.setText("");
         Edt0_1.setOpaque(false);
-        Pnl_Tema1.add(Edt0_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 265));
+        Pnl_Tema1.add(Edt0_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 320));
 
         Pnl_CodesThemes0.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes0.setLayout(new java.awt.CardLayout());
@@ -1900,9 +1901,9 @@ public class Home extends javax.swing.JFrame {
         jRadioButton12.setOpaque(false);
         Pnl_Cuestionario1.add(jRadioButton12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
 
-        EdtCuestionario1.setContentType("text/html"); // NOI18N
-        EdtCuestionario1.setOpaque(false);
-        Pnl_Cuestionario1.add(EdtCuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 660, 450));
+        Edt_Cuestionario1.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario1.setOpaque(false);
+        Pnl_Cuestionario1.add(Edt_Cuestionario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 660, 450));
 
         Scp_Cuestionario1.setViewportView(Pnl_Cuestionario1);
 
@@ -1932,7 +1933,7 @@ public class Home extends javax.swing.JFrame {
         Edt1_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt1_1.setText("");
         Edt1_1.setOpaque(false);
-        Pnl_Tema2.add(Edt1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 370));
+        Pnl_Tema2.add(Edt1_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 430));
 
         Pnl_CodesThemes1_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes1_1.setLayout(new java.awt.CardLayout());
@@ -2108,9 +2109,9 @@ public class Home extends javax.swing.JFrame {
         jRadioButton16.setOpaque(false);
         Pnl_Cuestionario2.add(jRadioButton16, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, -1, -1));
 
-        EdtCuestionario2.setContentType("text/html"); // NOI18N
-        EdtCuestionario2.setOpaque(false);
-        Pnl_Cuestionario2.add(EdtCuestionario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 730, 450));
+        Edt_Cuestionario2.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario2.setOpaque(false);
+        Pnl_Cuestionario2.add(Edt_Cuestionario2, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 730, 450));
 
         Scp_Cuestionario2.setViewportView(Pnl_Cuestionario2);
 
@@ -2140,7 +2141,7 @@ public class Home extends javax.swing.JFrame {
         Edt2_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt2_1.setText("");
         Edt2_1.setOpaque(false);
-        Pnl_Tema3.add(Edt2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 510));
+        Pnl_Tema3.add(Edt2_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 560));
 
         Pnl_CodesThemes2.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes2.setLayout(new java.awt.CardLayout());
@@ -2304,9 +2305,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question2_3.setOpaque(false);
         Pnl_Cuestionario3.add(Rad_Question2_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, -1, -1));
 
-        EdtCuestionario3.setContentType("text/html"); // NOI18N
-        EdtCuestionario3.setOpaque(false);
-        Pnl_Cuestionario3.add(EdtCuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 580));
+        Edt_Cuestionario3.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario3.setOpaque(false);
+        Pnl_Cuestionario3.add(Edt_Cuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 580));
 
         Scp_Cuestionario3.setViewportView(Pnl_Cuestionario3);
 
@@ -2336,7 +2337,7 @@ public class Home extends javax.swing.JFrame {
         Edt3_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_1.setText("");
         Edt3_1.setOpaque(false);
-        Pnl_Tema4.add(Edt3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 280));
+        Pnl_Tema4.add(Edt3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 330));
 
         Pnl_CodesThemes3_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes3_1.setLayout(new java.awt.CardLayout());
@@ -2569,9 +2570,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question3_3.setOpaque(false);
         Pnl_Cuestionario4.add(Rad_Question3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
 
-        EdtCuestionario4.setContentType("text/html"); // NOI18N
-        EdtCuestionario4.setOpaque(false);
-        Pnl_Cuestionario4.add(EdtCuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 460));
+        Edt_Cuestionario4.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario4.setOpaque(false);
+        Pnl_Cuestionario4.add(Edt_Cuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 460));
 
         Scp_Cuestionario4.setViewportView(Pnl_Cuestionario4);
 
@@ -2601,7 +2602,7 @@ public class Home extends javax.swing.JFrame {
         Edt4_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt4_1.setText("");
         Edt4_1.setOpaque(false);
-        Pnl_Tema5.add(Edt4_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 180));
+        Pnl_Tema5.add(Edt4_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 230));
 
         Pnl_CodesThemes4.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes4.setLayout(new java.awt.CardLayout());
@@ -2765,9 +2766,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question3_13.setOpaque(false);
         Pnl_Cuestionario5.add(Rad_Question3_13, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 500, -1, -1));
 
-        EdtCuestionario5.setContentType("text/html"); // NOI18N
-        EdtCuestionario5.setOpaque(false);
-        Pnl_Cuestionario5.add(EdtCuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 850, 500));
+        Edt_Cuestionario5.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario5.setOpaque(false);
+        Pnl_Cuestionario5.add(Edt_Cuestionario5, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 850, 500));
 
         Scp_Cuestionario5.setViewportView(Pnl_Cuestionario5);
 
@@ -2889,7 +2890,7 @@ public class Home extends javax.swing.JFrame {
         Edt5_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt5_1.setText("");
         Edt5_1.setOpaque(false);
-        Pnl_Tema6.add(Edt5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 240));
+        Pnl_Tema6.add(Edt5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 290));
 
         Lbl_TablaOperadoresRelacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         Lbl_TablaOperadoresRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Learning_Images/Operadores_Relacion.png"))); // NOI18N
@@ -3055,9 +3056,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question3_8.setOpaque(false);
         Pnl_Cuestionario6.add(Rad_Question3_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 668, -1, -1));
 
-        EdtCuestionario6.setContentType("text/html"); // NOI18N
-        EdtCuestionario6.setOpaque(false);
-        Pnl_Cuestionario6.add(EdtCuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 660));
+        Edt_Cuestionario6.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario6.setOpaque(false);
+        Pnl_Cuestionario6.add(Edt_Cuestionario6, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 660));
 
         Scp_Cuestionario6.setViewportView(Pnl_Cuestionario6);
 
@@ -3088,7 +3089,7 @@ public class Home extends javax.swing.JFrame {
         Edt6_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt6_1.setText("");
         Edt6_1.setOpaque(false);
-        Pnl_Tema7.add(Edt6_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 160));
+        Pnl_Tema7.add(Edt6_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 210));
 
         Lbl_TablaOperadoresLogicos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Learning_Images/Operadores_Logicos.png"))); // NOI18N
         Pnl_Tema7.add(Lbl_TablaOperadoresLogicos, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 1130, 290));
@@ -3261,9 +3262,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question3_9.setOpaque(false);
         Pnl_Cuestionario7.add(Rad_Question3_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 622, -1, -1));
 
-        EdtCuestionario7.setContentType("text/html"); // NOI18N
-        EdtCuestionario7.setOpaque(false);
-        Pnl_Cuestionario7.add(EdtCuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 620));
+        Edt_Cuestionario7.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario7.setOpaque(false);
+        Pnl_Cuestionario7.add(Edt_Cuestionario7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 620));
 
         Scp_Cuestionario7.setViewportView(Pnl_Cuestionario7);
 
@@ -3293,7 +3294,7 @@ public class Home extends javax.swing.JFrame {
         Edt7_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt7_1.setText("");
         Edt7_1.setOpaque(false);
-        Pnl_Tema8.add(Edt7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 470));
+        Pnl_Tema8.add(Edt7_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 520));
 
         Pnl_CodesThemes7_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes7_1.setLayout(new java.awt.CardLayout());
@@ -3584,9 +3585,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question3_10.setOpaque(false);
         Pnl_Cuestionario8.add(Rad_Question3_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 520, -1, -1));
 
-        EdtCuestionario8.setContentType("text/html"); // NOI18N
-        EdtCuestionario8.setOpaque(false);
-        Pnl_Cuestionario8.add(EdtCuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 520));
+        Edt_Cuestionario8.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario8.setOpaque(false);
+        Pnl_Cuestionario8.add(Edt_Cuestionario8, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 520));
 
         Scp_Cuestionario8.setViewportView(Pnl_Cuestionario8);
 
@@ -3616,7 +3617,7 @@ public class Home extends javax.swing.JFrame {
         Edt8_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt8_1.setText("");
         Edt8_1.setOpaque(false);
-        Pnl_Tema9.add(Edt8_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 160));
+        Pnl_Tema9.add(Edt8_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 210));
 
         Spr_While.setForeground(sRecursos.getColorVerde());
         Spr_While.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
@@ -3869,9 +3870,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question8_3.setOpaque(false);
         Pnl_Cuestionario9.add(Rad_Question8_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 880, -1, 20));
 
-        EdtCuestionario9.setContentType("text/html"); // NOI18N
-        EdtCuestionario9.setOpaque(false);
-        Pnl_Cuestionario9.add(EdtCuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 1070, 870));
+        Edt_Cuestionario9.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario9.setOpaque(false);
+        Pnl_Cuestionario9.add(Edt_Cuestionario9, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 1070, 870));
 
         Scp_Cuestionario9.setViewportView(Pnl_Cuestionario9);
 
@@ -3993,7 +3994,7 @@ public class Home extends javax.swing.JFrame {
         Edt9_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt9_1.setText("");
         Edt9_1.setOpaque(false);
-        Pnl_Tema10.add(Edt9_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 270));
+        Pnl_Tema10.add(Edt9_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 320));
 
         Pnl_CodesThemes9_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes9_1.setLayout(new java.awt.CardLayout());
@@ -4167,9 +4168,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question3_12.setOpaque(false);
         Pnl_Cuestionario10.add(Rad_Question3_12, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 455, -1, -1));
 
-        EdtCuestionario10.setContentType("text/html"); // NOI18N
-        EdtCuestionario10.setOpaque(false);
-        Pnl_Cuestionario10.add(EdtCuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 450));
+        Edt_Cuestionario10.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario10.setOpaque(false);
+        Pnl_Cuestionario10.add(Edt_Cuestionario10, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 450));
 
         Scp_Cuestionario10.setViewportView(Pnl_Cuestionario10);
 
@@ -4199,7 +4200,7 @@ public class Home extends javax.swing.JFrame {
         Edt10_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt10_1.setText("");
         Edt10_1.setOpaque(false);
-        Pnl_Tema11.add(Edt10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 430));
+        Pnl_Tema11.add(Edt10_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 480));
 
         Pnl_CodesThemes10_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes10_1.setLayout(new java.awt.CardLayout());
@@ -4365,9 +4366,9 @@ public class Home extends javax.swing.JFrame {
         Rad_Question3_14.setOpaque(false);
         Pnl_Cuestionario11.add(Rad_Question3_14, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 435, -1, -1));
 
-        EdtCuestionario11.setContentType("text/html"); // NOI18N
-        EdtCuestionario11.setOpaque(false);
-        Pnl_Cuestionario11.add(EdtCuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 410));
+        Edt_Cuestionario11.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario11.setOpaque(false);
+        Pnl_Cuestionario11.add(Edt_Cuestionario11, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 410));
 
         Scp_Cuestionario11.setViewportView(Pnl_Cuestionario11);
 
@@ -4397,7 +4398,7 @@ public class Home extends javax.swing.JFrame {
         Edt11_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt11_1.setText("");
         Edt11_1.setOpaque(false);
-        Pnl_Tema12.add(Edt11_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 640));
+        Pnl_Tema12.add(Edt11_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 690));
 
         Pnl_CodesThemes11_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes11_1.setLayout(new java.awt.CardLayout());
@@ -4703,9 +4704,9 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Cuestionario12.add(Btn_Answer11, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 550, 260, 50));
 
-        EdtCuestionario12.setContentType("text/html"); // NOI18N
-        EdtCuestionario12.setOpaque(false);
-        Pnl_Cuestionario12.add(EdtCuestionario12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 390));
+        Edt_Cuestionario12.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario12.setOpaque(false);
+        Pnl_Cuestionario12.add(Edt_Cuestionario12, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 390));
 
         Scp_Cuestionario12.setViewportView(Pnl_Cuestionario12);
 
@@ -4735,7 +4736,7 @@ public class Home extends javax.swing.JFrame {
         Edt12_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt12_1.setText("");
         Edt12_1.setOpaque(false);
-        Pnl_Tema13.add(Edt12_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1120, 130));
+        Pnl_Tema13.add(Edt12_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 180));
 
         Spr_Sets.setForeground(sRecursos.getColorVerde());
         Spr_Sets.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
@@ -5019,9 +5020,9 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Cuestionario13.add(Btn_Answer12, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 920, 260, 50));
 
-        EdtCuestionario13.setContentType("text/html"); // NOI18N
-        EdtCuestionario13.setOpaque(false);
-        Pnl_Cuestionario13.add(EdtCuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 1060, 740));
+        Edt_Cuestionario13.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario13.setOpaque(false);
+        Pnl_Cuestionario13.add(Edt_Cuestionario13, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 1060, 740));
 
         Scp_Cuestionario13.setViewportView(Pnl_Cuestionario13);
 
@@ -5050,13 +5051,13 @@ public class Home extends javax.swing.JFrame {
         Lbl_BubbleSort.setFont(sRecursos.getFTitleEditor());
         Lbl_BubbleSort.setForeground(sRecursos.getColorVerde());
         Lbl_BubbleSort.setText("Ordenamientos «Bubble Sort»");
-        Pnl_Tema14.add(Lbl_BubbleSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 400, 20));
+        Pnl_Tema14.add(Lbl_BubbleSort, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 400, 20));
 
         Edt13_1.setContentType("text/html"); // NOI18N
         Edt13_1.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt13_1.setText("");
         Edt13_1.setOpaque(false);
-        Pnl_Tema14.add(Edt13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, 1120, 290));
+        Pnl_Tema14.add(Edt13_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 420));
 
         Pnl_CodesThemes13_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes13_1.setLayout(new java.awt.CardLayout());
@@ -5267,9 +5268,9 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Cuestionario14.add(Btn_Answer13, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 610, 260, 50));
 
-        EdtCuestionario14.setContentType("text/html"); // NOI18N
-        EdtCuestionario14.setOpaque(false);
-        Pnl_Cuestionario14.add(EdtCuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 450));
+        Edt_Cuestionario14.setContentType("text/html"); // NOI18N
+        Edt_Cuestionario14.setOpaque(false);
+        Pnl_Cuestionario14.add(Edt_Cuestionario14, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 90, 800, 450));
 
         Scp_Cuestionario14.setViewportView(Pnl_Cuestionario14);
 
@@ -6084,7 +6085,7 @@ public class Home extends javax.swing.JFrame {
     private void Btn_AprenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AprenderActionPerformed
         if (Btn_Aprender.isSelected()) {
             if (active) {
-                new Tips(this, true).setVisible(true);
+                new Curiositie(this, true).setVisible(true);
                 active = false;
             }
 
@@ -6132,20 +6133,21 @@ public class Home extends javax.swing.JFrame {
     private void Btn_Aprender_Tema1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema1ActionPerformed
         tc.getHelloWorldContent(Edt0_1, Edt0_2, syntaxTemas0);
         Scp_Tema1.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt0_1);
     }//GEN-LAST:event_Btn_Aprender_Tema1ActionPerformed
 
     private void Btn_Aprender_Tema2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema2ActionPerformed
         tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1,
                 Edt1_2, Edt1_3, Edt1_4);
         Scp_Tema2.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt1_1);
+        Edt1_1.setCaretPosition(0);
     }//GEN-LAST:event_Btn_Aprender_Tema2ActionPerformed
 
     private void Btn_Aprender_Tema3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema3ActionPerformed
         tc.getTiposDeDatosContent(syntaxTemas2, Edt2_1, Edt2_2);
         Scp_Tema3.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt2_1);
     }//GEN-LAST:event_Btn_Aprender_Tema3ActionPerformed
 
     private void Btn_Aprender_Tema4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema4ActionPerformed
@@ -6153,26 +6155,25 @@ public class Home extends javax.swing.JFrame {
                 syntaxTemas3_4, syntaxTemas3_5, Edt3_1, Edt3_2, Edt3_3, Edt3_4, Edt3_5,
                 Edt3_6, Edt3_7, Edt3_8);
         Scp_Tema4.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt3_1);
     }//GEN-LAST:event_Btn_Aprender_Tema4ActionPerformed
 
     private void Btn_Aprender_Tema5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema5ActionPerformed
         tc.getLecturaContent(syntaxTemas4, Edt4_1, Edt4_2);
         Scp_Tema5.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt4_1);
     }//GEN-LAST:event_Btn_Aprender_Tema5ActionPerformed
-
 
     private void Btn_Aprender_Tema6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema6ActionPerformed
         tc.getOperadoresDeRelacion(syntaxTemas5, Edt5_1, Edt5_2, Edt5_3);
         Scp_Tema6.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt5_1);
     }//GEN-LAST:event_Btn_Aprender_Tema6ActionPerformed
 
     private void Btn_Aprender_Tema7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema7ActionPerformed
         tc.getOperadoresLogicos(syntaxTemas6, Edt6_1, Edt6_2, Edt6_3);
         Scp_Tema7.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt6_1);
     }//GEN-LAST:event_Btn_Aprender_Tema7ActionPerformed
 
     private void Btn_Aprender_Tema8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema8ActionPerformed
@@ -6181,7 +6182,7 @@ public class Home extends javax.swing.JFrame {
                 syntaxTemas7_8, syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2,
                 Edt7_3, Edt7_4, Edt7_5, Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
         Scp_Tema8.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt7_1);
     }//GEN-LAST:event_Btn_Aprender_Tema8ActionPerformed
 
     private void Btn_Aprender_Tema9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema9ActionPerformed
@@ -6189,19 +6190,19 @@ public class Home extends javax.swing.JFrame {
                 syntaxTemas8_4, syntaxTemas8_5, syntaxTemas8_6, Edt8_1, Edt8_2,
                 Edt8_3, Edt8_4, Edt8_5, Edt8_6, Edt8_7);
         Scp_Tema9.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt8_1);
     }//GEN-LAST:event_Btn_Aprender_Tema9ActionPerformed
 
     private void Btn_Aprender_Tema10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema10ActionPerformed
         tc.getFuncyProcedContent(syntaxTemas9_1, syntaxTemas9_2, Edt9_1, Edt9_2, Edt9_3);
         Scp_Tema10.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt9_1);
     }//GEN-LAST:event_Btn_Aprender_Tema10ActionPerformed
 
     private void Btn_Aprender_Tema11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema11ActionPerformed
         tc.getRecursionContent(syntaxTemas10_1, syntaxTemas10_2, Edt10_1, Edt10_2, Edt10_3);
         Scp_Tema11.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt10_1);
     }//GEN-LAST:event_Btn_Aprender_Tema11ActionPerformed
 
     private void Btn_Aprender_Tema12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema12ActionPerformed
@@ -6210,7 +6211,7 @@ public class Home extends javax.swing.JFrame {
             syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5,
             Edt11_6, Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
         Scp_Tema12.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt11_1);
     }//GEN-LAST:event_Btn_Aprender_Tema12ActionPerformed
 
     private void Btn_Aprender_Tema13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema13ActionPerformed
@@ -6218,19 +6219,19 @@ public class Home extends javax.swing.JFrame {
                 syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3, Edt12_4, Edt12_5, Edt12_6,
                 Edt12_7, Edt12_8, Edt12_9, Edt12_10, Edt12_11);
         Scp_Tema13.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt12_1);
     }//GEN-LAST:event_Btn_Aprender_Tema13ActionPerformed
 
     private void Btn_Aprender_Tema14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema14ActionPerformed
         tc.getAlgoritmosContent(syntaxTemas13_1, syntaxTemas13_2, Edt13_1, Edt13_2,
                 Edt13_3, Edt13_4, Edt13_5, Edt13_6);
         Scp_Tema14.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt13_1);
     }//GEN-LAST:event_Btn_Aprender_Tema14ActionPerformed
 
     private void Btn_Siguiente_Cuestionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario1ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario1, 0, 1, 2);
-        visibleAndInvisibleScp(Scp_Cuestionario1, Scp_Tema1);
+        addInfoQuestionnaires(Edt_Cuestionario1, 0, 1, 2);
+        visibleAndInvisibleScp(Scp_Cuestionario1, Scp_Tema1, Edt_Cuestionario1);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario1ActionPerformed
 
     private void addInfoQuestionnaires(JEditorPane edt, int q1, int q2, int q3) {
@@ -6251,93 +6252,95 @@ public class Home extends javax.swing.JFrame {
         tc.addHTML(t.getIntroductionTemplate(), Edt_Introduccion);
     }
 
-    private void visibleAndInvisibleScp(JScrollPane scp1, JScrollPane scp2) {
+    private void visibleAndInvisibleScp(JScrollPane scp1, JScrollPane scp2, JEditorPane edt) {
         scp1.setVisible(true);
         scp2.setVisible(false);
+        edt.setCaretPosition(0);
+
     }
 
     private void Btn_Anterior_HelloWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_HelloWordActionPerformed
         tc.getHelloWorldContent(Edt0_1, Edt0_2, syntaxCode);
-        visibleAndInvisibleScp(Scp_Tema1, Scp_Cuestionario1);
+        visibleAndInvisibleScp(Scp_Tema1, Scp_Cuestionario1, Edt0_1);
     }//GEN-LAST:event_Btn_Anterior_HelloWordActionPerformed
 
     private void Btn_Siguiente_ComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_ComentariosActionPerformed
         tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1,
                 Edt1_2, Edt1_3, Edt1_4);
-        visibleAndInvisibleScp(Scp_Tema2, Scp_Cuestionario1);
+        visibleAndInvisibleScp(Scp_Tema2, Scp_Cuestionario1, Edt1_1);
     }//GEN-LAST:event_Btn_Siguiente_ComentariosActionPerformed
 
     private void Btn_Anterior_Cuestionario1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario1ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario1, 0, 1, 2);
-        visibleAndInvisibleScp(Scp_Cuestionario1, Scp_Tema2);
+        addInfoQuestionnaires(Edt_Cuestionario1, 0, 1, 2);
+        visibleAndInvisibleScp(Scp_Cuestionario1, Scp_Tema2, Edt_Cuestionario1);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario1ActionPerformed
 
     private void Btn_Siguiente_Cuestionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario2ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario2, 3, 4, 5);
-        visibleAndInvisibleScp(Scp_Cuestionario2, Scp_Tema2);
+        addInfoQuestionnaires(Edt_Cuestionario2, 3, 4, 5);
+        visibleAndInvisibleScp(Scp_Cuestionario2, Scp_Tema2, Edt_Cuestionario2);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario2ActionPerformed
 
     private void Btn_Anterior_ComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_ComentariosActionPerformed
         tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1,
                 Edt1_2, Edt1_3, Edt1_4);
-        visibleAndInvisibleScp(Scp_Tema2, Scp_Cuestionario2);
+        visibleAndInvisibleScp(Scp_Tema2, Scp_Cuestionario2, Edt1_1);
     }//GEN-LAST:event_Btn_Anterior_ComentariosActionPerformed
 
     private void Btn_Siguiente_TiposdeDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_TiposdeDatosActionPerformed
         tc.getTiposDeDatosContent(syntaxTemas2, Edt2_1, Edt2_2);
-        visibleAndInvisibleScp(Scp_Tema3, Scp_Cuestionario2);
+        visibleAndInvisibleScp(Scp_Tema3, Scp_Cuestionario2, Edt2_1);
     }//GEN-LAST:event_Btn_Siguiente_TiposdeDatosActionPerformed
 
     private void Btn_Anterior_Cuestionario2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario2ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario2, 3, 4, 5);
-        visibleAndInvisibleScp(Scp_Cuestionario2, Scp_Tema3);
+        addInfoQuestionnaires(Edt_Cuestionario2, 3, 4, 5);
+        visibleAndInvisibleScp(Scp_Cuestionario2, Scp_Tema3, Edt_Cuestionario2);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario2ActionPerformed
 
     private void Btn_Siguiente_Cuestionario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario3ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario3, 6, 7, 8);
-        visibleAndInvisibleScp(Scp_Cuestionario3, Scp_Tema3);
+        addInfoQuestionnaires(Edt_Cuestionario3, 6, 7, 8);
+        visibleAndInvisibleScp(Scp_Cuestionario3, Scp_Tema3, Edt_Cuestionario3);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario3ActionPerformed
 
     private void Btn_Anterior_TiposdeDatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_TiposdeDatosActionPerformed
         tc.getTiposDeDatosContent(syntaxTemas2, Edt2_1, Edt2_2);
-        visibleAndInvisibleScp(Scp_Tema3, Scp_Cuestionario3);
+        visibleAndInvisibleScp(Scp_Tema3, Scp_Cuestionario3, Edt2_1);
     }//GEN-LAST:event_Btn_Anterior_TiposdeDatosActionPerformed
 
     private void Btn_Siguiente_OperadoresAritmeticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresAritmeticosActionPerformed
         tc.getOperadoresAritmeticosContent(syntaxTemas3_1, syntaxTemas3_2, syntaxTemas3_3, syntaxTemas3_4,
                 syntaxTemas3_5, Edt3_1, Edt3_2, Edt3_3, Edt3_4, Edt3_5, Edt3_6, Edt3_7, Edt3_8);
-        visibleAndInvisibleScp(Scp_Tema4, Scp_Cuestionario3);
+        visibleAndInvisibleScp(Scp_Tema4, Scp_Cuestionario3, Edt3_1);
     }//GEN-LAST:event_Btn_Siguiente_OperadoresAritmeticosActionPerformed
 
     private void Btn_Anterior_Cuestionario3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario3ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario3, 6, 7, 8);
-        visibleAndInvisibleScp(Scp_Cuestionario3, Scp_Tema4);
+        addInfoQuestionnaires(Edt_Cuestionario3, 6, 7, 8);
+        visibleAndInvisibleScp(Scp_Cuestionario3, Scp_Tema4, Edt_Cuestionario3);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario3ActionPerformed
 
     private void Btn_Siguiente_Cuestionario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario4ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario4, 9, 10, 11);
-        visibleAndInvisibleScp(Scp_Cuestionario4, Scp_Tema4);
+        addInfoQuestionnaires(Edt_Cuestionario4, 9, 10, 11);
+        visibleAndInvisibleScp(Scp_Cuestionario4, Scp_Tema4, Edt_Cuestionario4);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario4ActionPerformed
 
     private void Btn_Anterior_OperadoresAritmeticosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_OperadoresAritmeticosActionPerformed
         tc.getOperadoresAritmeticosContent(syntaxTemas3_1, syntaxTemas3_2, syntaxTemas3_3, syntaxTemas3_4,
                 syntaxTemas3_5, Edt3_1, Edt3_2, Edt3_3, Edt3_4, Edt3_5, Edt3_6, Edt3_7, Edt3_8);
-        visibleAndInvisibleScp(Scp_Tema4, Scp_Cuestionario4);
+        visibleAndInvisibleScp(Scp_Tema4, Scp_Cuestionario4, Edt3_1);
     }//GEN-LAST:event_Btn_Anterior_OperadoresAritmeticosActionPerformed
 
     private void Btn_Siguiente_LecturaeImpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_LecturaeImpresionActionPerformed
         tc.getLecturaContent(syntaxTemas4, Edt4_1, Edt4_2);
-        visibleAndInvisibleScp(Scp_Tema5, Scp_Cuestionario4);
+        visibleAndInvisibleScp(Scp_Tema5, Scp_Cuestionario4, Edt4_1);
     }//GEN-LAST:event_Btn_Siguiente_LecturaeImpresionActionPerformed
 
     private void Btn_Anterior_Cuestionario4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario4ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario4, 9, 10, 11);
-        visibleAndInvisibleScp(Scp_Cuestionario4, Scp_Tema5);
+        addInfoQuestionnaires(Edt_Cuestionario4, 9, 10, 11);
+        visibleAndInvisibleScp(Scp_Cuestionario4, Scp_Tema5, Edt_Cuestionario4);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario4ActionPerformed
 
     private void Btn_Siguiente_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario5ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario5, 13, 14, 15);
-        visibleAndInvisibleScp(Scp_Cuestionario5, Scp_Tema5);
+        addInfoQuestionnaires(Edt_Cuestionario5, 13, 14, 15);
+        visibleAndInvisibleScp(Scp_Cuestionario5, Scp_Tema5, Edt_Cuestionario5);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario5ActionPerformed
 
     // Cargar las variables y configuracion del listado de botones en CodeStorm
@@ -6519,47 +6522,47 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_Anterior_LecturaeImpresionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_LecturaeImpresionActionPerformed
         tc.getLecturaContent(syntaxTemas4, Edt4_1, Edt4_2);
-        visibleAndInvisibleScp(Scp_Tema5, Scp_Cuestionario5);
+        visibleAndInvisibleScp(Scp_Tema5, Scp_Cuestionario5, Edt4_1);
     }//GEN-LAST:event_Btn_Anterior_LecturaeImpresionActionPerformed
 
     private void Btn_Siguiente_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio1ActionPerformed
         tc.getExer1LearnContent(Edt_Ejercicio1);
-        visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Cuestionario5);
+        visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Cuestionario5, Edt_Ejercicio1);
     }//GEN-LAST:event_Btn_Siguiente_Ejercicio1ActionPerformed
 
     private void Btn_Anterior_Ejercicio1_PrincipianteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
         tc.getExer1LearnContent(Edt_Ejercicio1);
-        visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Tema6);
+        visibleAndInvisibleScp(Scp_Ejercicio1, Scp_Tema6, Edt_Ejercicio1);
     }//GEN-LAST:event_Btn_Anterior_Ejercicio1_PrincipianteActionPerformed
 
     private void Btn_Siguiente_Cuestionario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario6ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario6, 18, 19, 20);
-        visibleAndInvisibleScp(Scp_Cuestionario6, Scp_Tema6);
+        addInfoQuestionnaires(Edt_Cuestionario6, 18, 19, 20);
+        visibleAndInvisibleScp(Scp_Cuestionario6, Scp_Tema6, Edt_Cuestionario6);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario6ActionPerformed
 
     private void Btn_Anterior_OperadoresdeRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_OperadoresdeRelacionActionPerformed
         tc.getOperadoresDeRelacion(syntaxTemas5, Edt5_1, Edt5_2, Edt5_3);
-        visibleAndInvisibleScp(Scp_Tema6, Scp_Cuestionario6);
+        visibleAndInvisibleScp(Scp_Tema6, Scp_Cuestionario6, Edt5_1);
     }//GEN-LAST:event_Btn_Anterior_OperadoresdeRelacionActionPerformed
 
     private void Btn_Siguiente_OperadoresLogicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresLogicosActionPerformed
         tc.getOperadoresLogicos(syntaxTemas6, Edt6_1, Edt6_2, Edt6_3);
-        visibleAndInvisibleScp(Scp_Tema7, Scp_Cuestionario6);
+        visibleAndInvisibleScp(Scp_Tema7, Scp_Cuestionario6, Edt6_1);
     }//GEN-LAST:event_Btn_Siguiente_OperadoresLogicosActionPerformed
 
     private void Btn_Anterior_Cuestionario6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario6ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario6, 18, 19, 20);
-        visibleAndInvisibleScp(Scp_Cuestionario6, Scp_Tema7);
+        addInfoQuestionnaires(Edt_Cuestionario6, 18, 19, 20);
+        visibleAndInvisibleScp(Scp_Cuestionario6, Scp_Tema7, Edt_Cuestionario6);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario6ActionPerformed
 
     private void Btn_Siguiente_Cuestionario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario7ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario7, 21, 22, 23);
-        visibleAndInvisibleScp(Scp_Cuestionario7, Scp_Tema7);
+        addInfoQuestionnaires(Edt_Cuestionario7, 21, 22, 23);
+        visibleAndInvisibleScp(Scp_Cuestionario7, Scp_Tema7, Edt_Cuestionario7);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario7ActionPerformed
 
     private void Btn_Anterior_OperadoresLogicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_OperadoresLogicosActionPerformed
         tc.getOperadoresLogicos(syntaxTemas6, Edt6_1, Edt6_2, Edt6_3);
-        visibleAndInvisibleScp(Scp_Tema7, Scp_Cuestionario7);
+        visibleAndInvisibleScp(Scp_Tema7, Scp_Cuestionario7, Edt6_1);
     }//GEN-LAST:event_Btn_Anterior_OperadoresLogicosActionPerformed
 
     private void Btn_Siguiente_CondicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_CondicionalesActionPerformed
@@ -6567,17 +6570,17 @@ public class Home extends javax.swing.JFrame {
                 syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7,
                 syntaxTemas7_8, syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2,
                 Edt7_3, Edt7_4, Edt7_5, Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
-        visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario7);
+        visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario7, Edt7_1);
     }//GEN-LAST:event_Btn_Siguiente_CondicionalesActionPerformed
 
     private void Btn_Anterior_Cuestionario7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario7ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario7, 21, 22, 23);
-        visibleAndInvisibleScp(Scp_Cuestionario7, Scp_Tema8);
+        addInfoQuestionnaires(Edt_Cuestionario7, 21, 22, 23);
+        visibleAndInvisibleScp(Scp_Cuestionario7, Scp_Tema8, Edt_Cuestionario7);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario7ActionPerformed
 
     private void Btn_Siguiente_Cuestionario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario8ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario8, 24, 25, 26);
-        visibleAndInvisibleScp(Scp_Cuestionario8, Scp_Tema8);
+        addInfoQuestionnaires(Edt_Cuestionario8, 24, 25, 26);
+        visibleAndInvisibleScp(Scp_Cuestionario8, Scp_Tema8, Edt_Cuestionario8);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario8ActionPerformed
 
     private void Btn_Anterior_CondicionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_CondicionalesActionPerformed
@@ -6585,71 +6588,71 @@ public class Home extends javax.swing.JFrame {
                 syntaxTemas7_4, syntaxTemas7_5, syntaxTemas7_6, syntaxTemas7_7,
                 syntaxTemas7_8, syntaxTemas7_9, syntaxTemas7_10, Edt7_1, Edt7_2,
                 Edt7_3, Edt7_4, Edt7_5, Edt7_6, Edt7_7, Edt7_8, Edt7_9, Edt7_10);
-        visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario8);
+        visibleAndInvisibleScp(Scp_Tema8, Scp_Cuestionario8, Edt7_1);
     }//GEN-LAST:event_Btn_Anterior_CondicionalesActionPerformed
 
     private void Btn_Siguiente_BuclesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_BuclesActionPerformed
         tc.getBuclesContent(syntaxTemas8_1, syntaxTemas8_2, syntaxTemas8_3,
                 syntaxTemas8_4, syntaxTemas8_5, syntaxTemas8_6, Edt8_1, Edt8_2,
                 Edt8_3, Edt8_4, Edt8_5, Edt8_6, Edt8_7);
-        visibleAndInvisibleScp(Scp_Tema9, Scp_Cuestionario8);
+        visibleAndInvisibleScp(Scp_Tema9, Scp_Cuestionario8, Edt8_1);
     }//GEN-LAST:event_Btn_Siguiente_BuclesActionPerformed
 
     private void Btn_Anterior_Cuestionario8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario8ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario8, 24, 25, 26);
-        visibleAndInvisibleScp(Scp_Cuestionario8, Scp_Tema9);
+        addInfoQuestionnaires(Edt_Cuestionario8, 24, 25, 26);
+        visibleAndInvisibleScp(Scp_Cuestionario8, Scp_Tema9, Edt_Cuestionario8);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario8ActionPerformed
 
     private void Btn_Siguiente_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario9ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario9, 27, 28, 29);
-        visibleAndInvisibleScp(Scp_Cuestionario9, Scp_Tema9);
+        addInfoQuestionnaires(Edt_Cuestionario9, 27, 28, 29);
+        visibleAndInvisibleScp(Scp_Cuestionario9, Scp_Tema9, Edt_Cuestionario9);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario9ActionPerformed
 
     private void Btn_Anterior_BuclesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_BuclesActionPerformed
         tc.getBuclesContent(syntaxTemas8_1, syntaxTemas8_2, syntaxTemas8_3,
                 syntaxTemas8_4, syntaxTemas8_5, syntaxTemas8_6, Edt8_1, Edt8_2,
                 Edt8_3, Edt8_4, Edt8_5, Edt8_6, Edt8_7);
-        visibleAndInvisibleScp(Scp_Tema9, Scp_Cuestionario9);
+        visibleAndInvisibleScp(Scp_Tema9, Scp_Cuestionario9, Edt8_1);
     }//GEN-LAST:event_Btn_Anterior_BuclesActionPerformed
 
     private void Btn_Siguiente_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
         tc.getExer2LearnContent(Edt_Ejercicio2);
-        visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Cuestionario9);
+        visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Cuestionario9, Edt_Ejercicio2);
     }//GEN-LAST:event_Btn_Siguiente_Ejercicio2_IntermedioActionPerformed
 
     private void Btn_Anterior_Ejercicio2_IntermedioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
         tc.getExer2LearnContent(Edt_Ejercicio2);
-        visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Tema10);
+        visibleAndInvisibleScp(Scp_Ejercicio2, Scp_Tema10, Edt_Ejercicio2);
     }//GEN-LAST:event_Btn_Anterior_Ejercicio2_IntermedioActionPerformed
 
     private void Btn_Siguiente_Cuestionario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario10ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario10, 32, 33, 34);
-        visibleAndInvisibleScp(Scp_Cuestionario10, Scp_Tema10);
+        addInfoQuestionnaires(Edt_Cuestionario10, 32, 33, 34);
+        visibleAndInvisibleScp(Scp_Cuestionario10, Scp_Tema10, Edt_Cuestionario10);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario10ActionPerformed
 
     private void Btn_Anterior_FuncyProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_FuncyProcActionPerformed
         tc.getFuncyProcedContent(syntaxTemas9_1, syntaxTemas9_2, Edt9_1, Edt9_2, Edt9_3);
-        visibleAndInvisibleScp(Scp_Tema10, Scp_Cuestionario10);
+        visibleAndInvisibleScp(Scp_Tema10, Scp_Cuestionario10, Edt9_1);
     }//GEN-LAST:event_Btn_Anterior_FuncyProcActionPerformed
 
     private void Btn_Siguiente_RecursionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_RecursionActionPerformed
         tc.getRecursionContent(syntaxTemas10_1, syntaxTemas10_2, Edt10_1, Edt10_2, Edt10_3);
-        visibleAndInvisibleScp(Scp_Tema11, Scp_Cuestionario10);
+        visibleAndInvisibleScp(Scp_Tema11, Scp_Cuestionario10, Edt10_1);
     }//GEN-LAST:event_Btn_Siguiente_RecursionActionPerformed
 
     private void Btn_Anterior_Cuestionario10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario10ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario10, 32, 33, 34);
-        visibleAndInvisibleScp(Scp_Cuestionario10, Scp_Tema11);
+        addInfoQuestionnaires(Edt_Cuestionario10, 32, 33, 34);
+        visibleAndInvisibleScp(Scp_Cuestionario10, Scp_Tema11, Edt_Cuestionario10);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario10ActionPerformed
 
     private void Btn_Siguiente_Cuestionario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario11ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario11, 35, 36, 37);
-        visibleAndInvisibleScp(Scp_Cuestionario11, Scp_Tema11);
+        addInfoQuestionnaires(Edt_Cuestionario11, 35, 36, 37);
+        visibleAndInvisibleScp(Scp_Cuestionario11, Scp_Tema11, Edt_Cuestionario11);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario11ActionPerformed
 
     private void Btn_Anterior_RecursionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_RecursionActionPerformed
         tc.getRecursionContent(syntaxTemas10_1, syntaxTemas10_2, Edt10_1, Edt10_2, Edt10_3);
-        visibleAndInvisibleScp(Scp_Tema11, Scp_Cuestionario11);
+        visibleAndInvisibleScp(Scp_Tema11, Scp_Cuestionario11, Edt10_1);
     }//GEN-LAST:event_Btn_Anterior_RecursionActionPerformed
 
     private void Btn_Siguiente_EDDBasicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDBasicasActionPerformed
@@ -6657,17 +6660,17 @@ public class Home extends javax.swing.JFrame {
             syntaxTemas11_3, syntaxTemas11_4, syntaxTemas11_5, syntaxTemas11_6, syntaxTemas11_7,
             syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5,
             Edt11_6, Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
-        visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario11);
+        visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario11, Edt11_1);
     }//GEN-LAST:event_Btn_Siguiente_EDDBasicasActionPerformed
 
     private void Btn_Anterior_Cuestionario11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario11ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario11, 35, 36, 37);
-        visibleAndInvisibleScp(Scp_Cuestionario11, Scp_Tema12);
+        addInfoQuestionnaires(Edt_Cuestionario11, 35, 36, 37);
+        visibleAndInvisibleScp(Scp_Cuestionario11, Scp_Tema12, Edt_Cuestionario11);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario11ActionPerformed
 
     private void Btn_Siguiente_Cuestionario12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario12ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario12, 38, 39, 40);
-        visibleAndInvisibleScp(Scp_Cuestionario12, Scp_Tema12);
+        addInfoQuestionnaires(Edt_Cuestionario12, 38, 39, 40);
+        visibleAndInvisibleScp(Scp_Cuestionario12, Scp_Tema12, Edt_Cuestionario12);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario12ActionPerformed
 
     private void Btn_Anterior_EDDBasicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDBasicasActionPerformed
@@ -6675,101 +6678,101 @@ public class Home extends javax.swing.JFrame {
             syntaxTemas11_3, syntaxTemas11_4, syntaxTemas11_5, syntaxTemas11_6, syntaxTemas11_7,
             syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5,
             Edt11_6, Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
-        visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario12);
+        visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario12, Edt11_1);
     }//GEN-LAST:event_Btn_Anterior_EDDBasicasActionPerformed
 
     private void Btn_Siguiente_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDIntermediasActionPerformed
         tc.getEstructIntermediasContent(syntaxTemas12_1, syntaxTemas12_2,
                 syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3,
                 Edt12_4, Edt12_5, Edt12_6, Edt12_7, Edt12_8, Edt12_9, Edt12_10, Edt12_11);
-        visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario12);
+        visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario12, Edt12_1);
     }//GEN-LAST:event_Btn_Siguiente_EDDIntermediasActionPerformed
 
     private void Btn_Anterior_Cuestionario12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario12ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario12, 38, 39, 40);
-        visibleAndInvisibleScp(Scp_Cuestionario12, Scp_Tema13);
+        addInfoQuestionnaires(Edt_Cuestionario12, 38, 39, 40);
+        visibleAndInvisibleScp(Scp_Cuestionario12, Scp_Tema13, Edt_Cuestionario12);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario12ActionPerformed
 
     private void Btn_Siguiente_Cuestionario13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario13ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario13, 41, 42, 43);
-        visibleAndInvisibleScp(Scp_Cuestionario13, Scp_Tema13);
+        addInfoQuestionnaires(Edt_Cuestionario13, 41, 42, 43);
+        visibleAndInvisibleScp(Scp_Cuestionario13, Scp_Tema13, Edt_Cuestionario13);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario13ActionPerformed
 
     private void Btn_Anterior_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDIntermediasActionPerformed
         tc.getEstructIntermediasContent(syntaxTemas12_1, syntaxTemas12_2,
                 syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3, Edt12_4,
                 Edt12_5, Edt12_6, Edt12_7, Edt12_8, Edt12_9, Edt12_10, Edt12_11);
-        visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario13);
+        visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario13, Edt12_1);
     }//GEN-LAST:event_Btn_Anterior_EDDIntermediasActionPerformed
 
     private void Btn_Siguiente_PrimerosAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_PrimerosAlgoritmosActionPerformed
         tc.getAlgoritmosContent(syntaxTemas13_1, syntaxTemas13_2, Edt13_1, Edt13_2,
                 Edt13_3, Edt13_4, Edt13_5, Edt13_6);
-        visibleAndInvisibleScp(Scp_Tema14, Scp_Cuestionario13);
+        visibleAndInvisibleScp(Scp_Tema14, Scp_Cuestionario13, Edt13_1);
     }//GEN-LAST:event_Btn_Siguiente_PrimerosAlgoritmosActionPerformed
 
     private void Btn_Anterior_Cuestionario13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario13ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario13, 41, 42, 43);
-        visibleAndInvisibleScp(Scp_Cuestionario13, Scp_Tema14);
+        addInfoQuestionnaires(Edt_Cuestionario13, 41, 42, 43);
+        visibleAndInvisibleScp(Scp_Cuestionario13, Scp_Tema14, Edt_Cuestionario13);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario13ActionPerformed
 
     private void Btn_Siguiente_Cuestionario14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_Cuestionario14ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario14, 46, 47, 48);
-        visibleAndInvisibleScp(Scp_Cuestionario14, Scp_Tema14);
+        addInfoQuestionnaires(Edt_Cuestionario14, 46, 47, 48);
+        visibleAndInvisibleScp(Scp_Cuestionario14, Scp_Tema14, Edt_Cuestionario14);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario14ActionPerformed
 
     private void Btn_Anterior_PrimerosAlgoritmosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_PrimerosAlgoritmosActionPerformed
         tc.getAlgoritmosContent(syntaxTemas13_1, syntaxTemas13_2, Edt13_1, Edt13_2,
                 Edt13_3, Edt13_4, Edt13_5, Edt13_6);
-        visibleAndInvisibleScp(Scp_Tema14, Scp_Cuestionario14);
+        visibleAndInvisibleScp(Scp_Tema14, Scp_Cuestionario14, Edt13_1);
     }//GEN-LAST:event_Btn_Anterior_PrimerosAlgoritmosActionPerformed
 
     private void Btn_Siguiente_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EjercicioFinalActionPerformed
         tc.getExer3LearnContent(Edt_Ejercicio3);
-        visibleAndInvisibleScp(Scp_Ejercicio3, Scp_Cuestionario14);
+        visibleAndInvisibleScp(Scp_Ejercicio3, Scp_Cuestionario14, Edt_Ejercicio3);
     }//GEN-LAST:event_Btn_Siguiente_EjercicioFinalActionPerformed
 
     private void Btn_Anterior_Cuestionario5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario5ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario5, 13, 14, 15);
-        visibleAndInvisibleScp(Scp_Cuestionario5, Scp_Ejercicio1);
+        addInfoQuestionnaires(Edt_Cuestionario5, 13, 14, 15);
+        visibleAndInvisibleScp(Scp_Cuestionario5, Scp_Ejercicio1, Edt_Cuestionario5);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario5ActionPerformed
 
     private void Btn_Siguiente_OperadoresdeRelacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
         tc.getOperadoresDeRelacion(syntaxTemas5, Edt5_1, Edt5_2, Edt5_3);
-        visibleAndInvisibleScp(Scp_Tema6, Scp_Ejercicio1);
+        visibleAndInvisibleScp(Scp_Tema6, Scp_Ejercicio1, Edt5_1);
     }//GEN-LAST:event_Btn_Siguiente_OperadoresdeRelacionActionPerformed
 
     private void Btn_Anterior_Cuestionario9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario9ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario9, 27, 28, 29);
-        visibleAndInvisibleScp(Scp_Cuestionario9, Scp_Ejercicio2);
+        addInfoQuestionnaires(Edt_Cuestionario9, 27, 28, 29);
+        visibleAndInvisibleScp(Scp_Cuestionario9, Scp_Ejercicio2, Edt_Cuestionario9);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario9ActionPerformed
 
     private void Btn_Siguiente_FuncionesyProcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_FuncionesyProcActionPerformed
         tc.getFuncyProcedContent(syntaxTemas9_1, syntaxTemas9_2, Edt9_1, Edt9_2, Edt9_3);
-        visibleAndInvisibleScp(Scp_Tema10, Scp_Ejercicio2);
+        visibleAndInvisibleScp(Scp_Tema10, Scp_Ejercicio2, Edt9_1);
     }//GEN-LAST:event_Btn_Siguiente_FuncionesyProcActionPerformed
 
     private void Btn_Anterior_Cuestionario14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_Cuestionario14ActionPerformed
-        addInfoQuestionnaires(EdtCuestionario14, 46, 47, 48);
-        visibleAndInvisibleScp(Scp_Cuestionario14, Scp_Ejercicio3);
+        addInfoQuestionnaires(Edt_Cuestionario14, 46, 47, 48);
+        visibleAndInvisibleScp(Scp_Cuestionario14, Scp_Ejercicio3, Edt_Cuestionario14);
     }//GEN-LAST:event_Btn_Anterior_Cuestionario14ActionPerformed
 
     private void Btn_Aprender_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio1ActionPerformed
         tc.getExer1LearnContent(Edt_Ejercicio1);
         Scp_Ejercicio1.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt_Ejercicio1);
     }//GEN-LAST:event_Btn_Aprender_Ejercicio1ActionPerformed
 
     private void Btn_Aprender_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio2ActionPerformed
         tc.getExer2LearnContent(Edt_Ejercicio2);
         Scp_Ejercicio2.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt_Ejercicio2);
     }//GEN-LAST:event_Btn_Aprender_Ejercicio2ActionPerformed
 
     private void Btn_Aprender_EjercicioFinalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_EjercicioFinalActionPerformed
         tc.getExer3LearnContent(Edt_Ejercicio3);
         Scp_Ejercicio3.setVisible(true);
-        showLearnPanels();
+        showLearnPanels(Edt_Ejercicio3);
     }//GEN-LAST:event_Btn_Aprender_EjercicioFinalActionPerformed
 
     private void Btn_Atras_CodeStormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Atras_CodeStormActionPerformed
@@ -7122,21 +7125,21 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JEditorPane Edt9_1;
     private javax.swing.JEditorPane Edt9_2;
     private javax.swing.JEditorPane Edt9_3;
-    private javax.swing.JEditorPane EdtCuestionario1;
-    private javax.swing.JEditorPane EdtCuestionario10;
-    private javax.swing.JEditorPane EdtCuestionario11;
-    private javax.swing.JEditorPane EdtCuestionario12;
-    private javax.swing.JEditorPane EdtCuestionario13;
-    private javax.swing.JEditorPane EdtCuestionario14;
-    private javax.swing.JEditorPane EdtCuestionario2;
-    private javax.swing.JEditorPane EdtCuestionario3;
-    private javax.swing.JEditorPane EdtCuestionario4;
-    private javax.swing.JEditorPane EdtCuestionario5;
-    private javax.swing.JEditorPane EdtCuestionario6;
-    private javax.swing.JEditorPane EdtCuestionario7;
-    private javax.swing.JEditorPane EdtCuestionario8;
-    private javax.swing.JEditorPane EdtCuestionario9;
     private javax.swing.JEditorPane Edt_ContenidoHistoria;
+    private javax.swing.JEditorPane Edt_Cuestionario1;
+    private javax.swing.JEditorPane Edt_Cuestionario10;
+    private javax.swing.JEditorPane Edt_Cuestionario11;
+    private javax.swing.JEditorPane Edt_Cuestionario12;
+    private javax.swing.JEditorPane Edt_Cuestionario13;
+    private javax.swing.JEditorPane Edt_Cuestionario14;
+    private javax.swing.JEditorPane Edt_Cuestionario2;
+    private javax.swing.JEditorPane Edt_Cuestionario3;
+    private javax.swing.JEditorPane Edt_Cuestionario4;
+    private javax.swing.JEditorPane Edt_Cuestionario5;
+    private javax.swing.JEditorPane Edt_Cuestionario6;
+    private javax.swing.JEditorPane Edt_Cuestionario7;
+    private javax.swing.JEditorPane Edt_Cuestionario8;
+    private javax.swing.JEditorPane Edt_Cuestionario9;
     private javax.swing.JEditorPane Edt_Ejercicio1;
     private javax.swing.JEditorPane Edt_Ejercicio2;
     private javax.swing.JEditorPane Edt_Ejercicio3;

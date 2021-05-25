@@ -1045,7 +1045,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="265"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="320"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1435,7 +1435,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario1">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario1">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -1528,7 +1528,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="370"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="430"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -1989,7 +1989,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario2">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario2">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -2082,7 +2082,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="510"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="560"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -2503,7 +2503,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario3">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario3">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -2596,7 +2596,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="280"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="330"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3244,7 +3244,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario4">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario4">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -3337,7 +3337,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="180"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="230"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -3758,7 +3758,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario5">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario5">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -4069,7 +4069,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="240"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="290"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -4492,7 +4492,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario6">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario6">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -4586,7 +4586,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="160"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="210"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -5034,7 +5034,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario7">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario7">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -5127,7 +5127,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="470"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="520"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -5987,7 +5987,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario8">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario8">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -6080,7 +6080,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="160"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="210"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -6810,7 +6810,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario9">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario9">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -7121,7 +7121,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="270"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="320"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -7575,7 +7575,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario10">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario10">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -7668,7 +7668,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="430"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="480"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -8096,7 +8096,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario11">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario11">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -8189,7 +8189,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="640"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="690"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -9087,7 +9087,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario12">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario12">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -9180,7 +9180,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="50" width="1120" height="130"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="180"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -10000,7 +10000,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario13">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario13">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>
@@ -10094,7 +10094,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="90" width="400" height="20"/>
+                              <AbsoluteConstraints x="20" y="70" width="400" height="20"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -10109,7 +10109,7 @@
                           </Properties>
                           <Constraints>
                             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                              <AbsoluteConstraints x="20" y="130" width="1120" height="290"/>
+                              <AbsoluteConstraints x="20" y="-5" width="1120" height="420"/>
                             </Constraint>
                           </Constraints>
                         </Component>
@@ -10671,7 +10671,7 @@
                             </Constraint>
                           </Constraints>
                         </Component>
-                        <Component class="javax.swing.JEditorPane" name="EdtCuestionario14">
+                        <Component class="javax.swing.JEditorPane" name="Edt_Cuestionario14">
                           <Properties>
                             <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                             <Property name="opaque" type="boolean" value="false"/>

@@ -18,7 +18,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.swing.JEditorPane;
 
-public class Tips extends javax.swing.JDialog {
+public class Curiositie extends javax.swing.JDialog {
 
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
     private final CuriositiesJpaController cujpa = new CuriositiesJpaController(emf);
@@ -32,32 +32,47 @@ public class Tips extends javax.swing.JDialog {
             + "<p style=\"text-align: justify; margin: 0; background-color: rgb(56, 56, 56);\">%s</p>"
             + "</html>";
 
-    public Tips(java.awt.Frame parent, boolean modal) {
+    public Curiositie(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         sRecursos = RecursosService.getService();
         initComponents();
+        addTimer();
+        configureFont();
+        configureProgressBar();
+        configureScrollBar();
+        addCuriositie();
         this.setLocationRelativeTo(parent);
-        temporizador();
-
-        // Interfaz
-        Pb_Tips.setUI(new CustomProgressBarUIHorizontal());
-        Edt_Tips.setFont(sRecursos.getFContentTip());
-        Lbl_Tip.setFont(sRecursos.getFTitleTips());
-        Edt_Tips.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
-        String text = String.format(tmp, cuList.get(18).getCuriosityContent());
-        Edt_Tips.setText(text);
-        Scp_Tips.getVerticalScrollBar().setUI(new CustomScrollBarUI(
-                Color.BLACK,
-                Color.BLUE,
-                sRecursos.getColorGrisBorde()));
-        Scp_Tips.getVerticalScrollBar().setBackground(sRecursos.getColorDark());
     }
 
     private int getNumero() {
         return r.nextInt(18);
     }
 
-    private void temporizador() {
+    private void configureFont() {
+        Edt_Tips.setFont(sRecursos.getFContentTip());
+        Lbl_Tip.setFont(sRecursos.getFTitleTips());
+    }
+
+    private void configureScrollBar() {
+        Scp_Tips.getVerticalScrollBar().setBackground(sRecursos.getColorDark());
+        Scp_Tips.getVerticalScrollBar().setUI(new CustomScrollBarUI(
+                new Color(230, 230, 230),
+                new Color(250, 250, 250),
+                new Color(230, 230, 230)));
+    }
+
+    private void configureProgressBar() {
+        Pb_Tips.setUI(new CustomProgressBarUIHorizontal());
+    }
+
+    private void addCuriositie() {
+        Edt_Tips.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+        String text = String.format(tmp, cuList.get(getNumero()).getCuriosityContent());
+        Edt_Tips.setText(text);
+        Edt_Tips.setCaretPosition(0);
+    }
+
+    private void addTimer() {
         ac = (ActionEvent e) -> {
             x++;
             Pb_Tips.setValue(x);
@@ -101,7 +116,7 @@ public class Tips extends javax.swing.JDialog {
         Pb_Tips.setFocusable(false);
         Pb_Tips.setOpaque(true);
         Pb_Tips.setPreferredSize(new java.awt.Dimension(160, 10));
-        Pnl_Tips.add(Pb_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 205, 430, 25));
+        Pnl_Tips.add(Pb_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 400, 25));
 
         Btn_Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Cerrar_Off.png"))); // NOI18N
         Btn_Cerrar.setBorderPainted(false);
@@ -114,7 +129,7 @@ public class Tips extends javax.swing.JDialog {
                 Btn_CerrarActionPerformed(evt);
             }
         });
-        Pnl_Tips.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 25, 25));
+        Pnl_Tips.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 25, 25));
 
         Btn_Pausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Pausar_Off.png"))); // NOI18N
         Btn_Pausar.setBorderPainted(false);
@@ -127,7 +142,7 @@ public class Tips extends javax.swing.JDialog {
                 Btn_PausarActionPerformed(evt);
             }
         });
-        Pnl_Tips.add(Btn_Pausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 25, 25));
+        Pnl_Tips.add(Btn_Pausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 25, 25));
 
         Btn_Seguir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Seguir_Off.png"))); // NOI18N
         Btn_Seguir.setBorderPainted(false);
@@ -140,11 +155,11 @@ public class Tips extends javax.swing.JDialog {
                 Btn_SeguirActionPerformed(evt);
             }
         });
-        Pnl_Tips.add(Btn_Seguir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 25, 25));
+        Pnl_Tips.add(Btn_Seguir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 25, 25));
 
         Lbl_Bombillo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Bombillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Idea.png"))); // NOI18N
-        Pnl_Tips.add(Lbl_Bombillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 40, 110));
+        Pnl_Tips.add(Lbl_Bombillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 50, 120));
 
         Lbl_Tip.setForeground(new java.awt.Color(204, 204, 204));
         Lbl_Tip.setText("Tip");
@@ -163,9 +178,9 @@ public class Tips extends javax.swing.JDialog {
         Edt_Tips.setSelectionColor(new java.awt.Color(100, 100, 100));
         Scp_Tips.setViewportView(Edt_Tips);
 
-        Pnl_Tips.add(Scp_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 380, 140));
+        Pnl_Tips.add(Scp_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 340, 120));
 
-        getContentPane().add(Pnl_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 240));
+        getContentPane().add(Pnl_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 220));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -185,7 +200,7 @@ public class Tips extends javax.swing.JDialog {
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            Tips dialog = new Tips(new javax.swing.JFrame(), true);
+            Curiositie dialog = new Curiositie(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
