@@ -11,85 +11,90 @@ public class HTMLTemplates {
     }
 
     private void addTemplates() {
-        templates.put("p", "<html><p>%s</p></html>");
-        templates.put("pBR", "<html><p>%s</p><br></html>");
-        templates.put("p_p", "<html><p>%s</p><p>%s</p></html>");
-        templates.put("p_pBR", "<html><p>%s</p><br><p>%s</p></html>");
-        templates.put("p_p_p", "<html><p>%s</p><p>%s</p><p>%s</p></html>");
-        templates.put("p_p_pBR2", "<html><p>%s</p><br><p>%s</p><br><p>%s</p></html>");
-        templates.put("p_h3BR", "<html><p>%s</p><br><h3>%s</h3></html>");
-        templates.put("p_p_h3BR1", "<html><p>%s</p><p>%s</p><br><h3>%s</h3></html>");
-        templates.put("p_p_h3BR2", "<html><p>%s</p><br><p>%s</p><br><h3>%s</h3></html>");
-        templates.put("p_p_p_h3BR", "<html><p>%s</p><p>%s</p><p>%s</p><br><h3>%s</h3></html>");
-        templates.put("h2_p", "<html><h2>%s</h2><p>%s</p></html>");
-        templates.put("h2_p_h3", "<html><h2>%s</h2><p>%s</p><h3>%s</h3></html>");
-        templates.put("h2_p_h3BR", "<html><h2>%s</h2><p>%s</p><br><h3>%s</h3></html>");
-        templates.put("h2_p_p_h3BR1", "<html><h2>%s</h2><p>%s</p><p>%s</p><br><h3>%s</h3></html>");
-        templates.put("h2_p_p_h3BR2", "<html><h2>%s</h2><p>%s</p><br><p>%s</p><br><h3>%s</h3></html>");
-        templates.put("h2_p_p_p_h3BR3", "<html><h2>%s</h2><p>%s</p><br><p>%s</p><br><p>%s</p><br><h3>%s</h3></html>");
+        templates.put("p", "<html><p style=\"text-align: justify;\">%s</p></html>");
+        templates.put("pBR", "<html><p style=\"text-align: justify;\">%s</p><br></html>");
+        templates.put("p_p", "<html><p style=\"text-align: justify;\">%s</p><p style=\"text-align: justify;\">%s</p></html>");
+        templates.put("p_pBR", "<html><p style=\"text-align: justify;\">%s</p><br><p style=\"text-align: justify;\">%s</p></html>");
+        templates.put("p_p_p", "<html><p style=\"text-align: justify;\">%s</p><p style=\"text-align: justify;\">%s</p><p>%s</p></html>");
+        templates.put("p_p_pBR2", "<html><p style=\"text-align: justify;\">%s</p><br><p style=\"text-align: justify;\">%s</p><br><p>%s</p></html>");
+        templates.put("p_h3BR", "<html><p style=\"text-align: justify;\">%s</p><br><h3>%s</h3></html>");
+        templates.put("p_p_h3BR1", "<html><p style=\"text-align: justify;\">%s</p><p style=\"text-align: justify;\">%s</p><br><h3>%s</h3></html>");
+        templates.put("p_p_h3BR2", "<html><p style=\"text-align: justify;\">%s</p><br><p style=\"text-align: justify;\">%s</p><br><h3>%s</h3></html>");
+        templates.put("p_p_p_h3BR", "<html><p style=\"text-align: justify;\">%s</p><p style=\"text-align: justify;\">%s</p><p>%s</p><br><h3>%s</h3></html>");
+        templates.put("h2_p", "<html><h2>%s</h2><p style=\"text-align: justify;\">%s</p></html>");
+        templates.put("h2_p_h3", "<html><h2>%s</h2><p style=\"text-align: justify;\">%s</p><h3>%s</h3></html>");
+        templates.put("h2_p_h3BR", "<html><h2>%s</h2><p style=\"text-align: justify;\">%s</p><br><h3>%s</h3></html>");
+        templates.put("h2_p_p_h3BR1", "<html><h2>%s</h2><p style=\"text-align: justify;\">%s</p><p style=\"text-align: justify;\">%s</p><br><h3>%s</h3></html>");
+        templates.put("h2_p_p_h3BR2", "<html><h2>%s</h2><p style=\"text-align: justify;\">%s</p><br><p style=\"text-align: justify;\">%s</p><br><h3>%s</h3></html>");
+        templates.put("h2_p_p_p_h3BR3", "<html><h2>%s</h2><p style=\"text-align: justify;\">%s</p><br><p style=\"text-align: justify;\">%s</p><br><p style=\"text-align: justify;\">%s</p><br><h3>%s</h3></html>");
     }
 
     private final String introductionTemplate = "<html>\n"
             + "<h1 style=\"color: rgb(183, 30, 29);\">Estructura de un Ejercicio Programación Competitiva</h1>\n"
-            + "<br>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Título</h2>\n"
-            + "Contiene el nombre del problema. Comúnmente describe superficialmente el tema del problema.\n"
+            + "<p style=\"text-align: justify; margin: 0;\">Contiene el nombre del problema. Comúnmente "
+            + "describe superficialmente el tema del problema.</p>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Descripción</h2>\n"
-            + "Contiene toda la información del problema. Describe una situación a la cual se debe dar solución. "
-            + "En algunas ocasiones se dan pistas de como se podría resolver el ejercicio. Esta sección aunque en "
-            + "algunas ocasiones se extiende un poco, debe prestarse bastante atención porque es la que nos dice lo "
-            + "que debemos programar.\n"
+            + "<p style=\"text-align: justify; margin: 0;\">Contiene toda la información del problema. "
+            + "Describe una situación a la cual se debe dar solución. En algunas ocasiones se "
+            + "dan pistas de como se podría resolver el ejercicio. Esta sección aunque en "
+            + "algunas ocasiones se extiende un poco, debe prestarse bastante atención porque "
+            + "es la que nos dice lo que debemos programar.</p>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Variables y Restricciones</h2>\n"
-            + "Contiene la descripción de los tipos de datos de entrada y salida, además de las restricciones que "
-            + "se deben tomar en cuenta al momento de realizar el programa.\n"
+            + "<p style=\"text-align: justify; margin: 0;\">Contiene la descripción de los tipos de datos "
+            + "de entrada y salida, además de las restricciones que se deben tomar en cuenta al "
+            + "momento de realizar el programa.</p>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Ejemplo de Entrada y Salida</h2>\n"
-            + "Contiene algunos ejemplos de entrada y salida. Es importante saber que los ejemplos mostrados no "
-            + "serán los únicos, son solo una guía. Por esto mismo, debemos evaluar diferentes casos de prueba, "
-            + "se recomienda hacer pruebas con un caso sencillo, un caso intermedio, y un caso difícil.\n"
-            + "<br>\n"
-            + "<br>\n"
-            + "<hr>\n"
-            + "<br>\n"
+            + "<p style=\"text-align: justify; margin: 0;\">Contiene algunos ejemplos de entrada y salida. "
+            + "Es importante saber que los ejemplos mostrados no serán los únicos, son solo una "
+            + "guía. Por esto mismo, debemos evaluar diferentes casos de prueba se recomienda "
+            + "hacer pruebas con un caso sencillo, un caso intermedio, y un caso difícil.</p>\n"
+            + "<br><br><hr><br>\n"
             + "<h1 style=\"color: rgb(183, 30, 29);\">Casos de prueba:</h1>\n"
-            + "<br>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Caso Único:</h2>\n"
-            + "El código se ejecutará una única vez.\n"
+            + "<p style=\"text-align: justify; margin: 0;\">El código se ejecutará una única vez.</p>\n"
             + "<br>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Caso Bandera:</h2>\n"
-            + "El código seguirá ejecutándose en bucle hasta que se cumpla una condición.\n"
+            + "<p style=\"text-align: justify; margin: 0;\">El código seguirá ejecutándose en bucle hasta "
+            + "que se cumpla una condición.</p>\n"
             + "<br>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Caso Fijo:</h2>\n"
-            + "El código se ejecutará una cierta cantidad de veces dada por un valor numérico.\n"
+            + "<p style=\"text-align: justify; margin: 0;\">El código se ejecutará una cierta cantidad de"
+            + " veces dada por un valor numérico.</p>\n"
             + "<br>\n"
             + "<h2 style=\"color: rgb(183, 30, 29);\">• Caso Infinito:</h2>\n"
-            + "El código se ejecutará una cantidad ilimitada de veces hasta encontrarse una excepción EOF "
-            + "(mientras sigue habiendo entradas).\n"
-            + "<br>\n"
-            + "<br>\n"
-            + "<hr>\n"
-            + "<br>\n"
+            + "<p style=\"text-align: justify; margin: 0;\">El código se ejecutará una cantidad ilimitada "
+            + "de veces hasta encontrarse una excepción EOF "
+            + "(mientras sigue habiendo entradas).</p>\n"
+            + "<br><br><hr><br>\n"
             + "<h1 style=\"color: rgb(183, 30, 29);\">Veredictos del juez:</h1>\n"
+            + "<h2 style=\"color: rgb(183, 30, 29);\">• Accepted (AC):</h2>"
+            + "<p style=\"text-align: justify; margin: 0;\">¡El código funciona!, la respuesta es correcta"
+            + " con una solución que satisface un límite "
+            + "de tiempo y memoria razonables.</p>\n"
             + "<br>\n"
-            + "<h2 style=\"color: rgb(183, 30, 29);\">• Accepted (AC):</h2> ¡El código funciona!, la "
-            + "respuesta es correcta con una solución que satisface un límite de tiempo y memoria razonables.\n"
+            + "<h2 style=\"color: rgb(183, 30, 29);\">• Presentation Error (PE):</h2> "
+            + "<p style=\"text-align: justify; margin: 0;\">La salida del programa es correcta, pero no se "
+            + "presenta de manera correcta para el problema. Se debe revisar los espacios en blanco, "
+            + "las tabulaciones o los saltos de línea adicionales.</p>\n"
             + "<br>\n"
-            + "<h2 style=\"color: rgb(183, 30, 29);\">• Presentation Error (PE):</h2> La salida del "
-            + "programa es correcta, pero no se presenta de manera correcta para el problema. Se debe revisar los espacios en blanco, las tabulaciones o los saltos de línea adicionales.\n"
+            + "<h2 style=\"color: rgb(183, 30, 29);\">• Time Limit Exceeded (TLE):</h2> "
+            + "<p style=\"text-align: justify; margin: 0;\">El tiempo de ejecución del código se demora mucho "
+            + "para obtener un resultado.</p>\n"
             + "<br>\n"
-            + "<h2 style=\"color: rgb(183, 30, 29);\">• Time Limit Exceeded (TLE):</h2> El tiempo de "
-            + "ejecución del código se demora mucho para obtener un resultado. \n"
+            + "<h2 style=\"color: rgb(183, 30, 29);\">• Memory Limit Exceeded (MLE):</h2> "
+            + "<p style=\"text-align: justify; margin: 0;\">El programa intenta utilizar más memoria que lo "
+            + "permitido por el juez.</p>\n"
             + "<br>\n"
-            + "<h2 style=\"color: rgb(183, 30, 29);\">• Memory Limit Exceeded (MLE):</h2> El programa "
-            + "intenta utilizar más memoria que lo permitido por el juez.\n"
+            + "<h2 style=\"color: rgb(183, 30, 29);\">• Wrong Answer (WA):</h2>"
+            + "<p style=\"text-align: justify; margin: 0;\">¡El código no funciona en absoluto para resolver "
+            + "el problema! las entradas no alcanzaron la solución correcta.</p>\n"
             + "<br>\n"
-            + "<h2 style=\"color: rgb(183, 30, 29);\">• Wrong Answer (WA):</h2> ¡El código no funciona "
-            + "en absoluto para resolver el problema! las entradas no alcanzaron la solución correcta.\n"
+            + "<h2 style=\"color: rgb(183, 30, 29);\">• Runtime Error (RE):</h2>  "
+            + "<p style=\"text-align: justify; margin: 0;\">El código falló durante su ejecución.</p>\n"
             + "<br>\n"
-            + "<h2 style=\"color: rgb(183, 30, 29);\">• Runtime Error (RE):</h2>  El código falló durante"
-            + " su ejecución.\n"
-            + "<br>\n"
-            + "<h2 style=\"color: rgb(183, 30, 29);\">• Compile Error (CE):</h2> El código no pudo ser "
-            + "compilado con satisfacción.\n"
+            + "<h2 style=\"color: rgb(183, 30, 29);\">• Compile Error (CE):</h2>"
+            + "<p style=\"text-align: justify; margin: 0;\">El código no pudo ser compilado con satisfacción.</p>\n"
             + "</html>";
 
     private final String historyTemplate = "<html>\n"
@@ -150,52 +155,64 @@ public class HTMLTemplates {
 
     private final String exercisesTemplateLearn = "<html>\n"
             + "    <h1 style=\"color: rgb(0, 37, 26);\">%s</h1>\n"
-            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <p style=\"margin: 0; text-align: justify;\">%s</p><br>\n"
             + "    <hr>"
             + "    <h2 style=\"color: rgb(0, 37, 26);\">Input</h2>\n"
-            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <p style=\"margin: 0; text-align: justify;\">%s</p><br>\n"
             + "    <hr>"
             + "    <h2 style=\"color: rgb(0, 37, 26);\">Output</h2>\n"
-            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <p style=\"margin: 0; text-align: justify;\">%s</p><br>\n"
             + "    <hr>"
             + "    <h2 style=\"color: rgb(0, 37, 26);\">Sample Input</h2>\n"
-            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <p style=\"margin: 0; text-align: justify;\">%s</p><br>\n"
             + "    <hr>"
             + "    <h2 style=\"color: rgb(0, 37, 26);\">Sample Output</h2>\n"
-            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <p style=\"margin: 0; text-align: justify;\">%s</p><br>\n"
             + "</html>";
 
     private final String exercisesTemplateCodeStorm = "<html>\n"
             + "  <h1 style=\"color: rgb(183, 30, 29);\">%s</h1>\n"
-            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <p style=\"margin-right: 10; text-align: justify;\">%s</p><br/>\n"
             + "  <hr>"
             + "  <h2 style=\"color: rgb(183, 30, 29);\">Input</h2>\n"
-            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <p style=\"margin-right: 10; text-align: justify;\">%s</p><br/>\n"
             + "  <hr>"
             + "  <h2 style=\"color: rgb(183, 30, 29);\">Output</h2>\n"
-            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <p style=\"margin-right: 10; text-align: justify;\">%s</p><br/>\n"
             + "  <hr>"
             + "  <h2 style=\"color: rgb(183, 30, 29);\">Sample Input</h2>\n"
-            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <p style=\"margin-right: 10; text-align: justify;\">%s</p><br/>\n"
             + "  <hr>"
             + "  <h2 style=\"color: rgb(183, 30, 29);\">Sample Output</h2>\n"
-            + "  <p style=\"margin: 0;\">%s</p>\n"
+            + "  <p style=\"margin-right: 10; text-align: justify;\">%s</p>\n"
             + "</html>";
-    private final String lastMessage = "<html>\n"
-            + "    <span><strong>Gracias por llegar hasta acá.</strong></span><br><br>\n"
-            + "    <p>\n"
-            + "        Este es un triunfo para todos, pero en especial es tuyo, has vencido la adversidad y la desconfianza, desde aquí la imaginación es el límite. Has visto cómo desde pequeñas cosas puedes llegar a hacer cualquier programa que se te ocurra. Esta parte de conocimiento es infinitesimalmente pequeña comparada a todo lo que puedas llegar a ver. El futuro es especial y aún más cuando desde tu grandeza y gloria puedas iluminarlo, recuerda el cómo y el por qué llegaste hasta acá, recuerda tus sueños y metas, del cómo las cumplirás, pero sobre todo recuerda que siempre valdrá la pena luchar por ello.\n"
+    private final String lastMessageTemplate = "<html>\n"
+            + "    <h1 style=\"margin:0;color: rgb(230, 230, 230)\">¡Gracias por llegar hasta acá!</h1><br>\n"
+            + "    <p style=\"margin:0;color: rgb(220, 220, 220);text-align:justify\">Este es un triunfo para todos, "
+            + "pero en especial es tuyo, has vencido la "
+            + "adversidad y la desconfianza, desde aquí la imaginación es el límite. Has visto "
+            + "cómo desde pequeñas cosas puedes llegar a hacer cualquier programa que se te ocurra. "
+            + "Esta parte de conocimiento es infinitesimalmente pequeña comparada a todo lo que "
+            + "puedas llegar a ver. El futuro es especial, y aún más cuando desde tu grandeza y "
+            + "gloria puedas iluminarlo, recuerda el cómo y el por qué llegaste hasta acá, recuerda"
+            + " tus sueños y metas, del cómo las cumplirás, pero sobre todo recuerda que siempre "
+            + "valdrá la pena luchar por ello.</p><br>\n"
+            + "    <p style=\"margin:0;color: rgb(220, 220, 220);text-align:justify\">No va a ser fácil, "
+            + "las cosas geniales nunca lo son, pero eres tú el motivo"
+            + " de nuestra acción, tenemos fe en ti, fue una suerte haberte enseñado todo esto "
+            + "porque sabemos todas las cosas extraordinarias que harás y hasta dónde esas cosas "
+            + "te llevarán. No nos queda nada más que decir que gracias por todo.\n"
             + "    </p><br>\n"
-            + "    <p>\n"
-            + "        No va a ser fácil, las cosas geniales nunca lo son, pero eres tú el motivo de nuestra acción, tenemos fe en ti, fue una suerte haberte enseñado todo esto porque sabemos todas las cosas extraordinarias que harás y hasta dónde esas cosas te llevarán. No nos queda nada más que decir que gracias por todo.\n"
+            + "    <p style=\"margin:0;color: rgb(220, 220, 220);text-align:justify\">Recuerda, si quieres "
+            + "saber más, puedes unirte al <b>Grupo de Programación "
+            + "Competitiva</b> donde ampliarás tus conocimientos acerca de este bello deporte y de "
+            + "todas las puertas que te puede abrir.\n"
             + "    </p><br>\n"
-            + "    <p>\n"
-            + "        Recuerda, si quieres saber más, puedes unirte al Grupo de Programación Competitiva donde ampliaras tus conocimientos acerca de este bello deporte y de todas las puertas que te puede abrir.\n"
-            + "    </p><br>\n"
-            + "    <p>\n"
-            + "        \"Este regalo de conocimiento es para ti, mira dentro de ti mismo y admira al universo en él”\n"
+            + "    <p style=\"margin:0;color: rgb(220, 220, 220);text-align:justify\">\"Este regalo de"
+            + " conocimiento es para ti, mira dentro de ti mismo y "
+            + "admira al universo en él”\n"
             + "    </p><br><br>\n"
-            + "    <span style=\"color: rgb(31, 121, 121);\">Equipo de Desarrollo de Software Apolo</span>\n"
+            + "    <span style=\"color: rgb(255,255,255)\"><b>Equipo de Desarrollo Apolo</b></span>\n"
             + "</html>";
 
     public String getGeneralTemplate(String s) {
@@ -221,8 +238,8 @@ public class HTMLTemplates {
     public String getExerciseTemplateCodeStorm() {
         return exercisesTemplateCodeStorm;
     }
-    
-    public String getLastMessage(){
-        return lastMessage;
+
+    public String getLastMessageTemplate() {
+        return lastMessageTemplate;
     }
 }

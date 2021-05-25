@@ -15,37 +15,37 @@ import javax.persistence.Query;
 
 public class Exercise {
 
-    private EntityManagerFactory _emf = null;
-    
+    private EntityManagerFactory emf = null;
+
     //Declaraciones iniciales
     private ExercisesContentJpaController excjpa = null;
     private ExercisesJpaController exjpa = null;
-    private AlternativeSolutionsJpaController asoljpa= null;
+    private AlternativeSolutionsJpaController asoljpa = null;
 
     //Listas de informacion
     private List<Exercises> ex = null;
     private List<ExercisesContent> exContent = null;
     private List<AlternativeSolutions> altSol = null;
-    
+
     //Variables requeridas
     private int cnt = 0;
     private int verticalSize;
-    
+
     //Generar listas de información
-    public void generateListsInfo(){
+    public void generateListsInfo() {
         ex = exjpa.findExercisesEntities();
         exContent = excjpa.findExercisesContentEntities();
         altSol = asoljpa.findAlternativeSolutionsEntities();
     }
-    
+
     //Obtener conexion con la Base de Datos
     public void setConnectionDB(EntityManagerFactory emf) {
-        _emf = emf;
+        this.emf = emf;
         excjpa = new ExercisesContentJpaController(emf);
         exjpa = new ExercisesJpaController(emf);
         asoljpa = new AlternativeSolutionsJpaController(emf);
     }
-    
+
     //Ontener el ejercicio actual
     public void setCounter(int _cnt) {
         this.cnt = _cnt;
@@ -67,10 +67,10 @@ public class Exercise {
     }
 
     //Insertar titulo del ejercicio
-    public String getTitle(){
+    public String getTitle() {
         return ex.get(cnt).getExerciseName();
     }
-    
+
     //Obtener descripcion del ejercicio
     public String getContent() {
         return exContent.get(cnt).getExerciseDescription();
@@ -100,25 +100,25 @@ public class Exercise {
     public String getSolution() {
         return (altSol.get(cnt).getSolutionText());
     }
-    
+
     //Obtener Estatus actual
-    public String getStatus(){
+    public String getStatus() {
         return ex.get(cnt).getStatus();
     }
-    
-    public void clearListExercises(){
+
+    public void clearListExercises() {
         ex.clear();
     }
-    
-    public EntityManagerFactory regenerateConnectionUpdatep() {
-        _emf = Persistence.createEntityManagerFactory("ApoloPU");
-        setConnectionDB(_emf);
-        EntityManager em = _emf.createEntityManager();
+
+    public EntityManagerFactory regenerateConnectionUpdate() {
+        this.emf = Persistence.createEntityManagerFactory("ApoloPU");
+        setConnectionDB(this.emf);
+        EntityManager em = this.emf.createEntityManager();
         em.getTransaction().begin();
         clearListExercises();
         Query q = em.createQuery("Select ex from Exercises ex");
-        ex = (List<Exercises>)q.getResultList();
+        ex = (List<Exercises>) q.getResultList();
         em.close();
-        return _emf;
+        return this.emf;
     }
 }
