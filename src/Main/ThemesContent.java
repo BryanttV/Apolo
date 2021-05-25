@@ -1,30 +1,32 @@
 package Main;
 
+// Librerias Creadas
 import Entities.Codes;
 import Entities.Exercises;
-import Entities.ExercisesContent;
-import Entities.HistorySubtopics;
 import Entities.HistoryTopics;
+import Entities.HistorySubtopics;
+import Entities.ExercisesContent;
 import Entities.LearningSubtopics;
 import JPA_Controllers.CodesJpaController;
-import JPA_Controllers.ExercisesContentJpaController;
 import JPA_Controllers.ExercisesJpaController;
-import JPA_Controllers.HistorySubtopicsJpaController;
 import JPA_Controllers.HistoryTopicsJpaController;
+import JPA_Controllers.ExercisesContentJpaController;
+import JPA_Controllers.HistorySubtopicsJpaController;
 import JPA_Controllers.LearningSubtopicsJpaController;
 import Services.RecursosService;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.Query;
-import javax.swing.JEditorPane;
+
+// Librerias Externas
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+
+// Librerias por Default
+import java.util.List;
+import javax.swing.JEditorPane;
+import javax.persistence.EntityManagerFactory;
 
 public class ThemesContent {
 
     private final RecursosService sRecursos = RecursosService.getService();
-    private EntityManagerFactory _emf = null;
+    private EntityManagerFactory emf = null;
 
     // Controladores
     private CodesJpaController cojpa = null;
@@ -53,7 +55,6 @@ public class ThemesContent {
         String text = String.format(tmp, (Object[]) s);
         edt.setText(text);
         edt.setFont(sRecursos.getFGeneral());
-//      edt.setFont(sRecursos.getFGeneral_19R());
         edt.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
         edt.setEditable(false);
     }
@@ -67,7 +68,7 @@ public class ThemesContent {
         lstList = lstjpa.findLearningSubtopicsEntities();
     }
 
-    //Obtener conexion con la Base de Datos
+//    Obtener conexion con la Base de Datos
     public void setConnectionDB(EntityManagerFactory emf) {
         cojpa = new CodesJpaController(emf);
         ejpa = new ExercisesJpaController(emf);
@@ -920,20 +921,20 @@ public class ThemesContent {
         addHTML(t.getExerciseTemplateLearn(), edt_Ejercicio3, title3, content3, input3,
                 output3, sample_Input3, sample_Output3);
     }
-    
-    public void clearListExercises(){
+
+    public void clearListExercises() {
         eList.clear();
     }
 
-    public EntityManagerFactory regenerateConnectionUpdatep() {
-        _emf = Persistence.createEntityManagerFactory("ApoloPU");
-        setConnectionDB(_emf);
-        EntityManager em = _emf.createEntityManager();
-        em.getTransaction().begin();
-        clearListExercises();
-        Query q = em.createQuery("Select ex from Exercises ex");
-        eList = (List<Exercises>) q.getResultList();
-        em.close();
-        return _emf;
-    }
+//    public EntityManagerFactory regenerateConnectionUpdate() {
+//        this.emf = Persistence.createEntityManagerFactory("ApoloPU");
+//        setConnectionDB(this.emf);
+//        EntityManager em = this.emf.createEntityManager();
+//        em.getTransaction().begin();
+//        clearListExercises();
+//        Query q = em.createQuery("Select ex from Exercises ex");
+//        eList = (List<Exercises>) q.getResultList();
+//        em.close();
+//        return this.emf;
+//    }
 }

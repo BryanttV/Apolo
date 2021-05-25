@@ -1,30 +1,36 @@
 package Main;
 
 // Librerias Creadas
+import Entities.Curiosities;
 import Services.RecursosService;
+import CustomComponents.CustomScrollBarUI;
 import CustomComponents.CustomProgressBarUIHorizontal;
+import JPA_Controllers.CuriositiesJpaController;
+import java.awt.Color;
 
 // Librerias Default
 import javax.swing.Timer;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.swing.JEditorPane;
 
 public class Tips extends javax.swing.JDialog {
 
+    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
+    private final CuriositiesJpaController cujpa = new CuriositiesJpaController(emf);
+    private final List<Curiosities> cuList = cujpa.findCuriositiesEntities();
     private final RecursosService sRecursos;
     private final Random r = new Random();
     private ActionListener ac;
     private int x = 0;
     private Timer t;
-    private final ArrayList<String> arr = new ArrayList<>(Arrays.asList(
-            "Cuando definas una variable de tipo long con un valor dado, deberás colocar una L mayúscula o minúscula al final. Eso le permitirá saber al programa que no es un numero entero.",
-            "Cuando definas una variable de tipo float con un valor dado, deberás colocar una F mayúscula o minúscula al final. Eso le permitirá saber al programa que no es un numero decimal de tipo Double.",
-            "De acuerdo a las tasks de cada problema de programación, defines las variables que necesitas y los tipos que debes usar. Este es un consejito muy bueno, ya que nos ha pasado en algunas competencias XD.",
-            "Para la lectura de números decimales, es necesario hacer uso de la coma. Aunque esto puede variar de acuerdo a la regionalidad.",
-            "Los booleanos solo pueden ser leídos como true o false, ya que no admite un dato numérico como 1 para verdadero y 0 para falso."));
+    private final String tmp = "<html>"
+            + "<p style=\"text-align: justify; margin: 0; background-color: rgb(56, 56, 56);\">%s</p>"
+            + "</html>";
 
     public Tips(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -33,16 +39,22 @@ public class Tips extends javax.swing.JDialog {
         this.setLocationRelativeTo(parent);
         temporizador();
 
-
         // Interfaz
         Pb_Tips.setUI(new CustomProgressBarUIHorizontal());
-        Txa_Tips.setFont(sRecursos.getFContentTip());
+        Edt_Tips.setFont(sRecursos.getFContentTip());
         Lbl_Tip.setFont(sRecursos.getFTitleTips());
-        Txa_Tips.setText(arr.get(getNumero()));
+        Edt_Tips.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
+        String text = String.format(tmp, cuList.get(18).getCuriosityContent());
+        Edt_Tips.setText(text);
+        Scp_Tips.getVerticalScrollBar().setUI(new CustomScrollBarUI(
+                Color.BLACK,
+                Color.BLUE,
+                sRecursos.getColorGrisBorde()));
+        Scp_Tips.getVerticalScrollBar().setBackground(sRecursos.getColorDark());
     }
 
     private int getNumero() {
-        return r.nextInt(5);
+        return r.nextInt(18);
     }
 
     private void temporizador() {
@@ -63,41 +75,25 @@ public class Tips extends javax.swing.JDialog {
     private void initComponents() {
 
         Pnl_Tips = new javax.swing.JPanel();
-        Scp_Tips = new javax.swing.JScrollPane();
-        Txa_Tips = new javax.swing.JTextArea();
         Pb_Tips = new javax.swing.JProgressBar();
         Btn_Cerrar = new javax.swing.JButton();
         Btn_Pausar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
         Btn_Seguir = new javax.swing.JButton();
+        Lbl_Bombillo = new javax.swing.JLabel();
         Lbl_Tip = new javax.swing.JLabel();
+        Scp_Tips = new javax.swing.JScrollPane();
+        Edt_Tips = new javax.swing.JTextPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Pnl_Tips.setBackground(new java.awt.Color(51, 51, 51));
+        Pnl_Tips.setBackground(sRecursos.getColorDark());
         Pnl_Tips.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         Pnl_Tips.setMaximumSize(new java.awt.Dimension(350, 200));
         Pnl_Tips.setMinimumSize(new java.awt.Dimension(350, 200));
         Pnl_Tips.setPreferredSize(new java.awt.Dimension(350, 200));
         Pnl_Tips.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        Scp_Tips.setBorder(null);
-        Scp_Tips.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        Scp_Tips.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        Txa_Tips.setEditable(false);
-        Txa_Tips.setBackground(new java.awt.Color(51, 51, 51));
-        Txa_Tips.setColumns(20);
-        Txa_Tips.setForeground(new java.awt.Color(204, 204, 204));
-        Txa_Tips.setLineWrap(true);
-        Txa_Tips.setRows(5);
-        Txa_Tips.setWrapStyleWord(true);
-        Txa_Tips.setSelectionColor(new java.awt.Color(204, 204, 204));
-        Scp_Tips.setViewportView(Txa_Tips);
-
-        Pnl_Tips.add(Scp_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 45, 280, 110));
 
         Pb_Tips.setBackground(new java.awt.Color(51, 51, 51));
         Pb_Tips.setForeground(new java.awt.Color(237, 237, 237));
@@ -105,7 +101,7 @@ public class Tips extends javax.swing.JDialog {
         Pb_Tips.setFocusable(false);
         Pb_Tips.setOpaque(true);
         Pb_Tips.setPreferredSize(new java.awt.Dimension(160, 10));
-        Pnl_Tips.add(Pb_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 165, 350, 25));
+        Pnl_Tips.add(Pb_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 205, 430, 25));
 
         Btn_Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Cerrar_Off.png"))); // NOI18N
         Btn_Cerrar.setBorderPainted(false);
@@ -118,7 +114,7 @@ public class Tips extends javax.swing.JDialog {
                 Btn_CerrarActionPerformed(evt);
             }
         });
-        Pnl_Tips.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 10, 25, 25));
+        Pnl_Tips.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, 25, 25));
 
         Btn_Pausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Pausar_Off.png"))); // NOI18N
         Btn_Pausar.setBorderPainted(false);
@@ -131,11 +127,7 @@ public class Tips extends javax.swing.JDialog {
                 Btn_PausarActionPerformed(evt);
             }
         });
-        Pnl_Tips.add(Btn_Pausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, 25, 25));
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Idea.png"))); // NOI18N
-        Pnl_Tips.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 40, 60));
+        Pnl_Tips.add(Btn_Pausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 10, 25, 25));
 
         Btn_Seguir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Seguir_Off.png"))); // NOI18N
         Btn_Seguir.setBorderPainted(false);
@@ -148,13 +140,32 @@ public class Tips extends javax.swing.JDialog {
                 Btn_SeguirActionPerformed(evt);
             }
         });
-        Pnl_Tips.add(Btn_Seguir, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 10, 25, 25));
+        Pnl_Tips.add(Btn_Seguir, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 10, 25, 25));
+
+        Lbl_Bombillo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        Lbl_Bombillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Idea.png"))); // NOI18N
+        Pnl_Tips.add(Lbl_Bombillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 40, 110));
 
         Lbl_Tip.setForeground(new java.awt.Color(204, 204, 204));
-        Lbl_Tip.setText("Tip del Día");
+        Lbl_Tip.setText("Tip");
         Pnl_Tips.add(Lbl_Tip, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 190, 20));
 
-        getContentPane().add(Pnl_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, -1));
+        Scp_Tips.setBackground(sRecursos.getColorDark());
+        Scp_Tips.setBorder(null);
+        Scp_Tips.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_Tips.setOpaque(false);
+
+        Edt_Tips.setEditable(false);
+        Edt_Tips.setBackground(sRecursos.getColorDark());
+        Edt_Tips.setBorder(null);
+        Edt_Tips.setContentType("text/html"); // NOI18N
+        Edt_Tips.setForeground(sRecursos.getColorTextGray());
+        Edt_Tips.setSelectionColor(new java.awt.Color(100, 100, 100));
+        Scp_Tips.setViewportView(Edt_Tips);
+
+        Pnl_Tips.add(Scp_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 380, 140));
+
+        getContentPane().add(Pnl_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 450, 240));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -189,11 +200,11 @@ public class Tips extends javax.swing.JDialog {
     private javax.swing.JButton Btn_Cerrar;
     private javax.swing.JButton Btn_Pausar;
     private javax.swing.JButton Btn_Seguir;
+    private javax.swing.JTextPane Edt_Tips;
+    private javax.swing.JLabel Lbl_Bombillo;
     private javax.swing.JLabel Lbl_Tip;
     protected javax.swing.JProgressBar Pb_Tips;
     private javax.swing.JPanel Pnl_Tips;
     private javax.swing.JScrollPane Scp_Tips;
-    private javax.swing.JTextArea Txa_Tips;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

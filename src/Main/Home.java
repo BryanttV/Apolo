@@ -9,7 +9,6 @@ import Entities.Progress;
 import Entities.Questions;
 import Entities.Exercises;
 import Entities.TestCases;
-import Entities.Curiosities;
 import Entities.HistoryImages;
 import Entities.LearningImages;
 import Entities.LearningTopics;
@@ -21,7 +20,6 @@ import JPA_Controllers.ProgressJpaController;
 import JPA_Controllers.ExercisesJpaController;
 import JPA_Controllers.QuestionsJpaController;
 import JPA_Controllers.TestCasesJpaController;
-import JPA_Controllers.CuriositiesJpaController;
 import JPA_Controllers.HistoryImagesJpaController;
 import JPA_Controllers.LearningImagesJpaController;
 import JPA_Controllers.LearningTopicsJpaController;
@@ -161,7 +159,6 @@ public class Home extends javax.swing.JFrame {
     QuestionsJpaController qjpa = null;
     TestCasesJpaController tcjpa = null;
     ProgressJpaController projpa = null;
-    CuriositiesJpaController cujpa = null;
     HistoryImagesJpaController hijpa = null;
     LearningImagesJpaController lijpa = null;
     LearningTopicsJpaController ltjpa = null;
@@ -174,7 +171,6 @@ public class Home extends javax.swing.JFrame {
     List<Questions> qList = null;
     List<TestCases> tcList = null;
     List<Progress> proList = null;
-    List<Curiosities> cuList = null;
     List<HistoryImages> hiList = null;
     List<LearningImages> liList = null;
     List<LearningTopics> ltList = null;
@@ -187,7 +183,6 @@ public class Home extends javax.swing.JFrame {
         qjpa = new QuestionsJpaController(emf);
         tcjpa = new TestCasesJpaController(emf);
         projpa = new ProgressJpaController(emf);
-        cujpa = new CuriositiesJpaController(emf);
         hijpa = new HistoryImagesJpaController(emf);
         lijpa = new LearningImagesJpaController(emf);
         ltjpa = new LearningTopicsJpaController(emf);
@@ -201,7 +196,6 @@ public class Home extends javax.swing.JFrame {
         qList = qjpa.findQuestionsEntities();
         tcList = tcjpa.findTestCasesEntities();
         proList = projpa.findProgressEntities();
-        cuList = cujpa.findCuriositiesEntities();
         hiList = hijpa.findHistoryImagesEntities();
         liList = lijpa.findLearningImagesEntities();
         ltList = ltjpa.findLearningTopicsEntities();
@@ -293,6 +287,7 @@ public class Home extends javax.swing.JFrame {
                         sRecursos.getColorThumbOn(),
                         sRecursos.getColorThumbOff()));
                 v.setUnitIncrement(16);
+                v.setValue(0);
                 scp.setBorder(null);
             }
             return componente;
@@ -637,12 +632,13 @@ public class Home extends javax.swing.JFrame {
         Dimension size = new Dimension(1060, ex.getVerticalSize());
         //Resize panel
         Pnl_ExerciseInfo.setSize(size);
+        Edt_General_Info.setSize(size);
         Pnl_ExerciseInfo.setMaximumSize(size);
         Pnl_ExerciseInfo.setMinimumSize(size);
         Pnl_ExerciseInfo.setPreferredSize(size);
 
         //Generar formato
-        tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_General_info, title,
+        tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_General_Info, title,
                 content, input, output, sampleInput, sampleOutput);
 
     }
@@ -654,7 +650,7 @@ public class Home extends javax.swing.JFrame {
         } else {
             Btn_Solucion.setEnabled(true);
             syntaxSolution.setText(ex.getSolution());
-            System.out.println(ex.getCounter());
+//            System.out.println(ex.getCounter());
             if (ex.getCounter() == 22) {
                 LastMessage lm = new LastMessage(this, true, tc, t);
                 lm.setVisible(true);
@@ -1288,9 +1284,10 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior = new javax.swing.JButton();
         Pnl_Main = new javax.swing.JPanel();
         Pnl_EjercicioFull = new javax.swing.JPanel();
-        Scp_General = new javax.swing.JScrollPane();
+        Scp_ExerciseInfo = new javax.swing.JScrollPane();
         Pnl_ExerciseInfo = new javax.swing.JPanel();
-        Edt_General_info = new javax.swing.JEditorPane();
+        Scp_InfoExercise = new javax.swing.JScrollPane();
+        Edt_General_Info = new javax.swing.JEditorPane();
         Pnl_CodigoFull = new javax.swing.JPanel();
         Pnl_SyntaxCode = new javax.swing.JPanel();
         Pnl_SolucionFull = new javax.swing.JPanel();
@@ -5772,8 +5769,8 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Introduccion.setBackground(sRecursos.getCPrincipal());
         Pnl_Introduccion.setMaximumSize(new java.awt.Dimension(1176, 4000));
-        Pnl_Introduccion.setMinimumSize(new java.awt.Dimension(1176, 4000));
-        Pnl_Introduccion.setPreferredSize(new java.awt.Dimension(1176, 1750));
+        Pnl_Introduccion.setMinimumSize(new java.awt.Dimension(1176, 1800));
+        Pnl_Introduccion.setPreferredSize(new java.awt.Dimension(1176, 1800));
         Pnl_Introduccion.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_Header_CodeStorm1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_Header_CodeStorm.png"))); // NOI18N
@@ -5793,12 +5790,12 @@ public class Home extends javax.swing.JFrame {
                 Btn_Introduccion_SiguienteActionPerformed(evt);
             }
         });
-        Pnl_Introduccion.add(Btn_Introduccion_Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 1650, 254, 64));
+        Pnl_Introduccion.add(Btn_Introduccion_Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 1700, 254, 64));
 
         Edt_Introduccion.setBackground(sRecursos.getCPrincipal());
         Edt_Introduccion.setBorder(null);
         Edt_Introduccion.setContentType("text/html"); // NOI18N
-        Pnl_Introduccion.add(Edt_Introduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1120, 1500));
+        Pnl_Introduccion.add(Edt_Introduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1120, 1550));
 
         Scp_Introduccion.setViewportView(Pnl_Introduccion);
 
@@ -5964,32 +5961,27 @@ public class Home extends javax.swing.JFrame {
         Pnl_EjercicioFull.setBackground(sRecursos.getCPrincipal());
         Pnl_EjercicioFull.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Scp_General.setOpaque(false);
+        Scp_ExerciseInfo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         Pnl_ExerciseInfo.setInheritsPopupMenu(true);
         Pnl_ExerciseInfo.setMaximumSize(new java.awt.Dimension(1060, 3000));
+        Pnl_ExerciseInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Edt_General_info.setBackground(sRecursos.getCPrincipal());
-        Edt_General_info.setBorder(null);
-        Edt_General_info.setContentType("text/html"); // NOI18N
-        Edt_General_info.setMaximumSize(new java.awt.Dimension(1060, 3000));
-        Edt_General_info.setMinimumSize(new java.awt.Dimension(1060, 820));
-        Edt_General_info.setPreferredSize(new java.awt.Dimension(1060, 820));
+        Scp_InfoExercise.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-        javax.swing.GroupLayout Pnl_ExerciseInfoLayout = new javax.swing.GroupLayout(Pnl_ExerciseInfo);
-        Pnl_ExerciseInfo.setLayout(Pnl_ExerciseInfoLayout);
-        Pnl_ExerciseInfoLayout.setHorizontalGroup(
-            Pnl_ExerciseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Edt_General_info, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-        );
-        Pnl_ExerciseInfoLayout.setVerticalGroup(
-            Pnl_ExerciseInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Edt_General_info, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        Edt_General_Info.setBackground(sRecursos.getCPrincipal());
+        Edt_General_Info.setBorder(null);
+        Edt_General_Info.setContentType("text/html"); // NOI18N
+        Edt_General_Info.setMaximumSize(new java.awt.Dimension(1060, 3000));
+        Edt_General_Info.setMinimumSize(new java.awt.Dimension(1060, 820));
+        Edt_General_Info.setPreferredSize(new java.awt.Dimension(1060, 820));
+        Scp_InfoExercise.setViewportView(Edt_General_Info);
 
-        Scp_General.setViewportView(Pnl_ExerciseInfo);
+        Pnl_ExerciseInfo.add(Scp_InfoExercise, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
-        Pnl_EjercicioFull.add(Scp_General, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1080, 440));
+        Scp_ExerciseInfo.setViewportView(Pnl_ExerciseInfo);
+
+        Pnl_EjercicioFull.add(Scp_ExerciseInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 430));
 
         Pnl_Main.add(Pnl_EjercicioFull, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1110, 510));
 
@@ -6087,10 +6079,10 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_AprenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AprenderActionPerformed
         if (Btn_Aprender.isSelected()) {
-//            if (active) {
-//                new Tips(this, true).setVisible(true);
-//                active = false;
-//            }
+            if (active) {
+                new Tips(this, true).setVisible(true);
+                active = false;
+            }
 
             shutDownSection(1);
             enableLearnButtons();
@@ -6457,7 +6449,7 @@ public class Home extends javax.swing.JFrame {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
         Btn_Enviar.setSelected(false);
-        emf = ex.regenerateConnectionUpdatep();
+        emf = ex.regenerateConnectionUpdate();
         System.out.println(ex.getCounter());
         System.out.println(ex.getStatus());
         verifySolutionStatus();
@@ -6794,7 +6786,7 @@ public class Home extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-        emf = ex.regenerateConnectionUpdatep();
+        emf = ex.regenerateConnectionUpdate();
         verifySolutionStatus();
     }//GEN-LAST:event_Btn_EnviarEjercicio1ActionPerformed
 
@@ -6806,7 +6798,7 @@ public class Home extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-        emf = ex.regenerateConnectionUpdatep();
+        emf = ex.regenerateConnectionUpdate();
         verifySolutionStatus();
     }//GEN-LAST:event_Btn_EnviarEjercicio2ActionPerformed
 
@@ -6818,7 +6810,7 @@ public class Home extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
-        emf = ex.regenerateConnectionUpdatep();
+        emf = ex.regenerateConnectionUpdate();
         verifySolutionStatus();
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
 
@@ -7124,7 +7116,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JEditorPane Edt_Ejercicio1;
     private javax.swing.JEditorPane Edt_Ejercicio2;
     private javax.swing.JEditorPane Edt_Ejercicio3;
-    private javax.swing.JEditorPane Edt_General_info;
+    private javax.swing.JEditorPane Edt_General_Info;
     private javax.swing.JEditorPane Edt_Introduccion;
     private javax.swing.JLabel Lbl_Acumuladores;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
@@ -7467,7 +7459,8 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Ejercicio1;
     private javax.swing.JScrollPane Scp_Ejercicio2;
     private javax.swing.JScrollPane Scp_Ejercicio3;
-    private javax.swing.JScrollPane Scp_General;
+    private javax.swing.JScrollPane Scp_ExerciseInfo;
+    private javax.swing.JScrollPane Scp_InfoExercise;
     private javax.swing.JScrollPane Scp_Introduccion;
     private javax.swing.JScrollPane Scp_Tema1;
     private javax.swing.JScrollPane Scp_Tema10;
