@@ -650,9 +650,16 @@ public class Home extends javax.swing.JFrame {
 //        ex.setCounter(tmp);
         if (!ex.getStatus().equals("ACCEPTED")) {
             Btn_Solucion.setEnabled(false);
+
         } else {
             Btn_Solucion.setEnabled(true);
             syntaxSolution.setText(ex.getSolution());
+            System.out.println(ex.getCounter());
+            if (ex.getCounter() == 22) {
+                LastMessage lm = new LastMessage(this, true, tc, t);
+                lm.setVisible(true);
+                lm.setLocationRelativeTo(null);
+            }
         }
     }
 
@@ -6780,8 +6787,9 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_EnviarEjercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio1ActionPerformed
         String code = syntaxEjercicio1.getText();
+        ex.setCounter(20);
         try {
-            juzgador("input1", code, "ioaprender", "ioaprender", "1", 20, emf);
+            juzgador("input1", code, "ioaprender", "ioaprender", "1", ex.getCounter(), emf);
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -6791,8 +6799,9 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_EnviarEjercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio2ActionPerformed
         String code = syntaxEjercicio2.getText();
+        ex.setCounter(21);
         try {
-            juzgador("input2", code, "ioaprender", "ioaprender", "2", 21, emf);
+            juzgador("input2", code, "ioaprender", "ioaprender", "2", ex.getCounter(), emf);
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -6802,8 +6811,9 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_EnviarEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio3ActionPerformed
         String code = syntaxEjercicio3.getText();
+        ex.setCounter(22);
         try {
-            juzgador("input3", code, "ioaprender", "ioaprender", "3", 22, emf);
+            juzgador("input3", code, "ioaprender", "ioaprender", "3", ex.getCounter(), emf);
         } catch (Exception ex) {
             Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
         }
