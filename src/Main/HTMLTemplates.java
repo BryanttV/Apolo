@@ -164,7 +164,7 @@ public class HTMLTemplates {
             + "    <h2 style=\"color: rgb(0, 37, 26);\">Sample Output</h2>\n"
             + "    <p style=\"margin: 0;\">%s</p><br>\n"
             + "</html>";
-    
+
     private final String exercisesTemplateCodeStorm = "<html>\n"
             + "  <h1 style=\"color: rgb(183, 30, 29);\">%s</h1>\n"
             + "  <p style=\"margin: 0;\">%s</p><br/>\n"
@@ -180,6 +180,22 @@ public class HTMLTemplates {
             + "  <hr>"
             + "  <h2 style=\"color: rgb(183, 30, 29);\">Sample Output</h2>\n"
             + "  <p style=\"margin: 0;\">%s</p>\n"
+            + "</html>";
+    private final String lastMessage = "<html>\n"
+            + "    <span><strong>Gracias por llegar hasta acá.</strong></span><br><br>\n"
+            + "    <p>\n"
+            + "        Este es un triunfo para todos, pero en especial es tuyo, has vencido la adversidad y la desconfianza, desde aquí la imaginación es el límite. Has visto cómo desde pequeñas cosas puedes llegar a hacer cualquier programa que se te ocurra. Esta parte de conocimiento es infinitesimalmente pequeña comparada a todo lo que puedas llegar a ver. El futuro es especial y aún más cuando desde tu grandeza y gloria puedas iluminarlo, recuerda el cómo y el por qué llegaste hasta acá, recuerda tus sueños y metas, del cómo las cumplirás, pero sobre todo recuerda que siempre valdrá la pena luchar por ello.\n"
+            + "    </p><br>\n"
+            + "    <p>\n"
+            + "        No va a ser fácil, las cosas geniales nunca lo son, pero eres tú el motivo de nuestra acción, tenemos fe en ti, fue una suerte haberte enseñado todo esto porque sabemos todas las cosas extraordinarias que harás y hasta dónde esas cosas te llevarán. No nos queda nada más que decir que gracias por todo.\n"
+            + "    </p><br>\n"
+            + "    <p>\n"
+            + "        Recuerda, si quieres saber más, puedes unirte al Grupo de Programación Competitiva donde ampliaras tus conocimientos acerca de este bello deporte y de todas las puertas que te puede abrir.\n"
+            + "    </p><br>\n"
+            + "    <p>\n"
+            + "        \"Este regalo de conocimiento es para ti, mira dentro de ti mismo y admira al universo en él”\n"
+            + "    </p><br><br>\n"
+            + "    <span style=\"color: rgb(31, 121, 121);\">Equipo de Desarrollo de Software Apolo</span>\n"
             + "</html>";
 
     public String getGeneralTemplate(String s) {
@@ -201,8 +217,12 @@ public class HTMLTemplates {
     public String getExerciseTemplateLearn() {
         return exercisesTemplateLearn;
     }
-    
-    public String getExerciseTemplateCodeStorm(){
+
+    public String getExerciseTemplateCodeStorm() {
         return exercisesTemplateCodeStorm;
+    }
+    
+    public String getLastMessage(){
+        return lastMessage;
     }
 }

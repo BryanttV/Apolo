@@ -36,13 +36,6 @@ public class Exercise {
         ex = exjpa.findExercisesEntities();
         exContent = excjpa.findExercisesContentEntities();
         altSol = asoljpa.findAlternativeSolutionsEntities();
-        int tmp = ex.size()-1;
-        for (int i = 0; i < 3 ;i++) {
-            ex.remove(tmp);
-            exContent.remove(tmp);
-            altSol.remove(tmp);
-            tmp--;
-        }
     }
     
     //Obtener conexion con la Base de Datos
