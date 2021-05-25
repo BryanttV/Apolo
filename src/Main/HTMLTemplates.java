@@ -92,6 +92,51 @@ public class HTMLTemplates {
             + "compilado con satisfacción.\n"
             + "</html>";
 
+    private final String historyTemplate = "<html>\n"
+            + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+            + "    <p>%s</p><br>\n"
+            + "<hr>\n"
+            + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "<hr>\n"
+            + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "<hr>\n"
+            + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br><br>\n"
+            + "<hr>\n"
+            + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "    <h2>%s</h2>\n"
+            + "    <p style=\"margin:0\">%s</p><br>\n"
+            + "<hr>\n"
+            + "    <h1 style=\"color:rgb(0, 47, 108);\">%s</h1>\n"
+            + "    <p style=\"margin:0\">%s</p>\n"
+            + "    </html>";
+
     private final String questionnairesTemplate = "<html>\n"
             + "<p>%s</p>\n"
             + "<p>%s</p>\n"
@@ -103,15 +148,61 @@ public class HTMLTemplates {
             + "<p>%s</p>\n"
             + "</html>";
 
-    public String getTemplate(String s) {
+    private final String exercisesTemplateLearn = "<html>\n"
+            + "    <h1 style=\"color: rgb(0, 37, 26);\">%s</h1>\n"
+            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Input</h2>\n"
+            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Output</h2>\n"
+            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Sample Input</h2>\n"
+            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "    <hr>"
+            + "    <h2 style=\"color: rgb(0, 37, 26);\">Sample Output</h2>\n"
+            + "    <p style=\"margin: 0;\">%s</p><br>\n"
+            + "</html>";
+    
+    private final String exercisesTemplateCodeStorm = "<html>\n"
+            + "  <h1 style=\"color: rgb(183, 30, 29);\">%s</h1>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Input</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Output</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Sample Input</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p><br/>\n"
+            + "  <hr>"
+            + "  <h2 style=\"color: rgb(183, 30, 29);\">Sample Output</h2>\n"
+            + "  <p style=\"margin: 0;\">%s</p>\n"
+            + "</html>";
+
+    public String getGeneralTemplate(String s) {
         return templates.get(s);
     }
 
     public String getIntroductionTemplate() {
         return introductionTemplate;
     }
-    
-    public String getQuestionnairesTemplate(){
+
+    public String getQuestionnairesTemplate() {
         return questionnairesTemplate;
+    }
+
+    public String getHistoryTemplate() {
+        return historyTemplate;
+    }
+
+    public String getExerciseTemplateLearn() {
+        return exercisesTemplateLearn;
+    }
+    
+    public String getExerciseTemplateCodeStorm(){
+        return exercisesTemplateCodeStorm;
     }
 }

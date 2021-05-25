@@ -32,11 +32,15 @@ public final class RecursosService {
     private Color colorAzul;
     private Color colorVerde;
     private Color colorGrisBorde;
+    private Color colorThumb_Off = new Color(50, 50, 50);
+    private Color colorThumb_On = new Color(32, 30, 33);
+    private Color colorDrag = new Color(32, 30, 33);
     private Dimension dTamanioPaneles;
     private Dimension dTamanioBotones;
     private Dimension dBtns_Aprender;
     private Dimension dBtns_CodeStorm;
     private Dimension dPnl_Temas;
+    private Dimension dLbl_Temas;
 
     static private RecursosService servicio;
 
@@ -68,6 +72,9 @@ public final class RecursosService {
         colorDark = new Color(56, 56, 56);
         colorTextGray = new Color(220, 220, 220);
         colorGrisBorde = new Color(153, 153, 153);
+        colorThumb_Off = new Color(50, 50, 50);
+        colorThumb_On = new Color(32, 30, 33);
+        colorDrag = new Color(32, 30, 33);
     }
 
     private void crearTamanio() {
@@ -76,6 +83,7 @@ public final class RecursosService {
         dTamanioBotones = new Dimension(172, 47);
         dTamanioPaneles = new Dimension(1176, 705);
         dPnl_Temas = new Dimension(1155, 1500);
+        dLbl_Temas = new Dimension(750, 45);
     }
 
     private void crearFuentes() {
@@ -96,7 +104,8 @@ public final class RecursosService {
 
     }
 
-    // Getters -----------------------------------------------------------------
+    // Getters Fuentes ---------------------------------------------------------
+    
     public Font getFGeneral() {
         return fGeneral;
     }
@@ -152,6 +161,8 @@ public final class RecursosService {
     public Font getFHistoriaB() {
         return fLabel_HistoriaB;
     }
+    
+    // Getters Cursores --------------------------------------------------------
 
     public Cursor getCMano() {
         return cMano;
@@ -160,7 +171,21 @@ public final class RecursosService {
     public Cursor getCDefault() {
         return cDefault;
     }
+    
+    // Getters Colores ---------------------------------------------------------
 
+    public Color getColorThumbOff(){
+        return colorThumb_Off;
+    }
+    
+    public Color getColorThumbOn(){
+        return colorThumb_On;
+    }
+    
+    public Color getColorDrag(){
+        return colorDrag;
+    }
+    
     public Color getCPrincipal() {
         return colorPrincipal;
     }
@@ -188,6 +213,8 @@ public final class RecursosService {
     public Color getColorGrisBorde() {
         return colorGrisBorde;
     }
+    
+    // Getters Dimension
 
     public Dimension getDTamanio() {
         return dTamanioPaneles;
@@ -207,5 +234,9 @@ public final class RecursosService {
 
     public Dimension getDPnls_Temas() {
         return dPnl_Temas;
+    }
+    
+    public Dimension getDLbls_Temas(){
+        return dLbl_Temas;
     }
 }
