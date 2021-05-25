@@ -22,6 +22,7 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import java.util.List;
 import javax.swing.JEditorPane;
 import javax.persistence.EntityManagerFactory;
+import javax.swing.JPanel;
 
 public class ThemesContent {
 
@@ -926,15 +927,4 @@ public class ThemesContent {
         eList.clear();
     }
 
-//    public EntityManagerFactory regenerateConnectionUpdate() {
-//        this.emf = Persistence.createEntityManagerFactory("ApoloPU");
-//        setConnectionDB(this.emf);
-//        EntityManager em = this.emf.createEntityManager();
-//        em.getTransaction().begin();
-//        clearListExercises();
-//        Query q = em.createQuery("Select ex from Exercises ex");
-//        eList = (List<Exercises>) q.getResultList();
-//        em.close();
-//        return this.emf;
-//    }
 }
