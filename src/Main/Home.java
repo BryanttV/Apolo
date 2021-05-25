@@ -864,6 +864,7 @@ public class Home extends javax.swing.JFrame {
         Btn_EnviarEjercicio1 = new javax.swing.JButton();
         Pnl_SyntaxEjercicio1 = new javax.swing.JPanel();
         Edt_Ejercicio1 = new javax.swing.JEditorPane();
+        Btn_SolucionEjercicio1 = new javax.swing.JButton();
         Scp_Tema6 = new javax.swing.JScrollPane();
         Pnl_Tema6 = new javax.swing.JPanel();
         Lbl_OperadoresdeRelacion = new javax.swing.JLabel();
@@ -1028,6 +1029,7 @@ public class Home extends javax.swing.JFrame {
         Btn_EnviarEjercicio2 = new javax.swing.JButton();
         Pnl_SyntaxEjercicio2 = new javax.swing.JPanel();
         Edt_Ejercicio2 = new javax.swing.JEditorPane();
+        Btn_SolucionEjercicio2 = new javax.swing.JButton();
         Scp_Tema10 = new javax.swing.JScrollPane();
         Pnl_Tema10 = new javax.swing.JPanel();
         Lbl_FuncionesyProcs = new javax.swing.JLabel();
@@ -1234,6 +1236,7 @@ public class Home extends javax.swing.JFrame {
         Btn_EnviarEjercicio3 = new javax.swing.JButton();
         Pnl_SyntaxEjercicio3 = new javax.swing.JPanel();
         Edt_Ejercicio3 = new javax.swing.JEditorPane();
+        Btn_SolucionEjercicio3 = new javax.swing.JButton();
         Pnl_CodeStorm = new javax.swing.JPanel();
         Pnl_ListadoEjercicios = new javax.swing.JPanel();
         Pb_Nivel1 = new javax.swing.JProgressBar();
@@ -2869,6 +2872,14 @@ public class Home extends javax.swing.JFrame {
         Edt_Ejercicio1.setOpaque(false);
         Pnl_Ejercicio1_Aprender.add(Edt_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 610));
 
+        Btn_SolucionEjercicio1.setText("Solución");
+        Btn_SolucionEjercicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_SolucionEjercicio1ActionPerformed(evt);
+            }
+        });
+        Pnl_Ejercicio1_Aprender.add(Btn_SolucionEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 750, 170, 50));
+
         Scp_Ejercicio1.setViewportView(Pnl_Ejercicio1_Aprender);
 
         Pnl_Temas.add(Scp_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 100, 1176, 605));
@@ -3964,6 +3975,14 @@ public class Home extends javax.swing.JFrame {
         Edt_Ejercicio2.setContentType("text/html"); // NOI18N
         Edt_Ejercicio2.setOpaque(false);
         Pnl_Ejercicio2_Aprender.add(Edt_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 590));
+
+        Btn_SolucionEjercicio2.setText("Solución");
+        Btn_SolucionEjercicio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_SolucionEjercicio2ActionPerformed(evt);
+            }
+        });
+        Pnl_Ejercicio2_Aprender.add(Btn_SolucionEjercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 730, 170, 50));
 
         Scp_Ejercicio2.setViewportView(Pnl_Ejercicio2_Aprender);
 
@@ -5337,6 +5356,14 @@ public class Home extends javax.swing.JFrame {
         Edt_Ejercicio3.setContentType("text/html"); // NOI18N
         Edt_Ejercicio3.setOpaque(false);
         Pnl_Ejercicio3_Aprender.add(Edt_Ejercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 580));
+
+        Btn_SolucionEjercicio3.setText("Solución");
+        Btn_SolucionEjercicio3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_SolucionEjercicio3ActionPerformed(evt);
+            }
+        });
+        Pnl_Ejercicio3_Aprender.add(Btn_SolucionEjercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 730, 170, 50));
 
         Scp_Ejercicio3.setViewportView(Pnl_Ejercicio3_Aprender);
 
@@ -6883,6 +6910,18 @@ public class Home extends javax.swing.JFrame {
         showAnswerWindow(Rad_Question13_1, Rad_Question13_2, Rad_Question13_3);
     }//GEN-LAST:event_Btn_Answer13ActionPerformed
 
+    private void Btn_SolucionEjercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio1ActionPerformed
+        new ExercisesSolutions(this, true,eList.get(20).getSolutionCode().getSolutionText()).setVisible(true);
+    }//GEN-LAST:event_Btn_SolucionEjercicio1ActionPerformed
+
+    private void Btn_SolucionEjercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio2ActionPerformed
+        new ExercisesSolutions(this, true,eList.get(21).getSolutionCode().getSolutionText()).setVisible(true);
+    }//GEN-LAST:event_Btn_SolucionEjercicio2ActionPerformed
+
+    private void Btn_SolucionEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio3ActionPerformed
+        new ExercisesSolutions(this, true,eList.get(22).getSolutionCode().getSolutionText()).setVisible(true);
+    }//GEN-LAST:event_Btn_SolucionEjercicio3ActionPerformed
+
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -7027,6 +7066,9 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JButton Btn_Siguiente_Recursion;
     private javax.swing.JButton Btn_Siguiente_TiposdeDatos;
     private javax.swing.JToggleButton Btn_Solucion;
+    private javax.swing.JButton Btn_SolucionEjercicio1;
+    private javax.swing.JButton Btn_SolucionEjercicio2;
+    private javax.swing.JButton Btn_SolucionEjercicio3;
     private javax.swing.JEditorPane Edt0_1;
     private javax.swing.JEditorPane Edt0_2;
     private javax.swing.JEditorPane Edt10_1;
