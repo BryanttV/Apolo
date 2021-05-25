@@ -284,7 +284,7 @@ public class Home extends javax.swing.JFrame {
     // Personalizar la Barra de Desplazamiento de todos los ScrollPane
     private void configureScrollBar() {
         List<Component> compList = getAllComponents(this);
-        compList.stream().map((componente) -> {
+        compList.stream().map((Component componente) -> {
             if (componente instanceof JScrollPane) {
                 JScrollPane scp = (JScrollPane) componente;
                 // Agregar Barra de Desplazamiento Personalizada a cada ScrollPane
@@ -297,7 +297,9 @@ public class Home extends javax.swing.JFrame {
             }
             return componente;
         }).filter((componente)
-                -> (componente instanceof JButton)).map((componente)
+                -> {
+            return componente instanceof JButton;
+        }).map((componente)
                 -> (JButton) componente).forEachOrdered((btn)
                 -> {
             btn.setCursor(sRecursos.getCMano());
@@ -631,7 +633,6 @@ public class Home extends javax.swing.JFrame {
         sampleOutput = ex.getSampleOutput();
 
         //Calcular la nueva medida vertical del panel
-//        resize_Txe_Editor();
         ex.setVerticalSize(sizes[ex.getCounter()]);
         Dimension size = new Dimension(1060, ex.getVerticalSize());
         //Resize panel
@@ -641,13 +642,12 @@ public class Home extends javax.swing.JFrame {
         Pnl_ExerciseInfo.setPreferredSize(size);
 
         //Generar formato
-        tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_General_info, title, content, input, output, sampleInput, sampleOutput);
+        tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_General_info, title,
+                content, input, output, sampleInput, sampleOutput);
 
     }
 
     private void verifySolutionStatus() {
-//        int tmp = ex.getCounter();
-//        ex.setCounter(tmp);
         if (!ex.getStatus().equals("ACCEPTED")) {
             Btn_Solucion.setEnabled(false);
         } else {
@@ -6147,8 +6147,8 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_Aprender_Tema4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema4ActionPerformed
         tc.getOperadoresAritmeticosContent(syntaxTemas3_1, syntaxTemas3_2, syntaxTemas3_3,
-                syntaxTemas3_4, syntaxTemas3_5, Edt3_1, Edt3_2, Edt3_3, Edt3_4, Edt3_5, Edt3_6,
-                Edt3_7, Edt3_8);
+                syntaxTemas3_4, syntaxTemas3_5, Edt3_1, Edt3_2, Edt3_3, Edt3_4, Edt3_5,
+                Edt3_6, Edt3_7, Edt3_8);
         Scp_Tema4.setVisible(true);
         showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema4ActionPerformed
@@ -6204,8 +6204,8 @@ public class Home extends javax.swing.JFrame {
     private void Btn_Aprender_Tema12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Tema12ActionPerformed
         tc.getEstructBasicasContent(new RSyntaxTextArea[]{syntaxTemas11_1, syntaxTemas11_2,
             syntaxTemas11_3, syntaxTemas11_4, syntaxTemas11_5, syntaxTemas11_6, syntaxTemas11_7,
-            syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5, Edt11_6,
-            Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
+            syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5,
+            Edt11_6, Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
         Scp_Tema12.setVisible(true);
         showLearnPanels();
     }//GEN-LAST:event_Btn_Aprender_Tema12ActionPerformed
@@ -6259,7 +6259,8 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Anterior_HelloWordActionPerformed
 
     private void Btn_Siguiente_ComentariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_ComentariosActionPerformed
-        tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1, Edt1_2, Edt1_3, Edt1_4);
+        tc.getComentariosContent(syntaxTemas1_1, syntaxTemas1_2, syntaxTemas1_3, Edt1_1,
+                Edt1_2, Edt1_3, Edt1_4);
         visibleAndInvisibleScp(Scp_Tema2, Scp_Cuestionario1);
     }//GEN-LAST:event_Btn_Siguiente_ComentariosActionPerformed
 
@@ -6646,8 +6647,8 @@ public class Home extends javax.swing.JFrame {
     private void Btn_Siguiente_EDDBasicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Siguiente_EDDBasicasActionPerformed
         tc.getEstructBasicasContent(new RSyntaxTextArea[]{syntaxTemas11_1, syntaxTemas11_2,
             syntaxTemas11_3, syntaxTemas11_4, syntaxTemas11_5, syntaxTemas11_6, syntaxTemas11_7,
-            syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5, Edt11_6,
-            Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
+            syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5,
+            Edt11_6, Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
         visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario11);
     }//GEN-LAST:event_Btn_Siguiente_EDDBasicasActionPerformed
 
@@ -6664,8 +6665,8 @@ public class Home extends javax.swing.JFrame {
     private void Btn_Anterior_EDDBasicasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDBasicasActionPerformed
         tc.getEstructBasicasContent(new RSyntaxTextArea[]{syntaxTemas11_1, syntaxTemas11_2,
             syntaxTemas11_3, syntaxTemas11_4, syntaxTemas11_5, syntaxTemas11_6, syntaxTemas11_7,
-            syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5, Edt11_6,
-            Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
+            syntaxTemas11_8}, new JEditorPane[]{Edt11_1, Edt11_2, Edt11_3, Edt11_4, Edt11_5,
+            Edt11_6, Edt11_7, Edt11_8, Edt11_9, Edt11_10, Edt11_11, Edt11_12, Edt11_13, Edt11_14});
         visibleAndInvisibleScp(Scp_Tema12, Scp_Cuestionario12);
     }//GEN-LAST:event_Btn_Anterior_EDDBasicasActionPerformed
 
@@ -6688,8 +6689,8 @@ public class Home extends javax.swing.JFrame {
 
     private void Btn_Anterior_EDDIntermediasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_EDDIntermediasActionPerformed
         tc.getEstructIntermediasContent(syntaxTemas12_1, syntaxTemas12_2,
-                syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3,
-                Edt12_4, Edt12_5, Edt12_6, Edt12_7, Edt12_8, Edt12_9, Edt12_10, Edt12_11);
+                syntaxTemas12_3, syntaxTemas12_4, Edt12_1, Edt12_2, Edt12_3, Edt12_4,
+                Edt12_5, Edt12_6, Edt12_7, Edt12_8, Edt12_9, Edt12_10, Edt12_11);
         visibleAndInvisibleScp(Scp_Tema13, Scp_Cuestionario13);
     }//GEN-LAST:event_Btn_Anterior_EDDIntermediasActionPerformed
 
