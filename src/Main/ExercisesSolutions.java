@@ -1,13 +1,17 @@
 package Main;
 
-import Entities.Exercises;
+// Librerias Creadas
 import Services.RecursosService;
+
+// Librerias Externas
+import org.fife.ui.rsyntaxtextarea.Theme;
+import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
+import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
+
+// Librerias Default
 import java.awt.Font;
 import java.io.IOException;
 import javax.swing.JPanel;
-import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
-import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import org.fife.ui.rsyntaxtextarea.Theme;
 
 public class ExercisesSolutions extends javax.swing.JDialog {
     private final RecursosService sRecursos = RecursosService.getService();
@@ -15,8 +19,8 @@ public class ExercisesSolutions extends javax.swing.JDialog {
     
     public ExercisesSolutions(java.awt.Frame parent, boolean modal, String re) {
         super(parent, modal);
-        this.setLocationRelativeTo(null);
         initComponents();
+        this.setLocationRelativeTo(null); 
         addRSyntax(Pnl_CodesThemes0, syntaxExerciseSolution1);
         syntaxExerciseSolution1.setText(re);
     }

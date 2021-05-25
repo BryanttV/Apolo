@@ -146,10 +146,6 @@ public class Home extends javax.swing.JFrame {
     private boolean active = true;
     private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
 
-    // Tamanio de EditorPane en los ejercicios de CodeStorm
-    int[] sizes = new int[]{820, 1000, 530, 530, 800, 760, 710, 680, 780, 950,
-        750, 750, 730, 800, 800, 665, 900, 980, 630, 960};
-
     // Llamada informacion DDBB -------------------------------------------------
     // Creación de Fabrica de Entidades
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
@@ -379,8 +375,8 @@ public class Home extends javax.swing.JFrame {
         rta.setFont(new Font("Consolas", Font.PLAIN, 14));
         rta.setBackground(sRecursos.getCPrincipal());
         rta.setAntiAliasingEnabled(true);
-        rta.setUseFocusableTips(false);
         rta.setEditable(false);
+        rta.setUseSelectedTextColor(false);
         rta.revalidate();
         p.add(rta);
     }
@@ -627,18 +623,8 @@ public class Home extends javax.swing.JFrame {
         sampleInput = ex.getSampleInput();
         sampleOutput = ex.getSampleOutput();
 
-        //Calcular la nueva medida vertical del panel
-        ex.setVerticalSize(sizes[ex.getCounter()]);
-        Dimension size = new Dimension(1060, ex.getVerticalSize());
-        //Resize panel
-        Pnl_ExerciseInfo.setSize(size);
-        Edt_General_Info.setSize(size);
-        Pnl_ExerciseInfo.setMaximumSize(size);
-        Pnl_ExerciseInfo.setMinimumSize(size);
-        Pnl_ExerciseInfo.setPreferredSize(size);
-
         //Generar formato
-        tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_General_Info, title,
+        tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_InformacionEjercicio, title,
                 content, input, output, sampleInput, sampleOutput);
 
     }
@@ -650,7 +636,7 @@ public class Home extends javax.swing.JFrame {
         } else {
             Btn_Solucion.setEnabled(true);
             syntaxSolution.setText(ex.getSolution());
-//            System.out.println(ex.getCounter());
+            syntaxSolution.setCaretPosition(0);
             if (ex.getCounter() == 22) {
                 LastMessage lm = new LastMessage(this, true, tc, t);
                 lm.setVisible(true);
@@ -1287,10 +1273,8 @@ public class Home extends javax.swing.JFrame {
         Btn_Anterior = new javax.swing.JButton();
         Pnl_Main = new javax.swing.JPanel();
         Pnl_EjercicioFull = new javax.swing.JPanel();
-        Scp_ExerciseInfo = new javax.swing.JScrollPane();
-        Pnl_ExerciseInfo = new javax.swing.JPanel();
-        Scp_InfoExercise = new javax.swing.JScrollPane();
-        Edt_General_Info = new javax.swing.JEditorPane();
+        Scp_InformacionEjercicio = new javax.swing.JScrollPane();
+        Edt_InformacionEjercicio = new javax.swing.JEditorPane();
         Pnl_CodigoFull = new javax.swing.JPanel();
         Pnl_SyntaxCode = new javax.swing.JPanel();
         Pnl_SolucionFull = new javax.swing.JPanel();
@@ -5988,27 +5972,20 @@ public class Home extends javax.swing.JFrame {
         Pnl_EjercicioFull.setBackground(sRecursos.getCPrincipal());
         Pnl_EjercicioFull.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Scp_ExerciseInfo.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_InformacionEjercicio.setBorder(null);
+        Scp_InformacionEjercicio.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        Scp_InformacionEjercicio.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        Scp_InformacionEjercicio.setAutoscrolls(true);
+        Scp_InformacionEjercicio.setOpaque(false);
+        Scp_InformacionEjercicio.setVerifyInputWhenFocusTarget(false);
 
-        Pnl_ExerciseInfo.setInheritsPopupMenu(true);
-        Pnl_ExerciseInfo.setMaximumSize(new java.awt.Dimension(1060, 3000));
-        Pnl_ExerciseInfo.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        Edt_InformacionEjercicio.setEditable(false);
+        Edt_InformacionEjercicio.setBackground(sRecursos.getCPrincipal());
+        Edt_InformacionEjercicio.setBorder(null);
+        Edt_InformacionEjercicio.setContentType("text/html"); // NOI18N
+        Scp_InformacionEjercicio.setViewportView(Edt_InformacionEjercicio);
 
-        Scp_InfoExercise.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-        Edt_General_Info.setBackground(sRecursos.getCPrincipal());
-        Edt_General_Info.setBorder(null);
-        Edt_General_Info.setContentType("text/html"); // NOI18N
-        Edt_General_Info.setMaximumSize(new java.awt.Dimension(1060, 3000));
-        Edt_General_Info.setMinimumSize(new java.awt.Dimension(1060, 820));
-        Edt_General_Info.setPreferredSize(new java.awt.Dimension(1060, 820));
-        Scp_InfoExercise.setViewportView(Edt_General_Info);
-
-        Pnl_ExerciseInfo.add(Scp_InfoExercise, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        Scp_ExerciseInfo.setViewportView(Pnl_ExerciseInfo);
-
-        Pnl_EjercicioFull.add(Scp_ExerciseInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, 430));
+        Pnl_EjercicioFull.add(Scp_InformacionEjercicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1080, 440));
 
         Pnl_Main.add(Pnl_EjercicioFull, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1110, 510));
 
@@ -6017,7 +5994,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_CodigoFull.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Pnl_SyntaxCode.setLayout(new java.awt.BorderLayout());
-        Pnl_CodigoFull.add(Pnl_SyntaxCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1080, 430));
+        Pnl_CodigoFull.add(Pnl_SyntaxCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1080, 440));
 
         Pnl_Main.add(Pnl_CodigoFull, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1110, 510));
 
@@ -6026,7 +6003,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_SolucionFull.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Pnl_SyntaxSolution.setLayout(new java.awt.BorderLayout());
-        Pnl_SolucionFull.add(Pnl_SyntaxSolution, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 1080, 430));
+        Pnl_SolucionFull.add(Pnl_SyntaxSolution, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, 1080, 440));
 
         Pnl_Main.add(Pnl_SolucionFull, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 1110, 510));
 
@@ -6373,6 +6350,7 @@ public class Home extends javax.swing.JFrame {
         ON_OFF_CodeStormPanels();
         getAndPublicInfo();
         verifySolutionStatus();
+        Edt_InformacionEjercicio.setCaretPosition(0);
     }
 
     private void Btn_Nivel1_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel1_Ejercicio1ActionPerformed
@@ -6472,8 +6450,8 @@ public class Home extends javax.swing.JFrame {
         String id = "input" + (cont + 1);
         try {
             juzgador(id, code, "judge", "iofiles", Integer.toString(cont + 1), ex.getCounter(), emf);
-        } catch (Exception ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, e);
         }
         Btn_Enviar.setSelected(false);
         emf = ex.regenerateConnectionUpdate();
@@ -6511,6 +6489,8 @@ public class Home extends javax.swing.JFrame {
         }
         verifySolutionStatus();
         syntaxCode.setText("//Pega aquí tú código...");
+        Edt_InformacionEjercicio.setCaretPosition(0);
+        Scp_InformacionEjercicio.getVerticalScrollBar().setValue(0);
     }//GEN-LAST:event_Btn_AnteriorActionPerformed
 
     private void Btn_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SiguienteActionPerformed
@@ -6528,6 +6508,8 @@ public class Home extends javax.swing.JFrame {
         }
         verifySolutionStatus();
         syntaxCode.setText("//Pega aqui tú código...");
+        Edt_InformacionEjercicio.setCaretPosition(0);
+        Scp_InformacionEjercicio.getVerticalScrollBar().setValue(0);
     }//GEN-LAST:event_Btn_SiguienteActionPerformed
 
     private void Btn_Introduccion_SiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Introduccion_SiguienteActionPerformed
@@ -6810,8 +6792,8 @@ public class Home extends javax.swing.JFrame {
         ex.setCounter(20);
         try {
             juzgador("input1", code, "ioaprender", "ioaprender", "1", ex.getCounter(), emf);
-        } catch (Exception ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, e);
         }
         emf = ex.regenerateConnectionUpdate();
         verifySolutionStatus();
@@ -6822,8 +6804,8 @@ public class Home extends javax.swing.JFrame {
         ex.setCounter(21);
         try {
             juzgador("input2", code, "ioaprender", "ioaprender", "2", ex.getCounter(), emf);
-        } catch (Exception ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, e);
         }
         emf = ex.regenerateConnectionUpdate();
         verifySolutionStatus();
@@ -6834,8 +6816,8 @@ public class Home extends javax.swing.JFrame {
         ex.setCounter(22);
         try {
             juzgador("input3", code, "ioaprender", "ioaprender", "3", ex.getCounter(), emf);
-        } catch (Exception ex) {
-            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception e) {
+            Logger.getLogger(Home.class.getName()).log(Level.SEVERE, null, e);
         }
         emf = ex.regenerateConnectionUpdate();
         verifySolutionStatus();
@@ -6904,15 +6886,15 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Answer13ActionPerformed
 
     private void Btn_SolucionEjercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio1ActionPerformed
-        new ExercisesSolutions(this, true,eList.get(20).getSolutionCode().getSolutionText()).setVisible(true);
+        new ExercisesSolutions(this, true, eList.get(20).getSolutionCode().getSolutionText()).setVisible(true);
     }//GEN-LAST:event_Btn_SolucionEjercicio1ActionPerformed
 
     private void Btn_SolucionEjercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio2ActionPerformed
-        new ExercisesSolutions(this, true,eList.get(21).getSolutionCode().getSolutionText()).setVisible(true);
+        new ExercisesSolutions(this, true, eList.get(21).getSolutionCode().getSolutionText()).setVisible(true);
     }//GEN-LAST:event_Btn_SolucionEjercicio2ActionPerformed
 
     private void Btn_SolucionEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio3ActionPerformed
-        new ExercisesSolutions(this, true,eList.get(22).getSolutionCode().getSolutionText()).setVisible(true);
+        new ExercisesSolutions(this, true, eList.get(22).getSolutionCode().getSolutionText()).setVisible(true);
     }//GEN-LAST:event_Btn_SolucionEjercicio3ActionPerformed
 
     public static void main(String args[]) {
@@ -7158,7 +7140,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JEditorPane Edt_Ejercicio1;
     private javax.swing.JEditorPane Edt_Ejercicio2;
     private javax.swing.JEditorPane Edt_Ejercicio3;
-    private javax.swing.JEditorPane Edt_General_Info;
+    private javax.swing.JEditorPane Edt_InformacionEjercicio;
     private javax.swing.JEditorPane Edt_Introduccion;
     private javax.swing.JLabel Lbl_Acumuladores;
     private javax.swing.JLabel Lbl_Aprender_Mapa;
@@ -7316,7 +7298,6 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JPanel Pnl_Ejercicio3_Aprender;
     private javax.swing.JPanel Pnl_EjercicioFull;
     private javax.swing.JPanel Pnl_Encabezado;
-    private javax.swing.JPanel Pnl_ExerciseInfo;
     private javax.swing.JPanel Pnl_General;
     private javax.swing.JPanel Pnl_Header;
     private javax.swing.JPanel Pnl_Historia;
@@ -7501,8 +7482,7 @@ public class Home extends javax.swing.JFrame {
     private javax.swing.JScrollPane Scp_Ejercicio1;
     private javax.swing.JScrollPane Scp_Ejercicio2;
     private javax.swing.JScrollPane Scp_Ejercicio3;
-    private javax.swing.JScrollPane Scp_ExerciseInfo;
-    private javax.swing.JScrollPane Scp_InfoExercise;
+    private javax.swing.JScrollPane Scp_InformacionEjercicio;
     private javax.swing.JScrollPane Scp_Introduccion;
     private javax.swing.JScrollPane Scp_Tema1;
     private javax.swing.JScrollPane Scp_Tema10;

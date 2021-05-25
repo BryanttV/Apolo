@@ -69,7 +69,7 @@ public class ThemesContent {
         lstList = lstjpa.findLearningSubtopicsEntities();
     }
 
-//    Obtener conexion con la Base de Datos
+    // Obtener conexion con la Base de Datos
     public void setConnectionDB(EntityManagerFactory emf) {
         cojpa = new CodesJpaController(emf);
         ejpa = new ExercisesJpaController(emf);
