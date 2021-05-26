@@ -58,15 +58,15 @@ public class ExercisesSolutions extends javax.swing.JDialog {
         Pnl_SolucionEjercicio1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(540, 520));
-        setMinimumSize(new java.awt.Dimension(540, 520));
+        setMaximumSize(new java.awt.Dimension(450, 510));
+        setMinimumSize(new java.awt.Dimension(450, 510));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(540, 520));
+        setPreferredSize(new java.awt.Dimension(450, 510));
 
         Pnl_General.setBackground(sRecursos.getColorDark());
-        Pnl_General.setMaximumSize(new java.awt.Dimension(540, 520));
-        Pnl_General.setMinimumSize(new java.awt.Dimension(540, 520));
-        Pnl_General.setPreferredSize(new java.awt.Dimension(540, 520));
+        Pnl_General.setMaximumSize(new java.awt.Dimension(450, 510));
+        Pnl_General.setMinimumSize(new java.awt.Dimension(450, 510));
+        Pnl_General.setPreferredSize(new java.awt.Dimension(450, 510));
         Pnl_General.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Btn_Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Cerrar_Off.png"))); // NOI18N
@@ -79,20 +79,20 @@ public class ExercisesSolutions extends javax.swing.JDialog {
                 Btn_CerrarActionPerformed(evt);
             }
         });
-        Pnl_General.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 5, 30, 30));
+        Pnl_General.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 5, 30, 30));
 
         Pnl_SolucionEjercicio1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_SolucionEjercicio1.setMaximumSize(new java.awt.Dimension(540, 530));
-        Pnl_SolucionEjercicio1.setMinimumSize(new java.awt.Dimension(540, 530));
-        Pnl_SolucionEjercicio1.setPreferredSize(new java.awt.Dimension(540, 530));
+        Pnl_SolucionEjercicio1.setMaximumSize(new java.awt.Dimension(440, 510));
+        Pnl_SolucionEjercicio1.setMinimumSize(new java.awt.Dimension(440, 510));
+        Pnl_SolucionEjercicio1.setPreferredSize(new java.awt.Dimension(440, 510));
         Pnl_SolucionEjercicio1.setLayout(new java.awt.CardLayout());
-        Pnl_General.add(Pnl_SolucionEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 520, 470));
+        Pnl_General.add(Pnl_SolucionEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 430, 460));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Pnl_General, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(Pnl_General, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

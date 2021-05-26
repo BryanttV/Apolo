@@ -4,14 +4,14 @@
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[540, 520]"/>
+      <Dimension value="[450, 510]"/>
     </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[540, 520]"/>
+      <Dimension value="[450, 510]"/>
     </Property>
     <Property name="undecorated" type="boolean" value="true"/>
     <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[540, 520]"/>
+      <Dimension value="[450, 510]"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -33,7 +33,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="Pnl_General" alignment="0" min="-2" pref="540" max="-2" attributes="0"/>
+          <Component id="Pnl_General" alignment="0" min="-2" pref="450" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -49,13 +49,13 @@
           <Connection code="sRecursos.getColorDark()" type="code"/>
         </Property>
         <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[540, 520]"/>
+          <Dimension value="[450, 510]"/>
         </Property>
         <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[540, 520]"/>
+          <Dimension value="[450, 510]"/>
         </Property>
         <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-          <Dimension value="[540, 520]"/>
+          <Dimension value="[450, 510]"/>
         </Property>
       </Properties>
 
@@ -80,7 +80,7 @@
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="500" y="5" width="30" height="30"/>
+              <AbsoluteConstraints x="400" y="5" width="30" height="30"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -94,18 +94,18 @@
               </Border>
             </Property>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[540, 530]"/>
+              <Dimension value="[440, 510]"/>
             </Property>
             <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[540, 530]"/>
+              <Dimension value="[440, 510]"/>
             </Property>
             <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[540, 530]"/>
+              <Dimension value="[440, 510]"/>
             </Property>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="10" y="40" width="520" height="470"/>
+              <AbsoluteConstraints x="10" y="40" width="430" height="460"/>
             </Constraint>
           </Constraints>
 

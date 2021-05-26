@@ -6260,10 +6260,12 @@ public class Home extends javax.swing.JFrame {
 
     private void HistoryContent() {
         tc.getHistoryContent(Edt_ContenidoHistoria);
+        Edt_ContenidoHistoria.setCaretPosition(0);
     }
 
     private void IntroductionContent() {
         tc.addHTML(t.getIntroductionTemplate(), Edt_Introduccion);
+        Edt_Introduccion.setCaretPosition(0);
     }
 
     private void visibleAndInvisibleScp(JScrollPane scp1, JScrollPane scp2, JEditorPane edt) {
