@@ -2854,7 +2854,12 @@ public class Home extends javax.swing.JFrame {
         Edt_Ejercicio1.setOpaque(false);
         Pnl_Ejercicio1_Aprender.add(Edt_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 610));
 
-        Btn_SolucionEjercicio1.setText("Solución");
+        Btn_SolucionEjercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Solucion_Ejercicio_Aprender_Off.png"))); // NOI18N
+        Btn_SolucionEjercicio1.setBorderPainted(false);
+        Btn_SolucionEjercicio1.setContentAreaFilled(false);
+        Btn_SolucionEjercicio1.setCursor(sRecursos.getCDefault());
+        Btn_SolucionEjercicio1.setFocusPainted(false);
+        Btn_SolucionEjercicio1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Solucion_Ejercicio_Aprender_On.png"))); // NOI18N
         Btn_SolucionEjercicio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_SolucionEjercicio1ActionPerformed(evt);
@@ -3958,7 +3963,11 @@ public class Home extends javax.swing.JFrame {
         Edt_Ejercicio2.setOpaque(false);
         Pnl_Ejercicio2_Aprender.add(Edt_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 590));
 
-        Btn_SolucionEjercicio2.setText("Solución");
+        Btn_SolucionEjercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Solucion_Ejercicio_Aprender_Off.png"))); // NOI18N
+        Btn_SolucionEjercicio2.setBorderPainted(false);
+        Btn_SolucionEjercicio2.setContentAreaFilled(false);
+        Btn_SolucionEjercicio2.setFocusPainted(false);
+        Btn_SolucionEjercicio2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Solucion_Ejercicio_Aprender_On.png"))); // NOI18N
         Btn_SolucionEjercicio2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_SolucionEjercicio2ActionPerformed(evt);
@@ -5339,7 +5348,12 @@ public class Home extends javax.swing.JFrame {
         Edt_Ejercicio3.setOpaque(false);
         Pnl_Ejercicio3_Aprender.add(Edt_Ejercicio3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 1120, 580));
 
-        Btn_SolucionEjercicio3.setText("Solución");
+        Btn_SolucionEjercicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Solucion_Ejercicio_Aprender_Off.png"))); // NOI18N
+        Btn_SolucionEjercicio3.setBorderPainted(false);
+        Btn_SolucionEjercicio3.setContentAreaFilled(false);
+        Btn_SolucionEjercicio3.setCursor(sRecursos.getCMano());
+        Btn_SolucionEjercicio3.setFocusPainted(false);
+        Btn_SolucionEjercicio3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Solucion_Ejercicio_Aprender_On.png"))); // NOI18N
         Btn_SolucionEjercicio3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_SolucionEjercicio3ActionPerformed(evt);

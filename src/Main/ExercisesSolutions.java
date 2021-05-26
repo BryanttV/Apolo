@@ -21,14 +21,14 @@ public class ExercisesSolutions extends javax.swing.JDialog {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null); 
-        addRSyntax(Pnl_CodesThemes0, syntaxExerciseSolution1);
+        addRSyntax(Pnl_SolucionEjercicio1, syntaxExerciseSolution1);
         syntaxExerciseSolution1.setText(re);
     }
     
     
     private void changeStyleViaThemeXml(RSyntaxTextArea rta) {
         try {
-            String tema_xml = "/org/fife/ui/rsyntaxtextarea/themes/eclipse.xml";
+            String tema_xml = "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml";
             Theme theme = Theme.load(getClass().getResourceAsStream(tema_xml));
             theme.apply(rta);
         } catch (IOException ioe) {
@@ -40,7 +40,7 @@ public class ExercisesSolutions extends javax.swing.JDialog {
         rta.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
         changeStyleViaThemeXml(rta);
         rta.setFont(new Font("Consolas", Font.PLAIN, 14));
-        rta.setBackground(sRecursos.getCPrincipal());
+        rta.setBackground(sRecursos.getColorDark());
         rta.setAntiAliasingEnabled(true);
         rta.setUseFocusableTips(false);
         rta.setEditable(false);
@@ -53,41 +53,63 @@ public class ExercisesSolutions extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Pnl_CodesThemes0 = new javax.swing.JPanel();
+        Pnl_General = new javax.swing.JPanel();
+        Btn_Cerrar = new javax.swing.JButton();
+        Pnl_SolucionEjercicio1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(600, 530));
-        setMinimumSize(new java.awt.Dimension(600, 530));
-        setPreferredSize(new java.awt.Dimension(600, 530));
+        setMaximumSize(new java.awt.Dimension(540, 520));
+        setMinimumSize(new java.awt.Dimension(540, 520));
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(540, 520));
 
-        Pnl_CodesThemes0.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes0.setMaximumSize(new java.awt.Dimension(600, 530));
-        Pnl_CodesThemes0.setMinimumSize(new java.awt.Dimension(600, 530));
-        Pnl_CodesThemes0.setPreferredSize(new java.awt.Dimension(600, 530));
-        Pnl_CodesThemes0.setLayout(new java.awt.CardLayout());
+        Pnl_General.setBackground(sRecursos.getColorDark());
+        Pnl_General.setMaximumSize(new java.awt.Dimension(540, 520));
+        Pnl_General.setMinimumSize(new java.awt.Dimension(540, 520));
+        Pnl_General.setPreferredSize(new java.awt.Dimension(540, 520));
+        Pnl_General.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Btn_Cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Cerrar_Off.png"))); // NOI18N
+        Btn_Cerrar.setBorderPainted(false);
+        Btn_Cerrar.setContentAreaFilled(false);
+        Btn_Cerrar.setFocusPainted(false);
+        Btn_Cerrar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Cerrar_On.png"))); // NOI18N
+        Btn_Cerrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_CerrarActionPerformed(evt);
+            }
+        });
+        Pnl_General.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 5, 30, 30));
+
+        Pnl_SolucionEjercicio1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_SolucionEjercicio1.setMaximumSize(new java.awt.Dimension(540, 530));
+        Pnl_SolucionEjercicio1.setMinimumSize(new java.awt.Dimension(540, 530));
+        Pnl_SolucionEjercicio1.setPreferredSize(new java.awt.Dimension(540, 530));
+        Pnl_SolucionEjercicio1.setLayout(new java.awt.CardLayout());
+        Pnl_General.add(Pnl_SolucionEjercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 520, 470));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Pnl_CodesThemes0, javax.swing.GroupLayout.PREFERRED_SIZE, 580, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(Pnl_General, javax.swing.GroupLayout.PREFERRED_SIZE, 540, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(Pnl_CodesThemes0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(Pnl_General, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void Btn_CerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CerrarActionPerformed
+       this.dispose();
+    }//GEN-LAST:event_Btn_CerrarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel Pnl_CodesThemes0;
+    private javax.swing.JButton Btn_Cerrar;
+    private javax.swing.JPanel Pnl_General;
+    private javax.swing.JPanel Pnl_SolucionEjercicio1;
     // End of variables declaration//GEN-END:variables
 }
