@@ -1,5 +1,6 @@
 package Main;
 
+// Libreria Creada
 import Services.RecursosService;
 
 public class LastMessage extends javax.swing.JDialog {
@@ -14,8 +15,8 @@ public class LastMessage extends javax.swing.JDialog {
         this.t = t;
         sRecursos = RecursosService.getService();
         initComponents();
-        this.setLocationRelativeTo(parent);
         LstMssg();
+        this.setLocationRelativeTo(parent);
     }
 
     private void LstMssg() {
@@ -75,7 +76,6 @@ public class LastMessage extends javax.swing.JDialog {
     private void Btn_CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_Btn_CloseActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Close;

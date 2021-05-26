@@ -84,6 +84,7 @@ public class Home extends javax.swing.JFrame {
     // Ventanas JDialog
     private final About st = new About(this, true);
     private final ExitMain Confirmar = new ExitMain(this, true);
+    private VerifyQuestions vq;
 
     // Declaracion de Resaltador de Sintaxis
     private final RSyntaxTextArea syntaxCode = new RSyntaxTextArea();
@@ -6843,9 +6844,14 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
 
     private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3) {
-        JOptionPane.showMessageDialog(null, ((r1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((r2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
-        JOptionPane.showMessageDialog(null, ((r3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+//        JOptionPane.showMessageDialog(null, ((r1.isSelected()) ? "Pregunta 1: Correcto" : " Pregunta 1: Incorrecto"));
+//        JOptionPane.showMessageDialog(null, ((r2.isSelected()) ? "Pregunta 2: Correcto" : " Pregunta 2: Incorrecto"));
+//        JOptionPane.showMessageDialog(null, ((r3.isSelected()) ? "Pregunta 3: Correcto" : " Pregunta 3: Incorrecto"));
+        String p1 = (r1.isSelected()) ? "Correcta" : "Incorrecta";
+        String p2 = (r2.isSelected()) ? "Correcta" : "Incorrecta";
+        String p3 = (r3.isSelected()) ? "Correcta" : "Incorrecta";
+        vq = new VerifyQuestions(this, true, p1, p2, p3);
+        vq.setVisible(true);
     }
 
     private void Btn_Answer0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer0ActionPerformed

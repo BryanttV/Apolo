@@ -1,17 +1,19 @@
 package Main;
 
-//importar librerias
-import java.util.List;
-import javax.persistence.EntityManagerFactory;
+// librerias Creada
 import Entities.Exercises;
-import Entities.AlternativeSolutions;
 import Entities.ExercisesContent;
+import Entities.AlternativeSolutions;
 import JPA_Controllers.ExercisesJpaController;
 import JPA_Controllers.ExercisesContentJpaController;
 import JPA_Controllers.AlternativeSolutionsJpaController;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+
+// Librerias por Defecto
+import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 public class Exercise {
 
