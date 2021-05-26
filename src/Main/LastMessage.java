@@ -1,11 +1,17 @@
 package Main;
 
 import Services.RecursosService;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 
 public class LastMessage extends javax.swing.JDialog {
 
-    public ThemesContent tc = null;
-    public HTMLTemplates t = null;
+    private ThemesContent tc = null;
+    private EntityManagerFactory _emf = null;
+    private int _cnt_ex;
+    private HTMLTemplates t = null;
+
     private final RecursosService sRecursos;
 
     public LastMessage(java.awt.Frame parent, boolean modal, ThemesContent tc, HTMLTemplates t) {
@@ -20,6 +26,20 @@ public class LastMessage extends javax.swing.JDialog {
 
     private void LstMssg() {
         tc.addHTML(t.getLastMessageTemplate(), Edt_LastMessage);
+    }
+
+    public void refreshLastMessage(EntityManagerFactory emf, int cnt_ex) {
+        _emf = emf;
+        _cnt_ex = cnt_ex + 1;
+        EntityManager em = emf.createEntityManager();
+        Query q = em.createQuery("UPDATE Exercises SET status = :final_status " + "WHERE exercise_code = :cnt_ejercicio");
+        q.setParameter("final_status", "TRUE");
+        q.setParameter("cnt_ejercicio", _cnt_ex);
+        int rows = q.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+        System.out.println("FILAS ACTUALIZADAS: " + rows);
+        _emf.close();
     }
 
     @SuppressWarnings("unchecked")

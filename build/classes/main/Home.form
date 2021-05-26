@@ -410,6 +410,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -436,6 +437,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -462,6 +464,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -488,6 +491,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -514,6 +518,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -540,7 +545,9 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
+                    <Property name="focusable" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                       <Image iconType="3" name="/Resources/Aprender/Tema7_On.png"/>
@@ -566,6 +573,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -592,6 +600,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -618,6 +627,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -644,6 +654,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -670,6 +681,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -696,6 +708,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -722,6 +735,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
@@ -1212,6 +1226,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -1791,6 +1806,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -2279,6 +2295,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -3020,6 +3037,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -3534,6 +3552,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -3861,6 +3880,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -3984,6 +4004,7 @@
                             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getCDefault()" type="code"/>
                             </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Resources/Aprender/Solucion_Ejercicio_Aprender_On.png"/>
@@ -4305,6 +4326,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -4821,6 +4843,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -5774,6 +5797,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -6597,6 +6621,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -6924,6 +6949,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -7044,6 +7070,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Resources/Aprender/Solucion_Ejercicio_Aprender_On.png"/>
@@ -7370,6 +7397,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -7917,6 +7945,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -8921,6 +8950,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -9795,6 +9825,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -10466,6 +10497,7 @@
                             </Property>
                             <Property name="borderPainted" type="boolean" value="false"/>
                             <Property name="contentAreaFilled" type="boolean" value="false"/>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="horizontalTextPosition" type="int" value="0"/>
                             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
@@ -10708,6 +10740,7 @@
                 <Container class="javax.swing.JScrollPane" name="Scp_Ejercicio3">
                   <Properties>
                     <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getDTamanio()" type="code"/>
                     </Property>
@@ -10882,6 +10915,7 @@
                             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                               <Connection code="sRecursos.getCMano()" type="code"/>
                             </Property>
+                            <Property name="enabled" type="boolean" value="false"/>
                             <Property name="focusPainted" type="boolean" value="false"/>
                             <Property name="rolloverIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                               <Image iconType="3" name="/Resources/Aprender/Solucion_Ejercicio_Aprender_On.png"/>
