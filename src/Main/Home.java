@@ -632,9 +632,10 @@ public class Home extends javax.swing.JFrame {
                 content, input, output, sampleInput, sampleOutput);
     }
 
-    private void verifySolutionsExercise(JButton btn, JButton nb) {
+    private void verifySolutionsExercise(JButton btn, JButton nb,JButton btm) {
         if (ex.getStatus().equals("ACCEPTED")) {
             btn.setEnabled(true);
+            btm.setEnabled(true);
             if (nb != null) {
                 nb.setEnabled(true);
             }
@@ -1684,6 +1685,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_Ejercicio2.setBorderPainted(false);
         Btn_Aprender_Ejercicio2.setContentAreaFilled(false);
         Btn_Aprender_Ejercicio2.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Ejercicio2.setEnabled(false);
         Btn_Aprender_Ejercicio2.setFocusPainted(false);
         Btn_Aprender_Ejercicio2.setMaximumSize(new java.awt.Dimension(90, 140));
         Btn_Aprender_Ejercicio2.setMinimumSize(new java.awt.Dimension(90, 140));
@@ -6826,7 +6828,7 @@ public class Home extends javax.swing.JFrame {
     private void Btn_Aprender_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio1ActionPerformed
         tc.getExer1LearnContent(Edt_Ejercicio1);
         ex.setCounter(20);
-        verifySolutionsExercise(Btn_SolucionEjercicio1, Btn_Siguiente_OperadoresdeRelacion);
+        verifySolutionsExercise(Btn_SolucionEjercicio1, Btn_Siguiente_OperadoresdeRelacion,Btn_Aprender_Tema6);
         Scp_Ejercicio1.setVisible(true);
         showLearnPanels(Edt_Ejercicio1);
     }//GEN-LAST:event_Btn_Aprender_Ejercicio1ActionPerformed
@@ -6834,7 +6836,7 @@ public class Home extends javax.swing.JFrame {
     private void Btn_Aprender_Ejercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Aprender_Ejercicio2ActionPerformed
         tc.getExer2LearnContent(Edt_Ejercicio2);
         ex.setCounter(21);
-        verifySolutionsExercise(Btn_SolucionEjercicio2, Btn_Siguiente_FuncionesyProc);
+        verifySolutionsExercise(Btn_SolucionEjercicio2, Btn_Siguiente_FuncionesyProc,Btn_Aprender_Tema10);
         Scp_Ejercicio2.setVisible(true);
         showLearnPanels(Edt_Ejercicio2);
     }//GEN-LAST:event_Btn_Aprender_Ejercicio2ActionPerformed
@@ -6844,7 +6846,7 @@ public class Home extends javax.swing.JFrame {
         Scp_Ejercicio3.setVisible(true);
         showLearnPanels(Edt_Ejercicio3);
         ex.setCounter(22);
-        verifySolutionsExercise(Btn_SolucionEjercicio3, null);
+        verifySolutionsExercise(Btn_SolucionEjercicio3, null,null);
     }//GEN-LAST:event_Btn_Aprender_EjercicioFinalActionPerformed
 
     private void Btn_Atras_CodeStormActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Atras_CodeStormActionPerformed
@@ -6872,7 +6874,7 @@ public class Home extends javax.swing.JFrame {
         }
         emf = ex.regenerateConnectionUpdate();
         System.out.println(ex.getCounter());
-        verifySolutionsExercise(Btn_SolucionEjercicio1, Btn_Siguiente_OperadoresdeRelacion);
+        verifySolutionsExercise(Btn_SolucionEjercicio1, Btn_Siguiente_OperadoresdeRelacion,Btn_Aprender_Tema6);
     }//GEN-LAST:event_Btn_EnviarEjercicio1ActionPerformed
 
     private void Btn_EnviarEjercicio2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio2ActionPerformed
@@ -6885,7 +6887,7 @@ public class Home extends javax.swing.JFrame {
         }
         emf = ex.regenerateConnectionUpdate();
         System.out.println(ex.getCounter());
-        verifySolutionsExercise(Btn_SolucionEjercicio2, Btn_Siguiente_FuncionesyProc);
+        verifySolutionsExercise(Btn_SolucionEjercicio2, Btn_Siguiente_FuncionesyProc,Btn_Aprender_Tema10);
     }//GEN-LAST:event_Btn_EnviarEjercicio2ActionPerformed
 
     private void Btn_EnviarEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EnviarEjercicio3ActionPerformed
@@ -6898,7 +6900,7 @@ public class Home extends javax.swing.JFrame {
         }
         emf = ex.regenerateConnectionUpdate();
         System.out.println(ex.getCounter());
-        verifySolutionsExercise(Btn_SolucionEjercicio3, null);
+        verifySolutionsExercise(Btn_SolucionEjercicio3, null,null);
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
 
     private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3, JButton nl, JButton n2) {
@@ -6967,19 +6969,19 @@ public class Home extends javax.swing.JFrame {
     }//GEN-LAST:event_Btn_Answer8ActionPerformed
 
     private void Btn_Answer9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer9ActionPerformed
-        showAnswerWindow(Rad_Question9_1, Rad_Question9_2, Rad_Question9_3, Btn_Aprender_Tema10, Btn_Siguiente_Recursion);
+        showAnswerWindow(Rad_Question9_1, Rad_Question9_2, Rad_Question9_3, Btn_Aprender_Tema11, Btn_Siguiente_Recursion);
     }//GEN-LAST:event_Btn_Answer9ActionPerformed
 
     private void Btn_Answer10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer10ActionPerformed
-        showAnswerWindow(Rad_Question10_1, Rad_Question10_2, Rad_Question10_3, Btn_Aprender_Tema11, Btn_Siguiente_EDDBasicas);
+        showAnswerWindow(Rad_Question10_1, Rad_Question10_2, Rad_Question10_3, Btn_Aprender_Tema12, Btn_Siguiente_EDDBasicas);
     }//GEN-LAST:event_Btn_Answer10ActionPerformed
 
     private void Btn_Answer11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer11ActionPerformed
-        showAnswerWindow(Rad_Question11_1, Rad_Question11_2, Rad_Question11_3, Btn_Aprender_Tema12, Btn_Siguiente_EDDIntermedias);
+        showAnswerWindow(Rad_Question11_1, Rad_Question11_2, Rad_Question11_3, Btn_Aprender_Tema13, Btn_Siguiente_EDDIntermedias);
     }//GEN-LAST:event_Btn_Answer11ActionPerformed
 
     private void Btn_Answer12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer12ActionPerformed
-        showAnswerWindow(Rad_Question12_1, Rad_Question12_2, Rad_Question12_3, Btn_Aprender_Tema13, Btn_Siguiente_PrimerosAlgoritmos);
+        showAnswerWindow(Rad_Question12_1, Rad_Question12_2, Rad_Question12_3, Btn_Aprender_Tema14, Btn_Siguiente_PrimerosAlgoritmos);
     }//GEN-LAST:event_Btn_Answer12ActionPerformed
 
     private void Btn_Answer13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer13ActionPerformed
