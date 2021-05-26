@@ -1,21 +1,23 @@
 package Main;
 
-//importar librerias
-import java.util.List;
-import javax.persistence.EntityManagerFactory;
+// librerias Creada
 import Entities.Exercises;
-import Entities.AlternativeSolutions;
 import Entities.ExercisesContent;
+import Entities.AlternativeSolutions;
 import JPA_Controllers.ExercisesJpaController;
 import JPA_Controllers.ExercisesContentJpaController;
 import JPA_Controllers.AlternativeSolutionsJpaController;
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
+
+// Librerias por Defecto
+import java.util.List;
 import javax.persistence.Query;
+import javax.persistence.Persistence;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 public class Exercise {
 
-    private EntityManagerFactory emf = null;
+    private EntityManagerFactory _emf = null;
 
     //Declaraciones iniciales
     private ExercisesContentJpaController excjpa = null;
@@ -40,10 +42,16 @@ public class Exercise {
 
     //Obtener conexion con la Base de Datos
     public void setConnectionDB(EntityManagerFactory emf) {
-        this.emf = emf;
-        excjpa = new ExercisesContentJpaController(emf);
-        exjpa = new ExercisesJpaController(emf);
-        asoljpa = new AlternativeSolutionsJpaController(emf);
+        _emf = emf;
+        excjpa = new ExercisesContentJpaController(_emf);
+        exjpa = new ExercisesJpaController(_emf);
+        asoljpa = new AlternativeSolutionsJpaController(_emf);
+    }
+
+    private void regenerateJPAControler() {
+        excjpa = new ExercisesContentJpaController(_emf);
+        exjpa = new ExercisesJpaController(_emf);
+        asoljpa = new AlternativeSolutionsJpaController(_emf);
     }
 
     //Ontener el ejercicio actual
@@ -111,14 +119,15 @@ public class Exercise {
     }
 
     public EntityManagerFactory regenerateConnectionUpdate() {
-        this.emf = Persistence.createEntityManagerFactory("ApoloPU");
-        setConnectionDB(this.emf);
-        EntityManager em = this.emf.createEntityManager();
+        _emf = Persistence.createEntityManagerFactory("ApoloPU");
+//        setConnectionDB(_emf);
+        regenerateJPAControler();
+        EntityManager em = _emf.createEntityManager();
         em.getTransaction().begin();
         clearListExercises();
         Query q = em.createQuery("Select ex from Exercises ex");
         ex = (List<Exercises>) q.getResultList();
         em.close();
-        return this.emf;
+        return _emf;
     }
 }

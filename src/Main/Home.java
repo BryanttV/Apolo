@@ -86,6 +86,7 @@ public class Home extends javax.swing.JFrame {
     // Ventanas JDialog
     private final About st = new About(this, true);
     private final ExitMain Confirmar = new ExitMain(this, true);
+    private VerifyQuestions vq;
 
     // Declaracion de Resaltador de Sintaxis
     private final RSyntaxTextArea syntaxCode = new RSyntaxTextArea();
@@ -633,28 +634,28 @@ public class Home extends javax.swing.JFrame {
     }
 
     private void verifySolutionsExercise(JButton btn, JButton nb) {
+        System.out.println(ex.getStatus());
         if (ex.getStatus().equals("ACCEPTED")) {
             btn.setEnabled(true);
             if (nb != null) {
                 nb.setEnabled(true);
             }
             if (ex.getCounter() == 22) {
-                ex.setCounter(23);
-                if (ex.getStatus().equals("FALSE")) {
-                    LastMessage lm = new LastMessage(this, true, tc, t);
-                    lm.setVisible(true);
-                    lm.setLocationRelativeTo(null);
-                    lm.refreshLastMessage(emf, ex.getCounter());
-                    emf = ex.regenerateConnectionUpdate();
-                }
+//                ex.setCounter(23);
+//                if (ex.getStatus().equals("FALSE")) {
+                LastMessage lm = new LastMessage(this, true, tc, t);
+                lm.setVisible(true);
+//                lm.refreshLastMessage(emf, ex.getCounter());
+//                emf = ex.regenerateConnectionUpdate();
+//                }
             }
         }
     }
 
     private void verifySolutionStatus() {
+        System.out.println(ex.getStatus());
         if (!ex.getStatus().equals("ACCEPTED")) {
             Btn_Solucion.setEnabled(false);
-
         } else {
             Btn_Solucion.setEnabled(true);
             syntaxSolution.setText(ex.getSolution());
@@ -6901,33 +6902,42 @@ public class Home extends javax.swing.JFrame {
         verifySolutionsExercise(Btn_SolucionEjercicio3, null);
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
 
-    private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3, JButton nl, JButton n2) {
+    private String option[] = new String[3];
+
+    private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3, JButton b1, JButton b2) {
         if (r1.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Pregunta 1: Correcto");
+            option[0] = "Correcta";
             count++;
         } else {
-            JOptionPane.showMessageDialog(null, "Pregunta 1: Incorrecto");
+            option[0] = "Incorrecta";
         }
         if (r2.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Pregunta 2: Correcto");
+            option[1] = "Correcta";
             count++;
         } else {
-            JOptionPane.showMessageDialog(null, "Pregunta 2: Incorrecto");
+            option[1] = "Incorrecta";
         }
         if (r3.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Pregunta 3: Correcto");
+            option[2] = "Correcta";
             count++;
         } else {
-            JOptionPane.showMessageDialog(null, "Pregunta 3: Incorrecto");
+            option[2] = "Incorrecta";
         }
+        verifyCorrectAnswers(option, b1, b2);
+    }
 
-        if (count >= 2) {
-            nl.setEnabled(true);
-            n2.setEnabled(true);
+    private void verifyCorrectAnswers(String[] option, JButton b1, JButton b2) {
+        if (count < 2) {
+            vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
+                    "¡Preguntas Correctas Insuficientes!", "rgb(211, 47, 47)");
         } else {
-            JOptionPane.showMessageDialog(null, "Preguntas Correctas Insuficientes");
+            b1.setEnabled(true);
+            b2.setEnabled(true);
+            vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
+                    "¡Preguntas Correctas Necesarias!", "rgb(56, 142, 60)");
         }
         count = 0;
+        vq.setVisible(true);
     }
 
     private void Btn_Answer0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Answer0ActionPerformed

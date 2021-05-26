@@ -1,5 +1,6 @@
 package Main;
 
+// Libreria Creada
 import Services.RecursosService;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -7,10 +8,10 @@ import javax.persistence.Query;
 
 public class LastMessage extends javax.swing.JDialog {
 
-    private ThemesContent tc = null;
-    private EntityManagerFactory _emf = null;
-    private int _cnt_ex;
+    private int cnt_ex;
     private HTMLTemplates t = null;
+    private ThemesContent tc = null;
+    private EntityManagerFactory emf = null;
 
     private final RecursosService sRecursos;
 
@@ -20,8 +21,8 @@ public class LastMessage extends javax.swing.JDialog {
         this.t = t;
         sRecursos = RecursosService.getService();
         initComponents();
-        this.setLocationRelativeTo(parent);
         LstMssg();
+        this.setLocationRelativeTo(parent);
     }
 
     private void LstMssg() {
@@ -29,17 +30,17 @@ public class LastMessage extends javax.swing.JDialog {
     }
 
     public void refreshLastMessage(EntityManagerFactory emf, int cnt_ex) {
-        _emf = emf;
-        _cnt_ex = cnt_ex + 1;
+        this.emf = emf;
+        this.cnt_ex = cnt_ex + 1;
         EntityManager em = emf.createEntityManager();
         Query q = em.createQuery("UPDATE Exercises SET status = :final_status " + "WHERE exercise_code = :cnt_ejercicio");
         q.setParameter("final_status", "TRUE");
-        q.setParameter("cnt_ejercicio", _cnt_ex);
+        q.setParameter("cnt_ejercicio", this.cnt_ex);
         int rows = q.executeUpdate();
         em.getTransaction().commit();
         em.close();
         System.out.println("FILAS ACTUALIZADAS: " + rows);
-        _emf.close();
+        this.emf.close();
     }
 
     @SuppressWarnings("unchecked")
@@ -95,7 +96,6 @@ public class LastMessage extends javax.swing.JDialog {
     private void Btn_CloseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CloseActionPerformed
         this.dispose();
     }//GEN-LAST:event_Btn_CloseActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Close;
