@@ -762,6 +762,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="horizontalTextPosition" type="int" value="0"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -832,6 +833,7 @@
                     <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                       <Connection code="sRecursos.getCMano()" type="code"/>
                     </Property>
+                    <Property name="enabled" type="boolean" value="false"/>
                     <Property name="focusPainted" type="boolean" value="false"/>
                     <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                       <Dimension value="[121, 184]"/>
@@ -890,7 +892,7 @@
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="60" green="18" red="0" type="rgb"/>
                     </Property>
-                    <Property name="value" type="int" value="50"/>
+                    <Property name="maximum" type="int" value="102"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <AuxValues>
@@ -10995,7 +10997,6 @@
                       <Connection code="sRecursos.getColorRojo()" type="code"/>
                     </Property>
                     <Property name="orientation" type="int" value="1"/>
-                    <Property name="value" type="int" value="75"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
@@ -11013,7 +11014,6 @@
                       <Connection code="sRecursos.getColorRojo()" type="code"/>
                     </Property>
                     <Property name="orientation" type="int" value="1"/>
-                    <Property name="value" type="int" value="50"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="opaque" type="boolean" value="true"/>
                     <Property name="string" type="java.lang.String" value=""/>
@@ -11034,7 +11034,6 @@
                     </Property>
                     <Property name="orientation" type="int" value="1"/>
                     <Property name="toolTipText" type="java.lang.String" value=""/>
-                    <Property name="value" type="int" value="100"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                     <Property name="opaque" type="boolean" value="true"/>
                   </Properties>
@@ -11053,7 +11052,6 @@
                       <Connection code="sRecursos.getColorRojo()" type="code"/>
                     </Property>
                     <Property name="orientation" type="int" value="1"/>
-                    <Property name="value" type="int" value="50"/>
                     <Property name="borderPainted" type="boolean" value="false"/>
                   </Properties>
                   <Constraints>
@@ -11918,9 +11916,6 @@
                         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                           <Connection code="sRecursos.getCPrincipal()" type="code"/>
                         </Property>
-                        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                          <Border info="null"/>
-                        </Property>
                         <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                       </Properties>
                       <Constraints>
@@ -12307,9 +12302,6 @@
                       <SubComponents>
                         <Container class="javax.swing.JScrollPane" name="Scp_InformacionEjercicio">
                           <Properties>
-                            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                              <Border info="null"/>
-                            </Property>
                             <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
                             <Property name="verticalScrollBarPolicy" type="int" value="22"/>
                             <Property name="autoscrolls" type="boolean" value="true"/>
@@ -12332,9 +12324,6 @@
                                 <Property name="editable" type="boolean" value="false"/>
                                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
                                   <Connection code="sRecursos.getCPrincipal()" type="code"/>
-                                </Property>
-                                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                                  <Border info="null"/>
                                 </Property>
                                 <Property name="contentType" type="java.lang.String" value="text/html" noResource="true"/>
                               </Properties>

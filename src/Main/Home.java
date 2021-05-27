@@ -45,6 +45,8 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
@@ -72,6 +74,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
+import javax.swing.Timer;
 
 public class Home extends javax.swing.JFrame {
 
@@ -94,7 +97,7 @@ public class Home extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxEjercicio1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio3 = new RSyntaxTextArea();
-
+    
     private final RSyntaxTextArea syntaxTemas0 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas1_1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas1_2 = new RSyntaxTextArea();
@@ -149,6 +152,12 @@ public class Home extends javax.swing.JFrame {
     private boolean active = true;
     private int count = 0;
     private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
+    private int pbl = 0;
+    private int pbn1 = 0;
+    private int pbn2 = 0;
+    private int pbn3 = 0;
+    private int pbn4 = 0;
+    private int pbn5 = 0;
 
     // Llamada informacion DDBB -------------------------------------------------
     // Creación de Fabrica de Entidades
@@ -177,7 +186,7 @@ public class Home extends javax.swing.JFrame {
     List<ExercisesContent> ecList = null;
     List<Questionnaires> qresList = null;
     List<AlternativeSolutions> asList = null;
-
+    
     private void generateAllControllers() {
         ejpa = new ExercisesJpaController(emf);
         qjpa = new QuestionsJpaController(emf);
@@ -190,7 +199,7 @@ public class Home extends javax.swing.JFrame {
         qresjpa = new QuestionnairesJpaController(emf);
         asjpa = new AlternativeSolutionsJpaController(emf);
     }
-
+    
     private void generateAllLists() {
         eList = ejpa.findExercisesEntities();
         qList = qjpa.findQuestionsEntities();
@@ -222,7 +231,7 @@ public class Home extends javax.swing.JFrame {
         HistoryContent();
         IntroductionContent();
     }
-
+    
     private void callInfoThemes() {
         tc.setConnectionDB(emf);
         tc.generateListsInfo();
@@ -394,14 +403,14 @@ public class Home extends javax.swing.JFrame {
         RTextScrollPane tspEjercicio1 = new RTextScrollPane();
         RTextScrollPane tspEjercicio2 = new RTextScrollPane();
         RTextScrollPane tspEjercicio3 = new RTextScrollPane();
-
+        
         addRSyntax(Pnl_SyntaxCode, syntaxCode, tspCode);
         addRSyntax(Pnl_SyntaxSolution, syntaxSolution, tspSolution);
         addRSyntax(Pnl_SyntaxEjercicio1, syntaxEjercicio1, tspEjercicio1);
         addRSyntax(Pnl_SyntaxEjercicio2, syntaxEjercicio2, tspEjercicio2);
         addRSyntax(Pnl_SyntaxEjercicio3, syntaxEjercicio3, tspEjercicio3);
         syntaxSolution.setEditable(false);
-
+        
         addRSyntax(Pnl_CodesThemes0, syntaxTemas0);
         addRSyntax(Pnl_CodesThemes1_1, syntaxTemas1_1);
         addRSyntax(Pnl_CodesThemes1_2, syntaxTemas1_2);
@@ -618,7 +627,7 @@ public class Home extends javax.swing.JFrame {
         ex.setConnectionDB(emf);
         ex.generateListsInfo();
     }
-
+    
     private void getAndPublicInfo() {
         //Obtener info de las listas
         title = ex.getTitle();
@@ -632,16 +641,21 @@ public class Home extends javax.swing.JFrame {
         tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_InformacionEjercicio, title,
                 content, input, output, sampleInput, sampleOutput);
     }
-
+    
     private void verifySolutionsExercise(JButton btn, JButton nb, JButton btm) {
         System.out.println(ex.getStatus());
         if (ex.getStatus().equals("ACCEPTED")) {
             btn.setEnabled(true);
-            btm.setEnabled(true);
+            if (btm != null) {
+                btm.setEnabled(true);
+            }
+            pbl += 6;
+            Pb_Mapa.setValue(pbl);
             if (nb != null) {
                 nb.setEnabled(true);
             }
             if (ex.getCounter() == 22) {
+                Pb_Mapa.setValue(102);
 //                ex.setCounter(23);
 //                if (ex.getStatus().equals("FALSE")) {
                 LastMessage lm = new LastMessage(this, true, tc, t);
@@ -652,10 +666,30 @@ public class Home extends javax.swing.JFrame {
             }
         }
     }
-
+    
     private void verifySolutionStatus() {
         System.out.println(ex.getStatus());
         if (!ex.getStatus().equals("ACCEPTED")) {
+            if (ex.getCounter() >= 0 && ex.getCounter() <= 3 && !ex.getExerciseStatus()) {
+                pbn1 += 25;
+                Pb_Nivel1.setValue(pbn1);
+            }
+            if (ex.getCounter() >= 4 && ex.getCounter() <= 7 && !ex.getExerciseStatus()) {
+                pbn2 += 25;
+                Pb_Nivel2.setValue(pbn2);
+            }
+            if (ex.getCounter() >= 8 && ex.getCounter() <= 11 && !ex.getExerciseStatus()) {
+                pbn3 += 25;
+                Pb_Nivel3.setValue(pbn3);
+            }
+            if (ex.getCounter() >= 12 && ex.getCounter() <= 15 && !ex.getExerciseStatus()) {
+                pbn4 += 25;
+                Pb_Nivel4.setValue(pbn4);
+            }
+            if (ex.getCounter() >= 16 && ex.getCounter() <= 19 && !ex.getExerciseStatus()) {
+                pbn5 += 25;
+                Pb_Nivel5.setValue(pbn5);
+            }
             Btn_Solucion.setEnabled(false);
         } else {
             Btn_Solucion.setEnabled(true);
@@ -1668,6 +1702,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_Ejercicio1.setBorderPainted(false);
         Btn_Aprender_Ejercicio1.setContentAreaFilled(false);
         Btn_Aprender_Ejercicio1.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Ejercicio1.setEnabled(false);
         Btn_Aprender_Ejercicio1.setFocusPainted(false);
         Btn_Aprender_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Aprender_Ejercicio1.setMaximumSize(new java.awt.Dimension(71, 123));
@@ -1704,6 +1739,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_EjercicioFinal.setBorderPainted(false);
         Btn_Aprender_EjercicioFinal.setContentAreaFilled(false);
         Btn_Aprender_EjercicioFinal.setCursor(sRecursos.getCMano());
+        Btn_Aprender_EjercicioFinal.setEnabled(false);
         Btn_Aprender_EjercicioFinal.setFocusPainted(false);
         Btn_Aprender_EjercicioFinal.setMaximumSize(new java.awt.Dimension(121, 184));
         Btn_Aprender_EjercicioFinal.setMinimumSize(new java.awt.Dimension(121, 184));
@@ -1728,7 +1764,7 @@ public class Home extends javax.swing.JFrame {
 
         Pb_Mapa.setBackground(new java.awt.Color(7, 95, 168));
         Pb_Mapa.setForeground(new java.awt.Color(0, 24, 96));
-        Pb_Mapa.setValue(50);
+        Pb_Mapa.setMaximum(102);
         Pb_Mapa.setBorderPainted(false);
         Pnl_Mapa.add(Pb_Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 25));
 
@@ -5436,14 +5472,12 @@ public class Home extends javax.swing.JFrame {
         Pb_Nivel1.setBackground(sRecursos.getCPrincipal());
         Pb_Nivel1.setForeground(sRecursos.getColorRojo());
         Pb_Nivel1.setOrientation(1);
-        Pb_Nivel1.setValue(75);
         Pb_Nivel1.setBorderPainted(false);
         Pnl_ListadoEjercicios.add(Pb_Nivel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 350, 20, 290));
 
         Pb_Nivel2.setBackground(sRecursos.getCPrincipal());
         Pb_Nivel2.setForeground(sRecursos.getColorRojo());
         Pb_Nivel2.setOrientation(1);
-        Pb_Nivel2.setValue(50);
         Pb_Nivel2.setBorderPainted(false);
         Pb_Nivel2.setOpaque(true);
         Pb_Nivel2.setString("");
@@ -5453,7 +5487,6 @@ public class Home extends javax.swing.JFrame {
         Pb_Nivel3.setForeground(sRecursos.getColorRojo());
         Pb_Nivel3.setOrientation(1);
         Pb_Nivel3.setToolTipText("");
-        Pb_Nivel3.setValue(100);
         Pb_Nivel3.setBorderPainted(false);
         Pb_Nivel3.setOpaque(true);
         Pnl_ListadoEjercicios.add(Pb_Nivel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 350, 20, 290));
@@ -5461,7 +5494,6 @@ public class Home extends javax.swing.JFrame {
         Pb_Nivel4.setBackground(sRecursos.getCPrincipal());
         Pb_Nivel4.setForeground(sRecursos.getColorRojo());
         Pb_Nivel4.setOrientation(1);
-        Pb_Nivel4.setValue(50);
         Pb_Nivel4.setBorderPainted(false);
         Pnl_ListadoEjercicios.add(Pb_Nivel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 350, 20, 290));
 
@@ -5872,7 +5904,6 @@ public class Home extends javax.swing.JFrame {
         Pnl_Introduccion.add(Btn_Introduccion_Siguiente, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 1700, 254, 64));
 
         Edt_Introduccion.setBackground(sRecursos.getCPrincipal());
-        Edt_Introduccion.setBorder(null);
         Edt_Introduccion.setContentType("text/html"); // NOI18N
         Pnl_Introduccion.add(Edt_Introduccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 1120, 1550));
 
@@ -6040,7 +6071,6 @@ public class Home extends javax.swing.JFrame {
         Pnl_EjercicioFull.setBackground(sRecursos.getCPrincipal());
         Pnl_EjercicioFull.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        Scp_InformacionEjercicio.setBorder(null);
         Scp_InformacionEjercicio.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         Scp_InformacionEjercicio.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         Scp_InformacionEjercicio.setAutoscrolls(true);
@@ -6049,7 +6079,6 @@ public class Home extends javax.swing.JFrame {
 
         Edt_InformacionEjercicio.setEditable(false);
         Edt_InformacionEjercicio.setBackground(sRecursos.getCPrincipal());
-        Edt_InformacionEjercicio.setBorder(null);
         Edt_InformacionEjercicio.setContentType("text/html"); // NOI18N
         Scp_InformacionEjercicio.setViewportView(Edt_InformacionEjercicio);
 
@@ -6155,7 +6184,7 @@ public class Home extends javax.swing.JFrame {
                 new Curiositie(this, true).setVisible(true);
                 active = false;
             }
-
+            
             shutDownSection(1);
             enableLearnButtons();
             Pnl_Aprender.setVisible(true);
@@ -6300,7 +6329,7 @@ public class Home extends javax.swing.JFrame {
         addInfoQuestionnaires(Edt_Cuestionario1, 0, 1, 2);
         visibleAndInvisibleScp(Scp_Cuestionario1, Scp_Tema1, Edt_Cuestionario1);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario1ActionPerformed
-
+    
     private void addInfoQuestionnaires(JEditorPane edt, int q1, int q2, int q3) {
         tc.addHTML(t.getQuestionnairesTemplate(), edt,
                 qList.get(q1).getQuestionContent(),
@@ -6310,22 +6339,22 @@ public class Home extends javax.swing.JFrame {
                 qList.get(q3).getQuestionContent(),
                 qList.get(q3).getQuestionOptions());
     }
-
+    
     private void HistoryContent() {
         tc.getHistoryContent(Edt_ContenidoHistoria);
         Edt_ContenidoHistoria.setCaretPosition(0);
     }
-
+    
     private void IntroductionContent() {
         tc.addHTML(t.getIntroductionTemplate(), Edt_Introduccion);
         Edt_Introduccion.setCaretPosition(0);
     }
-
+    
     private void visibleAndInvisibleScp(JScrollPane scp1, JScrollPane scp2, JEditorPane edt) {
         scp1.setVisible(true);
         scp2.setVisible(false);
         edt.setCaretPosition(0);
-
+        
     }
 
     private void Btn_Anterior_HelloWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_HelloWordActionPerformed
@@ -6422,7 +6451,7 @@ public class Home extends javax.swing.JFrame {
         ON_OFF_CodeStormPanels();
         getAndPublicInfo();
         verifySolutionStatus();
-        Edt_InformacionEjercicio.setCaretPosition(0);
+        Edt_InformacionEjercicio.setCaretPosition(0); //Despliega informacion del ejercicio seleccionado
     }
 
     private void Btn_Nivel1_Ejercicio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Nivel1_Ejercicio1ActionPerformed
@@ -6561,7 +6590,7 @@ public class Home extends javax.swing.JFrame {
         }
         verifySolutionStatus();
         syntaxCode.setText("//Pega aquí tú código...");
-        Edt_InformacionEjercicio.setCaretPosition(0);
+        Edt_InformacionEjercicio.setCaretPosition(0); //Despliega informacion del ejercicio seleccionado
         Scp_InformacionEjercicio.getVerticalScrollBar().setValue(0);
     }//GEN-LAST:event_Btn_AnteriorActionPerformed
 
@@ -6580,7 +6609,7 @@ public class Home extends javax.swing.JFrame {
         }
         verifySolutionStatus();
         syntaxCode.setText("//Pega aqui tú código...");
-        Edt_InformacionEjercicio.setCaretPosition(0);
+        Edt_InformacionEjercicio.setCaretPosition(0); //Despliega informacion del ejercicio seleccionado
         Scp_InformacionEjercicio.getVerticalScrollBar().setValue(0);
     }//GEN-LAST:event_Btn_SiguienteActionPerformed
 
@@ -6901,11 +6930,11 @@ public class Home extends javax.swing.JFrame {
         }
         emf = ex.regenerateConnectionUpdate();
         System.out.println(ex.getCounter());
-        verifySolutionsExercise(Btn_SolucionEjercicio3, null, null);
+        verifySolutionsExercise(Btn_SolucionEjercicio3, Btn_Siguiente_FuncionesyProc, Btn_Aprender_Tema10);
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
-
+    
     private String option[] = new String[3];
-
+    
     private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3, JButton b1, JButton b2) {
         if (r1.isSelected()) {
             option[0] = "Correcta";
@@ -6927,7 +6956,7 @@ public class Home extends javax.swing.JFrame {
         }
         verifyCorrectAnswers(option, b1, b2);
     }
-
+    
     private void verifyCorrectAnswers(String[] option, JButton b1, JButton b2) {
         if (count < 2) {
             vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
@@ -6935,6 +6964,8 @@ public class Home extends javax.swing.JFrame {
         } else {
             b1.setEnabled(true);
             b2.setEnabled(true);
+            pbl += 6;
+            Pb_Mapa.setValue(pbl);
             vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
                     "¡Preguntas Correctas Necesarias!", "rgb(56, 142, 60)");
         }
@@ -7009,7 +7040,7 @@ public class Home extends javax.swing.JFrame {
     private void Btn_SolucionEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio3ActionPerformed
         new ExercisesSolutions(this, true, eList.get(22).getSolutionCode().getSolutionText()).setVisible(true);
     }//GEN-LAST:event_Btn_SolucionEjercicio3ActionPerformed
-
+    
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

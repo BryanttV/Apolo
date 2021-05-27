@@ -114,8 +114,13 @@ public class Exercise {
         return ex.get(cnt).getStatus();
     }
 
+    public boolean getExerciseStatus() {
+        return exContent.get(cnt).getAdditionalNotes().equals("TRUE");
+    }
+
     public void clearListExercises() {
         ex.clear();
+        exContent.clear();
     }
 
     public EntityManagerFactory regenerateConnectionUpdate() {
