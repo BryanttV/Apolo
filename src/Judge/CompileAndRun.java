@@ -20,6 +20,7 @@ public class CompileAndRun {
             out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\" + section + "\\Main.java");
             byte[] bytxt = codeModificado.getBytes();
             out.write(bytxt);
+            out.close();
         } catch (IOException e) {
             JOptionPane.showMessageDialog(null, "Error al guardar" + e);
         }

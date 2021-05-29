@@ -1,24 +1,34 @@
 package judge;
 import java.io.*;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
-class Main {
-  public static void main(String[] args) throws Exception {
-    Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\iofiles\\input16.txt"));
+public class Main {
 
-    Queue <String> nombres = new LinkedList<>();
-    int numero = sc.nextInt();
-    
-    for(int i = 0; i < numero; i++){
-        nombres.offer(sc.next());
-    }
+    public static void main(String[] args) throws Exception {
+        Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\iofiles\\input5.txt"));
 
-    int cont = 1;
-    while(!nombres.isEmpty()){
-        System.out.println("Puesto "+ cont + ": "+ nombres.poll());
-        cont++;
+        int casos = sc.nextInt();
+
+        for (int i = 0; i < casos; i++) {
+            int a = sc.nextInt();
+
+            String op = sc.next();
+
+            int b = sc.nextInt();
+
+            if (op.equals(">")) {
+                System.out.println("Case " + (i + 1) + ": " + (a > b));
+            } else if (op.equals("<")) {
+                System.out.println("Case " + (i + 1) + ": " + (a < b));
+            } else if (op.equals(">=")) {
+                System.out.println("Case " + (i + 1) + ": " + (a >= b));
+            } else if (op.equals("<=")) {
+                System.out.println("Case " + (i + 1) + ": " + (a <= b));
+            } else if (op.equals("==")) {
+                System.out.println("Case " + (i + 1) + ": " + (a == b));
+            } else if (op.equals("!=")) {
+                System.out.println("Case " + (i + 1) + ": " + (a != b));
+            }
+        }
     }
-  }
 }
