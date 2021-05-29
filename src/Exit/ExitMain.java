@@ -9,8 +9,9 @@ public class ExitMain extends javax.swing.JDialog {
 
     private final RecursosService sRecursos;
     private EntityManagerFactory _emf;
-    
+
     //Progress bar percentage
+    private String lastTheme;
     private int b1;
     private int b2;
     private int b3;
@@ -113,32 +114,33 @@ public class ExitMain extends javax.swing.JDialog {
         System.exit(0);
     }//GEN-LAST:event_Btn_SiActionPerformed
 
-    private void finalTransaction(){
+    private void finalTransaction() {
         EntityManager em = _emf.createEntityManager();
         em.getTransaction().begin();
-        
+
         /*CREATE QUERIES FOR TRANSACTION*/
         //Map ProgressBar
-        Query tran_map = em.createQuery("UPDATE Progress p SET p.learningPercentage = :map "+ "WHERE p.recordId = 1");
+        Query tran_map = em.createQuery("UPDATE Progress p SET p.learningPercentage = :map , p.lastTopicLearning = :lastTheme " + "WHERE p.recordId = 1");
         //First Progressbar
-        Query tran_pb1 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b1 "+ "WHERE p.recordId = 2");
+        Query tran_pb1 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b1 " + "WHERE p.recordId = 2");
         //Second Progressbar
-        Query tran_pb2 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b2 "+ "WHERE p.recordId = 3");
+        Query tran_pb2 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b2 " + "WHERE p.recordId = 3");
         //Third Progressbar
-        Query tran_pb3 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b3 "+ "WHERE p.recordId = 4");
+        Query tran_pb3 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b3 " + "WHERE p.recordId = 4");
         //Fourth Progressbar
-        Query tran_pb4 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b4 "+ "WHERE p.recordId = 5");
+        Query tran_pb4 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b4 " + "WHERE p.recordId = 5");
         //Fifth Progressbar
-        Query tran_pb5 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b5 "+ "WHERE p.recordId = 6");
-        
+        Query tran_pb5 = em.createQuery("UPDATE Progress p SET p.learningPercentage = :b5 " + "WHERE p.recordId = 6");
+
         /*PASS ARGUMENTS TO QUERIES*/
+        tran_map.setParameter("lastTheme", lastTheme);
         tran_map.setParameter("map", map);
         tran_pb1.setParameter("b1", b1);
         tran_pb2.setParameter("b2", b2);
         tran_pb3.setParameter("b3", b3);
         tran_pb4.setParameter("b4", b4);
         tran_pb5.setParameter("b5", b5);
-        
+
         //Execute a verify update
         int rowmap = tran_map.executeUpdate();
         int row1 = tran_pb1.executeUpdate();
@@ -146,20 +148,20 @@ public class ExitMain extends javax.swing.JDialog {
         int row3 = tran_pb3.executeUpdate();
         int row4 = tran_pb4.executeUpdate();
         int row5 = tran_pb5.executeUpdate();
-        
+
         System.out.println("FILAS ACTUALIZADAS map:" + rowmap);
-        System.out.println("FILAS ACTUALIZADAS pb1: "+ row1);
-        System.out.println("FILAS ACTUALIZADAS pb2: "+ row2);
-        System.out.println("FILAS ACTUALIZADAS pb3: "+ row3);
-        System.out.println("FILAS ACTUALIZADAS pb4: "+ row4);
-        System.out.println("FILAS ACTUALIZADAS pb5: "+ row5);
-        
+        System.out.println("FILAS ACTUALIZADAS pb1: " + row1);
+        System.out.println("FILAS ACTUALIZADAS pb2: " + row2);
+        System.out.println("FILAS ACTUALIZADAS pb3: " + row3);
+        System.out.println("FILAS ACTUALIZADAS pb4: " + row4);
+        System.out.println("FILAS ACTUALIZADAS pb5: " + row5);
+
         em.getTransaction().commit();
         em.close();
         _emf.close();
     }
-    
-    public void getInfoOfProgressBar(EntityManagerFactory emf, int map, int b1, int b2, int b3, int b4, int b5){
+
+    public void getInfoOfProgressBar(EntityManagerFactory emf, int map, int b1, int b2, int b3, int b4, int b5) {
         _emf = emf;
         this.map = map;
         this.b1 = b1;
@@ -167,8 +169,14 @@ public class ExitMain extends javax.swing.JDialog {
         this.b3 = b3;
         this.b4 = b4;
         this.b5 = b5;
+        int temp = map / 6;
+        if(temp == 0){
+            lastTheme = "1";
+        }else{
+            lastTheme = Integer.toString(temp + 1);
+        }
     }
-    
+
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> {
