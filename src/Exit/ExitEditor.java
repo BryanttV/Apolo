@@ -1,4 +1,4 @@
-package Salida;
+package Exit;
 
 // Librerias Creadas
 import Main.CodeEditor;

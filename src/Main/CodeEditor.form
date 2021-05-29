@@ -397,7 +397,7 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Scp_Salida.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));&#xa;Scp_Salida.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));&#xa;Scp_Salida.getVerticalScrollBar().setBackground(new Color(34, 34, 34));&#xa;Scp_Salida.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));"/>
+                <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="CodeEditor_Scp_Salida"/>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
               <Constraints>
@@ -476,7 +476,6 @@
                 </Property>
               </Properties>
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Scp_Entrada.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));&#xa;Scp_Entrada.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));&#xa;Scp_Entrada.getVerticalScrollBar().setBackground(new Color(34, 34, 34));&#xa;Scp_Entrada.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));"/>
                 <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
               </AuxValues>
               <Constraints>

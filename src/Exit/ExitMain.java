@@ -1,4 +1,4 @@
-package Salida;
+package Exit;
 
 import Services.RecursosService;
 

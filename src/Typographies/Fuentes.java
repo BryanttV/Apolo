@@ -1,4 +1,4 @@
-package Tipografias;
+package Typographies;
 
 import java.awt.Font;
 import java.awt.FontFormatException;

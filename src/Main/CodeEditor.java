@@ -1,7 +1,7 @@
 package Main;
 
 // Librerias Creadas
-import Salida.ExitEditor;
+import Exit.ExitEditor;
 import Judge.ReemplazarCodigo;
 import Services.RecursosService;
 import WindowJudge.Runtime_Window;
@@ -17,17 +17,12 @@ import org.fife.ui.autocomplete.BasicCompletion;
 import org.fife.ui.autocomplete.CompletionProvider;
 import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import org.fife.ui.rsyntaxtextarea.SyntaxConstants;
-import org.fife.ui.autocomplete.ShorthandCompletion;
 import org.fife.ui.rsyntaxtextarea.CodeTemplateManager;
 import org.fife.ui.autocomplete.DefaultCompletionProvider;
 import org.fife.ui.rsyntaxtextarea.templates.CodeTemplate;
 import org.fife.ui.rsyntaxtextarea.templates.StaticCodeTemplate;
 
 // Librerias Default
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.Cursor;
-import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
@@ -49,44 +44,49 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.UIManager;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JFileChooser;
 import javax.swing.UnsupportedLookAndFeelException;
 
 public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
+    // Instancias
     private final RecursosService sRecursos;
     private final ExitEditor Exit = new ExitEditor();
     private final JFileChooser seleccion = new JFileChooser();
     private final RSyntaxTextArea textArea = new RSyntaxTextArea();
-    private final Color drag = new Color(96, 96, 96);
-    private final Color thumb_on = new Color(144, 144, 144);
-    private final Color thumb_off = new Color(96, 96, 96);
-    private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
+
+    // Variables
     private File archivo_abrir;
     private FileInputStream entrada;
     private FileOutputStream salida, out;
-    private boolean eje = false;
+    private boolean aux = false;
 
+    // Ventanas informativas de ejecucion
     static Compilation_Window ce = new Compilation_Window();
     static Runtime_Window rt = new Runtime_Window();
 
     public CodeEditor() {
         sRecursos = RecursosService.getService();
         initComponents();
-        configurarVentana();
-        configuracionEditor();
-        confirmarCierre();
+        configureWindow();
+        confirmClosing();
+        editorConfiguration();
+    }
+
+    private void editorConfiguration() {
+        configureScrollBar();
+        configureLabels();
+        configureRSyntax();
     }
 
     // Verificar la pulsacion de boton
-    private class BotonPulsadoListener implements ActionListener {
+    private class buttonPressedListener implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == Exit.Btn_Si) {
-                guardar();
+                save();
                 Exit.dispose();
                 dispose();
             } else if (e.getSource() == Exit.Btn_No) {
@@ -100,13 +100,13 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     }
 
     // Confirmar el cierre de la Aplicacion
-    private void confirmarCierre() {
+    private void confirmClosing() {
         try {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
-                    cerrar();
+                    close();
                 }
             });
         } catch (Exception e) {
@@ -115,94 +115,97 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     }
 
     // Llamado a JFrame de ExitEditor
-    private void cerrar() {
+    private void close() {
         this.setEnabled(false);
         Exit.setVisible(true);
-        Exit.Btn_Si.addActionListener(new BotonPulsadoListener());
-        Exit.Btn_No.addActionListener(new BotonPulsadoListener());
-        Exit.Btn_Cancelar.addActionListener(new BotonPulsadoListener());
+        Exit.Btn_Si.addActionListener(new buttonPressedListener());
+        Exit.Btn_No.addActionListener(new buttonPressedListener());
+        Exit.Btn_Cancelar.addActionListener(new buttonPressedListener());
+    }
+
+    private void configureScrollBar() {
+        // ScrollBar de Entrada
+        Scp_Entrada.getVerticalScrollBar().setUI(new CustomScrollBarUI(
+                sRecursos.getColorDrag(), sRecursos.getColorThumbOn(), sRecursos.getColorThumbOff()));
+        Scp_Entrada.getHorizontalScrollBar().setUI(new CustomScrollBarUI(
+                sRecursos.getColorDrag(), sRecursos.getColorThumbOn(), sRecursos.getColorThumbOff()));
+        Scp_Entrada.getVerticalScrollBar().setBackground(sRecursos.getColorBgScroll());
+        Scp_Entrada.getHorizontalScrollBar().setBackground(sRecursos.getColorBgScroll());
+
+        // ScrollBar de Salida
+        Scp_Salida.getVerticalScrollBar().setUI(new CustomScrollBarUI(
+                sRecursos.getColorDrag(), sRecursos.getColorThumbOn(), sRecursos.getColorThumbOff()));
+        Scp_Salida.getHorizontalScrollBar().setUI(new CustomScrollBarUI(
+                sRecursos.getColorDrag(), sRecursos.getColorThumbOn(), sRecursos.getColorThumbOff()));
+        Scp_Salida.getVerticalScrollBar().setBackground(sRecursos.getColorBgScroll());
+        Scp_Salida.getHorizontalScrollBar().setBackground(sRecursos.getColorBgScroll());
     }
 
     // Configuracion general de la ventana
-    private void configurarVentana() {
+    private void configureWindow() {
+        setTitle("Editor de Código | Apolo");
         this.setLocationRelativeTo(null);
-        this.setExtendedState(((int) DimMax.getHeight() == 768) ? 6 : 0);
-        this.setResizable((int) DimMax.getHeight() == 768);
-        this.getContentPane().setBackground(Color.red); // Color de Fondo del JFrame
+        this.setExtendedState(((int) sRecursos.getDScreen().getHeight() == 768) ? 6 : 0);
+        this.setResizable((int) sRecursos.getDScreen().getHeight() == 768);
         // Agregar icono de Apolo
         setIconImage(new ImageIcon(getClass().getResource(
                 "/Resources/General/Apolo_Icono_Blanco_40px.png")).getImage()); // Agregar icono de Apolo
     }
 
+    private void configureLabels() {
+        Lbl_TituloEntrada.setFont(sRecursos.getFTitleEditor());
+        Lbl_TituloSalida.setFont(sRecursos.getFTitleEditor());
+    }
+
     // Configuracion del Area de codigo con RSyntax
-    private void configuracionEditor() {
+    private void configureRSyntax() {
+        addTemplate();
+        addSnippets();
+        loadTheme();
 
         RSyntaxTextArea.setTemplatesEnabled(true);
         RTextScrollPane sp = new RTextScrollPane(textArea);
 
         // Configuracion del ScrollBar
-        sp.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));
-        sp.getVerticalScrollBar().setBackground(new Color(34, 34, 34));
-        sp.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-        sp.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-        int horizontalPolicy = JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED;
-        int verticalPolicy = JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED;
-        sp.setHorizontalScrollBarPolicy(horizontalPolicy);
-        sp.setVerticalScrollBarPolicy(verticalPolicy);
+        sp.getHorizontalScrollBar().setBackground(sRecursos.getColorBgScroll());
+        sp.getVerticalScrollBar().setBackground(sRecursos.getColorBgScroll());
+        sp.getHorizontalScrollBar().setUI(new CustomScrollBarUI(
+                sRecursos.getColorDrag(),
+                sRecursos.getColorThumbOn(),
+                sRecursos.getColorThumbOff()));
+        sp.getVerticalScrollBar().setUI(new CustomScrollBarUI(
+                sRecursos.getColorDrag(),
+                sRecursos.getColorThumbOn(),
+                sRecursos.getColorThumbOff()));
+        sp.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        sp.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         sp.getViewport();
 
-        plantilla();
-        snippets();
-        cargarTema();
-
-        // Edicion del tema preestablecido
+        // Edicion del RSyntax
         textArea.setSyntaxEditingStyle(SyntaxConstants.SYNTAX_STYLE_JAVA);
-        textArea.setCursor(new Cursor(Cursor.HAND_CURSOR));
-        textArea.setBackground(new Color(34, 34, 34));
-        textArea.setFont(new Font("Consolas", Font.PLAIN, 14));
+        textArea.setBackground(sRecursos.getColorBgScroll());
+        textArea.setFont(sRecursos.getFEditor());
         textArea.revalidate();
 
-        Lbl_TituloEntrada.setFont(sRecursos.getFTitleEditor());
-        Lbl_TituloSalida.setFont(sRecursos.getFTitleEditor());
-
-        setTitle("Editor de Código");
         Pnl_Codigo.add(sp);
     }
 
-    // Snippets en el editor de codigo
-    // Ctrl + Shift + Espacio
-    private void snippets() {
-        CompletionProvider provider = createCompletionProvider();
-        AutoCompletion ac = new AutoCompletion(provider);
-        CodeTemplateManager ctm = RSyntaxTextArea.getCodeTemplateManager();
-        CodeTemplate ct = new StaticCodeTemplate("for", "for (int i = 0; i < ", "; i++) {\n\t\n}\n");
-        ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("fore", "for(tipo", " variable: array){\n\t\n}");
-        ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("if", "if(", "){\n\t\n}");
-        ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("ifel", "if(", "){\n\t\n}else{\n}");
-        ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("switch", "switch(", "variable) {\n"
-                + "  case x:\n"
-                + "    // codigo\n"
-                + "    break;\n"
-                + "  default:\n"
-                + "    // codigo\n"
+    // Cargar plantilla HelloWorld en el Area de Texto
+    private void addTemplate() {
+        textArea.setText("/* Nota: Para la ejecución en este editor la \n"
+                + "   clase principal siempre debe llamarse «Main» */\n"
+                + "\n"
+                + "public class Main {\n"
+                + "	\n"
+                + "	public static void main(String[] args) {\n"
+                + "    		System.out.println(\"Hello World\");\n"
+                + "    	}\n"
+                + "\n"
                 + "}");
-        ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("while", "while(", "){\n\t\n}");
-        ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("do", "do {\n\t", "\n} while (true);");
-        ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("try", "try {\n\t", "\n} catch (Exception e){\n}");
-        ctm.addTemplate(ct);
-        pack();
-        ac.install(textArea);
     }
 
-    // Cargar tema preestablecido en RSyntaxTextArea
-    private void cargarTema() {
+    // Cargar tema preestablecido por xml en RSyntaxTextArea
+    private void loadTheme() {
         try {
             String t = "/org/fife/ui/rsyntaxtextarea/themes/monokai.xml";
             Theme theme = Theme.load(getClass().getResourceAsStream(t));
@@ -212,8 +215,46 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         }
     }
 
-    // Creacion de cuadro de autocompletado con 
-    // palabras reservadas y métodos útiles
+    // Snippets en el editor de codigo
+    // Ctrl + Shift + Espacio
+    private void addSnippets() {
+        CompletionProvider provider = createCompletionProvider();
+        AutoCompletion ac = new AutoCompletion(provider);
+        CodeTemplateManager ctm = RSyntaxTextArea.getCodeTemplateManager();
+        CodeTemplate ct = new StaticCodeTemplate("for", "for (int i = 0; i < ", "; i++) {\n\t\n}\n");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("switch", "switch(", "variable) {\n"
+                + "  case x:\n"
+                + "    // codigo\n"
+                + "    break;\n"
+                + "  default:\n"
+                + "    // codigo\n"
+                + "}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("fore", "for(tipo", " variable: array){\n\t\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("if", "if(", "){\n\t\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("ifel", "if(", "){\n\t\n}else{\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("while", "while(", "){\n\t\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("do", "do {\n\t", "\n} while (true);");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("try", "try {\n\t", "\n} catch (Exception e){\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("sout", "System.out.println(\"", "\");");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("void", "static void ", "(){\n\t\n}");
+        ctm.addTemplate(ct);
+        ct = new StaticCodeTemplate("void", "static void ", "(){\n\t\n}");
+        ctm.addTemplate(ct);
+        pack();
+        ac.install(textArea);
+    }
+
+    // Creacion de cuadro de autocompletado
+    // con palabras reservadas y métodos útiles
     // Ctrl + Espacio
     private CompletionProvider createCompletionProvider() {
 
@@ -245,45 +286,34 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         provider.addCompletion(new BasicCompletion(provider, "nextLong();"));
         provider.addCompletion(new BasicCompletion(provider, "next();"));
         provider.addCompletion(new BasicCompletion(provider, "null"));
+        provider.addCompletion(new BasicCompletion(provider, "length"));
         provider.addCompletion(new BasicCompletion(provider, "package"));
+        provider.addCompletion(new BasicCompletion(provider, "pop()"));
         provider.addCompletion(new BasicCompletion(provider, "private"));
         provider.addCompletion(new BasicCompletion(provider, "public"));
+        provider.addCompletion(new BasicCompletion(provider, "push()"));
         provider.addCompletion(new BasicCompletion(provider, "return"));
-        provider.addCompletion(new BasicCompletion(provider, "static"));
-        provider.addCompletion(new BasicCompletion(provider, "System.in"));
-        provider.addCompletion(new BasicCompletion(provider, "switch"));
         provider.addCompletion(new BasicCompletion(provider, "Scanner"));
+        provider.addCompletion(new BasicCompletion(provider, "size()"));
+        provider.addCompletion(new BasicCompletion(provider, "static"));
+        provider.addCompletion(new BasicCompletion(provider, "switch"));
+        provider.addCompletion(new BasicCompletion(provider, "System.in"));
         provider.addCompletion(new BasicCompletion(provider, "true"));
         provider.addCompletion(new BasicCompletion(provider, "try"));
         provider.addCompletion(new BasicCompletion(provider, "void"));
         provider.addCompletion(new BasicCompletion(provider, "while"));
 
-        provider.addCompletion(new ShorthandCompletion(provider, "sout",
-                "System.out.println(", "System.out.println("));
-        provider.addCompletion(new ShorthandCompletion(provider, "serr",
-                "System.err.println(", "System.err.println("));
-
         return provider;
     }
 
     // Copiar texto en portapapeles
-    private void portapapeles(String texto) {
+    private void setClipboard(String texto) {
         StringSelection txt = new StringSelection(texto);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(txt, this);
     }
 
-    // Cargar plantilla HelloWorld en el Area de Texto
-    private void plantilla() {
-        textArea.setText("public class Main {\n"
-                + "	public static void main(String[] args){\n"
-                + "		System.out.println(\"Hello World\");\n"
-                + "	}\n"
-                + "}");
-    }
-
-    // Abrir archivo java
-    private String abrirArchivo(File archivo) {
-
+    // Abrir archivo Java
+    private String openFile(File archivo) throws IOException {
         String documento = "";
         try {
             entrada = new FileInputStream(archivo);
@@ -292,70 +322,79 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
                 char caracter = (char) ascci;
                 documento += caracter;
             }
+            entrada.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error al abrir" + e);
+            ErrorWindow ew = new ErrorWindow(this, true, "Error al abrir", "/Resources/Ventanas/Error.png");
+            ew.setVisible(true);
         }
         return documento;
     }
 
-    // Guardar archivo java
-    private String guardarArchivo(File archivo, String documento) {
+    // Guardar archivo Java
+    private String saveFile(File archivo, String documento) {
         String mensaje = null;
         try {
             salida = new FileOutputStream(archivo);
             byte[] bytxt = documento.getBytes();
             salida.write(bytxt);
-            mensaje = "Codigo Guardado Exitosamente";
+            mensaje = "¡Código guardado exitosamente!";
+            salida.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar" + e);
+            ErrorWindow ew = new ErrorWindow(this, true, "Error al guardar", "/Resources/Ventanas/Error.png");
+            ew.setVisible(true);
         }
         return mensaje;
     }
 
     // Guardar archivo ejecutado anteriormente
-    protected void guardareje() {
+    protected void saveExecution() {
         String documento = textArea.getText();
-        guardarArchivo(archivo_abrir, documento);
+        saveFile(archivo_abrir, documento);
     }
 
     // Guardar archivo usando Buscador JFileChooser
-    protected void guardar() {
+    protected void save() {
         if (seleccion.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
             String nombre_code;
             if (seleccion.getSelectedFile().toString().endsWith(".java")) {
                 nombre_code = seleccion.getSelectedFile().toString();
             } else {
-                nombre_code = seleccion.getSelectedFile().toString() + ".java";
+                nombre_code = seleccion.getSelectedFile().toString();
+                try {
+                    nombre_code = nombre_code.substring(0, nombre_code.indexOf('.')) + ".java";
+                } catch (Exception e) {
+                    nombre_code += ".java";
+                }
             }
             archivo_abrir = new File(nombre_code);
-            if (nombre_code.endsWith(".java")) {
-                String documento = textArea.getText();
-                String mensaje = guardarArchivo(archivo_abrir, documento);
-                if (mensaje != null) {
-                    JOptionPane.showMessageDialog(null, mensaje);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Archivo NO compatible.");
-                }
+            String documento = textArea.getText();
+            String mensaje = saveFile(archivo_abrir, documento);
+            if (mensaje != null) {
+                ErrorWindow ew = new ErrorWindow(this, true, mensaje, "/Resources/Ventanas/Success.png");
+                ew.setVisible(true);
             } else {
-                JOptionPane.showMessageDialog(null, "Guardar Codigo Java");
+                ErrorWindow ew = new ErrorWindow(this, true, "Archivo no compatible", "/Resources/Ventanas/Error.png");
+                ew.setVisible(true);
             }
         }
     }
 
     // Obtener el texto de Entrada en el editor
-    private void entrada() {
+    private void input() {
         String documento = Txa_Entrada.getText();
         try {
-            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\ioeditor\\input.txt");
             byte[] bytxt = documento.getBytes();
+            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\ioeditor\\input.txt");
             out.write(bytxt);
+            out.close();
         } catch (IOException e) {
-            JOptionPane.showMessageDialog(null, "Error al guardar" + e);
+            ErrorWindow ew = new ErrorWindow(this, true, "Error al guardar", "/Resources/Ventanas/Error.png");
+            ew.setVisible(true);
         }
     }
 
     // Compilar archivo 
-    private int compilar(String ruta) throws IOException, InterruptedException {
+    private int compile(String ruta) throws IOException, InterruptedException {
         ProcessBuilder pb = new ProcessBuilder("javac", ruta);
         pb.redirectError();
 
@@ -382,7 +421,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     }
 
     // Ejecutar archivo
-    private int ejecutar(String clase, String ruta) throws IOException, InterruptedException {
+    private int execute(String clase) throws IOException, InterruptedException {
 
         List<String> cmds = new ArrayList<>();
         cmds.add("java");
@@ -592,10 +631,6 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         Pnl_EntradaSalida.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Scp_Salida.setBorder(null);
-        Scp_Salida.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-        Scp_Salida.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-        Scp_Salida.getVerticalScrollBar().setBackground(new Color(34, 34, 34));
-        Scp_Salida.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));
 
         Txa_Salida.setEditable(false);
         Txa_Salida.setBackground(new java.awt.Color(34, 34, 34));
@@ -621,10 +656,6 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         Pnl_EntradaSalida.add(Lbl_TituloSalida, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
 
         Scp_Entrada.setBorder(null);
-        Scp_Entrada.getVerticalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-        Scp_Entrada.getHorizontalScrollBar().setUI(new CustomScrollBarUI(drag, thumb_on, thumb_off));
-        Scp_Entrada.getVerticalScrollBar().setBackground(new Color(34, 34, 34));
-        Scp_Entrada.getHorizontalScrollBar().setBackground(new Color(34, 34, 34));
 
         Txa_Entrada.setBackground(new java.awt.Color(34, 34, 34));
         Txa_Entrada.setColumns(20);
@@ -667,17 +698,17 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     }// </editor-fold>//GEN-END:initComponents
 
     private void Btn_PlantillaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PlantillaActionPerformed
-        plantilla();
+        addTemplate();
     }//GEN-LAST:event_Btn_PlantillaActionPerformed
 
     private void Btn_EjecutarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_EjecutarActionPerformed
-        if (!eje) {
-            guardar();
-            eje = true;
+        if (!aux) {
+            save();
+            aux = true;
         } else {
-            guardareje();
+            saveExecution();
         }
-        entrada();
+        input();
         try {
             String code = textArea.getText(); // Codigo Modificado
             String codeModificado = ReemplazarCodigo.reemplazar(code, "ioeditor", "ioeditor", "");
@@ -686,20 +717,23 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
                 out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\IOEditor\\Main.java");
                 byte[] bytxt = codeModificado.getBytes();
                 out.write(bytxt);
+                out.close();
             } catch (IOException e) {
-                JOptionPane.showMessageDialog(null, "Error al guardar" + e);
+                ErrorWindow ew = new ErrorWindow(this, true, "Archivo al guardar", "/Resources/Ventanas/Error.png");
+                ew.setVisible(true);
             }
 
             // Ruta donde se guarda el archivo
             String ruta = System.getProperty("user.dir") + "\\src\\IOEditor\\Main.java";
 
-            int result = compilar(ruta);  // Compila el archivo
+            int result = compile(ruta);  // Compila el archivo
+
             // Confirmar compilacion exitosa
             if (result != 0) {
                 ce.setVisible(true);
             }
 
-            result = ejecutar("ioeditor.Main", ruta); // Ejecuta el archivo
+            result = execute("ioeditor.Main"); // Ejecuta el archivo
             // Confirmar ejecucion exitosa
             if (result != 0) {
                 rt.setVisible(true);
@@ -711,25 +745,33 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
     }//GEN-LAST:event_Btn_EjecutarActionPerformed
 
     private void Btn_GuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_GuardarActionPerformed
-        guardar();
+        save();
     }//GEN-LAST:event_Btn_GuardarActionPerformed
 
     private void Btn_AbrirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AbrirActionPerformed
+        aux = true;
         if (seleccion.showDialog(null, "Abrir") == JFileChooser.APPROVE_OPTION) {
             archivo_abrir = seleccion.getSelectedFile();
             if (archivo_abrir.canRead()) {
                 if (archivo_abrir.getName().endsWith("java")) {
-                    String documento = abrirArchivo(archivo_abrir);
+                    String documento = null;
+                    try {
+                        documento = openFile(archivo_abrir);
+                        entrada.close();
+                    } catch (IOException ex) {
+                        Logger.getLogger(CodeEditor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     textArea.setText(documento);
                 } else {
-                    JOptionPane.showMessageDialog(null, "Archivo no compatible.");
+                    ErrorWindow ew = new ErrorWindow(this, true, "Archivo no compatible", "/Resources/Ventanas/Error.png");
+                    ew.setVisible(true);
                 }
             }
         }
     }//GEN-LAST:event_Btn_AbrirActionPerformed
 
     private void Btn_CopiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_CopiarActionPerformed
-        portapapeles(textArea.getText());
+        setClipboard(textArea.getText());
     }//GEN-LAST:event_Btn_CopiarActionPerformed
 
     private void Btn_LimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_LimpiarActionPerformed
