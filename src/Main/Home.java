@@ -5,7 +5,6 @@ import Salida.ExitMain;
 import Services.RecursosService;
 import static Judge.init.juzgador;
 
-import Entities.Progress;
 import Entities.Questions;
 import Entities.Exercises;
 import Entities.TestCases;
@@ -30,6 +29,7 @@ import JPA_Controllers.AlternativeSolutionsJpaController;
 import CustomComponents.CustomScrollBarUI;
 import CustomComponents.CustomProgressBarUIVertical;
 import CustomComponents.CustomProgressBarUIHorizontal;
+import Entities.Progress;
 
 // Librerias Externas
 import org.fife.ui.rsyntaxtextarea.Theme;
@@ -45,8 +45,6 @@ import java.awt.Component;
 import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Toolkit;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowAdapter;
@@ -65,7 +63,6 @@ import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JEditorPane;
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JToggleButton;
 import javax.swing.border.LineBorder;
@@ -74,7 +71,6 @@ import javax.swing.UnsupportedLookAndFeelException;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
-import javax.swing.Timer;
 
 public class Home extends javax.swing.JFrame {
 
@@ -97,7 +93,7 @@ public class Home extends javax.swing.JFrame {
     private final RSyntaxTextArea syntaxEjercicio1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio2 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxEjercicio3 = new RSyntaxTextArea();
-    
+
     private final RSyntaxTextArea syntaxTemas0 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas1_1 = new RSyntaxTextArea();
     private final RSyntaxTextArea syntaxTemas1_2 = new RSyntaxTextArea();
@@ -152,12 +148,6 @@ public class Home extends javax.swing.JFrame {
     private boolean active = true;
     private int count = 0;
     private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
-    private int pbl = 0;
-    private int pbn1 = 0;
-    private int pbn2 = 0;
-    private int pbn3 = 0;
-    private int pbn4 = 0;
-    private int pbn5 = 0;
 
     // Llamada informacion DDBB -------------------------------------------------
     // Creación de Fabrica de Entidades
@@ -186,7 +176,7 @@ public class Home extends javax.swing.JFrame {
     List<ExercisesContent> ecList = null;
     List<Questionnaires> qresList = null;
     List<AlternativeSolutions> asList = null;
-    
+
     private void generateAllControllers() {
         ejpa = new ExercisesJpaController(emf);
         qjpa = new QuestionsJpaController(emf);
@@ -199,7 +189,7 @@ public class Home extends javax.swing.JFrame {
         qresjpa = new QuestionnairesJpaController(emf);
         asjpa = new AlternativeSolutionsJpaController(emf);
     }
-    
+
     private void generateAllLists() {
         eList = ejpa.findExercisesEntities();
         qList = qjpa.findQuestionsEntities();
@@ -227,14 +217,25 @@ public class Home extends javax.swing.JFrame {
         configureScrollBar();
         configureProgressBar();
         highlightCode();
-        confirmaClosing();
+        confirmClosing();
         HistoryContent();
         IntroductionContent();
+        initProgress();
     }
-    
+
     private void callInfoThemes() {
         tc.setConnectionDB(emf);
         tc.generateListsInfo();
+    }
+
+    //Init ProgressBar
+    private void initProgress() {
+        Pb_Mapa.setValue((int) proList.get(0).getLearningPercentage());
+        Pb_Nivel1.setValue((int) proList.get(1).getLearningPercentage());
+        Pb_Nivel2.setValue((int) proList.get(2).getLearningPercentage());
+        Pb_Nivel3.setValue((int) proList.get(3).getLearningPercentage());
+        Pb_Nivel4.setValue((int) proList.get(4).getLearningPercentage());
+        Pb_Nivel5.setValue((int) proList.get(5).getLearningPercentage());
     }
 
     // Configurar las Caracteristicas de la Ventana Principal
@@ -403,14 +404,14 @@ public class Home extends javax.swing.JFrame {
         RTextScrollPane tspEjercicio1 = new RTextScrollPane();
         RTextScrollPane tspEjercicio2 = new RTextScrollPane();
         RTextScrollPane tspEjercicio3 = new RTextScrollPane();
-        
+
         addRSyntax(Pnl_SyntaxCode, syntaxCode, tspCode);
         addRSyntax(Pnl_SyntaxSolution, syntaxSolution, tspSolution);
         addRSyntax(Pnl_SyntaxEjercicio1, syntaxEjercicio1, tspEjercicio1);
         addRSyntax(Pnl_SyntaxEjercicio2, syntaxEjercicio2, tspEjercicio2);
         addRSyntax(Pnl_SyntaxEjercicio3, syntaxEjercicio3, tspEjercicio3);
         syntaxSolution.setEditable(false);
-        
+
         addRSyntax(Pnl_CodesThemes0, syntaxTemas0);
         addRSyntax(Pnl_CodesThemes1_1, syntaxTemas1_1);
         addRSyntax(Pnl_CodesThemes1_2, syntaxTemas1_2);
@@ -472,12 +473,13 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Confirmar el cierre de la Aplicacion
-    private void confirmaClosing() {
+    private void confirmClosing() {
         try {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
+                    Confirmar.getInfoOfProgressBar(emf, Pb_Mapa.getValue(), Pb_Nivel1.getValue(), Pb_Nivel2.getValue(), Pb_Nivel3.getValue(), Pb_Nivel4.getValue(), Pb_Nivel5.getValue());
                     Confirmar.setVisible(true);
                 }
             });
@@ -627,7 +629,7 @@ public class Home extends javax.swing.JFrame {
         ex.setConnectionDB(emf);
         ex.generateListsInfo();
     }
-    
+
     private void getAndPublicInfo() {
         //Obtener info de las listas
         title = ex.getTitle();
@@ -641,7 +643,7 @@ public class Home extends javax.swing.JFrame {
         tc.addHTML(t.getExerciseTemplateCodeStorm(), Edt_InformacionEjercicio, title,
                 content, input, output, sampleInput, sampleOutput);
     }
-    
+
     private void verifySolutionsExercise(JButton btn, JButton nb, JButton btm) {
         System.out.println(ex.getStatus());
         if (ex.getStatus().equals("ACCEPTED")) {
@@ -649,8 +651,8 @@ public class Home extends javax.swing.JFrame {
             if (btm != null) {
                 btm.setEnabled(true);
             }
-            pbl += 6;
-            Pb_Mapa.setValue(pbl);
+            int temp = Pb_Mapa.getValue() + 6;
+            Pb_Mapa.setValue(temp);
             if (nb != null) {
                 nb.setEnabled(true);
             }
@@ -666,35 +668,57 @@ public class Home extends javax.swing.JFrame {
             }
         }
     }
-    
+
+    //Actualizacion de barras de estado
+    private void generateTransaction() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        @SuppressWarnings("JPQLValidation")
+        Query updateContent = em.createQuery("UPDATE ExercisesContent ec SET ec.additionalNotes = 'TRUE' " + "WHERE ec.exerciseContentCode = :cnt");
+        updateContent.setParameter("cnt", ex.getCounter() + 1);
+        int rows = updateContent.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+        System.out.println("FILAS ACTUALIZADAS: " + rows);
+        emf.close();
+        emf = ex.regenerateConnectionUpdate();
+        System.out.println(ex.getExerciseStatus());
+    }
+
     private void verifySolutionStatus() {
+        int temp;
         System.out.println(ex.getStatus());
         if (!ex.getStatus().equals("ACCEPTED")) {
-            if (ex.getCounter() >= 0 && ex.getCounter() <= 3 && !ex.getExerciseStatus()) {
-                pbn1 += 25;
-                Pb_Nivel1.setValue(pbn1);
-            }
-            if (ex.getCounter() >= 4 && ex.getCounter() <= 7 && !ex.getExerciseStatus()) {
-                pbn2 += 25;
-                Pb_Nivel2.setValue(pbn2);
-            }
-            if (ex.getCounter() >= 8 && ex.getCounter() <= 11 && !ex.getExerciseStatus()) {
-                pbn3 += 25;
-                Pb_Nivel3.setValue(pbn3);
-            }
-            if (ex.getCounter() >= 12 && ex.getCounter() <= 15 && !ex.getExerciseStatus()) {
-                pbn4 += 25;
-                Pb_Nivel4.setValue(pbn4);
-            }
-            if (ex.getCounter() >= 16 && ex.getCounter() <= 19 && !ex.getExerciseStatus()) {
-                pbn5 += 25;
-                Pb_Nivel5.setValue(pbn5);
-            }
             Btn_Solucion.setEnabled(false);
         } else {
             Btn_Solucion.setEnabled(true);
             syntaxSolution.setText(ex.getSolution());
             syntaxSolution.setCaretPosition(0);
+            if (ex.getCounter() >= 0 && ex.getCounter() <= 3 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel1.getValue() + 25;
+                Pb_Nivel1.setValue(temp);
+            }
+            if (ex.getCounter() >= 4 && ex.getCounter() <= 7 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel2.getValue() + 25;
+                Pb_Nivel2.setValue(temp);
+            }
+            if (ex.getCounter() >= 8 && ex.getCounter() <= 11 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel3.getValue() + 25;
+                Pb_Nivel3.setValue(temp);
+            }
+            if (ex.getCounter() >= 12 && ex.getCounter() <= 15 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel4.getValue() + 25;
+                Pb_Nivel4.setValue(temp);
+            }
+            if (ex.getCounter() >= 16 && ex.getCounter() <= 19 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel5.getValue() + 25;
+                Pb_Nivel5.setValue(temp);
+            }
         }
     }
 
@@ -6184,7 +6208,7 @@ public class Home extends javax.swing.JFrame {
                 new Curiositie(this, true).setVisible(true);
                 active = false;
             }
-            
+
             shutDownSection(1);
             enableLearnButtons();
             Pnl_Aprender.setVisible(true);
@@ -6329,7 +6353,7 @@ public class Home extends javax.swing.JFrame {
         addInfoQuestionnaires(Edt_Cuestionario1, 0, 1, 2);
         visibleAndInvisibleScp(Scp_Cuestionario1, Scp_Tema1, Edt_Cuestionario1);
     }//GEN-LAST:event_Btn_Siguiente_Cuestionario1ActionPerformed
-    
+
     private void addInfoQuestionnaires(JEditorPane edt, int q1, int q2, int q3) {
         tc.addHTML(t.getQuestionnairesTemplate(), edt,
                 qList.get(q1).getQuestionContent(),
@@ -6339,22 +6363,22 @@ public class Home extends javax.swing.JFrame {
                 qList.get(q3).getQuestionContent(),
                 qList.get(q3).getQuestionOptions());
     }
-    
+
     private void HistoryContent() {
         tc.getHistoryContent(Edt_ContenidoHistoria);
         Edt_ContenidoHistoria.setCaretPosition(0);
     }
-    
+
     private void IntroductionContent() {
         tc.addHTML(t.getIntroductionTemplate(), Edt_Introduccion);
         Edt_Introduccion.setCaretPosition(0);
     }
-    
+
     private void visibleAndInvisibleScp(JScrollPane scp1, JScrollPane scp2, JEditorPane edt) {
         scp1.setVisible(true);
         scp2.setVisible(false);
         edt.setCaretPosition(0);
-        
+
     }
 
     private void Btn_Anterior_HelloWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_Anterior_HelloWordActionPerformed
@@ -6932,9 +6956,9 @@ public class Home extends javax.swing.JFrame {
         System.out.println(ex.getCounter());
         verifySolutionsExercise(Btn_SolucionEjercicio3, Btn_Siguiente_FuncionesyProc, Btn_Aprender_Tema10);
     }//GEN-LAST:event_Btn_EnviarEjercicio3ActionPerformed
-    
+
     private String option[] = new String[3];
-    
+
     private void showAnswerWindow(JRadioButton r1, JRadioButton r2, JRadioButton r3, JButton b1, JButton b2) {
         if (r1.isSelected()) {
             option[0] = "Correcta";
@@ -6956,7 +6980,7 @@ public class Home extends javax.swing.JFrame {
         }
         verifyCorrectAnswers(option, b1, b2);
     }
-    
+
     private void verifyCorrectAnswers(String[] option, JButton b1, JButton b2) {
         if (count < 2) {
             vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
@@ -6964,8 +6988,9 @@ public class Home extends javax.swing.JFrame {
         } else {
             b1.setEnabled(true);
             b2.setEnabled(true);
-            pbl += 6;
-            Pb_Mapa.setValue(pbl);
+            
+            int temp = Pb_Mapa.getValue() + 6;
+            Pb_Mapa.setValue(temp);
             vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
                     "¡Preguntas Correctas Necesarias!", "rgb(56, 142, 60)");
         }
@@ -7040,7 +7065,7 @@ public class Home extends javax.swing.JFrame {
     private void Btn_SolucionEjercicio3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SolucionEjercicio3ActionPerformed
         new ExercisesSolutions(this, true, eList.get(22).getSolutionCode().getSolutionText()).setVisible(true);
     }//GEN-LAST:event_Btn_SolucionEjercicio3ActionPerformed
-    
+
     public static void main(String args[]) {
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());

@@ -1,12 +1,24 @@
 package judge;
 import java.io.*;
-public class Main {
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
-    public static void main(String[] args) throws Exception {
-        //System.out.println"Hola Mundo desde Apolo";
-        /*
-        Un comentario para que este codigo no se descontrole
-         */
-        System.out.println("funcionamiento correcto!");
+class Main {
+  public static void main(String[] args) throws Exception {
+    Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\iofiles\\input16.txt"));
+
+    Queue <String> nombres = new LinkedList<>();
+    int numero = sc.nextInt();
+    
+    for(int i = 0; i < numero; i++){
+        nombres.offer(sc.next());
     }
+
+    int cont = 1;
+    while(!nombres.isEmpty()){
+        System.out.println("Puesto "+ cont + ": "+ nombres.poll());
+        cont++;
+    }
+  }
 }
