@@ -67,8 +67,8 @@ import javax.swing.JToggleButton;
 import javax.swing.border.LineBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.UnsupportedLookAndFeelException;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.EntityManagerFactory;
 
 public class Home extends javax.swing.JFrame {
 
