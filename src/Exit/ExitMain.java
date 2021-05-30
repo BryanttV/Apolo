@@ -173,7 +173,7 @@ public class ExitMain extends javax.swing.JDialog {
         if(temp == 0){
             lastTheme = "1";
         }else{
-            lastTheme = Integer.toString(temp + 1);
+            lastTheme = Integer.toString(temp);
         }
     }
 
