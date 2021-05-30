@@ -114,8 +114,13 @@ public class Exercise {
         return ex.get(cnt).getStatus();
     }
 
+    public boolean getExerciseStatus() {
+        return exContent.get(cnt).getAdditionalNotes().equals("TRUE");
+    }
+
     public void clearListExercises() {
         ex.clear();
+        exContent.clear();
     }
 
     public EntityManagerFactory regenerateConnectionUpdate() {
@@ -126,7 +131,9 @@ public class Exercise {
         em.getTransaction().begin();
         clearListExercises();
         Query q = em.createQuery("Select ex from Exercises ex");
+        Query a = em.createQuery("Select exc from ExercisesContent exc");
         ex = (List<Exercises>) q.getResultList();
+        exContent = (List<ExercisesContent>) a.getResultList();
         em.close();
         return _emf;
     }

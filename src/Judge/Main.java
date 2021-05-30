@@ -1,34 +1,26 @@
 package judge;
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
-public class Main {
+class Main {
 
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\iofiles\\input5.txt"));
 
+        Scanner sc = new Scanner(new File(System.getProperty("user.dir") + "\\iofiles\\input19.txt"));
         int casos = sc.nextInt();
 
         for (int i = 0; i < casos; i++) {
-            int a = sc.nextInt();
 
-            String op = sc.next();
+            int len = sc.nextInt();
+            int[] numeros = new int[len];
 
-            int b = sc.nextInt();
-
-            if (op.equals(">")) {
-                System.out.println("Case " + (i + 1) + ": " + (a > b));
-            } else if (op.equals("<")) {
-                System.out.println("Case " + (i + 1) + ": " + (a < b));
-            } else if (op.equals(">=")) {
-                System.out.println("Case " + (i + 1) + ": " + (a >= b));
-            } else if (op.equals("<=")) {
-                System.out.println("Case " + (i + 1) + ": " + (a <= b));
-            } else if (op.equals("==")) {
-                System.out.println("Case " + (i + 1) + ": " + (a == b));
-            } else if (op.equals("!=")) {
-                System.out.println("Case " + (i + 1) + ": " + (a != b));
+            for (int j = 0; j < len; j++) {
+                numeros[j] = sc.nextInt();
             }
+
+            Arrays.sort(numeros);
+            System.out.println(numeros[0] + numeros[1]);
         }
     }
 }
