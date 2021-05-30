@@ -131,7 +131,9 @@ public class Exercise {
         em.getTransaction().begin();
         clearListExercises();
         Query q = em.createQuery("Select ex from Exercises ex");
+        Query a = em.createQuery("Select exc from ExercisesContent exc");
         ex = (List<Exercises>) q.getResultList();
+        exContent = (List<ExercisesContent>) a.getResultList();
         em.close();
         return _emf;
     }

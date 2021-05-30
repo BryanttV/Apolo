@@ -5,7 +5,6 @@ import Exit.ExitMain;
 import Services.RecursosService;
 import static Judge.init.juzgador;
 
-import Entities.Progress;
 import Entities.Questions;
 import Entities.Exercises;
 import Entities.TestCases;
@@ -30,6 +29,7 @@ import JPA_Controllers.AlternativeSolutionsJpaController;
 import CustomComponents.CustomScrollBarUI;
 import CustomComponents.CustomProgressBarUIVertical;
 import CustomComponents.CustomProgressBarUIHorizontal;
+import Entities.Progress;
 
 // Librerias Externas
 import org.fife.ui.rsyntaxtextarea.Theme;
@@ -52,6 +52,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.persistence.EntityManager;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -69,6 +70,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
 
 public class Home extends javax.swing.JFrame {
 
@@ -146,12 +148,6 @@ public class Home extends javax.swing.JFrame {
     private boolean active = true;
     private int count = 0;
     private final Dimension DimMax = Toolkit.getDefaultToolkit().getScreenSize();
-    private int pbl = 0;
-    private int pbn1 = 0;
-    private int pbn2 = 0;
-    private int pbn3 = 0;
-    private int pbn4 = 0;
-    private int pbn5 = 0;
 
     // Llamada informacion DDBB -------------------------------------------------
     // Creación de Fabrica de Entidades
@@ -221,14 +217,35 @@ public class Home extends javax.swing.JFrame {
         configureScrollBar();
         configureProgressBar();
         highlightCode();
-        confirmaClosing();
+        confirmClosing();
         HistoryContent();
         IntroductionContent();
+        initProgress();
+        enableMapButtons();
     }
 
     private void callInfoThemes() {
         tc.setConnectionDB(emf);
         tc.generateListsInfo();
+    }
+
+    //Init ProgressBar
+    private void initProgress() {
+        Pb_Mapa.setValue((int) proList.get(0).getLearningPercentage());
+        Pb_Nivel1.setValue((int) proList.get(1).getLearningPercentage());
+        Pb_Nivel2.setValue((int) proList.get(2).getLearningPercentage());
+        Pb_Nivel3.setValue((int) proList.get(3).getLearningPercentage());
+        Pb_Nivel4.setValue((int) proList.get(4).getLearningPercentage());
+        Pb_Nivel5.setValue((int) proList.get(5).getLearningPercentage());
+    }
+    
+    //Enable Map's Buttons
+    private void enableMapButtons(){
+        int number = Integer.parseInt(proList.get(0).getLastTopicLearning());
+        Component map [] = Pnl_Mapa.getComponents();
+        for (int i = 0; i < number; i++) {
+            map[i].setEnabled(true);
+        }
     }
 
     // Configurar las Caracteristicas de la Ventana Principal
@@ -466,12 +483,16 @@ public class Home extends javax.swing.JFrame {
     }
 
     // Confirmar el cierre de la Aplicacion
-    private void confirmaClosing() {
+    private void confirmClosing() {
         try {
             this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
             addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosing(WindowEvent e) {
+                    Confirmar.getInfoOfProgressBar(emf, Pb_Mapa.getValue(), 
+                            Pb_Nivel1.getValue(), Pb_Nivel2.getValue(), 
+                            Pb_Nivel3.getValue(), Pb_Nivel4.getValue(), 
+                            Pb_Nivel5.getValue());
                     Confirmar.setVisible(true);
                 }
             });
@@ -643,8 +664,8 @@ public class Home extends javax.swing.JFrame {
             if (btm != null) {
                 btm.setEnabled(true);
             }
-            pbl += 6;
-            Pb_Mapa.setValue(pbl);
+            int temp = Pb_Mapa.getValue() + 6;
+            Pb_Mapa.setValue(temp);
             if (nb != null) {
                 nb.setEnabled(true);
             }
@@ -656,34 +677,56 @@ public class Home extends javax.swing.JFrame {
         }
     }
 
+    //Actualizacion de barras de estado
+    private void generateTransaction() {
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        @SuppressWarnings("JPQLValidation")
+        Query updateContent = em.createQuery("UPDATE ExercisesContent ec SET ec.additionalNotes = 'TRUE' " + "WHERE ec.exerciseContentCode = :cnt");
+        updateContent.setParameter("cnt", ex.getCounter() + 1);
+        int rows = updateContent.executeUpdate();
+        em.getTransaction().commit();
+        em.close();
+        System.out.println("FILAS ACTUALIZADAS: " + rows);
+        emf.close();
+        emf = ex.regenerateConnectionUpdate();
+        System.out.println(ex.getExerciseStatus());
+    }
+
     private void verifySolutionStatus() {
+        int temp;
         System.out.println(ex.getStatus());
         if (!ex.getStatus().equals("ACCEPTED")) {
-            if (ex.getCounter() >= 0 && ex.getCounter() <= 3 && !ex.getExerciseStatus()) {
-                pbn1 += 25;
-                Pb_Nivel1.setValue(pbn1);
-            }
-            if (ex.getCounter() >= 4 && ex.getCounter() <= 7 && !ex.getExerciseStatus()) {
-                pbn2 += 25;
-                Pb_Nivel2.setValue(pbn2);
-            }
-            if (ex.getCounter() >= 8 && ex.getCounter() <= 11 && !ex.getExerciseStatus()) {
-                pbn3 += 25;
-                Pb_Nivel3.setValue(pbn3);
-            }
-            if (ex.getCounter() >= 12 && ex.getCounter() <= 15 && !ex.getExerciseStatus()) {
-                pbn4 += 25;
-                Pb_Nivel4.setValue(pbn4);
-            }
-            if (ex.getCounter() >= 16 && ex.getCounter() <= 19 && !ex.getExerciseStatus()) {
-                pbn5 += 25;
-                Pb_Nivel5.setValue(pbn5);
-            }
             Btn_Solucion.setEnabled(false);
         } else {
             Btn_Solucion.setEnabled(true);
             syntaxSolution.setText(ex.getSolution());
             syntaxSolution.setCaretPosition(0);
+            if (ex.getCounter() >= 0 && ex.getCounter() <= 3 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel1.getValue() + 25;
+                Pb_Nivel1.setValue(temp);
+            }
+            if (ex.getCounter() >= 4 && ex.getCounter() <= 7 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel2.getValue() + 25;
+                Pb_Nivel2.setValue(temp);
+            }
+            if (ex.getCounter() >= 8 && ex.getCounter() <= 11 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel3.getValue() + 25;
+                Pb_Nivel3.setValue(temp);
+            }
+            if (ex.getCounter() >= 12 && ex.getCounter() <= 15 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel4.getValue() + 25;
+                Pb_Nivel4.setValue(temp);
+            }
+            if (ex.getCounter() >= 16 && ex.getCounter() <= 19 && !ex.getExerciseStatus()) {
+                generateTransaction();
+                temp = Pb_Nivel5.getValue() + 25;
+                Pb_Nivel5.setValue(temp);
+            }
         }
     }
 
@@ -712,20 +755,20 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_Tema3 = new javax.swing.JButton();
         Btn_Aprender_Tema4 = new javax.swing.JButton();
         Btn_Aprender_Tema5 = new javax.swing.JButton();
+        Btn_Aprender_Ejercicio1 = new javax.swing.JButton();
         Btn_Aprender_Tema6 = new javax.swing.JButton();
         Btn_Aprender_Tema7 = new javax.swing.JButton();
         Btn_Aprender_Tema8 = new javax.swing.JButton();
         Btn_Aprender_Tema9 = new javax.swing.JButton();
+        Btn_Aprender_Ejercicio2 = new javax.swing.JButton();
         Btn_Aprender_Tema10 = new javax.swing.JButton();
         Btn_Aprender_Tema11 = new javax.swing.JButton();
         Btn_Aprender_Tema12 = new javax.swing.JButton();
         Btn_Aprender_Tema13 = new javax.swing.JButton();
         Btn_Aprender_Tema14 = new javax.swing.JButton();
-        Btn_Aprender_Ejercicio1 = new javax.swing.JButton();
-        Btn_Aprender_Ejercicio2 = new javax.swing.JButton();
         Btn_Aprender_EjercicioFinal = new javax.swing.JButton();
-        Lbl_Aprender_Mapa = new javax.swing.JLabel();
         Pb_Mapa = new javax.swing.JProgressBar();
+        Lbl_Aprender_Mapa = new javax.swing.JLabel();
         Pnl_Temas = new javax.swing.JPanel();
         Pnl_Encabezado = new javax.swing.JPanel();
         Lbl_Header_Aprender = new javax.swing.JLabel();
@@ -1466,6 +1509,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_Tema1.setBorderPainted(false);
         Btn_Aprender_Tema1.setContentAreaFilled(false);
         Btn_Aprender_Tema1.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Tema1.setEnabled(false);
         Btn_Aprender_Tema1.setFocusPainted(false);
         Btn_Aprender_Tema1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Aprender_Tema1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Tema1_On.png"))); // NOI18N
@@ -1541,6 +1585,25 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Mapa.add(Btn_Aprender_Tema5, new org.netbeans.lib.awtextra.AbsoluteConstraints(1050, 210, 88, 81));
 
+        Btn_Aprender_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio1_Off.png"))); // NOI18N
+        Btn_Aprender_Ejercicio1.setToolTipText("Ejercicio 1");
+        Btn_Aprender_Ejercicio1.setBorderPainted(false);
+        Btn_Aprender_Ejercicio1.setContentAreaFilled(false);
+        Btn_Aprender_Ejercicio1.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Ejercicio1.setEnabled(false);
+        Btn_Aprender_Ejercicio1.setFocusPainted(false);
+        Btn_Aprender_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_Aprender_Ejercicio1.setMaximumSize(new java.awt.Dimension(71, 123));
+        Btn_Aprender_Ejercicio1.setMinimumSize(new java.awt.Dimension(71, 123));
+        Btn_Aprender_Ejercicio1.setPreferredSize(new java.awt.Dimension(71, 123));
+        Btn_Aprender_Ejercicio1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio1_On.png"))); // NOI18N
+        Btn_Aprender_Ejercicio1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Aprender_Ejercicio1ActionPerformed(evt);
+            }
+        });
+        Pnl_Mapa.add(Btn_Aprender_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 80, 140));
+
         Btn_Aprender_Tema6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Tema6_Off.png"))); // NOI18N
         Btn_Aprender_Tema6.setToolTipText("Operadores de Relación");
         Btn_Aprender_Tema6.setBorderPainted(false);
@@ -1606,11 +1669,30 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Mapa.add(Btn_Aprender_Tema9, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 380, 88, 78));
 
+        Btn_Aprender_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio2_Off.png"))); // NOI18N
+        Btn_Aprender_Ejercicio2.setToolTipText("Ejercicio 2");
+        Btn_Aprender_Ejercicio2.setBorderPainted(false);
+        Btn_Aprender_Ejercicio2.setContentAreaFilled(false);
+        Btn_Aprender_Ejercicio2.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Ejercicio2.setEnabled(false);
+        Btn_Aprender_Ejercicio2.setFocusPainted(false);
+        Btn_Aprender_Ejercicio2.setMaximumSize(new java.awt.Dimension(90, 140));
+        Btn_Aprender_Ejercicio2.setMinimumSize(new java.awt.Dimension(90, 140));
+        Btn_Aprender_Ejercicio2.setPreferredSize(new java.awt.Dimension(90, 140));
+        Btn_Aprender_Ejercicio2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio2_On.png"))); // NOI18N
+        Btn_Aprender_Ejercicio2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_Aprender_Ejercicio2ActionPerformed(evt);
+            }
+        });
+        Pnl_Mapa.add(Btn_Aprender_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 100, 150));
+
         Btn_Aprender_Tema10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Tema10_Off.png"))); // NOI18N
         Btn_Aprender_Tema10.setToolTipText("Funciones y Procedimientos");
         Btn_Aprender_Tema10.setBorderPainted(false);
         Btn_Aprender_Tema10.setContentAreaFilled(false);
         Btn_Aprender_Tema10.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Tema10.setEnabled(false);
         Btn_Aprender_Tema10.setFocusPainted(false);
         Btn_Aprender_Tema10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Aprender_Tema10.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Tema10_On.png"))); // NOI18N
@@ -1642,6 +1724,7 @@ public class Home extends javax.swing.JFrame {
         Btn_Aprender_Tema12.setBorderPainted(false);
         Btn_Aprender_Tema12.setContentAreaFilled(false);
         Btn_Aprender_Tema12.setCursor(sRecursos.getCMano());
+        Btn_Aprender_Tema12.setEnabled(false);
         Btn_Aprender_Tema12.setFocusPainted(false);
         Btn_Aprender_Tema12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         Btn_Aprender_Tema12.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Tema12_On.png"))); // NOI18N
@@ -1684,42 +1767,6 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Mapa.add(Btn_Aprender_Tema14, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 560, 88, 81));
 
-        Btn_Aprender_Ejercicio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio1_Off.png"))); // NOI18N
-        Btn_Aprender_Ejercicio1.setToolTipText("Ejercicio 1");
-        Btn_Aprender_Ejercicio1.setBorderPainted(false);
-        Btn_Aprender_Ejercicio1.setContentAreaFilled(false);
-        Btn_Aprender_Ejercicio1.setCursor(sRecursos.getCMano());
-        Btn_Aprender_Ejercicio1.setEnabled(false);
-        Btn_Aprender_Ejercicio1.setFocusPainted(false);
-        Btn_Aprender_Ejercicio1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        Btn_Aprender_Ejercicio1.setMaximumSize(new java.awt.Dimension(71, 123));
-        Btn_Aprender_Ejercicio1.setMinimumSize(new java.awt.Dimension(71, 123));
-        Btn_Aprender_Ejercicio1.setPreferredSize(new java.awt.Dimension(71, 123));
-        Btn_Aprender_Ejercicio1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio1_On.png"))); // NOI18N
-        Btn_Aprender_Ejercicio1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Aprender_Ejercicio1ActionPerformed(evt);
-            }
-        });
-        Pnl_Mapa.add(Btn_Aprender_Ejercicio1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 150, 80, 140));
-
-        Btn_Aprender_Ejercicio2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio2_Off.png"))); // NOI18N
-        Btn_Aprender_Ejercicio2.setToolTipText("Ejercicio 2");
-        Btn_Aprender_Ejercicio2.setBorderPainted(false);
-        Btn_Aprender_Ejercicio2.setContentAreaFilled(false);
-        Btn_Aprender_Ejercicio2.setCursor(sRecursos.getCMano());
-        Btn_Aprender_Ejercicio2.setFocusPainted(false);
-        Btn_Aprender_Ejercicio2.setMaximumSize(new java.awt.Dimension(90, 140));
-        Btn_Aprender_Ejercicio2.setMinimumSize(new java.awt.Dimension(90, 140));
-        Btn_Aprender_Ejercicio2.setPreferredSize(new java.awt.Dimension(90, 140));
-        Btn_Aprender_Ejercicio2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Ejercicio2_On.png"))); // NOI18N
-        Btn_Aprender_Ejercicio2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_Aprender_Ejercicio2ActionPerformed(evt);
-            }
-        });
-        Pnl_Mapa.add(Btn_Aprender_Ejercicio2, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 350, 100, 150));
-
         Btn_Aprender_EjercicioFinal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/EjercicioFinal_Off.png"))); // NOI18N
         Btn_Aprender_EjercicioFinal.setToolTipText("Ejercicio Final");
         Btn_Aprender_EjercicioFinal.setBorderPainted(false);
@@ -1738,6 +1785,12 @@ public class Home extends javax.swing.JFrame {
         });
         Pnl_Mapa.add(Btn_Aprender_EjercicioFinal, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 450, 121, 210));
 
+        Pb_Mapa.setBackground(new java.awt.Color(7, 95, 168));
+        Pb_Mapa.setForeground(new java.awt.Color(0, 24, 96));
+        Pb_Mapa.setMaximum(102);
+        Pb_Mapa.setBorderPainted(false);
+        Pnl_Mapa.add(Pb_Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 25));
+
         Lbl_Aprender_Mapa.setBackground(sRecursos.getCPrincipal());
         Lbl_Aprender_Mapa.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Aprender_Mapa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Mapa.png"))); // NOI18N
@@ -1747,12 +1800,6 @@ public class Home extends javax.swing.JFrame {
         Lbl_Aprender_Mapa.setOpaque(true);
         Lbl_Aprender_Mapa.setPreferredSize(sRecursos.getDTamanio());
         Pnl_Mapa.add(Lbl_Aprender_Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 35, 1176, 670));
-
-        Pb_Mapa.setBackground(new java.awt.Color(7, 95, 168));
-        Pb_Mapa.setForeground(new java.awt.Color(0, 24, 96));
-        Pb_Mapa.setMaximum(102);
-        Pb_Mapa.setBorderPainted(false);
-        Pnl_Mapa.add(Pb_Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1150, 25));
 
         Pnl_Aprender.add(Pnl_Mapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1176, 705));
 
@@ -6949,8 +6996,9 @@ public class Home extends javax.swing.JFrame {
         } else {
             b1.setEnabled(true);
             b2.setEnabled(true);
-            pbl += 6;
-            Pb_Mapa.setValue(pbl);
+            
+            int temp = Pb_Mapa.getValue() + 6;
+            Pb_Mapa.setValue(temp);
             vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
                     "¡Preguntas Correctas Necesarias!", "rgb(58, 170, 53)");
         }
