@@ -11,7 +11,9 @@ public class VerifyQuestions extends javax.swing.JDialog {
     private final RecursosService sRecursos;
     private final String p1, p2, p3, res, color;
 
-    public VerifyQuestions(java.awt.Frame parent, boolean modal, String p1, String p2, String p3, String res, String color) {
+    public VerifyQuestions(java.awt.Frame parent, boolean modal, String p1, String p2,
+            String p3, String res, String color) {
+        
         super(parent, modal);
         this.p1 = p1;
         this.p2 = p2;

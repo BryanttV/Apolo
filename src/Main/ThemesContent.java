@@ -22,7 +22,6 @@ import org.fife.ui.rsyntaxtextarea.RSyntaxTextArea;
 import java.util.List;
 import javax.swing.JEditorPane;
 import javax.persistence.EntityManagerFactory;
-import javax.swing.JPanel;
 
 public class ThemesContent {
 

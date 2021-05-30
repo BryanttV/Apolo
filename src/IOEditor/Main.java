@@ -1,12 +1,12 @@
 package ioeditor;
 import java.io.*;
+/* Nota: Para la ejecución en este editor la 
+   clase principal siempre debe llamarse «Main» */
+
 public class Main {
-	public static void main(String[] args) throws Exception{
-		System.out.println("Hello World");
-		System.out.println("Hola");
-		for (int i = 0; i < 10; i++) {
-			System.out.println(i);
-		}
-		
-	}
+	
+	public static void main(String[] args) throws Exception {
+    		System.out.println("Hello World");
+    	}
+
 }

@@ -1,1 +1,6 @@
-funcionamiento correcto!
+Case 1: true
+Case 2: false
+Case 3: true
+Case 4: false
+Case 5: false
+Case 6: false

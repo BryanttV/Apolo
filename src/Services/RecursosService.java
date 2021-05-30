@@ -4,7 +4,8 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import Tipografias.Fuentes;
+import Typographies.Fuentes;
+import java.awt.Toolkit;
 
 public final class RecursosService {
 
@@ -23,6 +24,7 @@ public final class RecursosService {
     private Font fLabel_HistoriaB;
     private Font fLabel_HistoriaR;
     private Font fTitles;
+    private Font fEditor;
     private Cursor cMano;
     private Cursor cDefault;
     private Color colorPrincipal;
@@ -35,12 +37,14 @@ public final class RecursosService {
     private Color colorThumb_Off = new Color(50, 50, 50);
     private Color colorThumb_On = new Color(32, 30, 33);
     private Color colorDrag = new Color(32, 30, 33);
+    private Color colorBgScroll = new Color(34, 34, 34);
     private Dimension dTamanioPaneles;
     private Dimension dTamanioBotones;
     private Dimension dBtns_Aprender;
     private Dimension dBtns_CodeStorm;
     private Dimension dPnl_Temas;
     private Dimension dLbl_Temas;
+    private Dimension dScreen;
 
     static private RecursosService servicio;
 
@@ -75,6 +79,7 @@ public final class RecursosService {
         colorThumb_Off = new Color(50, 50, 50);
         colorThumb_On = new Color(32, 30, 33);
         colorDrag = new Color(32, 30, 33);
+        colorBgScroll = new Color(34, 34, 34);
     }
 
     private void crearTamanio() {
@@ -84,9 +89,11 @@ public final class RecursosService {
         dTamanioPaneles = new Dimension(1176, 705);
         dPnl_Temas = new Dimension(1155, 1500);
         dLbl_Temas = new Dimension(750, 45);
+        dScreen = Toolkit.getDefaultToolkit().getScreenSize();
     }
 
     private void crearFuentes() {
+        fEditor = new Font("Consolas", Font.PLAIN, 14);
         fLabel_Aprender = new Font("Trebuchet MS", 1, 18);
         fLabel_HistoriaR = new Font("Segoe UI Emoji", Font.PLAIN, 20);
         fLabel_HistoriaB = new Font("Segoe UI SemiBold", Font.BOLD, 26);
@@ -101,11 +108,13 @@ public final class RecursosService {
         fGeneral = f.fuente(f.EUCR, 0, 16);
         fGeneral_19R = f.fuente(f.EUCR, 0, 19);
         fExContent = f.fuente(f.EUCR, 0, 19);
-
     }
 
     // Getters Fuentes ---------------------------------------------------------
-    
+    public Font getFEditor() {
+        return fEditor;
+    }
+
     public Font getFGeneral() {
         return fGeneral;
     }
@@ -161,9 +170,8 @@ public final class RecursosService {
     public Font getFHistoriaB() {
         return fLabel_HistoriaB;
     }
-    
-    // Getters Cursores --------------------------------------------------------
 
+    // Getters Cursores --------------------------------------------------------
     public Cursor getCMano() {
         return cMano;
     }
@@ -171,21 +179,24 @@ public final class RecursosService {
     public Cursor getCDefault() {
         return cDefault;
     }
-    
-    // Getters Colores ---------------------------------------------------------
 
-    public Color getColorThumbOff(){
+    // Getters Colores ---------------------------------------------------------
+    public Color getColorBgScroll() {
+        return colorBgScroll;
+    }
+
+    public Color getColorThumbOff() {
         return colorThumb_Off;
     }
-    
-    public Color getColorThumbOn(){
+
+    public Color getColorThumbOn() {
         return colorThumb_On;
     }
-    
-    public Color getColorDrag(){
+
+    public Color getColorDrag() {
         return colorDrag;
     }
-    
+
     public Color getCPrincipal() {
         return colorPrincipal;
     }
@@ -213,9 +224,8 @@ public final class RecursosService {
     public Color getColorGrisBorde() {
         return colorGrisBorde;
     }
-    
-    // Getters Dimension
 
+    // Getters Dimension
     public Dimension getDTamanio() {
         return dTamanioPaneles;
     }
@@ -235,8 +245,12 @@ public final class RecursosService {
     public Dimension getDPnls_Temas() {
         return dPnl_Temas;
     }
-    
-    public Dimension getDLbls_Temas(){
+
+    public Dimension getDLbls_Temas() {
         return dLbl_Temas;
+    }
+
+    public Dimension getDScreen() {
+        return dScreen;
     }
 }
