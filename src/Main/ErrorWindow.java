@@ -9,12 +9,13 @@ import javax.swing.JEditorPane;
 
 public class ErrorWindow extends javax.swing.JDialog {
 
+    // Varibles
     private final RecursosService sRecursos;
+    private final String msg;
+    private final String path_img;
     private final String template = "<html>"
             + "<p style=\"margin : 0; text-align: center;\"><b>%s</b></p>"
             + "</html>";
-    private final String msg;
-    private final String path_img;
 
     public ErrorWindow(java.awt.Frame parent, boolean modal, String msg, String path_img) {
         super(parent, modal);
@@ -27,6 +28,7 @@ public class ErrorWindow extends javax.swing.JDialog {
         this.setLocationRelativeTo(parent);
     }
 
+    // Agregar mensaje a la ventana
     private void addMessage() {
         String text = String.format(template, this.msg);
         Edt_ErrorWindow.setText(text);
@@ -35,6 +37,7 @@ public class ErrorWindow extends javax.swing.JDialog {
         Edt_ErrorWindow.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
     }
 
+    // Agregar icono dinamico a la ventana de error
     private void addImage() {
         Lbl_Icon.setIcon(new ImageIcon(getClass().getResource(this.path_img)));
     }
@@ -52,7 +55,6 @@ public class ErrorWindow extends javax.swing.JDialog {
         setMaximumSize(new java.awt.Dimension(210, 120));
         setMinimumSize(new java.awt.Dimension(210, 120));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(210, 120));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Pnl_ErrorWindow.setBackground(sRecursos.getColorDark());

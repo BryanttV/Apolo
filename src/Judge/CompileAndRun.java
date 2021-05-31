@@ -17,7 +17,7 @@ public class CompileAndRun {
         String codeModificado = ReemplazarCodigo.reemplazar(code, section, rute, num);
 
         try {
-            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\" + section + "\\Main.java");
+            out = new FileOutputStream("C:\\Apolo\\src\\" + section + "\\Main.java");
             byte[] bytxt = codeModificado.getBytes();
             out.write(bytxt);
             out.close();
@@ -34,7 +34,7 @@ public class CompileAndRun {
 
         ProcessBuilder pb = new ProcessBuilder(cmds);
         pb.redirectError();
-        pb.redirectInput(new File(System.getProperty("user.dir") + "\\src\\" + rute, "compare.txt"));
+        pb.redirectInput(new File("C:\\Apolo\\src\\" + rute, "compare.txt"));
         pb.directory(new File("src"));
 
         Process p = pb.start();
@@ -45,7 +45,7 @@ public class CompileAndRun {
 
         System.out.println(consumer.getOutput());
         String writteable = consumer.getOutput().toString();
-        try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\" + rute + "\\compare.txt")) {
+        try (FileWriter fw = new FileWriter("C:\\Apolo\\src\\" + rute + "\\compare.txt")) {
             fw.write(writteable);
             System.out.println("Archivo de salida correctamente creado");
         }

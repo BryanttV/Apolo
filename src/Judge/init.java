@@ -41,7 +41,7 @@ public class init {
         String final_status = "";
         try {
             // Obtener URL
-            String findURL = System.getProperty("user.dir") + "\\src\\" + section + "\\Main.java";
+            String findURL = "C:\\Apolo\\src\\" + section + "\\Main.java";
             System.out.println("findUrl " + findURL);
 
             // Compilar Archivo

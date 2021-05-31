@@ -6,7 +6,7 @@ public class ReemplazarCodigo {
         String nuevoCodigo = null;
 
         nuevoCodigo = "package " + pckage + ";\nimport java.io.*;\n" + code;
-        nuevoCodigo = nuevoCodigo.replace("(System.in)", "(new File(System.getProperty(\"user.dir\") + \"\\\\" + rute + "\\\\input" + num + ".txt\"))");
+        nuevoCodigo = nuevoCodigo.replace("(System.in)", "(new File(\"C:\\\\Apolo\\\\src\\\\" + rute + "\\\\input" + num + ".txt\"))");
         nuevoCodigo = nuevoCodigo.replace("args)", "args) throws Exception");
         return nuevoCodigo;
     }

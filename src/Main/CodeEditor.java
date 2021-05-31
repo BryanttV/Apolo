@@ -74,6 +74,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         editorConfiguration();
     }
 
+    // Agregar configuracion inicial al Editor
     private void editorConfiguration() {
         configureScrollBar();
         configureLabels();
@@ -192,15 +193,19 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     // Cargar plantilla HelloWorld en el Area de Texto
     private void addTemplate() {
-        textArea.setText("/* Nota: Para la ejecución en este editor la \n"
-                + "   clase principal siempre debe llamarse «Main» */\n"
+        textArea.setText("/*\n"
+                + "Notas: \n"
+                + "1. Para la ejecución en este editor la\n"
+                + "clase principal siempre debe llamarse (Main) \n"
+                + "2. Si el programa pide entradas por teclado,\n"
+                + "ingréselas primero antes de hacer la ejecución.\n"
+                + " */\n"
                 + "\n"
                 + "public class Main {\n"
-                + "	\n"
-                + "	public static void main(String[] args) {\n"
-                + "    		System.out.println(\"Hello World\");\n"
-                + "    	}\n"
                 + "\n"
+                + "    public static void main(String[] args) {\n"
+                + "        System.out.println(\"Hello World\");\n"
+                + "    }\n"
                 + "}");
     }
 
@@ -247,8 +252,6 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         ctm.addTemplate(ct);
         ct = new StaticCodeTemplate("void", "static void ", "(){\n\t\n}");
         ctm.addTemplate(ct);
-        ct = new StaticCodeTemplate("void", "static void ", "(){\n\t\n}");
-        ctm.addTemplate(ct);
         pack();
         ac.install(textArea);
     }
@@ -277,6 +280,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         provider.addCompletion(new BasicCompletion(provider, "float"));
         provider.addCompletion(new BasicCompletion(provider, "for"));
         provider.addCompletion(new BasicCompletion(provider, "if"));
+        provider.addCompletion(new BasicCompletion(provider, "isEmpty()"));
         provider.addCompletion(new BasicCompletion(provider, "import"));
         provider.addCompletion(new BasicCompletion(provider, "int"));
         provider.addCompletion(new BasicCompletion(provider, "java.util.Scanner;"));
@@ -287,12 +291,17 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         provider.addCompletion(new BasicCompletion(provider, "next();"));
         provider.addCompletion(new BasicCompletion(provider, "null"));
         provider.addCompletion(new BasicCompletion(provider, "length"));
+        provider.addCompletion(new BasicCompletion(provider, "offer("));
         provider.addCompletion(new BasicCompletion(provider, "package"));
         provider.addCompletion(new BasicCompletion(provider, "pop()"));
+        provider.addCompletion(new BasicCompletion(provider, "poll()"));
         provider.addCompletion(new BasicCompletion(provider, "private"));
         provider.addCompletion(new BasicCompletion(provider, "public"));
-        provider.addCompletion(new BasicCompletion(provider, "push()"));
+        provider.addCompletion(new BasicCompletion(provider, "peek()"));
+        provider.addCompletion(new BasicCompletion(provider, "push("));
+        provider.addCompletion(new BasicCompletion(provider, "put("));
         provider.addCompletion(new BasicCompletion(provider, "return"));
+        provider.addCompletion(new BasicCompletion(provider, "remove()"));
         provider.addCompletion(new BasicCompletion(provider, "Scanner"));
         provider.addCompletion(new BasicCompletion(provider, "size()"));
         provider.addCompletion(new BasicCompletion(provider, "static"));
@@ -354,6 +363,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
     // Guardar archivo usando Buscador JFileChooser
     protected void save() {
+        aux = true;
         if (seleccion.showDialog(null, "Guardar") == JFileChooser.APPROVE_OPTION) {
             String nombre_code;
             if (seleccion.getSelectedFile().toString().endsWith(".java")) {
@@ -362,7 +372,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
                 nombre_code = seleccion.getSelectedFile().toString();
                 try {
                     nombre_code = nombre_code.substring(0, nombre_code.indexOf('.')) + ".java";
-                } catch (Exception e) {
+                } catch (StringIndexOutOfBoundsException e) {
                     nombre_code += ".java";
                 }
             }
@@ -384,7 +394,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
         String documento = Txa_Entrada.getText();
         try {
             byte[] bytxt = documento.getBytes();
-            out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\ioeditor\\input.txt");
+            out = new FileOutputStream("C:\\Apolo\\src\\ioeditor\\input.txt");
             out.write(bytxt);
             out.close();
         } catch (IOException e) {
@@ -429,7 +439,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
         ProcessBuilder pb = new ProcessBuilder(cmds);
         pb.redirectError();
-        pb.redirectInput(new File(System.getProperty("user.dir") + "\\src\\ioeditor", "output.txt"));
+        pb.redirectInput(new File("C:\\Apolo\\src\\ioeditor", "output.txt"));
 
         pb.directory(new File("src"));
 
@@ -443,7 +453,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
 
         Txa_Salida.setText(writteable);
 
-        try (FileWriter fw = new FileWriter(System.getProperty("user.dir") + "\\src\\ioeditor\\output.txt")) {
+        try (FileWriter fw = new FileWriter("C:\\Apolo\\src\\ioeditor\\output.txt")) {
             fw.write(writteable);
         }
 
@@ -714,7 +724,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
             String codeModificado = ReemplazarCodigo.reemplazar(code, "ioeditor", "ioeditor", "");
 
             try {
-                out = new FileOutputStream(System.getProperty("user.dir") + "\\src\\IOEditor\\Main.java");
+                out = new FileOutputStream("C:\\Apolo\\src\\IOEditor\\Main.java");
                 byte[] bytxt = codeModificado.getBytes();
                 out.write(bytxt);
                 out.close();
@@ -724,7 +734,7 @@ public class CodeEditor extends javax.swing.JFrame implements ClipboardOwner {
             }
 
             // Ruta donde se guarda el archivo
-            String ruta = System.getProperty("user.dir") + "\\src\\IOEditor\\Main.java";
+            String ruta = "C:\\Apolo\\src\\IOEditor\\Main.java";
 
             int result = compile(ruta);  // Compila el archivo
 

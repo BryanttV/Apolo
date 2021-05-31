@@ -7,7 +7,7 @@ import CustomComponents.CustomScrollBarUI;
 import CustomComponents.CustomProgressBarUIHorizontal;
 import JPA_Controllers.CuriositiesJpaController;
 
-// Librerias Default
+// Librerias por Default
 import javax.swing.Timer;
 import java.util.List;
 import java.util.Random;
@@ -16,10 +16,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.swing.ImageIcon;
 import javax.swing.JEditorPane;
 
 public class Curiositie extends javax.swing.JDialog {
 
+    // Variables
     private EntityManagerFactory emf = Persistence.createEntityManagerFactory("ApoloPU");
     private final CuriositiesJpaController cujpa = new CuriositiesJpaController(emf);
     private final List<Curiosities> cuList = cujpa.findCuriositiesEntities();
@@ -29,7 +31,7 @@ public class Curiositie extends javax.swing.JDialog {
     private int x = 0;
     private Timer t;
     private final String tmp = "<html>"
-            + "<p style=\"text-align: justify; margin: 0; background-color: rgb(56, 56, 56);\">%s</p>"
+            + "<p style=\"text-align: justify; margin: 0; margin-right: 6; background-color: rgb(56, 56, 56);\">%s</p>"
             + "</html>";
 
     public Curiositie(java.awt.Frame parent, boolean modal) {
@@ -41,18 +43,17 @@ public class Curiositie extends javax.swing.JDialog {
         configureProgressBar();
         configureScrollBar();
         addCuriositie();
+        Btn_PausarSeguir.setIcon(new ImageIcon(getClass().getResource("/Resources/Ventanas/Pausar_Off.png")));
         this.setLocationRelativeTo(parent);
     }
 
-    private int getNumero() {
-        return r.nextInt(18);
-    }
-
+    // Configurar fuente personalizada
     private void configureFont() {
         Edt_Tips.setFont(sRecursos.getFContentTip());
         Lbl_Tip.setFont(sRecursos.getFTitleTips());
     }
 
+    // COnfigurar ScrollBar personalizado
     private void configureScrollBar() {
         Scp_Tips.getVerticalScrollBar().setBackground(sRecursos.getColorDark());
         Scp_Tips.getVerticalScrollBar().setUI(new CustomScrollBarUI(
@@ -61,10 +62,12 @@ public class Curiositie extends javax.swing.JDialog {
                 new Color(230, 230, 230)));
     }
 
+    // Configurar ProgressBar personalizado
     private void configureProgressBar() {
         Pb_Tips.setUI(new CustomProgressBarUIHorizontal());
     }
 
+    // Agregar Curiosidad al JTextEditor
     private void addCuriositie() {
         Edt_Tips.putClientProperty(JEditorPane.HONOR_DISPLAY_PROPERTIES, Boolean.TRUE);
         String text = String.format(tmp, cuList.get(getNumero()).getCuriosityContent());
@@ -72,6 +75,12 @@ public class Curiositie extends javax.swing.JDialog {
         Edt_Tips.setCaretPosition(0);
     }
 
+    // Generar numero aleatorio
+    private int getNumero() {
+        return r.nextInt(18);
+    }
+
+    // Agregar el temporizador a la barra de progreso
     private void addTimer() {
         ac = (ActionEvent e) -> {
             x++;
@@ -92,12 +101,11 @@ public class Curiositie extends javax.swing.JDialog {
         Pnl_Tips = new javax.swing.JPanel();
         Pb_Tips = new javax.swing.JProgressBar();
         Btn_Cerrar = new javax.swing.JButton();
-        Btn_Pausar = new javax.swing.JButton();
-        Btn_Seguir = new javax.swing.JButton();
         Lbl_Bombillo = new javax.swing.JLabel();
         Lbl_Tip = new javax.swing.JLabel();
         Scp_Tips = new javax.swing.JScrollPane();
         Edt_Tips = new javax.swing.JTextPane();
+        Btn_PausarSeguir = new javax.swing.JToggleButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -131,32 +139,6 @@ public class Curiositie extends javax.swing.JDialog {
         });
         Pnl_Tips.add(Btn_Cerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 10, 25, 25));
 
-        Btn_Pausar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Pausar_Off.png"))); // NOI18N
-        Btn_Pausar.setBorderPainted(false);
-        Btn_Pausar.setContentAreaFilled(false);
-        Btn_Pausar.setFocusPainted(false);
-        Btn_Pausar.setFocusable(false);
-        Btn_Pausar.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Pausar_On.png"))); // NOI18N
-        Btn_Pausar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_PausarActionPerformed(evt);
-            }
-        });
-        Pnl_Tips.add(Btn_Pausar, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 25, 25));
-
-        Btn_Seguir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Seguir_Off.png"))); // NOI18N
-        Btn_Seguir.setBorderPainted(false);
-        Btn_Seguir.setContentAreaFilled(false);
-        Btn_Seguir.setFocusPainted(false);
-        Btn_Seguir.setFocusable(false);
-        Btn_Seguir.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Seguir_On.png"))); // NOI18N
-        Btn_Seguir.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_SeguirActionPerformed(evt);
-            }
-        });
-        Pnl_Tips.add(Btn_Seguir, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 10, 25, 25));
-
         Lbl_Bombillo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         Lbl_Bombillo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Ventanas/Idea.png"))); // NOI18N
         Pnl_Tips.add(Lbl_Bombillo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 50, 120));
@@ -180,6 +162,18 @@ public class Curiositie extends javax.swing.JDialog {
 
         Pnl_Tips.add(Scp_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 50, 340, 120));
 
+        Btn_PausarSeguir.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+        Btn_PausarSeguir.setBorderPainted(false);
+        Btn_PausarSeguir.setContentAreaFilled(false);
+        Btn_PausarSeguir.setFocusPainted(false);
+        Btn_PausarSeguir.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        Btn_PausarSeguir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_PausarSeguirActionPerformed(evt);
+            }
+        });
+        Pnl_Tips.add(Btn_PausarSeguir, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 10, 25, 25));
+
         getContentPane().add(Pnl_Tips, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 420, 220));
 
         pack();
@@ -190,13 +184,15 @@ public class Curiositie extends javax.swing.JDialog {
         t.stop();
     }//GEN-LAST:event_Btn_CerrarActionPerformed
 
-    private void Btn_PausarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PausarActionPerformed
-        t.stop();
-    }//GEN-LAST:event_Btn_PausarActionPerformed
-
-    private void Btn_SeguirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_SeguirActionPerformed
-        t.start();
-    }//GEN-LAST:event_Btn_SeguirActionPerformed
+    private void Btn_PausarSeguirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_PausarSeguirActionPerformed
+        if (Btn_PausarSeguir.isSelected()) {
+            Btn_PausarSeguir.setIcon(new ImageIcon(getClass().getResource("/Resources/Ventanas/Seguir_Off.png")));
+            t.stop();
+        } else {
+            Btn_PausarSeguir.setIcon(new ImageIcon(getClass().getResource("/Resources/Ventanas/Pausar_Off.png")));
+            t.start();
+        }
+    }//GEN-LAST:event_Btn_PausarSeguirActionPerformed
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
@@ -213,8 +209,7 @@ public class Curiositie extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_Cerrar;
-    private javax.swing.JButton Btn_Pausar;
-    private javax.swing.JButton Btn_Seguir;
+    private javax.swing.JToggleButton Btn_PausarSeguir;
     private javax.swing.JTextPane Edt_Tips;
     private javax.swing.JLabel Lbl_Bombillo;
     private javax.swing.JLabel Lbl_Tip;

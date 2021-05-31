@@ -20,9 +20,8 @@ public class CompareAndJudge {
     }
 
     static boolean compareLength(String idejercicio, String rute, String num) {
-//        File file1 = new File(System.getProperty("user.dir") + "\\src\\" + rute + "\\" + idejercicio + ".txt");
-        File file1 = new File(System.getProperty("user.dir") + "\\src\\" + rute + "\\output" + num + ".txt");
-        File file2 = new File(System.getProperty("user.dir") + "\\src\\" + rute + "\\compare.txt");
+        File file1 = new File("C:\\Apolo\\src\\" + rute + "\\output" + num + ".txt");
+        File file2 = new File("C:\\Apolo\\src\\" + rute + "\\compare.txt");
         System.out.println(file1.length());
         System.out.println(file2.length());
         if (file1.length() >= file2.length() - 2L && file1.length() < file2.length() + 2L) {
@@ -33,9 +32,8 @@ public class CompareAndJudge {
 
     static boolean compareLines(String idejercicio, String rute, String num) {
         boolean areEqual = false;
-        try (BufferedReader reader1 = new BufferedReader(new FileReader(System.getProperty("user.dir")
-                + "\\src\\" + rute + "\\output" + num + ".txt"));
-                BufferedReader reader2 = new BufferedReader(new FileReader(System.getProperty("user.dir") + "\\src\\" + rute + "\\compare.txt"))) {
+        try (BufferedReader reader1 = new BufferedReader(new FileReader("C:\\Apolo\\src\\" + rute + "\\output" + num + ".txt"));
+                BufferedReader reader2 = new BufferedReader(new FileReader("C:\\Apolo\\src\\" + rute + "\\compare.txt"))) {
             String line1 = reader1.readLine();
             String line2 = reader2.readLine();
             areEqual = true;
