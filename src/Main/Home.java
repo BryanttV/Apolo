@@ -1017,20 +1017,20 @@ public class Home extends javax.swing.JFrame {
         Spr_TryCatch = new javax.swing.JSeparator();
         Lbl_TryCatch = new javax.swing.JLabel();
         Edt7_5 = new javax.swing.JEditorPane();
-        Pnl_CodesThemes7_9 = new javax.swing.JPanel();
-        Lbl_SampleCode8_8 = new javax.swing.JLabel();
         Pnl_CodesThemes7_5 = new javax.swing.JPanel();
-        Edt7_6 = new javax.swing.JEditorPane();
+        Lbl_SampleCode8_8 = new javax.swing.JLabel();
         Pnl_CodesThemes7_6 = new javax.swing.JPanel();
-        Edt7_7 = new javax.swing.JEditorPane();
+        Edt7_6 = new javax.swing.JEditorPane();
         Pnl_CodesThemes7_7 = new javax.swing.JPanel();
+        Edt7_7 = new javax.swing.JEditorPane();
+        Pnl_CodesThemes7_8 = new javax.swing.JPanel();
         Edt7_8 = new javax.swing.JEditorPane();
         Spr_SwitchCase = new javax.swing.JSeparator();
         Lbl_SwitchCase = new javax.swing.JLabel();
         Edt7_9 = new javax.swing.JEditorPane();
-        Pnl_CodesThemes7_10 = new javax.swing.JPanel();
+        Pnl_CodesThemes7_9 = new javax.swing.JPanel();
         Lbl_SampleCode8_5 = new javax.swing.JLabel();
-        Pnl_CodesThemes7_8 = new javax.swing.JPanel();
+        Pnl_CodesThemes7_10 = new javax.swing.JPanel();
         Edt7_10 = new javax.swing.JEditorPane();
         Btn_Anterior_Cuestionario7 = new javax.swing.JButton();
         Btn_Siguiente_Cuestionario8 = new javax.swing.JButton();
@@ -1473,7 +1473,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_Bar_Buttons.add(Btn_Historia, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 380, 170, 55));
 
         Lbl_HomeButttons.setBackground(sRecursos.getCPrincipal());
-        Lbl_HomeButttons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/Apolo_FondoButtons.png"))); // NOI18N
+        Lbl_HomeButttons.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/General/FondoSideBar.png"))); // NOI18N
         Lbl_HomeButttons.setOpaque(true);
         Pnl_Bar_Buttons.add(Lbl_HomeButttons, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 190, 705));
 
@@ -2436,9 +2436,9 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_Tema4.setBackground(sRecursos.getCPrincipal());
         Pnl_Tema4.setCursor(sRecursos.getCDefault());
-        Pnl_Tema4.setMaximumSize(new java.awt.Dimension(1176, 4250));
-        Pnl_Tema4.setMinimumSize(new java.awt.Dimension(1176, 4250));
-        Pnl_Tema4.setPreferredSize(new java.awt.Dimension(1176, 4250));
+        Pnl_Tema4.setMaximumSize(new java.awt.Dimension(1176, 3840));
+        Pnl_Tema4.setMinimumSize(new java.awt.Dimension(1176, 3840));
+        Pnl_Tema4.setPreferredSize(new java.awt.Dimension(1176, 3840));
         Pnl_Tema4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         Lbl_OperadoresAritmeticos.setFont(sRecursos.getFLabels());
@@ -2457,82 +2457,82 @@ public class Home extends javax.swing.JFrame {
 
         Pnl_CodesThemes3_1.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes3_1.setLayout(new java.awt.CardLayout());
-        Pnl_Tema4.add(Pnl_CodesThemes3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 1110, 330));
+        Pnl_Tema4.add(Pnl_CodesThemes3_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 1110, 250));
 
         Edt3_2.setContentType("text/html"); // NOI18N
         Edt3_2.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_2.setText("");
         Edt3_2.setOpaque(false);
-        Pnl_Tema4.add(Edt3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 680, 1120, 280));
+        Pnl_Tema4.add(Edt3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 600, 1120, 200));
 
         Pnl_CodesThemes3_2.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes3_2.setLayout(new java.awt.CardLayout());
-        Pnl_Tema4.add(Pnl_CodesThemes3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 970, 1110, 220));
+        Pnl_Tema4.add(Pnl_CodesThemes3_2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 810, 1110, 160));
 
         Edt3_3.setContentType("text/html"); // NOI18N
         Edt3_3.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_3.setText("");
         Edt3_3.setOpaque(false);
-        Pnl_Tema4.add(Edt3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1200, 1120, 160));
+        Pnl_Tema4.add(Edt3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 980, 1120, 140));
 
         Spr_Acumuladores.setForeground(sRecursos.getColorVerde());
         Spr_Acumuladores.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
-        Pnl_Tema4.add(Spr_Acumuladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1390, 1120, -1));
+        Pnl_Tema4.add(Spr_Acumuladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1150, 1120, -1));
 
         Lbl_Acumuladores.setFont(sRecursos.getFTitleEditor());
         Lbl_Acumuladores.setText("Acumuladores");
         Lbl_Acumuladores.setFocusable(false);
-        Pnl_Tema4.add(Lbl_Acumuladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1420, 220, -1));
+        Pnl_Tema4.add(Lbl_Acumuladores, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1180, 220, -1));
 
         Edt3_4.setContentType("text/html"); // NOI18N
         Edt3_4.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_4.setText("");
         Edt3_4.setOpaque(false);
-        Pnl_Tema4.add(Edt3_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1450, 1120, 530));
+        Pnl_Tema4.add(Edt3_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1210, 1120, 530));
 
         Pnl_CodesThemes3_3.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes3_3.setLayout(new java.awt.CardLayout());
-        Pnl_Tema4.add(Pnl_CodesThemes3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1990, 1110, 320));
+        Pnl_Tema4.add(Pnl_CodesThemes3_3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 1750, 1110, 250));
 
         Edt3_5.setContentType("text/html"); // NOI18N
         Edt3_5.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_5.setText("");
         Edt3_5.setOpaque(false);
-        Pnl_Tema4.add(Edt3_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2320, 1120, 180));
+        Pnl_Tema4.add(Edt3_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2010, 1120, 140));
 
         Pnl_CodesThemes3_4.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes3_4.setLayout(new java.awt.CardLayout());
-        Pnl_Tema4.add(Pnl_CodesThemes3_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2510, 1110, 310));
+        Pnl_Tema4.add(Pnl_CodesThemes3_4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2160, 1110, 270));
 
         Edt3_6.setContentType("text/html"); // NOI18N
         Edt3_6.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_6.setText("");
         Edt3_6.setOpaque(false);
-        Pnl_Tema4.add(Edt3_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2830, 1120, 200));
+        Pnl_Tema4.add(Edt3_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2440, 1120, 160));
 
         Spr_OperadoresIncDec.setForeground(sRecursos.getColorVerde());
         Spr_OperadoresIncDec.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorVerde(), 2, true));
-        Pnl_Tema4.add(Spr_OperadoresIncDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3070, 1120, -1));
+        Pnl_Tema4.add(Spr_OperadoresIncDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2640, 1120, -1));
 
         Lbl_OperadorIncDec.setFont(sRecursos.getFTitleEditor());
         Lbl_OperadorIncDec.setText("Operadores de Incremento y Decremento");
-        Pnl_Tema4.add(Lbl_OperadorIncDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3110, -1, -1));
+        Pnl_Tema4.add(Lbl_OperadorIncDec, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2680, -1, -1));
 
         Edt3_7.setContentType("text/html"); // NOI18N
         Edt3_7.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_7.setText("");
         Edt3_7.setOpaque(false);
-        Pnl_Tema4.add(Edt3_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3150, 1120, 700));
+        Pnl_Tema4.add(Edt3_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2720, 1120, 700));
 
         Pnl_CodesThemes3_5.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
         Pnl_CodesThemes3_5.setLayout(new java.awt.CardLayout());
-        Pnl_Tema4.add(Pnl_CodesThemes3_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3860, 1110, 160));
+        Pnl_Tema4.add(Pnl_CodesThemes3_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3430, 1110, 160));
 
         Edt3_8.setContentType("text/html"); // NOI18N
         Edt3_8.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt3_8.setText("");
         Edt3_8.setOpaque(false);
-        Pnl_Tema4.add(Edt3_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4030, 1120, 60));
+        Pnl_Tema4.add(Edt3_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3600, 1120, 60));
 
         Btn_Anterior_Cuestionario3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Anterior_Cuestionario3_Off.png"))); // NOI18N
         Btn_Anterior_Cuestionario3.setMnemonic(37);
@@ -2549,7 +2549,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Anterior_Cuestionario3ActionPerformed(evt);
             }
         });
-        Pnl_Tema4.add(Btn_Anterior_Cuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 4150, 254, 64));
+        Pnl_Tema4.add(Btn_Anterior_Cuestionario3, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 3740, 254, 64));
 
         Btn_Siguiente_Cuestionario4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Resources/Aprender/Siguiente_Cuestionario4_Off.png"))); // NOI18N
         Btn_Siguiente_Cuestionario4.setMnemonic(39);
@@ -2566,7 +2566,7 @@ public class Home extends javax.swing.JFrame {
                 Btn_Siguiente_Cuestionario4ActionPerformed(evt);
             }
         });
-        Pnl_Tema4.add(Btn_Siguiente_Cuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 4150, 254, 64));
+        Pnl_Tema4.add(Btn_Siguiente_Cuestionario4, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 3740, 254, 64));
 
         Scp_Tema4.setViewportView(Pnl_Tema4);
 
@@ -3018,7 +3018,7 @@ public class Home extends javax.swing.JFrame {
         Pnl_Tema6.add(Edt5_1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, -5, 1120, 290));
 
         Lbl_TablaOperadoresRelacion.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        Lbl_TablaOperadoresRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Learning_Images/Operadores_Relacion.png"))); // NOI18N
+        Lbl_TablaOperadoresRelacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Learning_Images/OperadoresRelacion.png"))); // NOI18N
         Pnl_Tema6.add(Lbl_TablaOperadoresRelacion, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 1130, 320));
 
         Edt5_2.setContentType("text/html"); // NOI18N
@@ -3489,27 +3489,27 @@ public class Home extends javax.swing.JFrame {
         Edt7_5.setOpaque(false);
         Pnl_Tema8.add(Edt7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2520, 1120, 240));
 
-        Pnl_CodesThemes7_9.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes7_9.setLayout(new java.awt.CardLayout());
-        Pnl_Tema8.add(Pnl_CodesThemes7_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2770, 1118, 240));
+        Pnl_CodesThemes7_5.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_CodesThemes7_5.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 2770, 1118, 230));
 
         Lbl_SampleCode8_8.setFont(sRecursos.getFTitles());
         Lbl_SampleCode8_8.setText("Código de Ejemplo");
-        Pnl_Tema8.add(Lbl_SampleCode8_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3020, -1, 20));
+        Pnl_Tema8.add(Lbl_SampleCode8_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3010, -1, 20));
 
-        Pnl_CodesThemes7_5.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes7_5.setLayout(new java.awt.CardLayout());
-        Pnl_Tema8.add(Pnl_CodesThemes7_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3050, 1118, 280));
+        Pnl_CodesThemes7_6.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_CodesThemes7_6.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3040, 1118, 280));
 
         Edt7_6.setContentType("text/html"); // NOI18N
         Edt7_6.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
         Edt7_6.setText("");
         Edt7_6.setOpaque(false);
-        Pnl_Tema8.add(Edt7_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3340, 1120, 240));
+        Pnl_Tema8.add(Edt7_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3330, 1120, 240));
 
-        Pnl_CodesThemes7_6.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes7_6.setLayout(new java.awt.CardLayout());
-        Pnl_Tema8.add(Pnl_CodesThemes7_6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3590, 1118, 190));
+        Pnl_CodesThemes7_7.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_CodesThemes7_7.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3580, 1118, 200));
 
         Edt7_7.setContentType("text/html"); // NOI18N
         Edt7_7.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -3517,9 +3517,9 @@ public class Home extends javax.swing.JFrame {
         Edt7_7.setOpaque(false);
         Pnl_Tema8.add(Edt7_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3790, 1120, 170));
 
-        Pnl_CodesThemes7_7.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes7_7.setLayout(new java.awt.CardLayout());
-        Pnl_Tema8.add(Pnl_CodesThemes7_7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3970, 1118, 230));
+        Pnl_CodesThemes7_8.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_CodesThemes7_8.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 3970, 1118, 230));
 
         Edt7_8.setContentType("text/html"); // NOI18N
         Edt7_8.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -3542,17 +3542,17 @@ public class Home extends javax.swing.JFrame {
         Edt7_9.setOpaque(false);
         Pnl_Tema8.add(Edt7_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4390, 1120, 210));
 
-        Pnl_CodesThemes7_10.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes7_10.setLayout(new java.awt.CardLayout());
-        Pnl_Tema8.add(Pnl_CodesThemes7_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4610, 1118, 320));
+        Pnl_CodesThemes7_9.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_CodesThemes7_9.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4610, 1118, 320));
 
         Lbl_SampleCode8_5.setFont(sRecursos.getFTitles());
         Lbl_SampleCode8_5.setText("Código de Ejemplo");
         Pnl_Tema8.add(Lbl_SampleCode8_5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4940, -1, 20));
 
-        Pnl_CodesThemes7_8.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
-        Pnl_CodesThemes7_8.setLayout(new java.awt.CardLayout());
-        Pnl_Tema8.add(Pnl_CodesThemes7_8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4970, 1118, 380));
+        Pnl_CodesThemes7_10.setBorder(new javax.swing.border.LineBorder(sRecursos.getColorGrisBorde(), 2, true));
+        Pnl_CodesThemes7_10.setLayout(new java.awt.CardLayout());
+        Pnl_Tema8.add(Pnl_CodesThemes7_10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 4970, 1118, 380));
 
         Edt7_10.setContentType("text/html"); // NOI18N
         Edt7_10.setFont(new java.awt.Font("Arial", 0, 11)); // NOI18N
@@ -7004,7 +7004,7 @@ public class Home extends javax.swing.JFrame {
     private void verifyCorrectAnswers(String[] option, JButton b1, JButton b2) {
         if (count < 2) {
             vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
-                    "¡Preguntas Correctas Insuficientes!", "rgb(230, 51, 42)");
+                    "¡Necesitas corregir tus respuestas!", "rgb(230, 51, 42)");
         } else {
             b1.setEnabled(true);
             b2.setEnabled(true);
@@ -7013,7 +7013,7 @@ public class Home extends javax.swing.JFrame {
             Pb_Mapa.setValue(temp);
 
             vq = new VerifyQuestions(this, true, option[0], option[1], option[2],
-                    "¡Preguntas Correctas Necesarias!", "rgb(58, 170, 53)");
+                    "¡Completado Exitosamente!", "rgb(58, 170, 53)");
         }
         count = 0;
         vq.setVisible(true);
