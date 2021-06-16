@@ -1,0 +1,20 @@
+Case 1: Multiplication table of 5
+5 10 15 20 25 30 35 40 45 50
+Case 2: Multiplication table of 8
+8 16 24 32 40 48 56 64 72 80
+Case 3: Multiplication table of 9
+9 18 27 36 45 54 63 72 81 90
+Case 4: Multiplication table of 11
+11 22 33 44 55 66 77 88 99 110
+Case 5: Multiplication table of 7
+7 14 21 28 35 42 49 56 63 70
+Case 6: Multiplication table of 4
+4 8 12 16 20 24 28 32 36 40
+Case 7: Multiplication table of 3
+3 6 9 12 15 18 21 24 27 30
+Case 8: Multiplication table of 2
+2 4 6 8 10 12 14 16 18 20
+Case 9: Multiplication table of 15
+15 30 45 60 75 90 105 120 135 150
+Case 10: Multiplication table of 10
+10 20 30 40 50 60 70 80 90 100

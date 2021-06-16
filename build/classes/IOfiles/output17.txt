@@ -1,0 +1,9 @@
+China 1
+Colombia 1
+Cuba 1
+England 1
+France 1
+Italia 1
+Mexico 1
+Panama 1
+Spain 2

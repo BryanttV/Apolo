@@ -1,0 +1,15 @@
+Puesto 1: AAA
+Puesto 2: BBB
+Puesto 3: CCC
+Puesto 4: DDD
+Puesto 5: ZZZ
+Puesto 6: AZ
+Puesto 7: ED
+Puesto 8: DJF
+Puesto 9: KFJS
+Puesto 10: LKSL
+Puesto 11: FJGJ
+Puesto 12: OIII
+Puesto 13: QQQS
+Puesto 14: SQSD
+Puesto 15: P
