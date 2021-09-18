@@ -1,17 +1,12 @@
-Pull request: ![GitHub pull request check state](https://img.shields.io/github/status/s/pulls/Bryanttv/Apolo/3)
+![GitHub pull request check state](https://img.shields.io/github/status/s/pulls/Bryanttv/Apolo/3)
 
 <h1 align="center">
-  <br>
-  <a><img src="https://raw.githubusercontent.com/BryanttV/Apolo_Software/Bryann/src/Resources/IconoApolo_200px.png" alt="Markdownify"></a>
-  <br>
   Apolo
   <br>
 </h1>
 
 <h3 align="center">Software de Aprendizaje para 
 Programación Competitiva</h3>
-
-![screenshot](https://raw.githubusercontent.com/BryanttV/Apolo_Software/Bryann/src/Resources/Apolo.gif)
 
 ## Módulos
 
